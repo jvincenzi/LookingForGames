@@ -1,4 +1,4 @@
-# LookingForGames
+# Looking For Games
 
 The idea: Looking For Games is an app that allows players to select a game/sport and find others in their area looking to play. It also
 allows players to host a game of their own by sending out a notification of where and when a game will be held.
