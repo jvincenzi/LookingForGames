@@ -8,6 +8,7 @@ import { ToDoComponent } from './to-do/to-do.component';
 import { WordSortComponent } from './word-sort/word-sort.component';
 import { PalindromeCheckerComponent } from './palindrome-checker/palindrome-checker.component';
 import { CounterComponent } from './counter/counter.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CounterComponent } from './counter/counter.component';
     ToDoComponent,
     WordSortComponent,
     PalindromeCheckerComponent,
-    CounterComponent
+    CounterComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
