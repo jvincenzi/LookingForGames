@@ -9,6 +9,9 @@ import { WordSortComponent } from './word-sort/word-sort.component';
 import { PalindromeCheckerComponent } from './palindrome-checker/palindrome-checker.component';
 import { CounterComponent } from './counter/counter.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatSelectModule
   
   ],
   providers: [],
