@@ -1,8 +1,10 @@
+<img src="../../assets/LFGLogo.png" width="300" height="100"/>
+
 <div>
     <img src="../../assets/searchIcon.png" width="35" height="35" />
     <select id="selectGame">
         <option selected="selected">What do you want to play today?</option>
-        <option value="Dungeons and Dragons">Dungeons and Dragons</option>
+        <option *ngFor="let games of gameNames">{{games}}</option>
     </select>
     <input id="searchButton" type="button" value="Find a game!"/>
     
