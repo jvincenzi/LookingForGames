@@ -12,6 +12,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {MatSelectModule} from '@angular/material/select';
     WordSortComponent,
     PalindromeCheckerComponent,
     CounterComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

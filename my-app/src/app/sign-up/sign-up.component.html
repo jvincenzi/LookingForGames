@@ -1,0 +1,122 @@
+
+<div>
+    <div id="centerMe">
+        <br /><br /><br />
+        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <h2>Join Looking For Games!</h2>
+        <p>Sign up to find a game in your area today.</p>
+    </div>
+
+    <div id="centInline">
+        <div id="centChildDiv">
+            <!--
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+                
+                <input id="firstName" formControlName="firstName" class="form-control" type="text"/>
+                <input id="lastName" formControlName="lastName" class="form-control" type="text"/>
+                <input id="eMailAddress" formControlName="eMailAddress" class="form-control" type="email"/>
+                <input id="userName" formControlName="userName" class="form-control" type="text"/>
+                <input id="userPassword1" formControlName="userPassword1" class="form-control" type="password"/>
+                <input id="userPassword2" formControlName="userPassword2" class="form-control" type="password"/>
+                <input id="userTelephone" formControlName="userTelephone" class="form-control" type="tel"/>
+                <input id="userDOB" formControlName="userDOB" class="form-control" type="date"/>
+                <input id="userStreetAddress" formControlName="userStreetAddress" class="form-control" type="text"/>
+                <input id="userCity" formControlName="userCity" class="form-control" type="text"/>
+                <input id="userState" formControlName="userState" class="form-control" type="text"/>
+                <input id="userZipCode" formControlName="userZipCode" class="form-control" type="text"/>
+            </form>
+            -->
+
+            <form id="signupForm">
+                <fieldset >
+                    <table id="tableCenter">
+                        <tr>
+                            <th><label for="firstName">First Name: </label></th>
+                            <th><input id="firstName" type="text"/></th>
+                        </tr>
+                        <tr>
+                            <th><label for="lastName">Last Name: </label> </th>
+                            <th><input id="lastName" type="text"/></th>
+                        </tr>
+                        <tr>
+                            <th><label for="eMailAddress">E-mail: </label></th>
+                            <th><input id="eMailAddress" type="email"/></th>
+                        </tr>
+                        <tr>  
+                            <th><label for="userName">Username: </label></th>
+                            <th><input id="userName" type="text"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userPassword1">Password: </label> </th>
+                            <th><input id="userPassword1" type="password"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userPassword2">Password: </label></th>
+                            <th><input id="userPassword2" type="password"/></th>
+                        </tr>
+                        <tr>    
+                            <th><label for="userTelephone">Telephone: </label></th>
+                            <th><input id="userTelephone" type="tel"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userDOB">Date of Birth: </label></th>
+                            <th><input id="userDOB" type="date"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userStreetAddress">Street Address: </label></th>
+                            <th><input id="userStreetAddress" type="text"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userCity">City: </label></th>
+                            <th><input id="userCity" type="text"/></th>
+                        </tr>
+                        <tr>  
+                            <th><label for="userState">State: </label></th>
+                            <th><input id="userState" type="text"/></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userZipCode">Zip Code: </label></th>
+                            <th><input id="userZipCode" type="text"/></th>
+                        </tr> 
+                    </table>
+                    <label for="errorMsgLabel"></label>
+                    <input id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 3px" type="button" value="Submit"/><!--mat-raised-button-->
+                    <br />
+                    <br />
+                    <p class="finePrint">By joining, you agree to our Terms of Service and Privacy Policy.</p>
+                    
+                </fieldset>
+                <div class="smlPrint">
+                    <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
+                    <input id="userFreeAcc" type="checkbox"/>
+                </div>
+            </form>            
+        </div>
+        <p id="centerMe">Already have an account? Sign In</p>
+    </div>
+    
+</div>
+
+      
+
+<div>
+
+    <select id="selectGame">
+        <option selected="selected">What do you want to play today?</option>
+        <option *ngFor="let games of gameNames">{{games}}</option>
+    </select>
+    <input id="searchButton" type="button" value="Find a game!"/>
+    
+    <mat-form-field>
+        <mat-label>What do you want to play today?</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let games of gameNames">
+            {{games}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+
+
+

@@ -1,20 +1,21 @@
 <img src="../../assets/LFGLogo.png" width="300" height="100"/>
+<h2>Looking For Games</h2>
 
 <div>
-    <img src="../../assets/searchIcon.png" width="35" height="35" />
-    <select id="selectGame">
-        <option selected="selected">What do you want to play today?</option>
-        <option *ngFor="let games of gameNames">{{games}}</option>
-    </select>
-    <input id="searchButton" type="button" value="Find a game!"/>
-    
-    <mat-form-field>
-        <mat-label>What do you want to play today?</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let games of gameNames">
-            {{games}}
-          </mat-option>
-        </mat-select>
-    </mat-form-field>
+  <img src="../../assets/searchIcon.png" width="35" height="35" />
+  <select id="selectGame">
+    <option selected="selected">What do you want to play today?</option>
+    <option *ngFor="let games of gameNames">{{games}}</option>
+  </select>
+  <input id="searchButton" type="button" value="Find a game!"/>
+
+  <mat-form-field>
+    <mat-label>What do you want to play today?</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let games of gameNames">
+        {{games}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
 </div>
