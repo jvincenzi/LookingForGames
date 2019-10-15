@@ -12,8 +12,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { GameBoardComponent } from './game-board/game-board.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -25,8 +25,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     PalindromeCheckerComponent,
     CounterComponent,
     SearchBarComponent,
-    SignUpComponent,
-    SignInComponent
+    GameBoardComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
