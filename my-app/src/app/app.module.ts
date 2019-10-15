@@ -14,6 +14,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { UsersComponent } from './users/users.component';
+import { BannerAdComponent } from './banner-ad/banner-ad.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UsersComponent } from './users/users.component';
     CounterComponent,
     SearchBarComponent,
     GameBoardComponent,
-    UsersComponent
+    UsersComponent,
+    BannerAdComponent
   ],
   imports: [
     BrowserModule,
