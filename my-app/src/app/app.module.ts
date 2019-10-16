@@ -17,6 +17,7 @@ import { UsersComponent } from './users/users.component';
 import { BannerAdComponent } from './banner-ad/banner-ad.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatSelectModule
+    MatSelectModule,
+    AppRoutingModule
   
   ],
   providers: [],
