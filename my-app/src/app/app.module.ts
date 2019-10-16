@@ -15,7 +15,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { UsersComponent } from './users/users.component';
 import { BannerAdComponent } from './banner-ad/banner-ad.component';
-
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { BannerAdComponent } from './banner-ad/banner-ad.component';
     SearchBarComponent,
     GameBoardComponent,
     UsersComponent,
-    BannerAdComponent
+    BannerAdComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
