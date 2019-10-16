@@ -1,0 +1,29 @@
+<div class="boxed">
+        <h2>Game Board</h2>
+       
+        <ul class="gameboards">
+                <li *ngFor="let GameBoardPlaceholder of TheGames"
+                    (click)="onSelect(GameBoardPlaceholder)"
+                    [class.selected]="GameBoardPlaceholder === selectGameItem">
+                    <span class="badge">{{GameBoardPlaceholder.title}}</span> {{GameBoardPlaceholder.priority}}
+                    
+                </li>
+    
+                <div *ngIf="selectedGameItem">
+                <h2>{{selectedGameItem.title | uppercase}} </h2>
+                <div><span>GameID: </span>{{selectedGameItem.GameID}}</div><br />
+                <div>
+                    <label>Title:
+                        <input [(ngModel)]="selectedGameItem.title">
+                    </label><br />
+                    <label>Current Player:
+                        <input [(ngModel)]="selectedGameItem.CurrentPlayer">
+                    </label><br />
+                    <label>Detail:
+                         <input [(ngModel)]="selectedGameItem.detail">
+                    </label>
+       
+           </div>
+        </div>
+             </ul>     
+
