@@ -9,26 +9,28 @@
 <app-banner-ad></app-banner-ad>
 
 <br />
-<app-search-bar></app-search-bar>
+ <app-search-bar></app-search-bar>
 <br />
+<!--
 <app-sign-in></app-sign-in>
 <br />
 <app-sign-up></app-sign-up>
 <br />
 <app-game-board></app-game-board> 
 <br />
-<app-users></app-users>
+<app-users></app-users> -->
+<div style="text-align:center">
+<nav>
+  <a routerLink="/">Home </a> |
 
-<nav>
-  <a routerLink="/">Home</a>
-</nav>
-<nav>
-  <a routerLink="/signIn">Sign In</a>
-</nav>
-<nav>
-  <a routerLink="/gameBoard">Game Board</a>
+  <a routerLink="/signIn">Sign In </a> |
+
+  <a routerLink="/gameBoard"> Game Board </a> |
+  
+  <a routerLink="/users">Users</a>
 </nav>
 <router-outlet></router-outlet>
 
 
 <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+</div>
