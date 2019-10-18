@@ -1,11 +1,14 @@
-<div class="boxed">
+
+<div style="text-align: center" class="boxed">
         <h2>Users</h2>
 
+     
+       
 <ul class="users">
         <li *ngFor="let UsersPlaceholder of TheUsers"
             (click)="onSelect(UsersPlaceholder)"
             [class.selected]="UsersPlaceholder === selectedUsers">
-            <span class="badge">{{UsersPlaceholder.FirstName}}</span> {{UsersPlaceholder.Location}}
+            <span class="badge">{{UsersPlaceholder.FirstName}}</span> {{UsersPlaceholder.CurrentStatus}}
             
         </li>
 
@@ -19,13 +22,12 @@
             <label>LastName:
                 <input [(ngModel)]="selectedUsers.LastName">
             </label><br />
-            <label>CurrentStatus:
-                    <input [(ngModel)]="selectedUsers.CurrentStatus">
-                </label><br />
+        
             <label>Location:
                  <input [(ngModel)]="selectedUsers.Location">
             </label>
 
    </div>
 </div>
+
      </ul>

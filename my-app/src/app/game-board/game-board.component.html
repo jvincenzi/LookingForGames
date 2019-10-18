@@ -10,11 +10,14 @@
                 </li>
     
                 <div *ngIf="selectedGameItem">
+                    <br>
                 <h2>{{selectedGameItem.title | uppercase}} </h2>
+                <br>
                 <div><span>GameID: </span>{{selectedGameItem.GameID}}</div><br />
                 <div>
                     <label>Title:
                         <input [(ngModel)]="selectedGameItem.title">
+                        
                     </label><br />
                     <label>Current Player:
                         <input [(ngModel)]="selectedGameItem.CurrentPlayer">
