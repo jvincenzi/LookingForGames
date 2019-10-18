@@ -4,7 +4,7 @@
         <ul class="gameboards">
                 <li *ngFor="let GameBoardPlaceholder of TheGames"
                     (click)="onSelect(GameBoardPlaceholder)"
-                    [class.selected]="GameBoardPlaceholder === selectGameItem">
+                    [class.selected]="GameBoardPlaceholder === selectedGameItem">
                     <span class="badge">{{GameBoardPlaceholder.title}}</span> {{GameBoardPlaceholder.priority}}
                     
                 </li>

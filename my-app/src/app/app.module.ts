@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SimpletextComponent } from './simpletext/simpletext.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { WordSortComponent } from './word-sort/word-sort.component';
-import { PalindromeCheckerComponent } from './palindrome-checker/palindrome-checker.component';
 import { CounterComponent } from './counter/counter.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SimpletextComponent,
     ToDoComponent,
     WordSortComponent,
-    PalindromeCheckerComponent,
     CounterComponent,
     SearchBarComponent,
     GameBoardComponent,

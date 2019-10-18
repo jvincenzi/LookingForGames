@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
   userState = new FormControl('');    // new
   userZipCode = new FormControl('');    // new
   userFreeAcc = new FormControl('');    // new
-  
+  userPassword2 = new FormControl('');
 
   submitSignupForm() {    // new
     this.eMailAddress.setValue('sonoojaiswal@javatpoint.com');    // new
