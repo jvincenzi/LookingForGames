@@ -9,78 +9,82 @@
 
     <div id="centInline">
         <div id="centChildDiv">
-            <!--
-            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+
+            <!-- New code from here... --> 
+            <div class="container">  
                 
-                <input id="firstName" formControlName="firstName" class="form-control" type="text"/>
-                <input id="lastName" formControlName="lastName" class="form-control" type="text"/>
-                <input id="eMailAddress" formControlName="eMailAddress" class="form-control" type="email"/>
-                <input id="userName" formControlName="userName" class="form-control" type="text"/>
-                <input id="userPassword1" formControlName="userPassword1" class="form-control" type="password"/>
-                <input id="userPassword2" formControlName="userPassword2" class="form-control" type="password"/>
-                <input id="userTelephone" formControlName="userTelephone" class="form-control" type="tel"/>
-                <input id="userDOB" formControlName="userDOB" class="form-control" type="date"/>
-                <input id="userStreetAddress" formControlName="userStreetAddress" class="form-control" type="text"/>
-                <input id="userCity" formControlName="userCity" class="form-control" type="text"/>
-                <input id="userState" formControlName="userState" class="form-control" type="text"/>
-                <input id="userZipCode" formControlName="userZipCode" class="form-control" type="text"/>
-            </form>
-            -->
+                <h3>Test output:</h3> 
+                <p> 
+                    First name: {{ firstName.value }} <br />
+                    Last name : {{ lastName.value }} <br />
+                    E-mail: {{ eMailAddress.value }} <br />
+                    User name: {{ userName.value }} <br />
+                    Password: {{ userPassword1.value }} <br />
+                    Telephone: {{ userTelephone.value }} <br />
+                    Date of Birth: {{ userDOB.value }} <br />
+                    Address: {{ userStreetAddress.value }} <br />
+                    City: {{ userCity.value }} <br />
+                    State: {{ userState.value }} <br />
+                    Zipcode: {{ userZipCode.value }} <br />
+                    Free Account: {{ userFreeAcc.value }} <br />
+                </p>  
+            </div>
+            <!-- To here --> 
 
             <form id="signupForm">
                 <fieldset >
                     <table id="tableCenter">
                         <tr>
                             <th><label for="firstName">First Name: </label></th>
-                            <th><input id="firstName" type="text"/></th>
+                            <th><input type="text" id="firstName" [formControl]="firstName" /></th>
                         </tr>
                         <tr>
                             <th><label for="lastName">Last Name: </label> </th>
-                            <th><input id="lastName" type="text"/></th>
+                            <th><input type="text" id="lastName" [formControl]="lastName" /></th>
                         </tr>
                         <tr>
                             <th><label for="eMailAddress">E-mail: </label></th>
-                            <th><input id="eMailAddress" type="email"/></th>
+                            <th><input type="email" id="eMailAddress" [formControl]="eMailAddress" /></th>
                         </tr>
                         <tr>  
                             <th><label for="userName">Username: </label></th>
-                            <th><input id="userName" type="text"/></th>
+                            <th><input type="text" id="userName" [formControl]="userName" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword1">Password: </label> </th>
-                            <th><input id="userPassword1" type="password"/></th>
+                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword2">Password: </label></th>
-                            <th><input id="userPassword2" type="password"/></th>
+                            <th><input type="password" id="userPassword2" [formControl]="userPassword2" /></th>
                         </tr>
                         <tr>    
                             <th><label for="userTelephone">Telephone: </label></th>
-                            <th><input id="userTelephone" type="tel"/></th>
+                            <th><input type="tel" id="userTelephone" [formControl]="userTelephone" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userDOB">Date of Birth: </label></th>
-                            <th><input id="userDOB" type="date"/></th>
+                            <th><input type="date" id="userDOB" [formControl]="userDOB" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userStreetAddress">Street Address: </label></th>
-                            <th><input id="userStreetAddress" type="text"/></th>
+                            <th><input type="text" id="userStreetAddress" [formControl]="userStreetAddress" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userCity">City: </label></th>
-                            <th><input id="userCity" type="text"/></th>
+                            <th><input type="text" id="userCity" [formControl]="userCity" /></th>
                         </tr>
                         <tr>  
                             <th><label for="userState">State: </label></th>
-                            <th><input id="userState" type="text"/></th>
+                            <th><input type="text" id="userState" [formControl]="userState" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userZipCode">Zip Code: </label></th>
-                            <th><input id="userZipCode" type="text"/></th>
+                            <th><input type="text" id="userZipCode" [formControl]="userZipCode" /></th>
                         </tr> 
                     </table>
                     <label for="errorMsgLabel"></label>
-                    <input id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 3px" type="button" value="Submit"/><!--mat-raised-button-->
+                    <button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
                     <br />
                     <br />
                     <p class="finePrint">By joining, you agree to our Terms of Service and Privacy Policy.</p>
@@ -88,7 +92,7 @@
                 </fieldset>
                 <div class="smlPrint">
                     <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
-                    <input id="userFreeAcc" type="checkbox"/>
+                    <input type="checkbox" id="userFreeAcc" [formControl]="userFreeAcc"/>
                 </div>
             </form>            
         </div>

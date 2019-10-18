@@ -6,23 +6,38 @@
         <h2>Sign in to Looking For Games</h2>
     </div>
 
+
+
     <div id="centInline">
         <div id="centChildDiv">
+            
+            <!-- New code from here... --> 
+            <div class="container">  
+                <h3>Test output:</h3> 
+                <p> 
+                    User name: {{ userName.value }} <br />
+                    Password: {{ userPassword1.value }} <br />
+                </p>  
+            </div>
+            <!-- To here -->
+
+
+
             <form id="signupForm">
                 <fieldset >
                     <table id="tableCenter">
                         <tr>  
                             <th><label for="userName">Username: </label></th>
-                            <th><input id="userName" type="text"/></th>
+                            <th><input type="text" id="userName" [formControl]="userName" /></th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword1">Password: </label> </th>
-                            <th><input id="userPassword1" type="password"/></th>
+                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /></th>
                         </tr>
                        
                     </table>
                     <label for="errorMsgLabel"></label>
-                    <input id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 3px" type="button" value="Submit"/><!--mat-raised-button-->
+                    <button (click)="submitSignin()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
                     <br />
                     <br />
                     <p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p>

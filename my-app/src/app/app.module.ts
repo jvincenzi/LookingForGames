@@ -18,6 +18,7 @@ import { BannerAdComponent } from './banner-ad/banner-ad.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     MatSliderModule,
     MatSelectModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   
   ],
   providers: [],
