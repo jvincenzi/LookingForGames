@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';  // new
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,23 +8,23 @@ import { FormControl } from '@angular/forms';  // new
 })
 export class SignUpComponent implements OnInit {
 
-  firstName = new FormControl('');    // new
-  lastName = new FormControl('');    // new
-  eMailAddress = new FormControl('');    // new
-  userName = new FormControl('');    // new
-  userPassword1 = new FormControl('');    // new
-  userTelephone = new FormControl('');    // new
-  userDOB = new FormControl('');    // new
-  userStreetAddress = new FormControl('');    // new
-  userCity = new FormControl('');    // new
-  userState = new FormControl('');    // new
-  userZipCode = new FormControl('');    // new
-  userFreeAcc = new FormControl('');    // new
+  firstName = new FormControl('');
+  lastName = new FormControl('');
+  eMailAddress = new FormControl('');
+  userName = new FormControl('');
+  userPassword1 = new FormControl('');
+  userTelephone = new FormControl('');
+  userDOB = new FormControl('');
+  userStreetAddress = new FormControl('');
+  userCity = new FormControl('');
+  userState = new FormControl('');
+  userZipCode = new FormControl('');
+  userFreeAcc = new FormControl('');
   userPassword2 = new FormControl('');
 
-  submitSignupForm() {    // new
-    this.eMailAddress.setValue('sonoojaiswal@javatpoint.com');    // new
-  }    // new
+  submitSignupForm() {
+    this.eMailAddress.setValue('sonoojaiswal@javatpoint.com');
+  }
 
   //constructor(private formBuilder: FormBuilder) { }
   constructor() { }

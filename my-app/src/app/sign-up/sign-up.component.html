@@ -9,28 +9,6 @@
 
     <div id="centInline">
         <div id="centChildDiv">
-
-            <!-- New code from here... --> 
-            <div class="container">  
-                
-                <h3>Test output:</h3> 
-                <p> 
-                    First name: {{ firstName.value }} <br />
-                    Last name : {{ lastName.value }} <br />
-                    E-mail: {{ eMailAddress.value }} <br />
-                    User name: {{ userName.value }} <br />
-                    Password: {{ userPassword1.value }} <br />
-                    Telephone: {{ userTelephone.value }} <br />
-                    Date of Birth: {{ userDOB.value }} <br />
-                    Address: {{ userStreetAddress.value }} <br />
-                    City: {{ userCity.value }} <br />
-                    State: {{ userState.value }} <br />
-                    Zipcode: {{ userZipCode.value }} <br />
-                    Free Account: {{ userFreeAcc.value }} <br />
-                </p>  
-            </div>
-            <!-- To here --> 
-
             <form id="signupForm">
                 <fieldset >
                     <table id="tableCenter">
@@ -94,7 +72,31 @@
                     <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
                     <input type="checkbox" id="userFreeAcc" [formControl]="userFreeAcc"/>
                 </div>
-            </form>            
+            </form>  
+            
+            
+
+            <!-- New code from here... --> 
+            <div class="container">  
+                
+                <h3>Test output:</h3> 
+                <p> 
+                    First name: {{ firstName.value }} <br />
+                    Last name : {{ lastName.value }} <br />
+                    E-mail: {{ eMailAddress.value }} <br />
+                    User name: {{ userName.value }} <br />
+                    Password: {{ userPassword1.value }} <br />
+                    Telephone: {{ userTelephone.value }} <br />
+                    Date of Birth: {{ userDOB.value }} <br />
+                    Address: {{ userStreetAddress.value }} <br />
+                    City: {{ userCity.value }} <br />
+                    State: {{ userState.value }} <br />
+                    Zipcode: {{ userZipCode.value }} <br />
+                    Free Account: {{ userFreeAcc.value }} <br />
+                </p>  
+            </div>
+            <!-- To here --> 
+
         </div>
         <p id="centerMe">Already have an account? Sign In</p>
     </div>
