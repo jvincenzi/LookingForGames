@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';  // new
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,12 +9,12 @@ import { FormControl } from '@angular/forms';  // new
 export class SignInComponent implements OnInit {
 
 
-  userName = new FormControl('');    // new
-  userPassword1 = new FormControl('');    // new
+  userName = new FormControl('');
+  userPassword1 = new FormControl('');
   
   
-  submitSignin() {    // new
-    this.userName.setValue('It\'s working');    // new
+  submitSignin() {
+    this.userName.setValue('It\'s working');
   } 
 
   constructor() { }

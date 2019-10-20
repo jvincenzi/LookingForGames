@@ -10,7 +10,7 @@ import { CounterComponent } from './counter/counter.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule} from '@angular/material/select';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { UsersComponent } from './users/users.component';
 import { BannerAdComponent } from './banner-ad/banner-ad.component';
@@ -18,6 +18,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     BannerAdComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    PaymentAuthComponent
   ],
   imports: [
     BrowserModule,

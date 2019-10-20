@@ -1,0 +1,76 @@
+
+<div>
+    <div id="centerMe">
+        <br /><br /><br />
+        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <h2>Join Looking For Games!</h2>
+        <p>Credit card verification.</p>
+    </div>
+
+    <div id="centInline">
+        <div id="centChildDiv">
+            <form id="signupForm">
+                <fieldset >
+                    <table id="tableCenter">
+                        <tr>
+                            <th><label for="nameOnCard">Name on Card: </label></th>
+                            <th><input type="text" id="nameOnCard" [formControl]="nameOnCard" /></th>
+                        </tr>
+                        <tr>
+                            <th><label for="creditCardNumnber">Credit Card Numnber: </label> </th>
+                            <th><input type="text" id="creditCardNumnber" [formControl]="creditCardNumnber" /></th>
+                        </tr>
+                        <tr>
+                            <th><label >Expiration Date Month: </label></th>
+                            <th><input type="date" id="expirationMonth" [formControl]="expirationMonth" /></th>
+                            <th><input type="date" id="expirationYear" [formControl]="expirationYear" /></th>
+                        </tr>
+                        <tr>  
+                            <th><label for="cVV">CVV: </label></th>
+                            <th><input type="text" id="cVV" [formControl]="cVV" /></th>
+                        </tr>
+                        <tr>
+                            <label class="smlPrint">CVV number can be found on the back of your card near the signature line.</label>
+                        </tr>
+                        <tr>
+                            <th><label>Billing options: </label></th>
+                        </tr>
+                            <input type="radio" name="subscriptionType" id="monthToMonthBilling" [formControl]="monthToMonthBilling"/>
+                            <th><label for="cVV"> $9.99 A month</label></th>
+                        </tr>
+                        <tr>
+                            <input type="radio" name="subscriptionType" id="yearlyBilling" [formControl]="yearlyBilling"/>
+                            <th><label for="cVV"> $99.99 A year</label></th>
+                        </tr>
+                        
+                    </table>
+                    <label for="errorMsgLabel"></label>
+                    <button (click)="submitCCForm()" id="paymentAuthButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
+                    <br />
+                    <br />
+                    <p class="finePrint">By joining, you agree to our Terms of Service and Privacy Policy.</p>
+                    
+                </fieldset>
+            </form>  
+            
+            
+
+            <!-- New code from here... --> 
+            <div class="container">  
+                
+                <h3>Test output:</h3> 
+                <p> 
+                    First name: {{ nameOnCard.value }} <br />
+                    Credit Card Number: {{ creditCardNumnber.value }} <br />
+                    Expiration date: {{ expirationDate.value }} <br />
+                    cVV: {{ cVV.value }} <br />
+                </p>  
+            </div>
+            <!-- To here --> 
+
+        </div>
+    </div>
+    
+</div>
+
+  
