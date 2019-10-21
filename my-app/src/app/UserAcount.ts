@@ -10,11 +10,11 @@ export class UserAcount {
   Address: string;
   City: string;
   State: string;
-  Zipcode:  number;
+  Zipcode: number;
   FreeAccount: boolean;
-  // paid through date
-  // subscription level (monthly or yearly)
-  //CurrentStatus: string;
-  //Location: string;
+  SubscriptionExp: Date;
+  SubscriptionLv: number;//level (monthly or yearly)
+  CurrentStatus: string;
+  Location: string;
   createdOn: Date;
 }

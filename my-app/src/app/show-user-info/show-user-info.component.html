@@ -1,0 +1,87 @@
+
+<div class="boxed">
+    <div id="centerMe">
+        <br /><br /><br />
+        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <h2>Account Information</h2>
+    </div>
+    <h3></h3>
+    <div *ngIf="ourTasks">
+        <div id="centInline">
+            <div id="centChildDiv">
+                <ul class="userInfoClass">
+                    <li class="tasksLi" *ngFor="let eachTask of ourTasks">
+                        <span class="oneTask" >
+                            <table id="tableCenter">
+                                <tr>
+                                    <th><label for="_id">User ID: </label></th>
+                                    <th>{{eachTask._id}}</th>
+                                </tr>
+                                <tr>
+                                    <th><label for="firstName">First Name: </label></th>
+                                    <th>{{eachTask.FirstName}}</th>
+                                </tr>
+                                <tr>
+                                    <th><label for="lastName">Last Name: </label> </th>
+                                    <th>{{eachTask.LastName}}</th>
+                                </tr>
+                                <tr>
+                                    <th><label for="eMailAddress">E-mail: </label></th>
+                                    <th>{{eachTask.Email}}</th>
+                                </tr>
+                                <tr>  
+                                    <th><label for="userName">Username: </label></th>
+                                    <th>{{eachTask.UserName}}</th>
+                                </tr>
+                                <tr>   
+                                    <th><label for="userPassword1">Password: </label> </th>
+                                    <th>{{eachTask.Password}}</th>
+                                </tr>
+                                <tr>    
+                                    <th><label for="userTelephone">Telephone: </label></th>
+                                    <th>{{eachTask.Telephone}}</th>
+                                </tr>
+                                <tr>   
+                                    <th><label for="userDOB">Date of Birth: </label></th>
+                                    <th>{{eachTask.DateOfBirth}}</th>
+                                </tr>
+                                <tr>   
+                                    <th><label for="userStreetAddress">Street Address: </label></th>
+                                    <th>{{eachTask.Address}}</th>
+                                </tr>
+                                <tr>   
+                                    <th><label for="userCity">City: </label></th>
+                                    <th>{{eachTask.City}}</th>
+                                </tr>
+                                <tr>  
+                                    <th><label for="userState">State: </label></th>
+                                    <th>{{eachTask.State}}</th>
+                                </tr>
+                                <tr>   
+                                    <th><label for="userZipCode">Zip Code: </label></th>
+                                    <th>{{eachTask.Zipcode}}</th>
+                                </tr>
+                                <tr>
+                                    <th><label for="userSubscriptionLv">Subscription: </label></th>
+                                    <th>{{eachTask.SubscriptionLv}}</th>
+                                </tr> 
+                                <tr>
+                                    <th><label for="userSubscriptionExp">Subscription EXP: </label></th>
+                                    <th>{{eachTask.SubscriptionExp}}</th>
+                                </tr> 
+                                <tr>
+                                    <th><label for="userFreeAccount">Free Account: </label></th>
+                                    <th>{{eachTask.FreeAccount}}</th>
+                                </tr> 
+                                <tr>
+                                    <th><label for="userCreatedOn">Signup date: </label></th>
+                                    <th>{{eachTask.createdOn}}</th>
+                                </tr> 
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

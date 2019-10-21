@@ -11,7 +11,7 @@ const myRoutes: Routes = [
   { path: 'gameBoard', component: GameBoardComponent },
   { path: 'users', component: UsersComponent },
   { path: 'signUp', component: SignUpComponent }
- // { path: 'users', component: UsersComponent }
+  //{ path: 'users', component: UsersComponent }
  ];
  
 
