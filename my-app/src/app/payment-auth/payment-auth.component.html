@@ -21,27 +21,26 @@
                             <th><input type="text" id="creditCardNumnber" [formControl]="creditCardNumnber" /></th>
                         </tr>
                         <tr>
-                            <th><label >Expiration Date Month: </label></th>
-                            <th><input type="date" id="expirationMonth" [formControl]="expirationMonth" /></th>
-                            <th><input type="date" id="expirationYear" [formControl]="expirationYear" /></th>
+                            <th><label >Expiration Date: </label></th>
+                            <th>
+                                <input type="text" placeholder="mm" id="expirationMonth" [formControl]="expirationMonth" style="width:50px" />
+                                /<input type="text" placeholder="yyyy" id="expirationYear" [formControl]="expirationYear" style="width:70px" />
+                            </th>
                         </tr>
                         <tr>  
                             <th><label for="cVV">CVV: </label></th>
                             <th><input type="text" id="cVV" [formControl]="cVV" /></th>
                         </tr>
                         <tr>
-                            <label class="smlPrint">CVV number can be found on the back of your card near the signature line.</label>
-                        </tr>
-                        <tr>
                             <th><label>Billing options: </label></th>
                         </tr>
                         <tr>
-                            <input type="radio" name="subscriptionType" id="monthToMonthBilling" [formControl]="monthToMonthBilling"/>
-                            <th><label for="cVV"> $9.99 A month</label></th>
+                            <input type="radio" name="subscriptionType" value="monthToMonthBilling" [formControl]="monthToMonthBilling" style="float:right"/>
+                            <th><label for="monthToMonthBilling"> $9.99 A month</label></th>
                         </tr>
                         <tr>
-                            <input type="radio" name="subscriptionType" id="yearlyBilling" [formControl]="yearlyBilling"/>
-                            <th><label for="cVV"> $99.99 A year</label></th>
+                            <input type="radio" name="subscriptionType" value="yearlyBilling" [formControl]="yearlyBilling" style="float:right"/>
+                            <th><label for="yearlyBilling"> $99.99 A year</label></th>
                         </tr>
                         
                     </table>
