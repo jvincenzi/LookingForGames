@@ -35,6 +35,7 @@
                         <tr>
                             <th><label>Billing options: </label></th>
                         </tr>
+                        <tr>
                             <input type="radio" name="subscriptionType" id="monthToMonthBilling" [formControl]="monthToMonthBilling"/>
                             <th><label for="cVV"> $9.99 A month</label></th>
                         </tr>
@@ -62,7 +63,7 @@
                 <p> 
                     First name: {{ nameOnCard.value }} <br />
                     Credit Card Number: {{ creditCardNumnber.value }} <br />
-                    Expiration date: {{ expirationDate.value }} <br />
+                    Expiration date: {{ expirationMonth.value }}/{{ expirationYear.value }} <br />
                     cVV: {{ cVV.value }} <br />
                 </p>  
             </div>
