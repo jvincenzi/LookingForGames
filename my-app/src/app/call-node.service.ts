@@ -55,7 +55,8 @@ import { UserAcount } from './UserAcount';
 export class CallNodeService { // CallNodeService WAS TaskService
 
   //webAddress = "http://localhost:3000/tasks/";
-  webAddress = "https://lookingforgames.azurewebsites.net/tasks/";
+  //webAddress = "https://lookingforgames.azurewebsites.net/tasks/";
+  webAddress = "https://lfgnodesrv.azurewebsites.net";
   //webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
 
 
