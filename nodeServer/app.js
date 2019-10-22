@@ -5,8 +5,8 @@ const cors = require('cors')
 // note the extra line in package.json to download this code
 
 var corsOptions = {
-//origin: 'http://localhost:4200',   // this URL must match the URL that the Angular app will call from
-origin: 'lookingforgames.azurewebsites.net/', 
+origin: 'http://localhost:4200',   // this URL must match the URL that the Angular app will call from
+//origin: 'lookingforgames.azurewebsites.net/', 
 optionsSuccessStatus: 200 
 }
 
@@ -15,8 +15,8 @@ require("./config/db");
 
 const app = express();
 
-//const port = process.env.PORT || 3000; 
-const port = process.env.PORT || 80; 
+const port = process.env.PORT || 3000; 
+//const port = process.env.PORT || 80; 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

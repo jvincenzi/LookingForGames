@@ -3,7 +3,7 @@
 // schema will enforce consistency in all our documents (records)
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-/*
+
 const TaskSchema = new Schema({
   _id: {
     type: String,
@@ -19,8 +19,8 @@ const TaskSchema = new Schema({
     // the task was created, it will be set as we create a new document
   }
 });
-*/
 
+/*
 const TaskSchema = new Schema({
   _id: {
     type: String,
@@ -52,5 +52,6 @@ const TaskSchema = new Schema({
     // the task was created, it will be set as we create a new document
   }
 });
+*/
 
 module.exports = mongoose.model("Tasks", TaskSchema);

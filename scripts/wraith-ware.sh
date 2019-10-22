@@ -26,6 +26,7 @@ fi
 
 function deleteOld() {
 	titleGraphic
+	cd  ${LFG_DIR}
 	cd ../LookingForGames-runtime/
 	echo -e "${LIGHT_GREEN} \e[4m Removing old Files & Folders\e[0m"
 	# Removing files
@@ -39,7 +40,7 @@ function deleteOld() {
 	rm -v styles.*.css
 	# Removing folders
 	rm -v -r assets
-	#read -p "Press [Enter] key to continue..."
+	#read -p "${YELLOW}Press [Enter] key to continue...\e[0m"
 }
 
 function buildOnly() {
@@ -47,17 +48,15 @@ function buildOnly() {
 	echo -e "${LIGHT_GREEN} \e[4m Building distilled files \e[0m"
 	cd  ${LFG_DIR}/my-app/
 	ng build --prod
-	read -p "Press [Enter] key to continue..."
+	#read -p "${YELLOW}Press [Enter] key to continue...\e[0m"
 }
-
-
 
 function copyOnly(){
 	titleGraphic
 	cd  ${LFG_DIR}/my-app/dist/my-app
 	echo
 	echo -e "${LIGHT_GREEN} \e[4m Copying new Files & Folders to /LookingForGames-runtime repo\e[0m"
-	echo ""
+	echo 
 	cp -v -r . ../../../../LookingForGames-runtime 
 }
 
@@ -65,14 +64,16 @@ function gitGoing(){
 	titleGraphic
 	cd ${LFG_DIR}
 	cd ../LookingForGames-runtime
+	echo "========================"
 	echo -e "${LIGHT_GREEN} \e[4m Running Git commands \e[0m"
-	git add *
+	echo "------------------------"
 	echo -e "${LIGHT_GREEN} \e[4mAdding files\e[0m"
-	git commit -m "Updated app for azure"
+	git add *
 	echo -e "${LIGHT_GREEN} \e[4mCommitting files\e[0m"
-	git push
+	git commit -m "Updated app for azure"
 	echo -e "${LIGHT_GREEN} \e[4mPushing files\e[0m"
-	read -p "Press [Enter] key to continue..."
+	git push
+	#read -p "${YELLOW}Press [Enter] key to continue...\e[0m"
 }
 
 function runAll() {
@@ -81,13 +82,39 @@ function runAll() {
 	copyOnly
 	gitGoing
 	echo ""
-	read -p "Press [Enter] key to continue..."
+	read -p "Press [Enter] key to continue OR scroll up to see any errors..."
 }
 
 function rebuild() {
 	deleteOld
 	buildOnly
 	copyOnly
+}
+
+function cpNodeSrv() {
+	titleGraphic
+	cd ${LFG_DIR}
+	cd nodeServer/
+	echo "============================================================"
+	echo -e "${LIGHT_GREEN} \e[4mCopying Files & Folders to /LFGNodeServer/nodeServer/ repo\e[0m"
+	cp -r . ../../LFGNodeServer/nodeServer/
+	echo "Copying files complete"
+	
+	
+	
+	echo "============================================================"
+	echo -e "${LIGHT_GREEN} \e[4mRunning Git commands\e[0m"
+	cd ../../LFGNodeServer/
+	echo -e "${LIGHT_GREEN} \e[4mAdding files\e[0m"
+	git add *
+	echo -e "${LIGHT_GREEN} \e[4mCommitting\e[0m"
+	git commit -m "Updated Node server for azure"
+	echo -e "${LIGHT_GREEN} \e[4mPushing\e[0m"
+	git push
+	echo "============================================================"
+	echo
+	read -p " Press [Enter] key to continue..."
+
 }
 
 function titleGraphic() {
@@ -103,17 +130,17 @@ function titleGraphic() {
 	echo -e               "  ▒ ░ ░    ░▒ ░ ▒░  ▒   ▒▒ ░ ▒ ░    ░     ▒ ░▒░ ░     ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ░  ░"
 	echo -e               "  ░   ░    ░░   ░   ░   ▒    ▒ ░  ░       ░  ░░ ░     ░   ░    ░   ▒     ░░   ░    ░   "
 	echo -e               "    ░       ░           ░  ░ ░            ░  ░  ░       ░          ░  ░   ░        ░  ░\e[0m"
-	echo -e               "                                                                                \e[90mv0.0.4a\e[0m"
-	echo 
+	echo -e               "                                                                                \e[90mv0.0.5a\e[0m"
 }
 
 while true; do
 	titleGraphic
 	echo -e "${LIGHT_GREEN} \e[4mMenu\e[0m"
-	echo -e "${LIGHT_GREEN}  a) Auto (Delete Old files + Build + Copy over + Git add+commit+push)"
-	echo -e "${LIGHT_GREEN}  b) Build Only"
-	echo -e "${LIGHT_GREEN}  d) Delete Old dist Files"
-	echo -e "${LIGHT_GREEN}  r) Rebuild (Delete Old files + Build + Copy over)"
+	echo -e "${LIGHT_GREEN}  a) Auto Rebuild & Deploy to Azure (Delete files + Build + Copy + Git add+commit+push)"
+	echo -e "${LIGHT_GREEN}  b) Build Client Only"
+	echo -e "${LIGHT_GREEN}  d) Delete Old client dist Files"
+	echo -e "${LIGHT_GREEN}  n) Copy Node Server files to LFGNodeSrv repo & Git add+commit+push"
+	echo -e "${LIGHT_GREEN}  r) Rebuild Client (Delete + Build + Copy)"
 	echo -e "${LIGHT_RED}  x) Exit"
 	echo -e "${LIGHT_RED}  q) Exit"
 	echo -e "\n$NC"
@@ -123,9 +150,10 @@ while true; do
 		[Bb]* ) buildOnly; continue;;
 		[Cc]* ) copyOnly; continue;;
 		[Dd]* ) deleteOld; continue;;
+		[Nn]* ) cpNodeSrv; continue;;
 		[Rr]* ) rebuild; continue;;
 		[XxQq]* ) clear; break;;
-		* )  -e "\n$NC" + "Please answer with a, b, d, r, x (or q)";;
+		* )  -e "\n$NC" + "Please answer with a, b, d, n, r, x (or q)";;
 	esac
 done
 
