@@ -55,23 +55,23 @@ import { UserAcount } from './UserAcount';
 export class CallNodeService { // CallNodeService WAS TaskService
   constructor(private http: HttpClient) {}
   getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>('http://localhost:3000/tasks');
-    //return  this.http.get<UserAcount[]>(' https://kurtmongoserver.azurewebsites.net/tasks/');
+    //return  this.http.get<UserAcount[]>('http://localhost:3000/tasks');
+    return  this.http.get<UserAcount[]>(' https://kurtmongoserver.azurewebsites.net/tasks/');
   }
   getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>('http://localhost:3000/tasks/' + taskName);
-    //return this.http.get<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
+    //return this.http.get<UserAcount>('http://localhost:3000/tasks/' + taskName);
+    return this.http.get<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
   insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>('http://localhost:3000/tasks/', task);
-    //return this.http.post<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/', task);
+    //return this.http.post<UserAcount>('http://localhost:3000/tasks/', task);
+    return this.http.post<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/', task);
   }
   updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>('http://localhost:3000/tasks/' + task._id, task);
-    //return this.http.put<void>('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id, task);
+    //return this.http.put<void>('http://localhost:3000/tasks/' + task._id, task);
+    return this.http.put<void>('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id, task);
   }
   deleteTask(task: UserAcount) {
-    return this.http.delete('http://localhost:3000/tasks/' + task._id);
-    //return this.http.delete('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id);
+    //return this.http.delete('http://localhost:3000/tasks/' + task._id);
+    return this.http.delete('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id);
   }
 }
