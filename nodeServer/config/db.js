@@ -12,17 +12,19 @@ const dbURI ="mongodb+srv://bcuser2:bcuser2@cluster0-nbt1n.mongodb.net/TaskDB?re
 mongoose.set('useFindAndModify', false);
 
 const options = {
-  reconnectTries: Number.MAX_VALUE,
-  poolSize: 10
+ 	reconnectTries: Number.MAX_VALUE,
+ 	poolSize: 10,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
 };
 
 mongoose.connect(dbURI, options).then(
 	 () => {
-		console.log(``);
-		console.log(`=========================================`);
+		console.log(`----------------------------------------------------------------------------------`);
 	    	console.log(" Database connection established!");
-		console.log(`=========================================`);
+		console.log(`----------------------------------------------------------------------------------`);
 		console.log(``);
+
 	  },
 	 err => {
 	    	console.log("Error connecting Database instance due to: ", err);

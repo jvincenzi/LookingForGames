@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 # Joseph Vincenzi
 # chmod +x ~/Git/LookingForGames/scripts/wraith-ware.sh
-# run this command to be able to run build copy form any client dir:
+# run this command to be able to run the script from any client dir:
 #	ln -s ~/Git/LookingForGames/scripts/wraith-ware.sh ~/bin/.
 
 
@@ -103,7 +103,7 @@ function titleGraphic() {
 	echo -e               "  ▒ ░ ░    ░▒ ░ ▒░  ▒   ▒▒ ░ ▒ ░    ░     ▒ ░▒░ ░     ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ░  ░"
 	echo -e               "  ░   ░    ░░   ░   ░   ▒    ▒ ░  ░       ░  ░░ ░     ░   ░    ░   ▒     ░░   ░    ░   "
 	echo -e               "    ░       ░           ░  ░ ░            ░  ░  ░       ░          ░  ░   ░        ░  ░\e[0m"
-	echo -e               "                                                                                \e[90mv0.0.3a\e[0m"
+	echo -e               "                                                                                \e[90mv0.0.4a\e[0m"
 	echo 
 }
 

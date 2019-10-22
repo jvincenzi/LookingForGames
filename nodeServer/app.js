@@ -42,9 +42,8 @@ app
   .delete(taskController.deleteTask);
 
 app.listen(port, () => {
-	console.log(``);
-	console.log(`=========================================`);
+	console.log(`----------------------------------------------------------------------------------`);
  	console.log(` Server running at http://localhost:${port}`);
-	console.log(`=========================================`);
+	console.log(`----------------------------------------------------------------------------------`);
 	console.log(``);
 });

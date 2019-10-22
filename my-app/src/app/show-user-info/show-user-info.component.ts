@@ -8,7 +8,7 @@ import { UserAcount } from '../UserAcount';
   styleUrls: ['./show-user-info.component.css']
 })
 export class ShowUserInfoComponent implements OnInit {
-  ourTasks: UserAcount[];
+  myAccount: UserAcount[];
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() {
@@ -16,10 +16,17 @@ export class ShowUserInfoComponent implements OnInit {
   }
   /*
   getTasks(): void {
-    this.ourTasks = this.callNodeService.getAllTasks();
+    this.myAccount = this.callNodeService.getAllTasks();
   }
   */
+
   getTasks(): void {
+    /* this code is to replace the code below when we get the Node server working
+    this.callNodeService.getAllTasks().subscribe((userData: UserAcount[]) => {
+      this.myAccount = userData;
+    })
+    */
+
     let aDate: Date = new Date(2018, 11, 24, 10, 33, 30, 0);
 
     var localTaskArray: UserAcount[] = [
@@ -64,7 +71,7 @@ export class ShowUserInfoComponent implements OnInit {
       createdOn: aDate,
       }
     ];
-    this.ourTasks = localTaskArray;
+    this.myAccount = localTaskArray;
   }
 
 }
