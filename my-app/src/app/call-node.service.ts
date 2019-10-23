@@ -5,15 +5,17 @@
 // up to the node server
 // all od this is provided to any component in the app as an Angular "Service"
 
-/*
-
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+//import { Task } from './Task';
 import { UserAcount } from './UserAcount';
-export interface CallNode {
+
+export interface Tasks {
   name: string;
 }
+
+/*
 @Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
 
 export class CallNodeService {
@@ -40,24 +42,15 @@ export class CallNodeService {
   }
 }
 */
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-//import { Task } from './Task';
-import { UserAcount } from './UserAcount';
 
-export interface Tasks {
-  name: string;
-}
 
 @Injectable({ providedIn: 'root' })
-
 export class CallNodeService { // CallNodeService WAS TaskService
 
   //webAddress = "http://localhost:3000/tasks/";
   //webAddress = "https://lookingforgames.azurewebsites.net/tasks/";
-  webAddress = "https://lfgnodesrv.azurewebsites.net";
-  //webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+  //webAddress = "https://lfgnodesrv.azurewebsites.net/tasks/";
+  webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
 
 
   constructor(private http: HttpClient) {}
