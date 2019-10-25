@@ -48,9 +48,8 @@ export class CallNodeService {
 export class CallNodeService { // CallNodeService WAS TaskService
 
   //webAddress = "http://localhost:3000/tasks/";
-  //webAddress = "https://lookingforgames.azurewebsites.net/tasks/";
-  //webAddress = "https://lfgnodesrv.azurewebsites.net/tasks/";
-  webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+  //webAddress = "https://  ????  .azurewebsites.net/tasks/"; // This should be the URL to your monogDB, not Node server!
+  webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
 
 
   constructor(private http: HttpClient) {}

@@ -22,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { ShowUserInfoComponent } from './show-user-info/show-user-info.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
