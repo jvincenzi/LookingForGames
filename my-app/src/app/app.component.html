@@ -9,19 +9,7 @@
 <app-banner-ad></app-banner-ad>
 
 <br />
-<app-search-bar></app-search-bar>
-<br />
-<app-payment-auth></app-payment-auth>
-<br />
-<app-show-user-info></app-show-user-info>
-<!--
-<app-sign-in></app-sign-in>
-<br />
-<app-sign-up></app-sign-up>
-<br />
-<app-game-board></app-game-board> 
-<br />
-<app-users></app-users> -->
+
 <div style="text-align:center">
   <nav>
     <a routerLink="/">Home </a> |
@@ -32,10 +20,11 @@
 
     <a routerLink="/signUp">Sign Up </a> |
     
-    <a routerLink="/users">Users </a>
+    <a routerLink="/users">Users </a> |
+
+    <a routerLink="/myAccount">My Account</a>
   </nav>
   <router-outlet></router-outlet>
-
-
-  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
 </div>
+
+<app-search-bar></app-search-bar>

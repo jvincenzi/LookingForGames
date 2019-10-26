@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShowUserInfoComponent } from './show-user-info.component';
 
+import { PaymentAuthComponent } from '../payment-auth/payment-auth.component';
+
 describe('ShowUserInfoComponent', () => {
   let component: ShowUserInfoComponent;
   let fixture: ComponentFixture<ShowUserInfoComponent>;
