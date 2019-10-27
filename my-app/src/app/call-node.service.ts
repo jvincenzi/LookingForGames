@@ -5,15 +5,17 @@
 // up to the node server
 // all od this is provided to any component in the app as an Angular "Service"
 
-/*
-
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+//import { Task } from './Task';
 import { UserAcount } from './UserAcount';
-export interface CallNode {
+
+export interface Tasks {
   name: string;
 }
+
+/*
 @Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
 
 export class CallNodeService {
@@ -40,38 +42,31 @@ export class CallNodeService {
   }
 }
 */
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-//import { Task } from './Task';
-import { UserAcount } from './UserAcount';
 
-export interface Tasks {
-  name: string;
-}
 
 @Injectable({ providedIn: 'root' })
-
 export class CallNodeService { // CallNodeService WAS TaskService
+
+  //webAddress = "http://localhost:3000/tasks/";
+  //webAddress = "https://lookingforgames.azurewebsites.net/tasks/";
+  //webAddress = "https://lfgnodesrv.azurewebsites.net/tasks/";
+  webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+
+
   constructor(private http: HttpClient) {}
   getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>('http://localhost:3000/tasks');
-    //return  this.http.get<UserAcount[]>(' https://kurtmongoserver.azurewebsites.net/tasks/');
+    return  this.http.get<UserAcount[]>(this.webAddress);
   }
   getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>('http://localhost:3000/tasks/' + taskName);
-    //return this.http.get<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
+    return this.http.get<UserAcount>(this.webAddress + taskName);
   }
   insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>('http://localhost:3000/tasks/', task);
-    //return this.http.post<UserAcount>('https://kurtmongoserver.azurewebsites.net/tasks/', task);
+    return this.http.post<UserAcount>(this.webAddress, task);
   }
   updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>('http://localhost:3000/tasks/' + task._id, task);
-    //return this.http.put<void>('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id, task);
+    return this.http.put<void>(this.webAddress + task._id, task);
   }
   deleteTask(task: UserAcount) {
-    return this.http.delete('http://localhost:3000/tasks/' + task._id);
-    //return this.http.delete('https://kurtmongoserver.azurewebsites.net/tasks/' + task._id);
+    return this.http.delete(this.webAddress + task._id);
   }
 }

@@ -20,4 +20,38 @@ const TaskSchema = new Schema({
   }
 });
 
+/*
+const TaskSchema = new Schema({
+  _id: {
+    type: String,
+    required: false
+  },
+  taskName: {
+    type: String,
+    required: true
+  },
+  FirstName: {type:String, required: true},
+  LastName: {type:String, required: false},
+  Email: {type:String, required: false},
+  UserName: {type:String, required: false},
+  Password: {type:String, required: false},
+  Telephone: {type:String, required: false},
+  DateOfBirth: {type:Date, required: false},
+  Address: {type:String, required: false},
+  City: {type:String, required: false},
+  State: {type:String, required: false},
+  Zipcode: {type:String, required: false},
+  FreeAccount: {type:Boolean, required: false},
+  SubscriptionExp: {type:String, required: false},
+  SubscriptionLv: {type:String, required: false},//level (free, monthly or yearly)
+  CurrentStatus: {type:String, required: false},
+  Location: {type:String, required: false},
+  createdOn: {
+    type: Date,
+    default: Date.now  // this line means we don't have to overtly set the time 
+    // the task was created, it will be set as we create a new document
+  }
+});
+*/
+
 module.exports = mongoose.model("Tasks", TaskSchema);
