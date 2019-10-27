@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
-  
+  atHome = true;
+
+  newPage (){
+    this.atHome = false;
+  }
+
+  renderHome (){
+    this.atHome = true;
+  }
 }

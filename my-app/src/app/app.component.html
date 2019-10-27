@@ -12,15 +12,15 @@
 
 <div style="text-align:center">
   <nav>
-    <a routerLink="/">Home </a> |
+    <a routerLink="/" (click)="renderHome()">Home </a> |
 
-    <a routerLink="/signIn">Sign In </a> |
+    <a routerLink="/signIn" (click)="newPage()">Sign In </a> |
 
-    <a routerLink="/gameBoard">Game Board </a> |
+    <a routerLink="/gameBoard" (click)="newPage()">Game Board </a> |
 
-    <a routerLink="/myAccount">My Account</a>
+    <a routerLink="/myAccount" (click)="newPage()">My Account</a>
   </nav>
   <router-outlet></router-outlet>
 </div>
 
-<app-search-bar></app-search-bar>
+<app-search-bar *ngIf="atHome"></app-search-bar>
