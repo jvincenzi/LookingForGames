@@ -21,13 +21,13 @@ const options = {
 mongoose.connect(dbURI, options).then(
 	() => {
 		console.log(`----------------------------|     Success     |-----------------------------------`);
-		console.log(" Database connection established!");
+		console.log(" DB connection established!");
 		console.log(`----------------------------------------------------------------------------------`);
 		console.log(``);
 	},
 	err => {
 		console.log(`-----------------------------| <<< Error >>> |------------------------------------`);
-		console.log(" Failed to connect to Database instance due to: ", err);
+		console.log(" Failed to connect to DB instance due to: ", err);
 		console.log(`----------------------------------------------------------------------------------`);
 		console.log(``);
 	}

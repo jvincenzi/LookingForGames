@@ -13,18 +13,18 @@ export class ShowUserInfoComponent implements OnInit {
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() {
-    this.getTasks();
-    //this.getUsers();
+    //this.getTasks();
+    this.getUsers();
   }
   /*getTasks(): void {this.myAccount = this.callNodeService.getAllTasks();}*/
-  
+  /*
   getTasks(): void {
     //this code is to replace the code below when we get the Node server working
     this.callNodeService.getAllTasks().subscribe((userData: UserAcount[]) => {
       this.myAccount = userData;
     })
   }
-  
+  */
   
   getUsers(): void {
     //this code is to replace the code below when we get the Node server working
