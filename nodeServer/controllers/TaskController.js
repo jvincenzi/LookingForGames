@@ -1,6 +1,5 @@
 const Task = require("../models/Task");
 
-
 // go to mongo and select network and allow any url to come in
 // go to azure and turn on app logging so can see console.log messages
 exports.listAllTasks = (req, res) => {

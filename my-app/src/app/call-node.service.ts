@@ -20,7 +20,7 @@ export class CallNodeService {
   mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
 
   constructor(private http: HttpClient) {}
-  /*
+  
   getAllUsers(): Observable<UserAcount[]> {
     return  this.http.get<UserAcount[]>(this.mongoDbAddress);
   }
@@ -36,7 +36,7 @@ export class CallNodeService {
   deleteUser(user: UserAcount) {
     return this.http.delete(this.mongoDbAddress + user._id);
   }
-  */
+  
   
 
   getAllTasks(): Observable<UserAcount[]> {

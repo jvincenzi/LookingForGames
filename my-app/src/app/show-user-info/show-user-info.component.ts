@@ -25,14 +25,14 @@ export class ShowUserInfoComponent implements OnInit {
     })
   }
   
-  /*
+  
   getUsers(): void {
     //this code is to replace the code below when we get the Node server working
     this.callNodeService.getAllUsers().subscribe((userData: UserAcount[]) => {
       this.myAccount = userData;
     })
   }
-  */
+  
   
 /*
   getTasks(): void { // Code for local Node server
