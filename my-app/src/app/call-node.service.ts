@@ -8,64 +8,73 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-//import { Task } from './Task';
 import { UserAcount } from './UserAcount';
 
 export interface Tasks {
   name: string;
 }
 
-/*
-@Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
-
+@Injectable({ providedIn: 'root' })
 export class CallNodeService {
+  //mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/tasks/"; // This should be the URL to your monogDB, not Node server!
+  mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
+
   constructor(private http: HttpClient) {}
+  /*
+  getAllUsers(): Observable<UserAcount[]> {
+    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+  }
+  getUser(userName: string): Observable<UserAcount> {
+    return this.http.get<UserAcount>(this.mongoDbAddress + userName);
+  }
+  insertUser(user: UserAcount): Observable<UserAcount> {
+    return this.http.post<UserAcount>(this.mongoDbAddress, user);
+  }
+  updateUser(user: UserAcount): Observable<void> {
+    return this.http.put<void>(this.mongoDbAddress + user._id, user);
+  }
+  deleteUser(user: UserAcount) {
+    return this.http.delete(this.mongoDbAddress + user._id);
+  }
+  */
+  
+
   getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>('http://localhost:3000/show');
-    //return  this.http.get<UserAcount[]>(' https://lookingforgames.azurewebsites.net/tasks/');
+    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
   }
   getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>('http://localhost:3000/tasks/' + taskName);
-    //return this.http.get<UserAcount>('https://lookingforgames.azurewebsites.net/tasks/' + taskName);
+    return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
   }
   insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>('http://localhost:3000/tasks/', task);
-    //return this.http.post<UserAcount>('https://lookingforgames.azurewebsites.net/tasks/', task);
+    return this.http.post<UserAcount>(this.mongoDbAddress, task);
   }
   updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>('http://localhost:3000/tasks/' + task._id, task);
-    //return this.http.put<void>('https://lookingforgames.azurewebsites.net/tasks/' + task._id, task);
+    return this.http.put<void>(this.mongoDbAddress + task._id, task);
   }
   deleteTask(task: UserAcount) {
-    return this.http.delete('http://localhost:3000/tasks/' + task._id);
-    //return this.http.delete('https://lookingforgames.azurewebsites.net/tasks/' + task._id);
+    return this.http.delete(this.mongoDbAddress + task._id);
+  }
+}
+
+/*
+@Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
+export class CallNodeService {
+  mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+  constructor(private http: HttpClient) {}
+  getAllTasks(): Observable<UserAcount[]> {
+    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+  }
+  getTask(taskName: string): Observable<UserAcount> {
+    return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
+  }
+  insertTask(task: UserAcount): Observable<UserAcount> {
+    return this.http.post<UserAcount>(this.mongoDbAddress, task);
+  }
+  updateTask(task: UserAcount): Observable<void> {
+    return this.http.put<void>(this.mongoDbAddress + task._id, task);
+  }
+  deleteTask(task: UserAcount) {
+    return this.http.delete(this.mongoDbAddress + task._id);
   }
 }
 */
-
-
-@Injectable({ providedIn: 'root' })
-export class CallNodeService { // CallNodeService WAS TaskService
-
-  //webAddress = "http://localhost:3000/tasks/";
-  //webAddress = "https://  ????  .azurewebsites.net/tasks/"; // This should be the URL to your monogDB, not Node server!
-  webAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
-
-
-  constructor(private http: HttpClient) {}
-  getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>(this.webAddress);
-  }
-  getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.webAddress + taskName);
-  }
-  insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.webAddress, task);
-  }
-  updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>(this.webAddress + task._id, task);
-  }
-  deleteTask(task: UserAcount) {
-    return this.http.delete(this.webAddress + task._id);
-  }
-}
