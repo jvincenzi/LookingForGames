@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CallNodeService } from '../call-node.service';
+import { UserAcount } from '../UserAcount';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,6 +9,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
+  newUser: UserAcount = new UserAcount();
 
   firstName = new FormControl('');
   lastName = new FormControl('');
@@ -22,12 +26,22 @@ export class SignUpComponent implements OnInit {
   userFreeAcc = new FormControl('');
   userPassword2 = new FormControl('');
 
+  addRecord(): void {
+    this.newUser._id = (new Date().valueOf()).toString();  // fairly safe random number
+    // if unlucky and get a duplicate, Mongo will just reject, user can try again
+    this.newUser.FirstName = this.firstName.value;
+    this.newUser.LastName = this.lastName.value;
+
+    this.callNodeService.insertUser( this.newUser).subscribe();
+  }
+
   submitSignupForm() {
-    this.eMailAddress.setValue('sonoojaiswal@javatpoint.com');
+    //this.eMailAddress.setValue('sonoojaiswal@javatpoint.com');
+    this.addRecord();
   }
 
   //constructor(private formBuilder: FormBuilder) { }
-  constructor() { }
+  constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() { }
 
