@@ -1,0 +1,81 @@
+<div style="text-align: center" id="centerMe">
+    
+<button mat-button [matMenuTriggerFor]="belowMenu">Home</button>
+<mat-menu #belowMenu="matMenu" yPosition="below"> 
+    <button mat-menu-item routerLink="/search">Games Search</button>  
+  <button mat-menu-item routerLink="/signIn">Sign In</button> 
+  <button mat-menu-item routerLink="/signUp">Create Account</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="beforeMenu">Events</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item onclick="gameBoard" routerLink= "/gameBoard">Game Board Event</button>
+  <button mat-menu-item></button>
+</mat-menu>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu">About Us</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item>Our App</button>
+  <button mat-menu-item>Contact Us</button>
+
+</mat-menu>
+<br />
+<br />
+
+
+  <img src="../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+ <br />
+  <h2>Looking For Games</h2>
+
+
+
+<app-banner-ad></app-banner-ad>
+
+<br />
+
+<router-outlet></router-outlet>
+</div>
+
+
+<!--
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+-->
+
+<!-- <app-banner-ad></app-banner-ad>
+
+<br />
+<app-search-bar></app-search-bar>
+<br />
+<app-payment-auth></app-payment-auth>
+<br /> -->
+<!-- <app-show-user-info></app-show-user-info> -->
+<!--
+<app-sign-in></app-sign-in>
+<br />
+<app-sign-up></app-sign-up>
+<br />
+<app-game-board></app-game-board> 
+<br />
+<app-users></app-users> -->
+<!-- <div style="text-align:center">
+  <nav>
+    <a routerLink="/">Home </a> |
+
+    <a routerLink="/signIn">Sign In </a> |
+
+    <a routerLink="/gameBoard">Game Board </a> |
+
+    <a routerLink="/signUp">Sign Up </a> |
+    
+    <a routerLink="/users">Users </a>
+  </nav>
+  <router-outlet></router-outlet>
+
+
+  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+</div> -->

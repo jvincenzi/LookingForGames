@@ -1,0 +1,44 @@
+<div class="example-container" style="background-color: rgb(161, 156, 156)">
+        <!-- <form class="example-container" [formGroup]="options">
+          <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
+          <div>
+            <label>Your Review: </label>
+            <mat-radio-group formControlName="floatLabel">
+              <mat-radio-button value="auto">Auto</mat-radio-button>
+              <mat-radio-button value="always">Always</mat-radio-button>
+              <mat-radio-button value="never">Never</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form> -->
+      
+        <mat-form-field>
+                <mat-label>First name</mat-label>
+                <input matInput #first>
+                <!-- <mat-hint *ngIf="firstNameAutofilled">Autofilled!</mat-hint> -->
+              </mat-form-field>
+      
+        <mat-form-field [floatLabel]="options.value.floatLabel">
+          <mat-label>your comments...</mat-label>
+          <input  matInput placeholder="text...">
+          <!-- <button mat-button *ngIf="textmenu" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>Clear</mat-icon>
+              </button> -->
+        </mat-form-field>
+      
+        <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+          <mat-select required>
+            <mat-option>-- None --</mat-option>
+            <mat-option value="option">Dungeon of Dragon</mat-option>
+            <mat-option value="option">PathFinder</mat-option>
+            <mat-option value="option">Monopoloy</mat-option>
+          </mat-select>
+          <mat-label><b>Choose a Games for review</b></mat-label>
+        </mat-form-field><br/>
+
+        <mat-label required><button mat-raised-button>Submit</button><br/></mat-label>
+        
+      </div>
+      <br/>
+      

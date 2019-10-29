@@ -1,0 +1,91 @@
+<div style="text-align: center">
+  <img src="../../assets/searchIcon.png" width="35" height="35" />
+<h4>Please Choose A Game</h4>
+<mat-form-field style="color: black">
+  <mat-label>Please Select A Game</mat-label>
+  <select id="selectGame" [(ngModel)]="selectedGame">
+    <option id="selectGame"[(ngModel)]="selectedGame" value="selectGame">Select a game ...</option>
+    <option *ngFor="let games of gameNames">{{games}}</option>
+  </select>
+
+  
+</mat-form-field>
+<p id="centerMe">Already have an account?<button mat-button style="color: blue">Sign In</button></p>
+</div>
+
+
+<!--
+<img src="../../assets/LFGLogo.png" width="300" height="100"/>
+<h2>Looking For Games</h2>
+
+<div>
+  <img src="../../assets/searchIcon.png" width="35" height="35" />
+  <select id="selectGame" [(ngModel)]="selectedGame">
+    <option selected="selected">What do you want to play today?</option>
+    <option *ngFor="let games of gameNames">{{games}}</option>
+  </select>
+  <input id="searchButton" type="button" value="Find a game!"/>
+
+  <p>{{selectedGame}}</p>
+
+  <mat-form-field>
+    <mat-label>What do you want to play today?</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let games of gameNames">
+        {{games}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+-->
+
+
+
+
+
+
+<!-- 
+<div>
+  <div id="centerMe">
+    <br /><br /><br />
+    <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+    <h2>Looking For Games</h2>
+    <p>Sign up to find a game in your area today.</p>
+  </div>
+
+  <div id="centInline">
+    <div id="centChildDiv">
+      <div id="centChildDiv">
+        <img src="../../assets/searchIcon.png" width="35" height="35" />
+        <select id="selectGame" [(ngModel)]="selectedGame">
+          <option selected="selected">What do you want to play today?</option>
+          <option *ngFor="let games of gameNames">{{games}}</option>
+        </select>
+        
+      </div>
+      <br />
+      <div id="centerMe">
+          <input id="searchButton" style="float: center; margin-top: 7px;" type="button" value="Find a game!"/>
+      </div>
+      
+    
+      <mat-form-field>
+        <mat-label>What do you want to play today?</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let games of gameNames">
+            {{games}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+                  
+    </div>
+    <p id="centerMe">Already have an account? Sign In</p>
+  </div>
+</div>
+
+
+
+
+
+ -->
