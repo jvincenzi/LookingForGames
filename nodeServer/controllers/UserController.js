@@ -3,19 +3,24 @@ const User = require("../models/User");
 // go to mongo and select network and allow any url to come in
 // go to azure and turn on app logging so can see console.log messages
 exports.listAllUsers = (req, res) => {
-    console.log(">>>>>>>>>>> IN listAllUsers <<<<<<<<<");
-    User.find({}, (err, task) => {
+<<<<<<< HEAD
+    console.log(">>>>>>>>>>>>>> IN listAllUsers <<<<<<<<<");
+    User.find({}, (err, user) => {
+=======
+    console.log(">>>>>>>>>>>>>> IN listAllUsers <<<<<<<<<");
+    User.find({}, (err, user) => {
+>>>>>>> 83eff27314b59e917ae31303839928099be0c2b7
         if (err) {
         console.log(err);
         res.status(500).send(err);
         }
-        res.status(200).json(task);
-        console.log(task);
+        res.status(200).json(user);
+        console.log(user);
     });
 };
 
 exports.createNewUser = (req, res) => {
-    let newUser = new Task(req.body);
+    let newUser = new User(req.body);
     console.log(newUser);
     newUser.save((err, task) => {
         if (err) {
