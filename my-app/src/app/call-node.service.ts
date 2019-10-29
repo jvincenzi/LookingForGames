@@ -18,8 +18,9 @@ import { UserAcount } from './UserAcount';
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   //mongoDbAddress = "localhost:3000/users/"
-  mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/users/"; 
-  //mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
+  //mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/users/"; 
+  //mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+  mongoDbAddress = "http://lfgnodesrv.azurewebsites.net/users"; 
 
   constructor(private http: HttpClient) {}
   
