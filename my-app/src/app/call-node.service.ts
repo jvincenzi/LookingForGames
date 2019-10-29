@@ -17,13 +17,14 @@ import { UserAcount } from './UserAcount';
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
-  //mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/tasks/"; 
+  //mongoDbAddress = "https://lookingforgamesmongodb.azurewebsites.net/tasks/"; 
+  //mongoDbAddress = 'https://lookingforgames.azurewebsites.net/UserAccount/';
   mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
 
   constructor(private http: HttpClient) {}
   
   getAllUsers(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+    return this.http.get<UserAcount[]>(this.mongoDbAddress);
   }
   getUser(userName: string): Observable<UserAcount> {
     return this.http.get<UserAcount>(this.mongoDbAddress + userName);
@@ -39,9 +40,9 @@ export class CallNodeService {
   }
   
   
-  /*
+  
   getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+    return this.http.get<UserAcount[]>(this.mongoDbAddress);
   }
   getTask(taskName: string): Observable<UserAcount> {
     return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
@@ -55,7 +56,7 @@ export class CallNodeService {
   deleteTask(task: UserAcount) {
     return this.http.delete(this.mongoDbAddress + task._id);
   }
-  */
+  
 }
 
 /*

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CallNodeService } from '../call-node.service';
 import { UserAcount } from '../UserAcount';
-//import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-show-user-info',
@@ -16,7 +15,7 @@ export class ShowUserInfoComponent implements OnInit {
     //this.getTasks();
     this.getUsers();
   }
-  /*getTasks(): void {this.myAccount = this.callNodeService.getAllTasks();}*/
+  
   /*
   getTasks(): void {
     //this code is to replace the code below when we get the Node server working
@@ -33,9 +32,8 @@ export class ShowUserInfoComponent implements OnInit {
     })
   }
   
-  
-/*
-  getTasks(): void { // Code for local Node server
+  /*
+  getUsers(): void { // Code for local Node server
     let aDate: Date = new Date(2018, 11, 24, 10, 33, 30, 0);
 
     var localTaskArray: UserAcount[] = [
