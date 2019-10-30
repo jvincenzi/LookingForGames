@@ -19,44 +19,44 @@ export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   
   //mongoDbAddress = "localhost:3000/users/"
-  //mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/users/"; 
+  //mongoDbAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  mongoDbAddress = "http://lfgnodesrv.azurewebsites.net/users";
+  nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
 
   constructor(private http: HttpClient) {}
   
   getAllUsers(): Observable<UserAcount[]> {
-    return this.http.get<UserAcount[]>(this.mongoDbAddress);
+    return this.http.get<UserAcount[]>(this.nodeAddress);
   }
   getUser(userName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.mongoDbAddress + userName);
+    return this.http.get<UserAcount>(this.nodeAddress + userName);
   }
   insertUser(user: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.mongoDbAddress, user);
+    return this.http.post<UserAcount>(this.nodeAddress, user);
   }
   updateUser(user: UserAcount): Observable<void> {
-    return this.http.put<void>(this.mongoDbAddress + user._id, user);
+    return this.http.put<void>(this.nodeAddress + user._id, user);
   }
   deleteUser(user: UserAcount) {
-    return this.http.delete(this.mongoDbAddress + user._id);
+    return this.http.delete(this.nodeAddress + user._id);
   }
   
   
   
   getAllTasks(): Observable<UserAcount[]> {
-    return this.http.get<UserAcount[]>(this.mongoDbAddress);
+    return this.http.get<UserAcount[]>(this.nodeAddress);
   }
   getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
+    return this.http.get<UserAcount>(this.nodeAddress + taskName);
   }
   insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.mongoDbAddress, task);
+    return this.http.post<UserAcount>(this.nodeAddress, task);
   }
   updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>(this.mongoDbAddress + task._id, task);
+    return this.http.put<void>(this.nodeAddress + task._id, task);
   }
   deleteTask(task: UserAcount) {
-    return this.http.delete(this.mongoDbAddress + task._id);
+    return this.http.delete(this.nodeAddress + task._id);
   }
   
 }
