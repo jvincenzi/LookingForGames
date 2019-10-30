@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms'; 
+
 import { AppComponent } from './app.component';
 import { SimpletextComponent } from './simpletext/simpletext.component';
 import { ToDoComponent } from './to-do/to-do.component';
@@ -17,11 +19,16 @@ import { BannerAdComponent } from './banner-ad/banner-ad.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { ShowUserInfoComponent } from './show-user-info/show-user-info.component';
 
 import { AppRoutingModule } from './app-routing.module';
+
+
+import { MaterialModuleSample } from './material-module';
+import {eventLog } from './game-board/eventlog/event-log';
+import {eventDialog} from './game-board/eventdialog/event-dialog';
+import {eventRender} from './game-board/event-render/event-render';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,10 @@ import { AppRoutingModule } from './app-routing.module';
     SignInComponent,
     SignUpComponent,
     PaymentAuthComponent,
-    ShowUserInfoComponent
+    ShowUserInfoComponent,
+    eventRender,
+    eventLog,
+    eventDialog
   ],
   imports: [
     BrowserModule,
@@ -50,9 +60,13 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModuleSample
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
