@@ -17,13 +17,9 @@ import { UserAcount } from './UserAcount';
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
-<<<<<<< HEAD
+
   mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/users/"; 
   //mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
-=======
-  mongoDbAddress = "https://LookingForGamesMongoDB.azurewebsites.net/users/"; 
-  //mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/"; 
->>>>>>> 83eff27314b59e917ae31303839928099be0c2b7
 
   constructor(private http: HttpClient) {}
   
