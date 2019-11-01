@@ -33,7 +33,7 @@ app.use(cors(corsOptions))
 
 // LFG Routes 
 app
-  .route("/user")
+  .route("/users")
   .get(userController.listAllUsers)
   .post(userController.createNewUser);
 
