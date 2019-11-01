@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CallNodeService } from '../call-node.service';
-import { UserAcount } from '../UserAcount';
+import { UserAccount } from '../UserAccount';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ import { UserAcount } from '../UserAcount';
 })
 export class SignUpComponent implements OnInit {
 
-  newUser: UserAcount = new UserAcount();
+  newUser: UserAccount = new UserAccount();
 
   firstName = new FormControl('');
   lastName = new FormControl('');

@@ -8,78 +8,87 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { UserAcount } from './UserAcount';
+import { UserAccount } from './UserAccount';
 
-export interface Tasks {
-  name: string;
-}
+// export interface Tasks {
+//   name: string;
+// }
 
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
-  
-  nodeAddress = "localhost:3000/users/"
+  constructor(private http: HttpClient) {}
+  //nodeAddress = "localhost:3000/users/"
   //mongoDbAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   //nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
 
-  constructor(private http: HttpClient) {}
-  
-  getAllUsers(): Observable<UserAcount[]> {
-    return this.http.get<UserAcount[]>(this.nodeAddress);
-  }
-  getUser(userName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.nodeAddress + userName);
-  }
-  insertUser(user: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.nodeAddress, user);
-  }
-  updateUser(user: UserAcount): Observable<void> {
-    return this.http.put<void>(this.nodeAddress + user._id, user);
-  }
-  deleteUser(user: UserAcount) {
-    return this.http.delete(this.nodeAddress + user._id);
-  }
-  
-  
-  
-  getAllTasks(): Observable<UserAcount[]> {
-    return this.http.get<UserAcount[]>(this.nodeAddress);
-  }
-  getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.nodeAddress + taskName);
-  }
-  insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.nodeAddress, task);
-  }
-  updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>(this.nodeAddress + task._id, task);
-  }
-  deleteTask(task: UserAcount) {
-    return this.http.delete(this.nodeAddress + task._id);
-  }
-  
-}
 
-/*
-@Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
-export class CallNodeService {
-  mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  constructor(private http: HttpClient) {}
-  getAllTasks(): Observable<UserAcount[]> {
-    return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+  
+  getAllUsers(): Observable<UserAccount[]> {
+    return this.http.get<UserAccount[]>('http://localhost:3000/user');
+
+    //return this.http.get<UserAcount[]>(this.nodeAddress);
   }
-  getTask(taskName: string): Observable<UserAcount> {
-    return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
+  getUser(userName: string): Observable<UserAccount> {
+    return this.http.get<UserAccount>('http://localhost:3000/user/' + userName);
+
+  //  return this.http.get<UserAcount>(this.nodeAddress + userName);
   }
-  insertTask(task: UserAcount): Observable<UserAcount> {
-    return this.http.post<UserAcount>(this.mongoDbAddress, task);
+  insertUser(user: UserAccount): Observable<UserAccount> {
+   
+    return this.http.post<UserAccount>('http://localhost:3000/user/', user);
+   // return this.http.put<<UserAcount>(this.nodeAddress, user);
   }
-  updateTask(task: UserAcount): Observable<void> {
-    return this.http.put<void>(this.mongoDbAddress + task._id, task);
+  updateTask(user: UserAccount): Observable<void> {
+    return this.http.put<void>('http://localhost:3000/user/' + user._id, user);
+
+   // return this.http.put<void>(this.nodeAddress + user._id, user);
   }
-  deleteTask(task: UserAcount) {
-    return this.http.delete(this.mongoDbAddress + task._id);
+  deleteUser(user: UserAccount) {
+    return this.http.delete('http://localhost:3000/user/' + user._id);
+
+   // return this.http.delete(this.nodeAddress + user._id);
   }
+  
 }
-*/
+  
+//   getAllTasks(): Observable<UserAcount[]> {
+//     return this.http.get<UserAcount[]>(this.nodeAddress);
+//   }
+//   getTask(taskName: string): Observable<UserAcount> {
+//     return this.http.get<UserAcount>(this.nodeAddress + taskName);
+//   }
+//   insertTask(task: UserAcount): Observable<UserAcount> {
+//     return this.http.post<UserAcount>(this.nodeAddress, task);
+//   }
+//   updateTask(task: UserAcount): Observable<void> {
+//     return this.http.put<void>(this.nodeAddress + task._id, task);
+//   }
+//   deleteTask(task: UserAcount) {
+//     return this.http.delete(this.nodeAddress + task._id);
+//   }
+  
+// }
+
+// /*
+// @Injectable({ providedIn: 'root' })  // this makes this service injectable, Angular's dependecy injection model
+// export class CallNodeService {
+//   mongoDbAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+//   constructor(private http: HttpClient) {}
+//   getAllTasks(): Observable<UserAcount[]> {
+//     return  this.http.get<UserAcount[]>(this.mongoDbAddress);
+//   }
+//   getTask(taskName: string): Observable<UserAcount> {
+//     return this.http.get<UserAcount>(this.mongoDbAddress + taskName);
+//   }
+//   insertTask(task: UserAcount): Observable<UserAcount> {
+//     return this.http.post<UserAcount>(this.mongoDbAddress, task);
+//   }
+//   updateTask(task: UserAcount): Observable<void> {
+//     return this.http.put<void>(this.mongoDbAddress + task._id, task);
+//   }
+//   deleteTask(task: UserAcount) {
+//     return this.http.delete(this.mongoDbAddress + task._id);
+//   }
+// 

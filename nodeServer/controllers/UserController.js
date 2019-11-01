@@ -19,41 +19,41 @@ exports.listAllUsers = (req, res) => {
 exports.createNewUser = (req, res) => {
     let newUser = new User(req.body);
     console.log(newUser);
-    newUser.save((err, task) => {
+    newUser.save((err, user) => {
         if (err) {
         res.status(500).send(err);
         }
-        res.status(201).json(task);
+        res.status(201).json(user);
     });
 };
 
 exports.readUser = (req, body) => {
-    User.findById(req.params.taskid, (err, task) => {
+    User.findById(req.params.userid, (err, user) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.status(200).json(task);
+    res.status(200).json(user);
   });
 };
 
 exports.updateUser = (req, res) => {
-    console.log('user id at server is ' + req.params.taskid);
+    console.log('user id at server is ' + req.params.userid);
     User.findOneAndUpdate(
-        { _id: req.params.taskid },  // don't know who changed the name from _id
+        { _id: req.params.userid },  // don't know who changed the name from _id
         req.body,
         { new: true },  // true or false to let it add if not present?
-        (err, task) => {
+        (err, user) => {
         if (err) {
             res.status(500).send(err);
         }
-        console.log(task);
-        res.status(200).json(task);
+        console.log(user);
+        res.status(200).json(user);
         }
     );
 };
 
 exports.deleteUser = (req, res) => {
-    User.remove({ _id: req.params.taskid }, (err, task) => {  // don't know who changed the name from _id
+    User.remove({ _id: req.params.userid }, (err, user) => {  // don't know who changed the name from _id
         if (err) {
         res.status(404).send(err);
         }

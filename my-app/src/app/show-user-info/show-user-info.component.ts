@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CallNodeService } from '../call-node.service';
-import { UserAcount } from '../UserAcount';
+import { UserAccount } from '../UserAccount';
 
 @Component({
   selector: 'app-show-user-info',
@@ -8,7 +8,7 @@ import { UserAcount } from '../UserAcount';
   styleUrls: ['./show-user-info.component.css']
 })
 export class ShowUserInfoComponent implements OnInit {
-  myAccount: UserAcount[];
+  myAccount: UserAccount[];
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class ShowUserInfoComponent implements OnInit {
   
   getUsers(): void {
     //this code is to replace the code below when we get the Node server working
-    this.callNodeService.getAllUsers().subscribe((userData: UserAcount[]) => {
+    this.callNodeService.getAllUsers().subscribe((userData: UserAccount[]) => {
       this.myAccount = userData;
     })
   }

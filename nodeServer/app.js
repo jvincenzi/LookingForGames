@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const taskController = require("./controllers/TaskController");
+//const taskController = require("./controllers/TaskController");
 const userController = require("./controllers/UserController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
@@ -17,7 +17,8 @@ require("./config/db");
 
 const app = express();
 
-const port = process.env.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
+//this._baseUrl = 'http://localhost:3000/';
+const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
 //const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -32,26 +33,28 @@ app.use(cors(corsOptions))
 
 // LFG Routes 
 app
-  .route("/users")
+  .route("/user")
   .get(userController.listAllUsers)
   .post(userController.createNewUser);
 
 // Remove after LFG User stuff is working //////////////////////////////////
-app
-  .route("/tasks")
-  .get(taskController.listAllTasks)
-  .post(taskController.createNewTask); // Remove after LFG User stuff is working //////////////////////////////////
+// app
+//   .route("/tasks")
+//   .get(taskController.listAllTasks)
+//   .post(taskController.createNewTask); // Remove after LFG User stuff is working //////////////////////////////////
 
 // Remove after LFG User stuff is working //////////////////////////////////
-app
-  .route("/tasks/:taskid")
-  .get(taskController.readTask)
-  .put(taskController.updateTask)
-  .delete(taskController.deleteTask); // Remove after LFG User stuff is working //////////////////////////////////
+// app
+//   .route("/tasks/:taskid")
+//   .get(taskController.readTask)
+//   .put(taskController.updateTask)
+//   .delete(taskController.deleteTask); // Remove after LFG User stuff is working //////////////////////////////////
 
 app.listen(port, () => {
-	console.log(`--------------------------------------------------------------------------------`);
- 	console.log(` Server running at http://localhost:${port}`);
-	console.log(`--------------------------------------------------------------------------------`);
-	console.log(``);
+
+  console.log(`Server running at http://localhost:${port}`);
+	// console.log(`--------------------------------------------------------------------------------`);
+ 	// console.log(` Server running at http://localhost:${port}`);
+	// console.log(`--------------------------------------------------------------------------------`);
+	// console.log(``);
 });
