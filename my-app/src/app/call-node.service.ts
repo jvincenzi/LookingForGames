@@ -26,27 +26,27 @@ export class CallNodeService {
 
   
   getAllUsers(): Observable<UserAccount[]> {
-    return this.http.get<UserAccount[]>('http://localhost:3000/user');
+    return this.http.get<UserAccount[]>('http://localhost:3000/users');
 
     //return this.http.get<UserAcount[]>(this.nodeAddress);
   }
   getUser(userName: string): Observable<UserAccount> {
-    return this.http.get<UserAccount>('http://localhost:3000/user/' + userName);
+    return this.http.get<UserAccount>('http://localhost:3000/users/' + userName);
 
   //  return this.http.get<UserAcount>(this.nodeAddress + userName);
   }
   insertUser(user: UserAccount): Observable<UserAccount> {
    
-    return this.http.post<UserAccount>('http://localhost:3000/user/', user);
+    return this.http.post<UserAccount>('http://localhost:3000/users/', user);
    // return this.http.put<<UserAcount>(this.nodeAddress, user);
   }
   updateTask(user: UserAccount): Observable<void> {
-    return this.http.put<void>('http://localhost:3000/user/' + user._id, user);
+    return this.http.put<void>('http://localhost:3000/users/' + user._id, user);
 
    // return this.http.put<void>(this.nodeAddress + user._id, user);
   }
   deleteUser(user: UserAccount) {
-    return this.http.delete('http://localhost:3000/user/' + user._id);
+    return this.http.delete('http://localhost:3000/users/' + user._id);
 
    // return this.http.delete(this.nodeAddress + user._id);
   }
