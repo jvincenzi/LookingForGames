@@ -18,37 +18,30 @@ import { UserAccount } from './UserAccount';
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
-  //nodeAddress = "localhost:3000/users/"
-  //mongoDbAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
+  nodeAddress = "http://localhost:3000/users"
+  //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   //nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-
-
   
   getAllUsers(): Observable<UserAccount[]> {
-    return this.http.get<UserAccount[]>('http://localhost:3000/users');
-
-    //return this.http.get<UserAcount[]>(this.nodeAddress);
+  //return this.http.get<UserAccount[]>('http://localhost:3000/users');
+    return this.http.get<UserAccount[]>(this.nodeAddress);
   }
-  getUser(userName: string): Observable<UserAccount> {
-    return this.http.get<UserAccount>('http://localhost:3000/users/' + userName);
-
-  //  return this.http.get<UserAcount>(this.nodeAddress + userName);
+  getUser(userID: string): Observable<UserAccount> {
+  //return this.http.get<UserAccount>('http://localhost:3000/users/' + userName);
+    return this.http.get<UserAccount>(this.nodeAddress + '/' + userID);
   }
   insertUser(user: UserAccount): Observable<UserAccount> {
-   
-    return this.http.post<UserAccount>('http://localhost:3000/users/', user);
-   // return this.http.put<<UserAcount>(this.nodeAddress, user);
+  //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
+    return this.http.post<UserAccount>(this.nodeAddress + '/', user);
   }
-  updateTask(user: UserAccount): Observable<void> {
-    return this.http.put<void>('http://localhost:3000/users/' + user._id, user);
-
-   // return this.http.put<void>(this.nodeAddress + user._id, user);
+  updateUser(user: UserAccount): Observable<void> {
+  //return this.http.put<void>('http://localhost:3000/users/' + user._id, user);
+    return this.http.put<void>(this.nodeAddress + '/' + user._id, user);
   }
   deleteUser(user: UserAccount) {
-    return this.http.delete('http://localhost:3000/users/' + user._id);
-
-   // return this.http.delete(this.nodeAddress + user._id);
+  //return this.http.delete('http://localhost:3000/users/' + user._id);
+    return this.http.delete(this.nodeAddress + '/' + user._id);
   }
   
 }

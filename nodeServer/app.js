@@ -37,11 +37,12 @@ app
   .get(userController.listAllUsers)
   .post(userController.createNewUser);
 
-// Remove after LFG User stuff is working //////////////////////////////////
-// app
-//   .route("/tasks")
-//   .get(taskController.listAllTasks)
-//   .post(taskController.createNewTask); // Remove after LFG User stuff is working //////////////////////////////////
+app
+  .route("/users/:userid")
+  .get(userController.readUser)
+  .put(userController.updateUser)
+  .delete(userController.deleteUser);
+  
 
 // Remove after LFG User stuff is working //////////////////////////////////
 // app
@@ -52,9 +53,9 @@ app
 
 app.listen(port, () => {
 
-  console.log(`Server running at http://localhost:${port}`);
-	// console.log(`--------------------------------------------------------------------------------`);
- 	// console.log(` Server running at http://localhost:${port}`);
-	// console.log(`--------------------------------------------------------------------------------`);
+  //console.log(`Server running at http://localhost:${port}`);
+  console.log(`--------------------------------------------------------------------------------`);
+ 	console.log(` Server running at http://localhost:${port}`);
+	console.log(`--------------------------------------------------------------------------------`);
 	// console.log(``);
 });

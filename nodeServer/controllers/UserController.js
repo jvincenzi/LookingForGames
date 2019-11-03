@@ -3,7 +3,7 @@ const User = require("../models/User");
 // go to mongo and select network and allow any url to come in
 // go to azure and turn on app logging so can see console.log messages
 exports.listAllUsers = (req, res) => {
-    console.log(">>>>>>>>>>>>>> IN listAllUsers <<<<<<<<<");
+    console.log(">>>>>>>>> IN listAllUsers <<<<<<<<<");
     User.find({}, (err, user) => {
 
         if (err) {
@@ -28,6 +28,7 @@ exports.createNewUser = (req, res) => {
 };
 
 exports.readUser = (req, body) => {
+    console.log(">>>>>>>>> IN readUser <<<<<<<<<");
     User.findById(req.params.userid, (err, user) => {
     if (err) {
       res.status(500).send(err);

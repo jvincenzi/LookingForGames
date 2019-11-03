@@ -16,5 +16,5 @@ export class UserAccount {
   SubscriptionLv: number;//level (monthly or yearly)
   CurrentStatus: string;
   Location: string;
-  createdOn: Date;
+  createdOn: string;
 }

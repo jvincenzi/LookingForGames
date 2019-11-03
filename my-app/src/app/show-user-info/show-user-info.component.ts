@@ -12,10 +12,50 @@ export class ShowUserInfoComponent implements OnInit {
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() {
-    //this.getTasks();
+    //this.getUser();
     this.getUsers();
   }
   
+  
+
+ 1572742189150
+  
+  getUsers(): void {
+    this.callNodeService.getAllUsers().subscribe((userData: UserAccount[]) => {
+      this.myAccount = userData;
+    })
+  }
+  
+  getUser(): void {
+    this.callNodeService.getUser("1572742189150").subscribe((userData: UserAccount[]) => {
+      this.myAccount = userData;
+    })
+  }
+
+  /*
+  deleteUser(): void {
+    this.callNodeService.deleteUser( this.selectedTask).subscribe();
+    this.callNodeService.deleteUser( this.selectedUser).subscribe();
+  }
+
+  addRecord(): void {
+    this.myAccount._id = (new Date().valueOf()).toString();  // fairly safe random number
+    // if unlucky and get a duplicate, Mongo will just reject, user can try again
+    this.callNodeService.insertUser( this.myAccount).subscribe();
+  }
+
+  updateRecord(): void {
+    this.callNodeService.updateUser( this.selectedTask).subscribe();
+    this.callNodeService.updateUser( this.selectedUser).subscribe();
+    console.log("time to refresh");
+   
+    //#### this.router.navigate(['/update-book', id]);   passing a value
+    // need to clear slected task so that page doesn't draw that HTML segment
+    this.selectedTask = null;
+    this.router.navigate(['/tasks']); 
+  }
+*/
+
   /*
   getTasks(): void {
     //this code is to replace the code below when we get the Node server working
@@ -24,16 +64,8 @@ export class ShowUserInfoComponent implements OnInit {
     })
   }
   */
-  
-  getUsers(): void {
-    //this code is to replace the code below when we get the Node server working
-    this.callNodeService.getAllUsers().subscribe((userData: UserAccount[]) => {
-      this.myAccount = userData;
-    })
-  }
-  
   /*
-  getUsers(): void { // Code for local Node server
+  getUsers(): void { // Code for MOCK Node server
     let aDate: Date = new Date(2018, 11, 24, 10, 33, 30, 0);
 
     var localTaskArray: UserAcount[] = [
@@ -83,3 +115,16 @@ export class ShowUserInfoComponent implements OnInit {
   */
 
 }
+
+
+
+  
+  
+  
+  
+
+  
+  
+
+
+
