@@ -6,7 +6,7 @@ import { UsersComponent } from './users/users.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ShowUserInfoComponent } from './show-user-info/show-user-info.component';
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
-
+import { CreateEventComponent } from './create-event/create-event.component';
 
 const myRoutes: Routes = [
   { path: 'signIn', component: SignInComponent },
@@ -14,7 +14,8 @@ const myRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'myAccount', component: ShowUserInfoComponent},
-  { path: 'paymentAuth', component: PaymentAuthComponent}
+  { path: 'paymentAuth', component: PaymentAuthComponent},
+  { path: 'createGameEvent', component: CreateEventComponent}
   //{ path: 'users', component: UsersComponent }
  ];
  

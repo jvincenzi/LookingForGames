@@ -25,6 +25,7 @@ import { MaterialModuleSample } from './material-module';
 import {eventLog } from './game-board/eventlog/event-log';
 import {eventDialog} from './game-board/eventdialog/event-dialog';
 import {eventRender} from './game-board/event-render/event-render';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {eventRender} from './game-board/event-render/event-render';
     ShowUserInfoComponent,
     eventRender,
     eventLog,
-    eventDialog
+    eventDialog,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,

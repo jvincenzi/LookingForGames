@@ -25,13 +25,13 @@ export class ShowUserInfoComponent implements OnInit {
       this.myAccount = userData;
     })
   }
-  
+  /*
   getUser(): void {
     this.callNodeService.getUser("1572742189150").subscribe((userData: UserAccount[]) => {
       this.myAccount = userData;
     })
   }
-
+  */
   /*
   deleteUser(): void {
     this.callNodeService.deleteUser( this.selectedTask).subscribe();
