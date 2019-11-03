@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CallNodeService } from '../call-node.service';
-//import { GameEvent } from '../GameEvent';
+import { GameEvent } from '../GameEvent';
 
 @Component({
   selector: 'app-create-event',
@@ -25,8 +25,13 @@ export class CreateEventComponent implements OnInit {
 
     this.newGame._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
     this.newGame.Title = this.title.value;
+    this.newGame.Location = this.location.value;
+    this.newGame.Date = this.date.value;
+    this.newGame.Restrictions = this.restrictions.value;
+    this.newGame.ReqPlayers = this.reqPlayers.value;
+    this.newGame.MaxPlayers = this.maxPlayers.value;
 
-    //this.callNodeService.insertGame(this.newGame).subscribe();
+    this.callNodeService.insertGame(this.newGame).subscribe();
   }
 
   submitSignupForm() {

@@ -1,4 +1,4 @@
-class GameEvent{
+export class GameEvent{
     _id: string;
     Title: string;
     GameType: string;

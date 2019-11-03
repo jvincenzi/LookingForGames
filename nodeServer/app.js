@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 //const taskController = require("./controllers/TaskController");
 const userController = require("./controllers/UserController");
+const gameController = require("./controllers/GameController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
 
@@ -42,6 +43,10 @@ app
   .get(userController.readUser)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
+
+app
+  .route("/games")
+  .post(gameController.createNewGame);
   
 
 // Remove after LFG User stuff is working //////////////////////////////////

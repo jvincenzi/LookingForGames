@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserAccount } from './UserAccount';
+import { GameEvent } from './GameEvent';
 
 // export interface Tasks {
 //   name: string;
@@ -19,6 +20,7 @@ export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
   nodeAddress = "http://localhost:3000/users"
+  gameNodeAddress = "http://localhost:3000/games"
   //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   //nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
@@ -44,6 +46,13 @@ export class CallNodeService {
     return this.http.delete(this.nodeAddress + '/' + user._id);
   }
   
+
+
+  insertGame(game: GameEvent): Observable<GameEvent> {
+    //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
+      return this.http.post<GameEvent>(this.gameNodeAddress + '/', game);
+  }
+
 }
   
 //   getAllTasks(): Observable<UserAcount[]> {
