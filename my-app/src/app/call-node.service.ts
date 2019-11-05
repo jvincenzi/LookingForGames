@@ -63,6 +63,10 @@ export class CallNodeService {
       return this.http.post<GameEvent>(this.gameNodeAddress + '/', game);
   }
 
+  deleteGame(game: GameEvent) {
+    //return this.http.delete('http://localhost:3000/users/' + user._id);
+      return this.http.delete(this.gameNodeAddress + '/' + game._id);
+  }
 }
   
 //   getAllTasks(): Observable<UserAcount[]> {

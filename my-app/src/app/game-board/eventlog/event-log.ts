@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { CallNodeService } from '../../call-node.service'
 import { Router } from '@angular/router';
-import { User } from './User';
+import { Users } from './User';
 
 @Component({
   selector: 'event-log',
@@ -14,17 +14,17 @@ import { User } from './User';
 
 export class eventLog implements OnInit{
 
-  User: User[];
+  User: Users[];
 
-  selectedUser: User;
+  selectedUser: Users;
 
   getUser(): void {
-    this.myUsers.getAllUsers().subscribe((userData: User[]) => {
+    this.myUsers.getAllUsers().subscribe((userData: Users[]) => {
       this.User = userData;
     })
   }
 
-  onSelect(PassedInUser: User): void {
+  onSelect(PassedInUser: Users): void {
     this.selectedUser = PassedInUser;
   }
  

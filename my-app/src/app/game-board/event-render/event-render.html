@@ -16,7 +16,7 @@
     <!-- Position Column -->
     <ng-container>
      <th>Game ID:</th><br/>
-      <td *ngFor="let ourGame of ourGame">{{ourGame._id}}</td><tr>
+      <td (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">{{ourGame._id}}</td><tr>
 
          <th>Game Title:</th><br/>
          <td *ngFor="let ourGame of ourGame">{{ourGame.Title}}</td><tr>
@@ -28,3 +28,5 @@
          <td *ngFor="let ourGame of ourGame">{{ourGame.ReqPlayers}}</td><tr>
     </ng-container>
 </table>
+
+<button (click)="deleteEvent()">Delete Event</button>

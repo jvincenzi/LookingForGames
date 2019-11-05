@@ -41,9 +41,13 @@ import { GameEvent } from './GameEvent';
 
   onSelect(PassedInGameItem: GameEvent): void {
     this.selectedGame = PassedInGameItem;
+    console.log(this.selectedGame);
   }
  
-
+  deleteEvent(): void {
+    console.log("Deleting" + this.selectedGame);
+    this.myGameEvent.deleteGame( this.selectedGame).subscribe();
+  }
 
   constructor(private myGameEvent: CallNodeService, private router: Router) { }
   ngOnInit() {
