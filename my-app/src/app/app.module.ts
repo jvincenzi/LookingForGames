@@ -26,7 +26,6 @@ import {eventLog } from './game-board/eventlog/event-log';
 import {eventDialog} from './game-board/eventdialog/event-dialog';
 import {eventRender} from './game-board/event-render/event-render';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { ModifyUserInfoComponent } from './modify-user-info/modify-user-info.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,7 @@ import { ModifyUserInfoComponent } from './modify-user-info/modify-user-info.com
     eventRender,
     eventLog,
     eventDialog,
-    CreateEventComponent,
-    ModifyUserInfoComponent
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
