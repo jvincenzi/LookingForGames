@@ -28,7 +28,23 @@
       </span>
       
     </p>
+    <table mdbTable>
+      <thead class="black white-text">
+        <tr>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let el of elements">
+          <th scope="row">{{el.id}}</th>
+          <td>{{el.first}}</td>
+          <td>{{el.last}}</td>
+          <td>{{el.handle}}</td>
+        </tr>
+      </tbody>
+    </table>
 
+    
     <mat-grid-list cols="4" rowHeight="1:1">
         <mat-grid-tile *ngIf="User">FirstName : <tr>
         <li *ngFor="let User of User">  {{User.FirstName}}</li>
