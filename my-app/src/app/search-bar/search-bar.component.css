@@ -26,3 +26,6 @@
 #centInline {
     text-align: center;
 }
+mat-label{
+    width: 500px;
+}
