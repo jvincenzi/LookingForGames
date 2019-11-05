@@ -30,13 +30,14 @@ export class ShowUserInfoComponent implements OnInit {
   
   editUserInfo(id: string) {
     this.getUser(id);
-    //this.hideUserList = true;
+    this.hideUserList = true;
   }
   getUser(id: string): void {
     //console.log("In getUser("+id+")");
     this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
       this.foundUser = userData;
-      
+      this.newUser = userData;
+      this.myAccount.push(userData);
       this.firstName.setValue(userData.FirstName.toString());      
       this.lastName.setValue(userData.LastName.toString());
       this.eMailAddress.setValue(userData.Email.toString());
@@ -54,7 +55,6 @@ export class ShowUserInfoComponent implements OnInit {
     })
   }
   
-  //(click)="deleteUserAccount(eachTask)"
   deleteUserAccount(PassedInUserAccount: UserAccount): void {
     this.selectedUser = PassedInUserAccount;
     this.deleteUser();
@@ -64,54 +64,6 @@ export class ShowUserInfoComponent implements OnInit {
     this.callNodeService.deleteUser(this.selectedUser).subscribe();
   }
 
-  /*
-  getUsers(): void { // Code for MOCK Node server
-    let aDate: Date = new Date(2018, 11, 24, 10, 33, 30, 0);
-    var localTaskArray: UserAcount[] = [
-      {
-      _id: "0001",
-      FirstName: "Joseph",
-      LastName: "Vincenzi",
-      Email: "joe@aol.com",
-      UserName: "wraith",
-      Password: "****************",
-      Telephone: "4256888861",
-      DateOfBirth: aDate,
-      Address: "3205 109th Ave SE",
-      City: "Bellevue",
-      State: "Washington",
-      Zipcode:  98004,
-      FreeAccount: false,
-      SubscriptionExp: aDate,
-      SubscriptionLv: 1, //level (none=0, yearly=1, monthly=12)
-      CurrentStatus: "online",
-      Location: "Home",
-      createdOn: aDate,
-      },
-      {
-      _id: "0002",
-      FirstName: "Joseph",
-      LastName: "Vincenzi",
-      Email: "joe@aol.com",
-      UserName: "wraith",
-      Password: "****************",
-      Telephone: "4256888861",
-      DateOfBirth: aDate,
-      Address: "3205 109th Ave SE",
-      City: "Bellevue",
-      State: "Washington",
-      Zipcode:  98004,
-      FreeAccount: true,
-      SubscriptionExp: aDate,
-      SubscriptionLv: 0, //level (freeAcc=0, yearly=1, monthly=12)
-      CurrentStatus: "online",
-      Location: "Work",
-      createdOn: aDate,
-      }
-    ];
-    this.myAccount = localTaskArray;
-  }
-  */
 
   
   firstName = new FormControl(''); 
@@ -131,7 +83,7 @@ export class ShowUserInfoComponent implements OnInit {
  
 
   updateRecord(): void {
-    this.newUser._id = this.foundUser._id.toString();
+    //this.newUser._id = this.foundUser._id.toString();
     this.newUser.FirstName = this.firstName.value;
     this.newUser.LastName = this.lastName.value;
     this.newUser.Email = this.eMailAddress.value;
@@ -143,7 +95,7 @@ export class ShowUserInfoComponent implements OnInit {
     this.newUser.City = this.userCity.value;
     this.newUser.State = this.userState.value;
     this.newUser.Zipcode = this.userZipCode.value;
-    this.newUser.FreeAccount = false;
+    this.newUser.FreeAccount = this.userFreeAcc.value;
     //this.newUser.SubscriptionExp = expDate;
     //this.newUser.SubscriptionLv = 1;
     //this.newUser.CurrentStatus = "online";
@@ -167,13 +119,14 @@ export class ShowUserInfoComponent implements OnInit {
 
   submitModUserInfo() {
     if(this.formValidation()){
+      this.myAccount = [];
       this.updateRecord();
       //this.getUsers();
-      this.myAccount = [];
+      
       this.myAccount.push(this.newUser);
       this.getUser(this.newUser._id);
       
-      //this.hideUserList = false;
+      this.hideUserList = false;
     }else{
 
     }

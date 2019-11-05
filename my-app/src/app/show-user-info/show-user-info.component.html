@@ -10,79 +10,79 @@
         <div id="centChildDiv">
             <div *ngIf="!hideUserList">
                 <ul class="userInfoClass" *ngIf="myAccount" >
-                    <li class="tasksLi" *ngFor="let eachTask of myAccount">
+                    <li class="tasksLi" *ngFor="let eachUser of myAccount">
                         
                         <span class="oneTask" >
                             <table id="tableCenter">
                                 <tr>
-                                    <th><label for="_id">User ID: </label></th>
-                                    <th>{{eachTask._id}}</th>
+                                    <td><label for="_id">User ID: </label></td>
+                                    <td><label>{{eachUser._id}}</label></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="firstName">First Name: </label></th>
-                                    <th>{{eachTask.FirstName}}</th>
+                                    <td><label for="firstName">First Name: </label></td>
+                                    <td><label>{{eachUser.FirstName}}</label></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="lastName">Last Name: </label> </th>
-                                    <th>{{eachTask.LastName}}</th>
+                                    <td><label for="lastName">Last Name: </label> </td>
+                                    <td><label>{{eachUser.LastName}}</label></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="eMailAddress">E-mail: </label></th>
-                                    <th>{{eachTask.Email}}</th>
+                                    <td><label for="eMailAddress">E-mail: </label></td>
+                                    <td><label>{{eachUser.Email}}</label></td>
                                 </tr>
                                 <tr>  
-                                    <th><label for="userName">Username: </label></th>
-                                    <th>{{eachTask.UserName}}</th>
+                                    <td><label for="userName">Username: </label></td>
+                                    <td><label>{{eachUser.UserName}}</label></td>
                                 </tr>
                                 <tr>   
-                                    <th><label for="userPassword1">Password: </label> </th>
-                                    <th>{{eachTask.Password}}</th>
+                                    <td><label for="userPassword1">Password: </label> </td>
+                                    <td><label>{{eachUser.Password}}</label></td>
                                 </tr>
                                 <tr>    
-                                    <th><label for="userTelephone">Telephone: </label></th>
-                                    <th>{{eachTask.Telephone}}</th>
+                                    <td><label for="userTelephone">Telephone: </label></td>
+                                    <td><label>{{eachUser.Telephone}}</label></td>
                                 </tr>
                                 <tr>   
-                                    <th><label for="userDOB">Date of Birth: </label></th>
-                                    <th>{{eachTask.DateOfBirth}}</th>
+                                    <td><label for="userDOB">Date of Birth: </label></td>
+                                    <td><label>{{eachUser.DateOfBirth}}</label></td>
                                 </tr>
                                 <tr>   
-                                    <th><label for="userStreetAddress">Street Address: </label></th>
-                                    <th>{{eachTask.Address}}</th>
+                                    <td><label for="userStreetAddress">Street Address: </label></td>
+                                    <td><label>{{eachUser.Address}}</label></td>
                                 </tr>
                                 <tr>   
-                                    <th><label for="userCity">City: </label></th>
-                                    <th>{{eachTask.City}}</th>
+                                    <td><label for="userCity">City: </label></td>
+                                    <td><label>{{eachUser.City}}</label></td>
                                 </tr>
                                 <tr>  
-                                    <th><label for="userState">State: </label></th>
-                                    <th>{{eachTask.State}}</th>
+                                    <td><label for="userState">State: </label></td>
+                                    <td><label>{{eachUser.State}}</label></td>
                                 </tr>
                                 <tr>   
-                                    <th><label for="userZipCode">Zip Code: </label></th>
-                                    <th>{{eachTask.Zipcode}}</th>
+                                    <td><label for="userZipCode">Zip Code: </label></td>
+                                    <td><label>{{eachUser.Zipcode}}</label></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="userSubscriptionLv">Subscription: </label></th>
-                                    <th>{{eachTask.SubscriptionLv}}</th>
+                                    <td><label for="userSubscriptionLv">Subscription: </label></td>
+                                    <td><label>{{eachUser.SubscriptionLv}}</label></td>
                                 </tr> 
                                 <tr>
-                                    <th><label for="userSubscriptionExp">Subscription EXP: </label></th>
-                                    <th>{{eachTask.SubscriptionExp}}</th>
+                                    <td><label for="userSubscriptionExp">Subscription EXP: </label></td>
+                                    <td><label>{{eachUser.SubscriptionExp}}</label></td>
                                 </tr> 
                                 <tr>
-                                    <th><label for="userFreeAccount">Free Account: </label></th>
-                                    <th>{{eachTask.FreeAccount}}</th>
+                                    <td><label for="userFreeAccount">Free Account: </label></td>
+                                    <td><label>{{eachUser.FreeAccount}}</label></td>
                                 </tr> 
                                 <tr>
-                                    <th><label for="userCreatedOn">Signup date: </label></th>
-                                    <th>{{eachTask.createdOn}}</th>
+                                    <td><label for="userCreatedOn">Signup date: </label></td>
+                                    <td><label>{{eachUser.createdOn}}</label></td>
                                 </tr> 
                                 <tr>
                                     <th></th>
                                     <th>
-                                        <button (click)="editUserInfo(eachTask._id);" id="editUserButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Edit Account</button>
-                                        <button (click)="deleteUserAccount(eachTask)" id="deleteUserButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-danger">Delete Account</button> 
+                                        <button (click)="editUserInfo(eachUser._id);" id="editUserButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Edit Account</button>
+                                        <button (click)="deleteUserAccount(eachUser)" id="deleteUserButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-danger">Delete Account</button> 
                                     </th>
                                 </tr>
                             </table>
@@ -91,7 +91,7 @@
                 </ul>
             </div>
             
-            <div *ngIf="!hideUserList">
+            <div *ngIf="hideUserList">
             
                 <!--<div id="centInline" >-->
                     <!--<div id="centChildDiv">-->
