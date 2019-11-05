@@ -15,16 +15,16 @@
 <table *ngIf="ourGame" style="background-color: lightslategray" slot="0">
     <!-- Position Column -->
     <ng-container>
-     <th>Game ID:</th> <br/>
-      <td *ngFor="let ourGame of ourGame">{{ourGame._id}}</td>
+     <th>Game ID:</th><br/>
+      <td *ngFor="let ourGame of ourGame">{{ourGame._id}}</td><tr>
 
-         <th>Game Title:</th>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Title}}</td>
-         <th>Game Location:</th>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Location}}</td>
-         <th>Game Age Restrictions:</th>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Restrictions}}</td>
-         <th>Game Player Requirement:</th>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.ReqPlayers}}</td>
+         <th>Game Title:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Title}}</td><tr>
+         <th>Game Location:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Location}}</td><tr>
+         <th>Game Age Restrictions:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Restrictions}}</td><tr>
+         <th>Game Player Requirement:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.ReqPlayers}}</td><tr>
     </ng-container>
 </table>

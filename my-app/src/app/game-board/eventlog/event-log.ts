@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-
+import { CallNodeService } from '../../call-node.service'
+import { Router } from '@angular/router';
+import { User } from './User';
 
 @Component({
   selector: 'event-log',
@@ -10,7 +12,28 @@ import {FormControl, Validators} from '@angular/forms';
 
 
 
-export class eventLog {
+export class eventLog implements OnInit{
+
+  User: User[];
+
+  selectedUser: User;
+
+  getUser(): void {
+    this.myUsers.getAllUsers().subscribe((userData: User[]) => {
+      this.User = userData;
+    })
+  }
+
+  onSelect(PassedInUser: User): void {
+    this.selectedUser = PassedInUser;
+  }
+ 
+
+
+  constructor(private myUsers: CallNodeService, private router: Router) { }
+  ngOnInit() {
+    this.getUser();
+  }
 
 
 
