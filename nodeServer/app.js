@@ -46,6 +46,7 @@ app
 
 app
   .route("/games")
+  .get(gameController.listAllGames)
   .post(gameController.createNewGame);
   
 

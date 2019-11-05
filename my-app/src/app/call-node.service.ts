@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserAccount } from './UserAccount';
-import { GameEvent } from './GameEvent';
+import { GameEvent } from './game-board/event-render/GameEvent';
 
 // export interface Tasks {
 //   name: string;
@@ -25,6 +25,16 @@ export class CallNodeService {
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   //nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
   
+  //call for Game Event/
+  getAllGames(): Observable<GameEvent[]> {
+    //return this.http.get<UserAccount[]>('http://localhost:3000/users');
+    return this.http.get<GameEvent[]>(this.gameNodeAddress);
+  }
+  getTask(Title: string): Observable<GameEvent> {
+    return this.http.get<GameEvent>(this.gameNodeAddress + '/' + Title);
+   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
+  }
+
   getAllUsers(): Observable<UserAccount[]> {
   //return this.http.get<UserAccount[]>('http://localhost:3000/users');
     return this.http.get<UserAccount[]>(this.nodeAddress);
