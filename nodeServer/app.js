@@ -46,7 +46,9 @@ app
 
 app
   .route("/games")
-  .post(gameController.createNewGame);
+  .get(gameController.listAllGames)
+  .post(gameController.createNewGame)
+  .delete(gameController.deleteGame);
   
 
 // Remove after LFG User stuff is working //////////////////////////////////

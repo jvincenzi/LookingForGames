@@ -40,3 +40,4 @@ mongoose.connect(dbURI, options).then(
 // bring in our mongoose schema defintion defintion for a Task
 //require("../models/Task"); // Remove after LFG User stuff is working //////////////////////////////////
 require("../models/User"); // LFG User Schema 
+require("../models/Game");

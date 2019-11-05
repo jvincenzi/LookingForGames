@@ -14,13 +14,29 @@
       Action
     </button><br />
   </p>
+
+
+
   
-  <p style="background-color: lightgray">    Current User
-    <mat-icon matBadge="15" matBadgeColor="warn">user</mat-icon>
-      <!-- Include text description of the icon's meaning for screen-readers -->
+  <p style="background-color: lightgray"> Current User Online
+    <mat-icon matBadge="15" matBadgeColor="warn">Users</mat-icon>
+
       <span class="cdk-visually-hidden">
-        Example with a home icon with overlaid badge showing the number 15
+        
+
+
       </span>
+      
     </p>
+
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngIf="User">FirstName : <tr>
+        <li *ngFor="let User of User">  {{User.FirstName}}</li>
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="User">LastName : <tr>
+            <li *ngFor="let User of User">  {{User.LastName}}</li>
+          </mat-grid-tile>
+       
+      </mat-grid-list>
 
   

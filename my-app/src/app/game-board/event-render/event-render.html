@@ -1,28 +1,32 @@
-<table cdk-table [dataSource]="dataSource" style="background-color: lightslategray">
-        <!-- Position Column -->
-        <ng-container cdkColumnDef="position">
-          <th cdk-header-cell *cdkHeaderCellDef> No.</th>
-          <td cdk-cell *cdkCellDef="let element">{{element.position}}</td>
-        </ng-container>
-      
-        <!-- Name Column -->
-        <ng-container cdkColumnDef="Games">
-          <th cdk-header-cell *cdkHeaderCellDef> Games </th>
-          <td cdk-cell *cdkCellDef="let element">{{element.Games}}</td>
-        </ng-container>
-      
-        <!-- Weight Column -->
-        <ng-container cdkColumnDef="Location">
-          <th cdk-header-cell *cdkHeaderCellDef>Location</th>
-          <td cdk-cell *cdkCellDef="let element">{{element.Location}}</td>
-        </ng-container>
-      
-        <!-- Symbol Column -->
-        <ng-container cdkColumnDef="Users">
-          <th cdk-header-cell *cdkHeaderCellDef> Users </th>
-          <td cdk-cell *cdkCellDef="let element">{{element.Users}}</td>
-        </ng-container>
-      
-        <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
-        <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+<!-- <div *ngIf="ourGame">
+<li *ngFor="let ourGame of ourGame"> <br/>
+ Game ID: {{ourGame._id}} <br/> 
+ {{ourGame.Title}} <br/> 
+ {{ourGame.Location}} <br/>
+ {{ourGame.Date}} <br/>
+ {{ourGame.Restrictions}}<br/>
+ {{ourGame.ReqPlayers}}<br/>
+ {{ourGame.MaxPlayers}}
+
+</li>
+
+</div> -->
+
+<table *ngIf="ourGame" style="background-color: lightslategray" slot="0">
+    <!-- Position Column -->
+    <ng-container>
+     <th>Game ID:</th><br/>
+      <td (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">{{ourGame._id}}</td><tr>
+
+         <th>Game Title:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Title}}</td><tr>
+         <th>Game Location:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Location}}</td><tr>
+         <th>Game Age Restrictions:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.Restrictions}}</td><tr>
+         <th>Game Player Requirement:</th><br/>
+         <td *ngFor="let ourGame of ourGame">{{ourGame.ReqPlayers}}</td><tr>
+    </ng-container>
+</table>
+
+<button (click)="deleteEvent()">Delete Event</button>
