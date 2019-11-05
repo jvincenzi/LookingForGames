@@ -5,11 +5,13 @@
         <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
         <h2>Join Looking For Games!</h2>
         <p>Sign up to find a game in your area today.</p>
+        <h2>Form now has basic input validation, so if you get a "status: 500" it's because FirstName is required or _id wasn't unique</h2>
     </div>
 
     <div id="centInline">
         <div id="centChildDiv">
             <form id="signupForm">
+                
                 <fieldset >
                     <table id="tableCenter">
                         <tr>
@@ -60,18 +62,17 @@
                             <th><label for="userZipCode">Zip Code: </label></th>
                             <th><input type="text" id="userZipCode" [formControl]="userZipCode" /></th>
                         </tr> 
+                        <tr>
+                            <td><label for="errorMsgLabel"></label></td>
+                            <td><button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button></td>
+                        </tr>
                     </table>
-                    <label for="errorMsgLabel"></label>
-                    <button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
-                    <br />
-                    <br />
-                    <p class="finePrint">By joining, you agree to our Terms of Service and Privacy Policy.</p>
-                    
+                    <div class="smlPrint">
+                            <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
+                            <input type="checkbox" id="userFreeAcc" [formControl]="userFreeAcc"/>
+                            <p class="finePrint">By joining, you agree to our Terms of Service and Privacy Policy.</p>
+                        </div>
                 </fieldset>
-                <div class="smlPrint">
-                    <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
-                    <input type="checkbox" id="userFreeAcc" [formControl]="userFreeAcc"/>
-                </div>
             </form>  
             
             

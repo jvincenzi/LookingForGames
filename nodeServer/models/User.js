@@ -7,7 +7,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   FirstName: {
     type: String, 
@@ -15,21 +16,21 @@ const UserSchema = new Schema({
   },
   LastName: {
     type: String, 
-    required: true
+    //required: true
   },
   Email: {
     type: String, 
-    required: true,
-    unique: true
+    //required: true,
+    //unique: true
   },
   UserName: {
     type: String, 
-    required: true,
-    unique: true
+    //required: true,
+    //unique: true
   },
   Password: {
     type: String, 
-    required: true
+    //required: true
   },
   Telephone: {
     type: String, 
@@ -77,8 +78,9 @@ const UserSchema = new Schema({
   },
   createdOn: {
     type: Date,
-    default: Date.now  // this line means we don't have to overtly set the time 
+    default: Date.now,  // this line means we don't have to overtly set the time 
     // the task was created, it will be set as we create a new document
+    required: true
   }
 });
 
