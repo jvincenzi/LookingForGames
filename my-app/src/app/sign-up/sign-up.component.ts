@@ -64,15 +64,27 @@ export class SignUpComponent implements OnInit {
     this.callNodeService.insertUser(this.newUser).subscribe();
   }
 
-  submitSignupForm() {
+  formValidation(){
     //////////////////////////////////
-    // Put field verification here. //
+    //  Put field Validation here.  //
     //////////////////////////////////
-    
-    this.addRecord();
+    let theDecider = true;
+    if(theDecider){
+      return true;
+    }else{
+      return false;
+    }
   }
 
-  //constructor(private formBuilder: FormBuilder) { }
+  submitSignupForm() {
+    
+    if(this.formValidation()){
+      this.addRecord();
+    }else{
+
+    }
+  }
+
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() { }
