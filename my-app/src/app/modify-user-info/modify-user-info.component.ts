@@ -3,13 +3,12 @@ import { FormControl } from '@angular/forms';
 import { CallNodeService } from '../call-node.service';
 import { UserAccount } from '../UserAccount';
 
-
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-modify-user-info',
+  templateUrl: './modify-user-info.component.html',
+  styleUrls: ['./modify-user-info.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class ModifyUserInfoComponent implements OnInit {
 
   newUser: UserAccount = new UserAccount();
 
@@ -31,18 +30,18 @@ export class SignUpComponent implements OnInit {
   addRecord(): void {
     
     // The DateTime stamp should be server side
-    let nowDate: Date = new Date();
-    let expDate: Date = new Date(
-      nowDate.getFullYear()+1, 
-      nowDate.getMonth(), // BUG: this dosn't enter/display the month or hour properly
-      nowDate.getDate(), 
-      nowDate.getHours(), // BUG: this dosn't enter/display the month or hour properly
-      nowDate.getMinutes(), 
-      nowDate.getSeconds(),
-      0
-    );
+    //let nowDate: Date = new Date();
+    //let expDate: Date = new Date(
+      //nowDate.getFullYear()+1, 
+      //nowDate.getMonth(), // BUG: this dosn't enter/display the month or hour properly
+      //nowDate.getDate(), 
+      //nowDate.getHours(), // BUG: this dosn't enter/display the month or hour properly
+      //nowDate.getMinutes(), 
+      //nowDate.getSeconds(),
+      //0
+    //);
 
-    this.newUser._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
+    //this.newUser._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
     this.newUser.FirstName = this.firstName.value;
     this.newUser.LastName = this.lastName.value;
     this.newUser.Email = this.eMailAddress.value;
@@ -55,13 +54,14 @@ export class SignUpComponent implements OnInit {
     this.newUser.State = this.userState.value;
     this.newUser.Zipcode = this.userZipCode.value;
     this.newUser.FreeAccount = false;
-    this.newUser.SubscriptionExp = expDate; // BUG: this dosn't enter/display the month or hour properly
-    this.newUser.SubscriptionLv = 1;
-    this.newUser.CurrentStatus = "online";
-    this.newUser.Location = "unknown";
-    this.newUser.createdOn = nowDate.toString(); 
+    //this.newUser.SubscriptionExp = expDate; // BUG: this dosn't enter/display the month or hour properly
+    //this.newUser.SubscriptionLv = 1;
+    //this.newUser.CurrentStatus = "online";
+    //this.newUser.Location = "unknown";
+    //this.newUser.createdOn = nowDate.toString(); 
 
-    this.callNodeService.insertUser(this.newUser).subscribe();
+    //this.callNodeService.insertUser(this.newUser).subscribe();
+    this.callNodeService.updateUser(this.newUser).subscribe();
   }
 
   formValidation(){
@@ -88,5 +88,4 @@ export class SignUpComponent implements OnInit {
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() { }
-
 }

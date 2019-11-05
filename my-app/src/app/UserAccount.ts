@@ -1,5 +1,5 @@
-export class UserAccount {
-  _id: String;
+ export class UserAccount {
+  _id: string; // change 11/03/2019: String --> string
   FirstName: string;
   LastName: string;
   Email: string;

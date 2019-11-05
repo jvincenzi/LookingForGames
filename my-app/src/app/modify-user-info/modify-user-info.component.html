@@ -1,0 +1,105 @@
+
+<div>
+    <div id="centerMe">
+        <br /><br /><br />
+        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <h2>Looking For Games!</h2>
+        <p>Modify User Information.</p>
+    </div>
+
+    <div id="centInline">
+        <div id="centChildDiv">
+            <form id="signupForm">
+                <fieldset >
+                    <table id="tableCenter">
+                        <tr>
+                            <th><label for="firstName">First Name: </label></th>
+                            <th><input type="text" id="firstName" [formControl]="firstName" /></th>
+                        </tr>
+                        <tr>
+                            <th><label for="lastName">Last Name: </label> </th>
+                            <th><input type="text" id="lastName" [formControl]="lastName" /></th>
+                        </tr>
+                        <tr>
+                            <th><label for="eMailAddress">E-mail: </label></th>
+                            <th><input type="email" id="eMailAddress" [formControl]="eMailAddress" /></th>
+                        </tr>
+                        <tr>  
+                            <th><label for="userName">Username: </label></th>
+                            <th><input type="text" id="userName" [formControl]="userName" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userPassword1">Password: </label> </th>
+                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userPassword2">Password: </label></th>
+                            <th><input type="password" id="userPassword2" [formControl]="userPassword2" /></th>
+                        </tr>
+                        <tr>    
+                            <th><label for="userTelephone">Telephone: </label></th>
+                            <th><input type="tel" id="userTelephone" [formControl]="userTelephone" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userDOB">Date of Birth: </label></th>
+                            <th><input type="date" id="userDOB" [formControl]="userDOB" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userStreetAddress">Street Address: </label></th>
+                            <th><input type="text" id="userStreetAddress" [formControl]="userStreetAddress" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userCity">City: </label></th>
+                            <th><input type="text" id="userCity" [formControl]="userCity" /></th>
+                        </tr>
+                        <tr>  
+                            <th><label for="userState">State: </label></th>
+                            <th><input type="text" id="userState" [formControl]="userState" /></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userZipCode">Zip Code: </label></th>
+                            <th><input type="text" id="userZipCode" [formControl]="userZipCode" /></th>
+                        </tr> 
+                    </table>
+                    <label for="errorMsgLabel"></label>
+                    <button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Update info</button>
+                    <br />
+                    <br />
+                    <p class="finePrint">By submitting, you agree to our Terms of Service and Privacy Policy.</p>
+                    
+                </fieldset>
+                <div class="smlPrint">
+                    <label for="userFreeAcc" class="smlPrint">I don't want full use of the LFG site (free account) </label>
+                    <input type="checkbox" id="userFreeAcc" [formControl]="userFreeAcc"/>
+                </div>
+            </form>  
+            
+            
+
+            <!-- New code from here...-->  
+            <div class="container">  
+                
+                <h3>Test output:</h3> 
+                <p> 
+                    First name: {{ firstName.value }} <br />
+                    Last name : {{ lastName.value }} <br />
+                    E-mail: {{ eMailAddress.value }} <br />
+                    User name: {{ userName.value }} <br />
+                    Password: {{ userPassword1.value }} <br />
+                    Telephone: {{ userTelephone.value }} <br />
+                    Date of Birth: {{ userDOB.value }} <br />
+                    Address: {{ userStreetAddress.value }} <br />
+                    City: {{ userCity.value }} <br />
+                    State: {{ userState.value }} <br />
+                    Zipcode: {{ userZipCode.value }} <br />
+                    Free Account: {{ userFreeAcc.value }} <br />
+                </p>  
+            </div>
+            <!-- To here --> 
+
+        </div>
+    </div>
+    
+</div>
+
+  

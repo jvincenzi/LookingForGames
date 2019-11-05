@@ -7,70 +7,72 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    required: false
+    required: true
   },
   FirstName: {
-    type:String, 
-    required: false
+    type: String, 
+    required: true
   },
   LastName: {
-    type:String, 
-    required: false
+    type: String, 
+    required: true
   },
   Email: {
-    type:String, 
-    required: false
+    type: String, 
+    required: true,
+    unique: true
   },
   UserName: {
-    type:String, 
-    required: false
+    type: String, 
+    required: true,
+    unique: true
   },
   Password: {
-    type:String, 
-    required: false
+    type: String, 
+    required: true
   },
   Telephone: {
-    type:String, 
+    type: String, 
     required: false
   },
   DateOfBirth: {
-    type:Date, 
+    type: Date, 
     required: false
   },
   Address: {
-    type:String, 
+    type: String, 
     required: false
   },
   City: {
-    type:String, 
+    type: String, 
     required: false
   },
   State: {
-    type:String, 
+    type: String, 
     required: false
   },
   Zipcode: {
-    type:String, 
+    type: String, 
     required: false
   },
   FreeAccount: {
-    type:Boolean, 
+    type: Boolean, 
     required: false
   },
   SubscriptionExp: {
-    type:String, 
+    type: String, 
     required: false
   },
   SubscriptionLv: {
-    type:String, //level (free, monthly or yearly)
+    type: String, //level (free, monthly or yearly)
     required: false
   },
   CurrentStatus: {
-    type:String, 
+    type: String, 
     required: false
   },
   Location: {
-    type:String, 
+    type: String, 
     required: false
   },
   createdOn: {
