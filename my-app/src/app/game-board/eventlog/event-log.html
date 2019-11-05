@@ -1,58 +1,27 @@
 
-
-<h3 style="background-color: lightgray">Current Event</h3>
-<p>
-    <span matBadge="4" matBadgeOverlap="false">Dungeon of Dragon </span><br />
-    <span matBadge="2" matBadgeOverlap="false">Dungeon of Dragon </span><br />
-    <span matBadge="4" matBadgeOverlap="false">Dungeon of Dragon </span><br />
-
-  </p>
-  <p style="background-color: lightgray">
-    Current Event Host
-    <button mat-raised-button color="primary"
-        matBadge="10" matBadgePosition="before" matBadgeColor="Current">
-      Action
-    </button><br />
-  </p>
-
-
-
-  
-  <p style="background-color: lightgray"> Current User Online
-    <mat-icon matBadge="15" matBadgeColor="warn">Users</mat-icon>
-
-      <span class="cdk-visually-hidden">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         
-
-
-      </span>
-      
-    </p>
-    <table mdbTable>
-      <thead class="black white-text">
-        <tr>
-          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr mdbTableCol *ngFor="let el of elements">
-          <th scope="row">{{el.id}}</th>
-          <td>{{el.first}}</td>
-          <td>{{el.last}}</td>
-          <td>{{el.handle}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    
-    <mat-grid-list cols="4" rowHeight="1:1">
-        <mat-grid-tile *ngIf="User">FirstName : <tr>
-        <li *ngFor="let User of User">  {{User.FirstName}}</li>
-        </mat-grid-tile>
-        <mat-grid-tile *ngIf="User">LastName : <tr>
-            <li *ngFor="let User of User">  {{User.LastName}}</li>
-          </mat-grid-tile>
-       
-      </mat-grid-list>
-
-  
+        
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+      Users</div>
+        <div class="panel-body" *ngIf="User">
+            <h4>Users Currently Active:</h4>
+            <p></p>
+            <p *ngFor="let User of User">
+                <li>
+                 <b>FirstName:</b>{{User.FirstName}}
+                <b> LastName:</b>{{User.LastName}}
+                <b>Player Location</b>{{User.Location}}
+            </li>
+            
+            </p>
+          <hr>
+          
+          <button class="btn btn-danger">Send Other Player a Message</button> |
+          <button class="btn btn-danger">FeedBack</button>
+          </div>
+      </div>
