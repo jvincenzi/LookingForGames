@@ -31,7 +31,7 @@ import { GameEvent } from './GameEvent';
    ourGame: GameEvent[];
 
   selectedGame: GameEvent;
-
+  
   getGames(): void {
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
       this.ourGame = gameData;
