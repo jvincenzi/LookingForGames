@@ -7,12 +7,12 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    required: true,
-    unique: true
+    //required: true,
+    //unique: true
   },
   FirstName: {
     type: String, 
-    required: true
+    //required: true
   },
   LastName: {
     type: String, 
@@ -20,12 +20,12 @@ const UserSchema = new Schema({
   },
   Email: {
     type: String, 
-    //required: true,
+    required: true,
     //unique: true
   },
   UserName: {
     type: String, 
-    //required: true,
+    required: true,
     //unique: true
   },
   Password: {

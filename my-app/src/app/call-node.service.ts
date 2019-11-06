@@ -21,6 +21,7 @@ export class CallNodeService {
   constructor(private http: HttpClient) {}
   userNodeAddress = "http://localhost:3000/users"
   gameNodeAddress = "http://localhost:3000/games"
+  signInNodeAddress = "http://localhost:3000/signin";
   //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   //nodeAddress = "http://lfgnodesrv.azurewebsites.net/users";

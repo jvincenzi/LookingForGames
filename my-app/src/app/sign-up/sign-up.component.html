@@ -5,7 +5,7 @@
         <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
         <h2>Join Looking For Games!</h2>
         <p>Sign up to find a game in your area today.</p>
-        <h2>Form now has basic input validation, so if you get a "status: 500" it's because FirstName is required or _id wasn't unique</h2>
+        
     </div>
 
     <div id="centInline">
@@ -14,29 +14,29 @@
                 
                 <fieldset >
                     <table id="tableCenter">
-                        <tr>
-                            <th><label for="firstName">First Name: </label></th>
-                            <th><input type="text" id="firstName" [formControl]="firstName" /></th>
-                        </tr>
-                        <tr>
-                            <th><label for="lastName">Last Name: </label> </th>
-                            <th><input type="text" id="lastName" [formControl]="lastName" /></th>
-                        </tr>
-                        <tr>
-                            <th><label for="eMailAddress">E-mail: </label></th>
-                            <th><input type="email" id="eMailAddress" [formControl]="eMailAddress" /></th>
-                        </tr>
                         <tr>  
                             <th><label for="userName">Username: </label></th>
-                            <th><input type="text" id="userName" [formControl]="userName" /></th>
+                            <th><input type="text" id="userName" [formControl]="userName" /> *</th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword1">Password: </label> </th>
-                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /></th>
+                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /> *</th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword2">Password: </label></th>
-                            <th><input type="password" id="userPassword2" [formControl]="userPassword2" /></th>
+                            <th><input type="password" id="userPassword2" [formControl]="userPassword2" /> *</th>
+                        </tr>
+                        <tr>
+                            <th><label for="eMailAddress">E-mail: </label></th>
+                            <th><input type="email" id="eMailAddress" [formControl]="eMailAddress" /> *</th>
+                        </tr>
+                        <tr>
+                            <th><label for="firstName">First Name: </label></th>
+                            <th><input type="text" id="firstName" [formControl]="firstName" /> *</th>
+                        </tr>
+                        <tr>
+                            <th><label for="lastName">Last Name: </label> </th>
+                            <th><input type="text" id="lastName" [formControl]="lastName" /> *</th>
                         </tr>
                         <tr>    
                             <th><label for="userTelephone">Telephone: </label></th>
@@ -44,27 +44,30 @@
                         </tr>
                         <tr>   
                             <th><label for="userDOB">Date of Birth: </label></th>
-                            <th><input type="date" id="userDOB" [formControl]="userDOB" /></th>
+                            <th><input type="date" id="userDOB" [formControl]="userDOB" /> *</th>
                         </tr>
                         <tr>   
                             <th><label for="userStreetAddress">Street Address: </label></th>
-                            <th><input type="text" id="userStreetAddress" [formControl]="userStreetAddress" /></th>
+                            <th><input type="text" id="userStreetAddress" [formControl]="userStreetAddress" /> *</th>
                         </tr>
                         <tr>   
                             <th><label for="userCity">City: </label></th>
-                            <th><input type="text" id="userCity" [formControl]="userCity" /></th>
+                            <th><input type="text" id="userCity" [formControl]="userCity" /> *</th>
                         </tr>
                         <tr>  
                             <th><label for="userState">State: </label></th>
-                            <th><input type="text" id="userState" [formControl]="userState" /></th>
+                            <th><input type="text" id="userState" [formControl]="userState" /> *</th>
                         </tr>
                         <tr>   
                             <th><label for="userZipCode">Zip Code: </label></th>
-                            <th><input type="text" id="userZipCode" [formControl]="userZipCode" /></th>
+                            <th><input type="text" id="userZipCode" [formControl]="userZipCode" /> *</th>
                         </tr> 
                         <tr>
-                            <td><label for="errorMsgLabel"></label></td>
+                            <td><label for="errorMsgLabel"></label>* Required field</td>
                             <td><button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button></td>
+                        </tr>
+                        <tr>
+                            <td><label></label></td>
                         </tr>
                     </table>
                     <div class="smlPrint">

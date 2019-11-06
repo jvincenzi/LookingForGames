@@ -39,7 +39,7 @@ exports.updateUser = (req, res) => {
             if (err) {
                 res.status(500).send(err);
             }
-            //console.log(user);
+            console.log(user); ////////////////////////////////////////////
             res.status(200).json(user);
         }
     );
