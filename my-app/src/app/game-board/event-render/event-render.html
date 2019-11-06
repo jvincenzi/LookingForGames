@@ -11,7 +11,7 @@
         <div class="panel-body" *ngIf="ourGame">
             <h4>Game Currently Active:</h4>
             <p></p>
-            <p *ngFor="let ourGame of ourGame">
+            <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">
                 <li>
                 <b>Game Title: </b>    {{ourGame.Title}}
                 <b>Location:</b> {{ourGame.Location}}
@@ -21,7 +21,7 @@
             </p>
             <h4 style="background: lightslategrey">For join game please <a routerLink="/signIn">SignIn</a></h4> 
           <hr>
-          <button class="btn btn-danger">Delete Event</button>
+          <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
           
           
           </div>
