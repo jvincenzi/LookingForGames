@@ -8,8 +8,8 @@ const cors = require('cors')
 
 var corsOptions = {
   // this URL must match the URL that the Angular app will call from
-  origin: 'http://localhost:4200', /////////////////////////////// LocalHost Config ///////////////////////////////  
-  //origin: 'lookingforgames.azurewebsites.net/', 
+  //origin: 'http://localhost:4200', /////////////////////////////// LocalHost Config ///////////////////////////////  
+  origin: 'lookingforgames.azurewebsites.net/', 
   optionsSuccessStatus: 200 
 }
 
@@ -19,8 +19,8 @@ require("./config/db");
 const app = express();
 
 //this._baseUrl = 'http://localhost:3000/';
-const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
-//const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
+//const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
+const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
