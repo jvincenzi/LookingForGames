@@ -11,6 +11,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 export class eventDialog {
   options: FormGroup;
+  name = "";
+  comment = "";
 
   constructor(fb: FormBuilder) {
     this.options = fb.group({

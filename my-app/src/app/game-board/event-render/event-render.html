@@ -1,32 +1,28 @@
-<!-- <div *ngIf="ourGame">
-<li *ngFor="let ourGame of ourGame"> <br/>
- Game ID: {{ourGame._id}} <br/> 
- {{ourGame.Title}} <br/> 
- {{ourGame.Location}} <br/>
- {{ourGame.Date}} <br/>
- {{ourGame.Restrictions}}<br/>
- {{ourGame.ReqPlayers}}<br/>
- {{ourGame.MaxPlayers}}
 
-</li>
-
-</div> -->
-
-<table *ngIf="ourGame" style="background-color: lightslategray" slot="0">
-    <!-- Position Column -->
-    <ng-container>
-     <th>Game ID:</th><br/>
-      <td (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">{{ourGame._id}}</td><tr>
-
-         <th>Game Title:</th><br/>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Title}}</td><tr>
-         <th>Game Location:</th><br/>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Location}}</td><tr>
-         <th>Game Age Restrictions:</th><br/>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.Restrictions}}</td><tr>
-         <th>Game Player Requirement:</th><br/>
-         <td *ngFor="let ourGame of ourGame">{{ourGame.ReqPlayers}}</td><tr>
-    </ng-container>
-</table>
-
-<button (click)="deleteEvent()">Delete Event</button>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        
+        
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+      Game Events</div>
+        <div class="panel-body" *ngIf="ourGame">
+            <h4>Game Currently Active:</h4>
+            <p></p>
+            <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">
+                <li>
+                <b>Game Title: </b>    {{ourGame.Title}}
+                <b>Location:</b> {{ourGame.Location}}
+                <b>Require Player</b> {{ourGame.ReqPlayers}}
+            </li>
+            
+            </p>
+            <h4 style="background: lightslategrey">For join game please <a routerLink="/signIn">SignIn</a></h4> 
+          <hr>
+          <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
+          
+          
+          </div>
+      </div>

@@ -28,7 +28,7 @@ exports.createNewGame = (req, res) => {
 };
 
 exports.deleteGame = (req, res) => {
-    Game.remove({ _id: req.params.gameid }, (err, game) => {  // don't know who changed the name from _id
+    Game.deleteOne({ _id: req.params.gameid }, (err, game) => {  // don't know who changed the name from _id
         if (err) {
         res.status(404).send(err);
         }

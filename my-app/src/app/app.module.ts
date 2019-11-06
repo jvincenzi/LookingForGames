@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GameBoardComponent } from './game-board/game-board.component';
-import { UsersComponent } from './users/users.component';
 import { BannerAdComponent } from './banner-ad/banner-ad.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -32,7 +31,6 @@ import { CreateEventComponent } from './create-event/create-event.component';
     AppComponent,
     SearchBarComponent,
     GameBoardComponent,
-    UsersComponent,
     BannerAdComponent,
     SignInComponent,
     SignUpComponent,
