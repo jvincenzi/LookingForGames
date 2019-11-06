@@ -15,6 +15,21 @@ export class ShowUserInfoComponent implements OnInit {
   foundUser: UserAccount;//= new UserAccount();
   newUser: UserAccount = new UserAccount();
   
+  firstName = new FormControl(''); 
+  // firstName = new FormControl('', Validators.required);
+  lastName = new FormControl('');
+  eMailAddress = new FormControl('');
+  userName = new FormControl('');
+  userPassword1 = new FormControl('');
+  userPassword2 = new FormControl('');
+  userTelephone = new FormControl('');
+  userDOB = new FormControl('');
+  userStreetAddress = new FormControl('');
+  userCity = new FormControl('');
+  userState = new FormControl('');
+  userZipCode = new FormControl('');
+  userFreeAcc = new FormControl('');
+
   constructor(private callNodeService: CallNodeService) { }
 
   ngOnInit() {
@@ -33,11 +48,11 @@ export class ShowUserInfoComponent implements OnInit {
     this.hideUserList = true;
   }
   getUser(id: string): void {
-    //console.log("In getUser("+id+")");
+    console.log("In getUser("+id+")");
     this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
       this.foundUser = userData;
       this.newUser = userData;
-      this.myAccount.push(userData);
+      //this.myAccount.push(userData);
       this.firstName.setValue(userData.FirstName.toString());      
       this.lastName.setValue(userData.LastName.toString());
       this.eMailAddress.setValue(userData.Email.toString());
@@ -63,24 +78,6 @@ export class ShowUserInfoComponent implements OnInit {
     //console.log("This is the ID to be edited: " + this.selectedUser._id);
     this.callNodeService.deleteUser(this.selectedUser).subscribe();
   }
-
-
-  
-  firstName = new FormControl(''); 
-  // firstName = new FormControl('', Validators.required);
-  lastName = new FormControl('');
-  eMailAddress = new FormControl('');
-  userName = new FormControl('');
-  userPassword1 = new FormControl('');
-  userPassword2 = new FormControl('');
-  userTelephone = new FormControl('');
-  userDOB = new FormControl('');
-  userStreetAddress = new FormControl('');
-  userCity = new FormControl('');
-  userState = new FormControl('');
-  userZipCode = new FormControl('');
-  userFreeAcc = new FormControl('');
- 
 
   updateRecord(): void {
     //this.newUser._id = this.foundUser._id.toString();
@@ -118,15 +115,16 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   submitModUserInfo() {
+    this.hideUserList = false;
     if(this.formValidation()){
-      this.myAccount = [];
+      //this.myAccount = [];
       this.updateRecord();
       //this.getUsers();
       
-      this.myAccount.push(this.newUser);
+      //this.myAccount.push(this.newUser);
       this.getUser(this.newUser._id);
       
-      this.hideUserList = false;
+      
     }else{
 
     }

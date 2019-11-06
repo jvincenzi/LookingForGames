@@ -19,8 +19,10 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
+
   //userNodeAddress = "http://localhost:3000/users"
   //gameNodeAddress = "http://localhost:3000/games"
+  signInNodeAddress = "http://localhost:3000/signin";
   //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
   userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
