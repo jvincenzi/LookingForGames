@@ -20,13 +20,19 @@ export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
 
-  //userNodeAddress = "http://localhost:3000/users"
-  //gameNodeAddress = "http://localhost:3000/games"
+  userNodeAddress = "http://localhost:3000/users"
+  gameNodeAddress = "http://localhost:3000/games"
   signInNodeAddress = "http://localhost:3000/signin";
+  
+  /* 
+    In app.js swap:
+     PORT (3000 <--> 80)
+     corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
+  */
   //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+  //userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
+  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
   
   //call for Game Event/
   getAllGames(): Observable<GameEvent[]> {
