@@ -19,7 +19,7 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 export class CallNodeService {
   // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
-
+  //comment
   userNodeAddress = "http://localhost:3000/users"
   gameNodeAddress = "http://localhost:3000/games"
   signInNodeAddress = "http://localhost:3000/signin";
