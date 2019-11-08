@@ -22,17 +22,14 @@ export class CallNodeService {
   //userNodeAddress = "http://localhost:3000/users";
   //gameNodeAddress = "http://localhost:3000/games";
   signInNodeAddress = "http://localhost:3000/signin";
-  
+  //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
+  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
+  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
   /* 
     In app.js swap:
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
- 
-  //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
-  
   
 
   getAllUsers(): Observable<UserAccount[]> {
