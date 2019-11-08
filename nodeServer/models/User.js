@@ -65,7 +65,16 @@ const UserSchema = new Schema({
     required: false
   },
   SubscriptionLv: {
-    type: String, //level (free, monthly or yearly)
+    type: String, //level (free, monthly yearly, admin)
+    required: false
+  },
+  AdminAccess: {
+    type: String, 
+    /*
+    0 for normal or free users
+    1 for Moderator
+    2 for Administrator
+    */
     required: false
   },
   CurrentStatus: {
