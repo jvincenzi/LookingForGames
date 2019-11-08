@@ -17,11 +17,10 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
-  // This should be the URL to your monogDB, not Node server!
   constructor(private http: HttpClient) {}
-  //comment
-  userNodeAddress = "http://localhost:3000/users"
-  gameNodeAddress = "http://localhost:3000/games"
+
+  //userNodeAddress = "http://localhost:3000/users";
+  //gameNodeAddress = "http://localhost:3000/games";
   signInNodeAddress = "http://localhost:3000/signin";
   
   /* 
@@ -29,38 +28,25 @@ export class CallNodeService {
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
-  //nodeAddress = "https://LookingForGamesDB.azurewebsites.net/users/"; 
+ 
   //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  //userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
+  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
   
-  //call for Game Event/
-  getAllGames(): Observable<GameEvent[]> {
-    //return this.http.get<UserAccount[]>('http://localhost:3000/users');
-    return this.http.get<GameEvent[]>(this.gameNodeAddress);
-  }
-  getTask(Title: string): Observable<GameEvent> {
-    return this.http.get<GameEvent>(this.gameNodeAddress + '/' + Title);
-   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
-  }
+  
 
   getAllUsers(): Observable<UserAccount[]> {
     return this.http.get<UserAccount[]>(this.userNodeAddress);
   }
-  
   getUser(userID: string): Observable<UserAccount> {
     return this.http.get<UserAccount>(this.userNodeAddress + '/' + userID);
   }
-  
   updateUser(user: UserAccount): Observable<void> {
-    //console.log("call-node-service user._id = " + user._id); ///////////////////////////////////////////////////
     return this.http.put<void>(this.userNodeAddress + '/' + user._id, user);
   }
-
   deleteUser(user: UserAccount) {
     return this.http.delete(this.userNodeAddress + '/' + user._id);
   }
-
   insertUser(user: UserAccount): Observable<UserAccount> {
     return this.http.post<UserAccount>(this.userNodeAddress + '/', user);
   }
@@ -76,7 +62,19 @@ export class CallNodeService {
     //return this.http.delete('http://localhost:3000/users/' + user._id);
       return this.http.delete(this.gameNodeAddress + '/' + game._id);
   }
+
+  //call for Game Event/
+  getAllGames(): Observable<GameEvent[]> {
+    //return this.http.get<UserAccount[]>('http://localhost:3000/users');
+    return this.http.get<GameEvent[]>(this.gameNodeAddress);
+  }
+  getTask(Title: string): Observable<GameEvent> {
+    return this.http.get<GameEvent>(this.gameNodeAddress + '/' + Title);
+  // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
+  }
+
 }
+
   
 //   getAllTasks(): Observable<UserAcount[]> {
 //     return this.http.get<UserAcount[]>(this.nodeAddress);

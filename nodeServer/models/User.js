@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    //required: true,
-    //unique: true
+    required: true,
+    unique: true
   },
   FirstName: {
     type: String, 
@@ -67,16 +67,14 @@ const UserSchema = new Schema({
   SubscriptionLv: {
     type: String, //level (free, monthly yearly, admin)
     required: false
-  },
+  },/*
   AdminAccess: {
     type: String, 
-    /*
-    0 for normal or free users
-    1 for Moderator
-    2 for Administrator
-    */
+    // 0 for normal or free users
+    // 1 for Moderator
+    // 2 for Administrator
     required: false
-  },
+  },*/
   CurrentStatus: {
     type: String, 
     required: false

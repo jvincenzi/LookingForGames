@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
@@ -21,9 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 import { MaterialModuleSample } from './material-module';
-import {eventLog } from './game-board/eventlog/event-log';
-import {eventDialog} from './game-board/eventdialog/event-dialog';
-import {eventRender} from './game-board/event-render/event-render';
+import { eventLog } from './game-board/eventlog/event-log';
+import { eventDialog} from './game-board/eventdialog/event-dialog';
+import { eventRender} from './game-board/event-render/event-render';
 import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({

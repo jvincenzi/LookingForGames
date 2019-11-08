@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Token } from './Token';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'Looking For Games'; // was: my-app
   atHome = true;
 
   newPage (){
     this.atHome = false;
+  }
+
+  ngOnInit() {
+    userToken: Token; // NEW ??????????????????????????????????????????
+    //newUser: UserAccount = new UserAccount();
+    //this.newUser.setValue(userData.FirstName.toString()); 
   }
 
   renderHome (){
