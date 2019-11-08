@@ -75,7 +75,7 @@ export class ShowUserInfoComponent implements OnInit {
     this.deleteUser();
   }
   deleteUser(): void {
-    //console.log("This is the ID to be edited: " + this.selectedUser._id);
+    console.log("This is the user to be deleted, _id: " + this.selectedUser._id); /////////////////////////////////////////////////////
     this.callNodeService.deleteUser(this.selectedUser).subscribe();
   }
 

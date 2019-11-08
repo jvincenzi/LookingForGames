@@ -61,6 +61,7 @@ export class SignUpComponent implements OnInit {
     this.newUser.Location = "unknown";
     this.newUser.createdOn = nowDate.toString(); 
 
+    console.log('User info submitted, id: ' + this.newUser._id); ////////////////////////////////////////////////////
     this.callNodeService.insertUser(this.newUser).subscribe();
   }
 
