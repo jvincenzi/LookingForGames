@@ -36,6 +36,10 @@ const GameSchema = new Schema({
   MaxPlayers: {
     type:Date, 
     required: false
+  },
+  CurrentPlayers: {
+    type:Array,
+    required: false
   }
 });
 

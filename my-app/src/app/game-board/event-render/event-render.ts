@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import { CallNodeService } from '../../call-node.service'
 import { Router } from '@angular/router';
 import { GameEvent } from './GameEvent';
+import { Token } from '../../Token';
 // export interface GameEventRender {
 
   
@@ -28,7 +29,9 @@ import { GameEvent } from './GameEvent';
 
     
 
-   ourGame: GameEvent[];
+  ourGame: GameEvent[];
+  
+  dummyToken: Token = new Token();
 
   selectedGame: GameEvent;
   
@@ -47,6 +50,17 @@ import { GameEvent } from './GameEvent';
   deleteEvent(): void {
     console.log("Deleting" + this.selectedGame);
     this.myGameEvent.deleteGame( this.selectedGame).subscribe();
+  }
+
+  joinEvent(theGame: GameEvent): void {
+    this.dummyToken.FirstName = "Sean";
+    this.dummyToken.LastName = "Newman";
+    this.dummyToken.UserName = "SeanNewman22";
+    theGame.CurrentPlayers.push(this.dummyToken.FirstName);
+    theGame.CurrentPlayers.push(this.dummyToken.LastName);
+    theGame.CurrentPlayers.push(this.dummyToken.UserName);
+
+    this.myGameEvent.updateGame(theGame).subscribe();
   }
 
   constructor(private myGameEvent: CallNodeService, private router: Router) { }
