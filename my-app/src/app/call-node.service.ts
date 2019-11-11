@@ -26,8 +26,9 @@ if (useLocalAddresses) {
   loginNodeAddress = "http://localhost:3000/signin";
   //gameNodeAddress = "http://localhost:3000/games";
 } else {
-  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-  loginNodeAddress = "http://lfgnodesrv.azurewebsites.net/signin";
+  userNodeAddress = "https://lfgnodesrv.azurewebsites.net/users";
+  //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
+  loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
   //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
 }
 
