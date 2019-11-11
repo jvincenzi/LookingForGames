@@ -1,9 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const userController = require("./controllers/UserController");
+const loginController = require("./controllers/LoginController");
 const gameController = require("./controllers/GameController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
+
 
 var corsOptions = {
   // this URL must match the URL that the Angular app will call from
@@ -18,12 +20,11 @@ var corsOptions = {
 
 // Monog db instance connection
 require("./config/db");
-
 const app = express();
 
 //this._baseUrl = 'http://localhost:3000/';
-//const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
-const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
+const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
+//sconst port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -44,6 +45,10 @@ app
   .get(userController.readUser)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
+
+app
+  .route("/signin")
+  .post(loginController.loginUser);
 
 app
   .route("/games")

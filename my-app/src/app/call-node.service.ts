@@ -9,43 +9,58 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserAccount } from './UserAccount';
+import { UserSignInData } from './UserSignInData';
 import { GameEvent } from './game-board/event-render/GameEvent';
 
 // export interface Tasks {
 //   name: string;
 // }
 
+let useLocalAddresses: Boolean = true;
+let userNodeAddress: string;
+//let gameNodeAddress: string;
+let loginNodeAddress: string;
+  
+if (useLocalAddresses) {
+  userNodeAddress =  "http://localhost:3000/users";
+  loginNodeAddress = "http://localhost:3000/signin";
+  //gameNodeAddress = "http://localhost:3000/games";
+} else {
+  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
+  loginNodeAddress = "http://lfgnodesrv.azurewebsites.net/signin";
+  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+}
+
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
   constructor(private http: HttpClient) {}
 
-  //userNodeAddress = "http://localhost:3000/users";
-  //gameNodeAddress = "http://localhost:3000/games";
-  signInNodeAddress = "http://localhost:3000/signin";
-  //nodeAddress = "https://kurtmongoserver.azurewebsites.net/tasks/";
-  userNodeAddress = "http://lfgnodesrv.azurewebsites.net/users";
-  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+  gameNodeAddress = "http://localhost:3000/games";
+  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
   /* 
     In app.js swap:
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
   
-
   getAllUsers(): Observable<UserAccount[]> {
-    return this.http.get<UserAccount[]>(this.userNodeAddress);
+    return this.http.get<UserAccount[]>(userNodeAddress);
   }
   getUser(userID: string): Observable<UserAccount> {
-    return this.http.get<UserAccount>(this.userNodeAddress + '/' + userID);
+    return this.http.get<UserAccount>(userNodeAddress + '/' + userID);
   }
   updateUser(user: UserAccount): Observable<void> {
-    return this.http.put<void>(this.userNodeAddress + '/' + user._id, user);
+    return this.http.put<void>(userNodeAddress + '/' + user._id, user);
   }
   deleteUser(user: UserAccount) {
-    return this.http.delete(this.userNodeAddress + '/' + user._id);
+    return this.http.delete(userNodeAddress + '/' + user._id);
   }
   insertUser(user: UserAccount): Observable<UserAccount> {
-    return this.http.post<UserAccount>(this.userNodeAddress + '/', user);
+    return this.http.post<UserAccount>(userNodeAddress + '/', user);
+  }
+  userLogin(login: UserSignInData): Observable<UserSignInData> {
+    //console.log('call-node.service.userLogin({' + login.UserName + ', ' + login.Password + '})'); ////////////////////////////
+    return this.http.post<UserSignInData>(loginNodeAddress + '/', login); 
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////

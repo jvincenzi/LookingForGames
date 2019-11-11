@@ -1,20 +1,22 @@
 export class Token {
-  _id: string; 
+  _id: string;
   FirstName: string;
   LastName: string;
-  //Email: string;
+  Email: string;
   UserName: string;
-  //Password: string;
-  //Telephone: string;
-  //DateOfBirth: Date;
-  //Address: string;
-  //City: string;
-  //State: string;
-  //Zipcode: number;
+  Password: string;
+  Telephone: string;
+  DateOfBirth: Date;
+  Address: string;
+  City: string;
+  State: string;
+  Zipcode: number;
   FreeAccount: boolean;
   SubscriptionExp: Date;
-  SubscriptionLv: number;//level (monthly or yearly)
-  CurrentStatus: string; // online or offline
-  Location: string; // location in the world, GPS cords &/or address
-  //createdOn: string;
+  SubscriptionLv: number;
+  AdminAccess: string;
+  CurrentStatus: string;
+  Location: string;
+  createdOn: string;
+  UID: string;
 }

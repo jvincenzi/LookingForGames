@@ -67,14 +67,15 @@ const UserSchema = new Schema({
   SubscriptionLv: {
     type: String, //level (free, monthly yearly, admin)
     required: false
-  },/*
+  },
   AdminAccess: {
     type: String, 
+    default: 0,
     // 0 for normal or free users
-    // 1 for Moderator
-    // 2 for Administrator
+    // 1 for Administrator
+    // 2 for Sysop
     required: false
-  },*/
+  },
   CurrentStatus: {
     type: String, 
     required: false
@@ -88,6 +89,11 @@ const UserSchema = new Schema({
     default: Date.now,  // this line means we don't have to overtly set the time 
     // the task was created, it will be set as we create a new document
     required: true
+  },
+  UID: {
+    type: String,
+    default: Date.now.toString(),
+    required: false
   }
 });
 
