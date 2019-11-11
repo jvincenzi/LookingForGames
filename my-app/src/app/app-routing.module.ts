@@ -13,8 +13,8 @@ const myRoutes: Routes = [
   { path: 'signUp', component: SignUpComponent },
   { path: 'myAccount', component: ShowUserInfoComponent},
   { path: 'paymentAuth', component: PaymentAuthComponent},
-  { path: 'createGameEvent', component: CreateEventComponent}
-  //{ path: 'users', component: UsersComponent }
+  { path: 'createGameEvent', component: CreateEventComponent}//,
+//{ path: 'users', component: UsersComponent }
  ];
  
 
