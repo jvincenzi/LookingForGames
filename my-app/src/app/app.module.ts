@@ -61,4 +61,5 @@ import { CreateEventComponent } from './create-event/create-event.component';
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+// DO NOT UN-COMMENT THIS -- This line below broke our app on azure (it is serving a life-sentence as a comment as punishment)
+//platformBrowserDynamic().bootstrapModule(AppModule);

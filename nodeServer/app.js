@@ -58,6 +58,7 @@ app
 app
   .route("/games/:gameid")
   .delete(gameController.deleteGame)
+  .put(gameController.joinGame)
   
 app.listen(port, () => {
   console.log(`--------------------------------------------------------------------------------`);

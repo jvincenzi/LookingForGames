@@ -75,6 +75,10 @@ export class CallNodeService {
       return this.http.delete(this.gameNodeAddress + '/' + game._id);
   }
 
+  updateGame(game: GameEvent): Observable<void> {
+    return this.http.put<void>(this.gameNodeAddress + '/' + game._id, game);
+  }
+
   //call for Game Event/
   getAllGames(): Observable<GameEvent[]> {
     //return this.http.get<UserAccount[]>('http://localhost:3000/users');
