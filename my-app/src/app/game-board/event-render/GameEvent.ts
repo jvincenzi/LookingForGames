@@ -7,5 +7,5 @@ export class GameEvent{
     Restrictions: string;
     ReqPlayers: number;
     MaxPlayers: number;
-    CurrentPlayers: Array<string>;
+    CurrentPlayers: Array<any[]>;
 }

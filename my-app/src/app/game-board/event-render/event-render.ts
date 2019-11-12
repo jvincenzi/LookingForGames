@@ -56,9 +56,15 @@ import { Token } from '../../Token';
     this.dummyToken.FirstName = "Sean";
     this.dummyToken.LastName = "Newman";
     this.dummyToken.UserName = "SeanNewman22";
-    theGame.CurrentPlayers.push(this.dummyToken.FirstName);
-    theGame.CurrentPlayers.push(this.dummyToken.LastName);
-    theGame.CurrentPlayers.push(this.dummyToken.UserName);
+
+    let playerArr = [];
+    playerArr.push(this.dummyToken.FirstName);
+    playerArr.push(this.dummyToken.LastName);
+    playerArr.push(this.dummyToken.UserName);
+
+    console.log("pushing " + playerArr + " to the server");
+
+    theGame.CurrentPlayers.push(playerArr)
 
     this.myGameEvent.updateGame(theGame).subscribe();
   }
