@@ -56,11 +56,16 @@ import { Token } from '../../Token';
     this.dummyToken.FirstName = "Sean";
     this.dummyToken.LastName = "Newman";
     this.dummyToken.UserName = "SeanNewman22";
-
+    
     let playerArr = [];
-    playerArr.push(this.dummyToken.FirstName);
-    playerArr.push(this.dummyToken.LastName);
-    playerArr.push(this.dummyToken.UserName);
+
+    playerArr.push(history.state.sessionToken.FirstName);
+    playerArr.push(history.state.sessionToken.LastName);
+    playerArr.push(history.state.sessionToken.UserName);
+
+    //playerArr.push(this.dummyToken.FirstName);
+    //playerArr.push(this.dummyToken.LastName);
+    //playerArr.push(this.dummyToken.UserName);
 
     console.log("pushing " + playerArr + " to the server");
 

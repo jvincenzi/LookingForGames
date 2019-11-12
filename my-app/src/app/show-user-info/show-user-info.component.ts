@@ -14,6 +14,7 @@ export class ShowUserInfoComponent implements OnInit {
   selectedUser: UserAccount;
   foundUser: UserAccount;//= new UserAccount();
   newUser: UserAccount = new UserAccount();
+  deleteConfirmation: Boolean = false;
   
   firstName = new FormControl(''); 
   // firstName = new FormControl('', Validators.required);
@@ -73,7 +74,13 @@ export class ShowUserInfoComponent implements OnInit {
   deleteUserAccount(PassedInUserAccount: UserAccount): void {
     this.selectedUser = PassedInUserAccount;
     this.deleteUser();
+    this.deleteConfirmation = false;
   }
+
+  deletePrompt(): void {
+    this.deleteConfirmation = true;
+  }
+
   deleteUser(): void {
     console.log("This is the user to be deleted, _id: " + this.selectedUser._id); /////////////////////////////////////////////////////
     this.callNodeService.deleteUser(this.selectedUser).subscribe();

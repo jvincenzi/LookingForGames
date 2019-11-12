@@ -17,7 +17,7 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 // }
 
 
-let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
+let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
 let userNodeAddress: string;
 let gameNodeAddress: string;
 let loginNodeAddress: string;
