@@ -14,7 +14,6 @@ export class AppComponent {
 
   constructor() {
     this.sessionTokenData = new Token();
-    
     this.sessionTokenData._id = ''
     this.sessionTokenData.FirstName = '';
     this.sessionTokenData.LastName = '';
@@ -35,9 +34,7 @@ export class AppComponent {
     this.sessionTokenData.Location = '';
     this.sessionTokenData.createdOn = '';
     this.sessionTokenData.UID = '';
-
-
-  }//private sessionToken: Token
+  }
 
   newPage (){
     this.atHome = false;
@@ -56,9 +53,8 @@ export class AppComponent {
 
   renderHome (){
     this.atHome = true;
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
 
-    console.log('history.state.sessionToken.FirstName: '+history.state.sessionToken.FirstName);
-    
 
   }
 }

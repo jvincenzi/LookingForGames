@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   providedSigninData: UserSignInData = {UserName: '', Password: ''};
-  //sessionToken: Token;
+  sessionTokenData: Token;
   userName = new FormControl('');
   userPassword1 = new FormControl('');;
   
@@ -38,13 +38,8 @@ export class SignInComponent implements OnInit {
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
       
-      ///document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
+      //document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
       //console.log( userData );
-
-      
-
-
-      
 
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
@@ -66,51 +61,49 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
-      console.log("sessionToken FirstName: " + history.state.sessionToken.FirstName);
-
-      //this.sessionToken = userData;
-      //console.log("sessionToken LastName: " + this.sessionToken.LastName);
-
-
-
-      /*
-      this.newUser = userData;
-      //this.myAccount.push(userData);
-      this.firstName.setValue(userData.FirstName.toString());      
-      this.lastName.setValue(userData.LastName.toString());
-      this.eMailAddress.setValue(userData.Email.toString());
-      this.userName.setValue(userData.UserName.toString());
-      this.userPassword1.setValue(userData.Password.toString());
-      this.userTelephone.setValue(userData.Telephone.toString());
-
-      //console.log("date: " + userData.DateOfBirth);
-      //this.userDOB.setValue(this.gogo); // Broken: not sure how to set the default date
-
-      this.userStreetAddress.setValue(userData.Address.toString());
-      this.userCity.setValue(userData.City.toString());
-      this.userState.setValue(userData.State.toString());
-      this.userZipCode.setValue(userData.Zipcode.toString());
-      */
+      //console.log("sessionToken _id:       " + history.state.sessionToken._id);
+      //console.log("sessionToken FirstName: " + history.state.sessionToken.FirstName);
+      //console.log("sessionToken Address:   " + history.state.sessionToken.Address);
     })
-    //this.one = this.providedSigninData.UserName.toString();
-    //this.two = this.providedSigninData.Password.toString();
+    
   } 
 
   
 
-  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) { }
+  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
+    
+    this.sessionTokenData = new Token();
+    this.sessionTokenData._id = ''
+    this.sessionTokenData.FirstName = '';
+    this.sessionTokenData.LastName = '';
+    this.sessionTokenData.Email = '';
+    this.sessionTokenData.UserName = '';
+    this.sessionTokenData.Password = '';
+    this.sessionTokenData.Telephone = '';
+    this.sessionTokenData.DateOfBirth = null;
+    this.sessionTokenData.Address = '';
+    this.sessionTokenData.City = '';
+    this.sessionTokenData.State = '';
+    this.sessionTokenData.Zipcode = 0;
+    this.sessionTokenData.FreeAccount = true;
+    this.sessionTokenData.SubscriptionExp = null;
+    this.sessionTokenData.SubscriptionLv = 0;
+    this.sessionTokenData.AdminAccess = '';
+    this.sessionTokenData.CurrentStatus = '';
+    this.sessionTokenData.Location = '';
+    this.sessionTokenData.createdOn = '';
+    this.sessionTokenData.UID = '';
+  
+  }
 
   ngOnInit() {
-    console.log('in sign-in.component');
-    console.log('////////////////////////////////////////////////');
-    
-    console.log('history.state.sessionToken.FirstName: '+history.state.sessionToken.FirstName);
-    console.log('Modifyinf FirstName  = Bye Bye ...');
+    /*
+    console.log('////////////////////////////////////////////////\r\nin sign-in.component\r\nhistory.state.sessionToken.FirstName: '+history.state.sessionToken.FirstName);
     history.state.sessionToken.FirstName = "Bye Bye ...";
-    
-    console.log('history.state.sessionToken.FirstName: ' + history.state.sessionToken.FirstName);
+    console.log('Modifyinf FirstName  = Bye Bye ...'+'\r\nhistory.state.sessionToken.FirstName: ' + history.state.sessionToken.FirstName+'\r\n////////////////////////////////////////////////');
+    */
 
-    console.log('////////////////////////////////////////////////');
+
   }
 
 
