@@ -16,28 +16,26 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 //   name: string;
 // }
 
-let useLocalAddresses: Boolean = true;
+let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
 let userNodeAddress: string;
-//let gameNodeAddress: string;
+let gameNodeAddress: string;
 let loginNodeAddress: string;
   
-if (useLocalAddresses) {
+if (useLocalHost) {
   userNodeAddress =  "http://localhost:3000/users";
   loginNodeAddress = "http://localhost:3000/signin";
-  //gameNodeAddress = "http://localhost:3000/games";
+  gameNodeAddress = "http://localhost:3000/games";
 } else {
   userNodeAddress = "https://lfgnodesrv.azurewebsites.net/users";
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
-  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
 }
 
 @Injectable({ providedIn: 'root' })
 export class CallNodeService {
   constructor(private http: HttpClient) {}
 
-  gameNodeAddress = "http://localhost:3000/games";
-  //gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
   /* 
     In app.js swap:
      PORT (3000 <--> 80)
@@ -68,25 +66,25 @@ export class CallNodeService {
 
   insertGame(game: GameEvent): Observable<GameEvent> {
     //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
-      return this.http.post<GameEvent>(this.gameNodeAddress + '/', game);
+      return this.http.post<GameEvent>(gameNodeAddress + '/', game);
   }
 
   deleteGame(game: GameEvent) {
     //return this.http.delete('http://localhost:3000/users/' + user._id);
-      return this.http.delete(this.gameNodeAddress + '/' + game._id);
+      return this.http.delete(gameNodeAddress + '/' + game._id);
   }
 
   updateGame(game: GameEvent): Observable<void> {
-    return this.http.put<void>(this.gameNodeAddress + '/' + game._id, game);
+    return this.http.put<void>(gameNodeAddress + '/' + game._id, game);
   }
 
   //call for Game Event/
   getAllGames(): Observable<GameEvent[]> {
     //return this.http.get<UserAccount[]>('http://localhost:3000/users');
-    return this.http.get<GameEvent[]>(this.gameNodeAddress);
+    return this.http.get<GameEvent[]>(gameNodeAddress);
   }
   getTask(Title: string): Observable<GameEvent> {
-    return this.http.get<GameEvent>(this.gameNodeAddress + '/' + Title);
+    return this.http.get<GameEvent>(gameNodeAddress + '/' + Title);
   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
 

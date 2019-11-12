@@ -4,6 +4,8 @@ import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
 import { UserAccount } from '../UserAccount';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -12,9 +14,9 @@ import { UserAccount } from '../UserAccount';
 })
 export class SignInComponent implements OnInit {
   providedSigninData: UserSignInData = {UserName: '', Password: ''};
-
+  //sessionToken: Token;
   userName = new FormControl('');
-  userPassword1 = new FormControl('');
+  userPassword1 = new FormControl('');;
   
   submitSignin() {
     /*
@@ -38,11 +40,36 @@ export class SignInComponent implements OnInit {
       
       ///document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
       //console.log( userData );
-      let userToken: Token = new Token();
-      userToken = userData;
-      console.log("myToken: " + userToken.FirstName);
-      //@Input() sessionToken: userData;
 
+      
+
+
+      
+
+      history.state.sessionToken._id = userData._id;
+      history.state.sessionToken.FirstName = userData.FirstName;
+      history.state.sessionToken.LastName = userData.LastName;
+      history.state.sessionToken.Email = userData.Email;
+      history.state.sessionToken.UserName = userData.UserName;
+      //history.state.sessionToken.Password = userData.;
+      history.state.sessionToken.Telephone = userData.Telephone;
+      history.state.sessionToken.DateOfBirth = userData.DateOfBirth;
+      history.state.sessionToken.Address = userData.Address;
+      history.state.sessionToken.City = userData.City;
+      history.state.sessionToken.State = userData.State;
+      history.state.sessionToken.Zipcode = userData.Zipcode;
+      history.state.sessionToken.FreeAccount = userData.FreeAccount;
+      history.state.sessionToken.SubscriptionExp = userData.SubscriptionExp;
+      history.state.sessionToken.SubscriptionLv = userData.SubscriptionLv;
+      history.state.sessionToken.AdminAccess = userData.AdminAccess;
+      history.state.sessionToken.CurrentStatus = userData.CurrentStatus;
+      history.state.sessionToken.Location = userData.Location;
+      history.state.sessionToken.createdOn = userData.createdOn;
+      history.state.sessionToken.UID = userData.UID;
+      console.log("sessionToken FirstName: " + history.state.sessionToken.FirstName);
+
+      //this.sessionToken = userData;
+      //console.log("sessionToken LastName: " + this.sessionToken.LastName);
 
 
 
@@ -69,9 +96,21 @@ export class SignInComponent implements OnInit {
     //this.two = this.providedSigninData.Password.toString();
   } 
 
-  constructor(private callNodeService: CallNodeService) { }
+  
+
+  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('in sign-in.component');
+    console.log('////////////////////////////////////////////////');
+    
+    console.log('history.state.sessionToken.FirstName: '+history.state.sessionToken.FirstName);
+    console.log('Modifyinf FirstName  = Bye Bye ...');
+    history.state.sessionToken.FirstName = "Bye Bye ...";
+    
+    console.log('history.state.sessionToken.FirstName: ' + history.state.sessionToken.FirstName);
+
+    console.log('////////////////////////////////////////////////');
   }
 
 

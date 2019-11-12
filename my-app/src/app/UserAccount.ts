@@ -13,7 +13,7 @@ export class UserAccount {
   Zipcode: number;
   FreeAccount: boolean;
   SubscriptionExp: Date;
-  SubscriptionLv: number;//level (monthly or yearly)
+  SubscriptionLv: number;//level (0=freeAccount, 1=monthly or 12=yearly)
   AdminAccess: string;
   CurrentStatus: string;
   Location: string;

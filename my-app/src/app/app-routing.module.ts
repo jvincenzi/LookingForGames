@@ -6,14 +6,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ShowUserInfoComponent } from './show-user-info/show-user-info.component';
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { Token } from './Token';
 
 const myRoutes: Routes = [
   { path: 'signIn', component: SignInComponent },
   { path: 'gameBoard', component: GameBoardComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'myAccount', component: ShowUserInfoComponent},
-  { path: 'paymentAuth', component: PaymentAuthComponent},
-  { path: 'createGameEvent', component: CreateEventComponent}//,
+  { path: 'myAccount', component: ShowUserInfoComponent },
+  { path: 'paymentAuth', component: PaymentAuthComponent },
+  { path: 'createGameEvent', component: CreateEventComponent }//,
 //{ path: 'users', component: UsersComponent }
  ];
  
@@ -23,4 +24,8 @@ const myRoutes: Routes = [
   exports: [ RouterModule ]
  })
  
- export class AppRoutingModule { }
+ export class AppRoutingModule { 
+  constructor() {}   //was a prameter in the constructor: private stateService: StateService
+  
+
+ }
