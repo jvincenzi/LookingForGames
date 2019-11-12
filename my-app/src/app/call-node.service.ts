@@ -16,6 +16,7 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 //   name: string;
 // }
 
+
 let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
 let userNodeAddress: string;
 let gameNodeAddress: string;
@@ -29,7 +30,8 @@ if (useLocalHost) {
   userNodeAddress = "https://lfgnodesrv.azurewebsites.net/users";
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
-  gameNodeAddress = "http://lfgnodesrv.azurewebsites.net/games";
+  gameNodeAddress = "https://lfgnodesrv.azurewebsites.net/games";
+
 }
 
 @Injectable({ providedIn: 'root' })
