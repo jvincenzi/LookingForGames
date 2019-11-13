@@ -59,6 +59,8 @@ import { Token } from '../../Token';
     
     let playerArr = [];
 
+    console.log(history.state.sessionToken.FirstName);
+
     playerArr.push(history.state.sessionToken.FirstName);
     playerArr.push(history.state.sessionToken.LastName);
     playerArr.push(history.state.sessionToken.UserName);
