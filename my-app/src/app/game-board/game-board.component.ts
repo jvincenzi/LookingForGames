@@ -1,8 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
-
-
-
+import { Token } from '../Token';
 
 
 @Component({
@@ -11,15 +8,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-board.component.css']
 })
 
-
-
 export class GameBoardComponent implements OnInit {
 
+  //sessionTokenData: Token;
 
-
-    constructor() { }
+  constructor() { 
+    /*
+    this.sessionTokenData = new Token();
+    this.sessionTokenData._id = ''
+    this.sessionTokenData.FirstName = 'Joe Was Here!';
+    this.sessionTokenData.LastName = '';
+    this.sessionTokenData.Email = '';
+    this.sessionTokenData.UserName = '';
+    this.sessionTokenData.Password = '';
+    this.sessionTokenData.Telephone = '';
+    this.sessionTokenData.DateOfBirth = null;
+    this.sessionTokenData.Address = '';
+    this.sessionTokenData.City = '';
+    this.sessionTokenData.State = '';
+    this.sessionTokenData.Zipcode = 0;
+    this.sessionTokenData.FreeAccount = true;
+    this.sessionTokenData.SubscriptionExp = null;
+    this.sessionTokenData.SubscriptionLv = 0;
+    this.sessionTokenData.AdminAccess = '';
+    this.sessionTokenData.CurrentStatus = '';
+    this.sessionTokenData.Location = '';
+    this.sessionTokenData.createdOn = '';
+    this.sessionTokenData.UID = '';
+    */
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
+  }
 
   ngOnInit() {
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
 }
 

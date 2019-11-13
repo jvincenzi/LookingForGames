@@ -36,6 +36,8 @@ export class ShowUserInfoComponent implements OnInit {
   ngOnInit() {
     //this.getUser(); // Switch to this once we get user login working ///////////////////////////////////
     this.getUsers();
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
   }
 
   getUsers(): void {

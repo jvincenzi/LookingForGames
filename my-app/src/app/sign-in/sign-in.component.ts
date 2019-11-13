@@ -61,9 +61,29 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
-      //console.log("sessionToken _id:       " + history.state.sessionToken._id);
-      //console.log("sessionToken FirstName: " + history.state.sessionToken.FirstName);
-      //console.log("sessionToken Address:   " + history.state.sessionToken.Address);
+      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+      
+      
+      this.sessionTokenData._id = userData._id;
+      this.sessionTokenData.FirstName = userData.FirstName;
+      this.sessionTokenData.LastName = userData.LastName;
+      this.sessionTokenData.Email = userData.Email;
+      this.sessionTokenData.UserName = userData.UserName;
+      //this.sessionTokenData.Password = userData.Telephone;
+      this.sessionTokenData.Telephone = userData.Telephone;
+      this.sessionTokenData.DateOfBirth = userData.DateOfBirth;
+      this.sessionTokenData.Address = userData.Address;
+      this.sessionTokenData.City = userData.City;
+      this.sessionTokenData.State = userData.State;
+      this.sessionTokenData.Zipcode = userData.Zipcode;
+      this.sessionTokenData.FreeAccount = userData.FreeAccount;
+      this.sessionTokenData.SubscriptionExp = userData.SubscriptionExp;
+      this.sessionTokenData.SubscriptionLv = userData.SubscriptionLv;
+      this.sessionTokenData.AdminAccess = userData.AdminAccess;
+      this.sessionTokenData.CurrentStatus = userData.CurrentStatus;
+      this.sessionTokenData.Location = userData.Location;
+      this.sessionTokenData.createdOn = userData.createdOn;
+      this.sessionTokenData.UID = userData.UID;
     })
     
   } 
@@ -73,6 +93,7 @@ export class SignInComponent implements OnInit {
   constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
     
     this.sessionTokenData = new Token();
+    /*
     this.sessionTokenData._id = ''
     this.sessionTokenData.FirstName = '';
     this.sessionTokenData.LastName = '';
@@ -93,7 +114,9 @@ export class SignInComponent implements OnInit {
     this.sessionTokenData.Location = '';
     this.sessionTokenData.createdOn = '';
     this.sessionTokenData.UID = '';
-  
+    */
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
   }
 
   ngOnInit() {
@@ -102,7 +125,8 @@ export class SignInComponent implements OnInit {
     history.state.sessionToken.FirstName = "Bye Bye ...";
     console.log('Modifyinf FirstName  = Bye Bye ...'+'\r\nhistory.state.sessionToken.FirstName: ' + history.state.sessionToken.FirstName+'\r\n////////////////////////////////////////////////');
     */
-
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
 
   }
 
