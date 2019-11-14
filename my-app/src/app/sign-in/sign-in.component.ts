@@ -19,20 +19,6 @@ export class SignInComponent implements OnInit {
   userPassword1 = new FormControl('');;
   
   submitSignin() {
-    /*
-    1. Create routes for sign-in (sign-in/:userName, password)
-    2. Add import { Token } from '../Token'; to 
-    3. Pass username & password to new route
-    4. Mongo validates the passes username & password
-    5. Wait for mongo return 
-        if - Mongo returns a token all is well, go to home page as signed-in user and update Token.ts with token data
-        else - output a message to a label:
-          - username not found
-          - password incorrect
-    
-
-       
-    */
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
@@ -61,7 +47,7 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
-      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+      //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
       
       
       this.sessionTokenData._id = userData._id;
@@ -84,6 +70,8 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.Location = userData.Location;
       this.sessionTokenData.createdOn = userData.createdOn;
       this.sessionTokenData.UID = userData.UID;
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
+      
     })
     
   } 
