@@ -14,10 +14,11 @@ export class AppComponent {
 
   constructor() {
     console.log("///////////////////////////\r\nSetting up the sessionToken\r\n///////////////////////////");
-    if(history.state == undefined) {
+    //if(history.state == null) {
       this.sessionTokenData = new Token();
-      console.log('/// BORK sessionTokenData was null setting it up now  ///');
-    }
+      console.log('/// BORK ngOnInit: sessionTokenData was undefined setting it up now  ///');
+    //}
+
   }
 
   newPage (){
@@ -27,6 +28,7 @@ export class AppComponent {
   ngOnInit() {
     //newUser: UserAccount = new UserAccount();
     //this.newUser.setValue(userData.FirstName.toString());
+    
   }
 
   renderHome (){
