@@ -17,4 +17,5 @@
   CurrentStatus: string;
   Location: string;
   createdOn: string;
+  token: string;
 }

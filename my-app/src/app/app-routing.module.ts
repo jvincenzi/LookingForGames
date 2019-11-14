@@ -7,14 +7,23 @@ import { ShowUserInfoComponent } from './show-user-info/show-user-info.component
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 
+import { AuthGuard } from './_guards';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+
 const myRoutes: Routes = [
+  
+  { path: '', component: SearchBarComponent, canActivate: [AuthGuard] },
+  { path: 'searchBar', component:SearchBarComponent},
   { path: 'signIn', component: SignInComponent },
   { path: 'gameBoard', component: GameBoardComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'myAccount', component: ShowUserInfoComponent},
   { path: 'paymentAuth', component: PaymentAuthComponent},
-  { path: 'createGameEvent', component: CreateEventComponent}
+  { path: 'createGameEvent', component: CreateEventComponent},
   //{ path: 'users', component: UsersComponent }
+
+     // otherwise redirect to home
+  { path: '**', redirectTo: '' }
  ];
  
 

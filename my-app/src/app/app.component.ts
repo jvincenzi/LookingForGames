@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './_services';
+import { UserAccount } from './UserAccount';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-app';
-  atHome = true;
+  currentUser: UserAccount;
 
-  newPage (){
-    this.atHome = false;
+  constructor(
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  renderHome (){
-    this.atHome = true;
+  logout() {
+      this.authenticationService.logout();
+      this.router.navigate(['/signIn']);
   }
 }
+//   title = 'my-app';
+//   atHome = true;
+
+//   newPage (){
+//     this.atHome = false;
+//   }
+
+//   renderHome (){
+//     this.atHome = true;
+//   }
+// }
