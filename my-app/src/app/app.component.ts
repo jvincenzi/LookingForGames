@@ -14,7 +14,7 @@ export class AppComponent {
 
   constructor() {
     console.log("///////////////////////////\r\nSetting up the sessionToken\r\n///////////////////////////");
-    if(history.state == null) {
+    if(history.state == undefined) {
       this.sessionTokenData = new Token();
       console.log('/// BORK sessionTokenData was null setting it up now  ///');
     }

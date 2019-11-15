@@ -19,7 +19,10 @@ export class SignInComponent implements OnInit {
   userPassword1 = new FormControl('');;
   
   submitSignin() {
+<<<<<<< HEAD
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
+=======
+>>>>>>> 09a8dd4defc6e747b1a08100debe1a2ae6402667
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
@@ -50,9 +53,13 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
+<<<<<<< HEAD
       history.state.sessionToken.userLatitude = userData.userLatitude; // might not need to get this data from mongoDB 
       history.state.sessionToken.userLongitude = userData.userLongitude; // might not need to get this data from mongoDB 
       console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+=======
+      //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+>>>>>>> 09a8dd4defc6e747b1a08100debe1a2ae6402667
       
       /*
       this.sessionTokenData._id = userData._id;
@@ -76,10 +83,15 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.Location = userData.Location;
       this.sessionTokenData.createdOn = userData.createdOn;
       this.sessionTokenData.UID = userData.UID;
+<<<<<<< HEAD
       this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
       this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
       console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
       */
+=======
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
+      
+>>>>>>> 09a8dd4defc6e747b1a08100debe1a2ae6402667
     })
     
   } 
