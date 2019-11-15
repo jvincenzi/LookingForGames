@@ -19,20 +19,7 @@ export class SignInComponent implements OnInit {
   userPassword1 = new FormControl('');;
   
   submitSignin() {
-    /*
-    1. Create routes for sign-in (sign-in/:userName, password)
-    2. Add import { Token } from '../Token'; to 
-    3. Pass username & password to new route
-    4. Mongo validates the passes username & password
-    5. Wait for mongo return 
-        if - Mongo returns a token all is well, go to home page as signed-in user and update Token.ts with token data
-        else - output a message to a label:
-          - username not found
-          - password incorrect
-    
-
-       
-    */
+    console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
@@ -50,20 +37,24 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Telephone = userData.Telephone;
       history.state.sessionToken.DateOfBirth = userData.DateOfBirth;
       history.state.sessionToken.Address = userData.Address;
+      history.state.sessionToken.Address2 = userData.Address2;
       history.state.sessionToken.City = userData.City;
       history.state.sessionToken.State = userData.State;
       history.state.sessionToken.Zipcode = userData.Zipcode;
+      history.state.sessionToken.Country = userData.Country;
       history.state.sessionToken.FreeAccount = userData.FreeAccount;
       history.state.sessionToken.SubscriptionExp = userData.SubscriptionExp;
       history.state.sessionToken.SubscriptionLv = userData.SubscriptionLv;
-      history.state.sessionToken.AdminAccess = userData.AdminAccess;
+      history.state.sessionToken.AdminAccess = userData.AdminAccess;  // might not need to get this data from mongoDB
       history.state.sessionToken.CurrentStatus = userData.CurrentStatus;
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
+      history.state.sessionToken.userLatitude = userData.userLatitude; // might not need to get this data from mongoDB 
+      history.state.sessionToken.userLongitude = userData.userLongitude; // might not need to get this data from mongoDB 
       console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
       
-      
+      /*
       this.sessionTokenData._id = userData._id;
       this.sessionTokenData.FirstName = userData.FirstName;
       this.sessionTokenData.LastName = userData.LastName;
@@ -73,6 +64,7 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.Telephone = userData.Telephone;
       this.sessionTokenData.DateOfBirth = userData.DateOfBirth;
       this.sessionTokenData.Address = userData.Address;
+      this.sessionTokenData.Address2 = userData.Address2;
       this.sessionTokenData.City = userData.City;
       this.sessionTokenData.State = userData.State;
       this.sessionTokenData.Zipcode = userData.Zipcode;
@@ -84,50 +76,21 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.Location = userData.Location;
       this.sessionTokenData.createdOn = userData.createdOn;
       this.sessionTokenData.UID = userData.UID;
+      this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
+      this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
+      */
     })
     
   } 
 
-  
-
   constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
-    
     this.sessionTokenData = new Token();
-    /*
-    this.sessionTokenData._id = ''
-    this.sessionTokenData.FirstName = '';
-    this.sessionTokenData.LastName = '';
-    this.sessionTokenData.Email = '';
-    this.sessionTokenData.UserName = '';
-    this.sessionTokenData.Password = '';
-    this.sessionTokenData.Telephone = '';
-    this.sessionTokenData.DateOfBirth = null;
-    this.sessionTokenData.Address = '';
-    this.sessionTokenData.City = '';
-    this.sessionTokenData.State = '';
-    this.sessionTokenData.Zipcode = 0;
-    this.sessionTokenData.FreeAccount = true;
-    this.sessionTokenData.SubscriptionExp = null;
-    this.sessionTokenData.SubscriptionLv = 0;
-    this.sessionTokenData.AdminAccess = '';
-    this.sessionTokenData.CurrentStatus = '';
-    this.sessionTokenData.Location = '';
-    this.sessionTokenData.createdOn = '';
-    this.sessionTokenData.UID = '';
-    */
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-    
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
 
   ngOnInit() {
-    /*
-    console.log('////////////////////////////////////////////////\r\nin sign-in.component\r\nhistory.state.sessionToken.FirstName: '+history.state.sessionToken.FirstName);
-    history.state.sessionToken.FirstName = "Bye Bye ...";
-    console.log('Modifyinf FirstName  = Bye Bye ...'+'\r\nhistory.state.sessionToken.FirstName: ' + history.state.sessionToken.FirstName+'\r\n////////////////////////////////////////////////');
-    */
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-    
-
   }
 
 
