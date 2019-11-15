@@ -1,4 +1,4 @@
-export class UserAccount {
+export class Token {
   _id: string;
   FirstName: string;
   LastName: string;
@@ -20,11 +20,7 @@ export class UserAccount {
   CurrentStatus: string;
   Location: string;
   createdOn: string;
-<<<<<<< HEAD
-  token: string;
-=======
   UID: string; // new
   userLatitude: number; // new
   userLongitude: number; // new
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
 }

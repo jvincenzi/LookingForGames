@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { UserAccount } from '../UserAccount';
 import { UserService, AuthenticationService } from '../_services';
+=======
+import { Component, OnInit } from '@angular/core';
+import { Token } from '../Token';
+>>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
 
 
 @Component({
@@ -12,10 +17,9 @@ import { UserService, AuthenticationService } from '../_services';
   styleUrls: ['./game-board.component.css']
 })
 
-
-
 export class GameBoardComponent implements OnInit {
 
+<<<<<<< HEAD
   currentUser: UserAccount;
     currentUserSubscription: Subscription;
     users: UserAccount[] = [];
@@ -32,6 +36,40 @@ export class GameBoardComponent implements OnInit {
 
   ngOnInit() {
       this.loadAllUsers();
+=======
+  //sessionTokenData: Token;
+
+  constructor() { 
+    /*
+    this.sessionTokenData = new Token();
+    this.sessionTokenData._id = ''
+    this.sessionTokenData.FirstName = 'Joe Was Here!';
+    this.sessionTokenData.LastName = '';
+    this.sessionTokenData.Email = '';
+    this.sessionTokenData.UserName = '';
+    this.sessionTokenData.Password = '';
+    this.sessionTokenData.Telephone = '';
+    this.sessionTokenData.DateOfBirth = null;
+    this.sessionTokenData.Address = '';
+    this.sessionTokenData.City = '';
+    this.sessionTokenData.State = '';
+    this.sessionTokenData.Zipcode = 0;
+    this.sessionTokenData.FreeAccount = true;
+    this.sessionTokenData.SubscriptionExp = null;
+    this.sessionTokenData.SubscriptionLv = 0;
+    this.sessionTokenData.AdminAccess = '';
+    this.sessionTokenData.CurrentStatus = '';
+    this.sessionTokenData.Location = '';
+    this.sessionTokenData.createdOn = '';
+    this.sessionTokenData.UID = '';
+    */
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
+  }
+
+  ngOnInit() {
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+>>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
   }
 
   ngOnDestroy() {

@@ -97,7 +97,7 @@ function cpNodeSrv() {
 	cd nodeServer/
 	echo "============================================================"
 	echo -e "${LIGHT_GREEN} \e[4mCopying Files & Folders to /LFGNodeServer/nodeServer/ repo\e[0m"
-	cp -r . ../../LFGNodeServer/nodeServer/
+	cp -r . ../../LFGNodeServer/ #nodeServer/
 	echo "Copying files complete"
 	
 	

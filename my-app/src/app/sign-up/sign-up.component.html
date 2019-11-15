@@ -17,50 +17,72 @@
                         <tr>  
                             <th><label for="userName">Username: </label></th>
                             <th><input type="text" id="userName" [formControl]="userName" /> *</th>
+                            <th><label id="userNameErr"></label></th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword1">Password: </label> </th>
                             <th><input type="password" id="userPassword1" [formControl]="userPassword1" /> *</th>
+                            <th><label id="userPassword1Err"></label></th>
                         </tr>
                         <tr>   
-                            <th><label for="userPassword2">Password: </label></th>
+                            <th><label for="userPassword2">Confirm Password: </label></th>
                             <th><input type="password" id="userPassword2" [formControl]="userPassword2" /> *</th>
+                            <th><label id="userPassword2Err"></label></th>
                         </tr>
                         <tr>
                             <th><label for="eMailAddress">E-mail: </label></th>
                             <th><input type="email" id="eMailAddress" [formControl]="eMailAddress" /> *</th>
+                            <th><label id=""></label></th>
                         </tr>
                         <tr>
                             <th><label for="firstName">First Name: </label></th>
                             <th><input type="text" id="firstName" [formControl]="firstName" /> *</th>
+                            <th><label id=""></label></th>
                         </tr>
                         <tr>
                             <th><label for="lastName">Last Name: </label> </th>
                             <th><input type="text" id="lastName" [formControl]="lastName" /> *</th>
+                            <th><label id=""></label></th>
                         </tr>
                         <tr>    
                             <th><label for="userTelephone">Telephone: </label></th>
                             <th><input type="tel" id="userTelephone" [formControl]="userTelephone" /></th>
+                            <th><label id=""></label></th>
                         </tr>
                         <tr>   
                             <th><label for="userDOB">Date of Birth: </label></th>
                             <th><input type="date" id="userDOB" [formControl]="userDOB" /> *</th>
+                            <th><label id=""></label></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userCountry">Country: </label></th>
+                            <th><input type="text" id="userCountry" [formControl]="userZipCode" /> *</th>
+                            <th><label id="userCountryErr"></label></th>
                         </tr>
                         <tr>   
                             <th><label for="userStreetAddress">Street Address: </label></th>
                             <th><input type="text" id="userStreetAddress" [formControl]="userStreetAddress" /> *</th>
+                            <th><label id=""></label></th>
+                        </tr>
+                        <tr>   
+                            <th><label for="userStreetAddress2">Street Address: </label></th>
+                            <th><input type="text" id="userStreetAddress2" [formControl]="userStreetAddress2" /> *</th>
+                            <th><label id="userStreetAddress2Err"></label></th>
                         </tr>
                         <tr>   
                             <th><label for="userCity">City: </label></th>
                             <th><input type="text" id="userCity" [formControl]="userCity" /> *</th>
+                            <th><label id=""></label></th>
                         </tr>
                         <tr>  
                             <th><label for="userState">State: </label></th>
                             <th><input type="text" id="userState" [formControl]="userState" /> *</th>
+                            <th><label id="userStateErr"></label></th>
                         </tr>
                         <tr>   
                             <th><label for="userZipCode">Zip Code: </label></th>
                             <th><input type="text" id="userZipCode" [formControl]="userZipCode" /> *</th>
+                            <th><label id="userZipCodeErr"></label></th>
                         </tr> 
                         <tr>
                             <td><label for="errorMsgLabel"></label>* Required field</td>
@@ -77,7 +99,16 @@
                         </div>
                 </fieldset>
             </form>  
-            
+            <div>
+                <br />
+                <p>Click the button to get your coordinates.</p>
+
+                <button (click)="getLocation()">Try It</button>
+
+                <p id="demo">LOC</p>
+
+                
+            </div>
             
 
             <!-- New code from here...  

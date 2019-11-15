@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    //required: true,
-    //unique: true
+    required: true,
+    unique: true
   },
   FirstName: {
     type: String, 
@@ -65,7 +65,15 @@ const UserSchema = new Schema({
     required: false
   },
   SubscriptionLv: {
-    type: String, //level (free, monthly or yearly)
+    type: String, //level (free, monthly yearly, admin)
+    required: false
+  },
+  AdminAccess: {
+    type: String, 
+    default: 0,
+    // 0 for normal or free users
+    // 1 for Administrator
+    // 2 for Sysop
     required: false
   },
   CurrentStatus: {
@@ -81,6 +89,11 @@ const UserSchema = new Schema({
     default: Date.now,  // this line means we don't have to overtly set the time 
     // the task was created, it will be set as we create a new document
     required: true
+  },
+  UID: {
+    type: String,
+    default: Date.now.toString(),
+    required: false
   }
 });
 

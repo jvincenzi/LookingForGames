@@ -14,6 +14,7 @@ export class ShowUserInfoComponent implements OnInit {
   selectedUser: UserAccount;
   foundUser: UserAccount;//= new UserAccount();
   newUser: UserAccount = new UserAccount();
+  deleteConfirmation: Boolean = false;
   
   firstName = new FormControl(''); 
   // firstName = new FormControl('', Validators.required);
@@ -35,6 +36,8 @@ export class ShowUserInfoComponent implements OnInit {
   ngOnInit() {
     //this.getUser(); // Switch to this once we get user login working ///////////////////////////////////
     this.getUsers();
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    
   }
 
   getUsers(): void {
@@ -73,9 +76,15 @@ export class ShowUserInfoComponent implements OnInit {
   deleteUserAccount(PassedInUserAccount: UserAccount): void {
     this.selectedUser = PassedInUserAccount;
     this.deleteUser();
+    this.deleteConfirmation = false;
   }
+
+  deletePrompt(): void {
+    this.deleteConfirmation = true;
+  }
+
   deleteUser(): void {
-    //console.log("This is the ID to be edited: " + this.selectedUser._id);
+    console.log("This is the user to be deleted, _id: " + this.selectedUser._id); /////////////////////////////////////////////////////
     this.callNodeService.deleteUser(this.selectedUser).subscribe();
   }
 
