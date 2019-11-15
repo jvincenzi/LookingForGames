@@ -1,29 +1,9 @@
-<<<<<<< HEAD
-// import { Component, OnInit } from '@angular/core';
-// import { FormControl } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-sign-in',
-//   templateUrl: './sign-in.component.html',
-//   styleUrls: ['./sign-in.component.css']
-// })
-// export class SignInComponent implements OnInit {
-
-
-//   userName = new FormControl('');
-//   userPassword1 = new FormControl('');
-  
-  
-//   submitSignin() {
-//     this.userName.setValue('It\'s working');
-=======
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
 import { UserAccount } from '../UserAccount';
-import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -99,81 +79,12 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
       console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
       */
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
+      
     })
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
     
-//   } 
+  } 
 
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AlertService, AuthenticationService } from '../_services';
-
-@Component({templateUrl: './sign-in.component.html'})
-export class SignInComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService
-    ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
-    }
-
-    ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    }
-
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
-
-<<<<<<< HEAD
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
-}
-=======
   constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
     this.sessionTokenData = new Token();
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
@@ -185,4 +96,3 @@ export class SignInComponent implements OnInit {
 
 
 }
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
