@@ -15,12 +15,13 @@ import { GameEvent } from './game-board/event-render/GameEvent';
 // export interface Tasks {
 //   name: string;
 // }
-
-
-let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
 let userNodeAddress: string;
 let gameNodeAddress: string;
 let loginNodeAddress: string;
+
+
+let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
+
   
 if (useLocalHost) {
   userNodeAddress =  "http://localhost:3000/users";
@@ -31,7 +32,6 @@ if (useLocalHost) {
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
   gameNodeAddress = "https://lfgnodesrv.azurewebsites.net/games";
-
 }
 
 @Injectable({ providedIn: 'root' })
@@ -43,6 +43,8 @@ export class CallNodeService {
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
+
+  ////////////////////// User related routes //////////////////////
   
   getAllUsers(): Observable<UserAccount[]> {
     return this.http.get<UserAccount[]>(userNodeAddress);
@@ -60,11 +62,10 @@ export class CallNodeService {
     return this.http.post<UserAccount>(userNodeAddress + '/', user);
   }
   userLogin(login: UserSignInData): Observable<UserSignInData> {
-    //console.log('call-node.service.userLogin({' + login.UserName + ', ' + login.Password + '})'); ////////////////////////////
     return this.http.post<UserSignInData>(loginNodeAddress + '/', login); 
   }
 
-  ///////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////// GameEvent routes //////////////////////
 
   insertGame(game: GameEvent): Observable<GameEvent> {
     //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
@@ -91,23 +92,4 @@ export class CallNodeService {
   }
 
 }
-
-  
-//   getAllTasks(): Observable<UserAcount[]> {
-//     return this.http.get<UserAcount[]>(this.nodeAddress);
-//   }
-//   getTask(taskName: string): Observable<UserAcount> {
-//     return this.http.get<UserAcount>(this.nodeAddress + taskName);
-//   }
-//   insertTask(task: UserAcount): Observable<UserAcount> {
-//     return this.http.post<UserAcount>(this.nodeAddress, task);
-//   }
-//   updateTask(task: UserAcount): Observable<void> {
-//     return this.http.put<void>(this.nodeAddress + task._id, task);
-//   }
-//   deleteTask(task: UserAcount) {
-//     return this.http.delete(this.nodeAddress + task._id);
-//   }
-  
-// }
 

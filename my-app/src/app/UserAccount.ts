@@ -1,5 +1,5 @@
 export class UserAccount {
-  _id: string; // change 11/03/2019: String --> string
+  _id: string;
   FirstName: string;
   LastName: string;
   Email: string;
@@ -7,16 +7,20 @@ export class UserAccount {
   Password: string;
   Telephone: string;
   DateOfBirth: Date;
+  Country: string; // new
   Address: string;
+  Address2: string; // new
   City: string;
   State: string;
   Zipcode: number;
   FreeAccount: boolean;
   SubscriptionExp: Date;
   SubscriptionLv: number;//level (0=freeAccount, 1=monthly or 12=yearly)
-  AdminAccess: string;
+  AdminAccess: string;  // new
   CurrentStatus: string;
   Location: string;
   createdOn: string;
-  UID: string;
+  UID: string; // new
+  userLatitude: number; // new
+  userLongitude: number; // new
 }
