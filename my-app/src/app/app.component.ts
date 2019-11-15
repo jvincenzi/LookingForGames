@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-import { AuthenticationService } from './_services';
+
+//import { AuthenticationService } from './_services';
 import { UserAccount } from './UserAccount';
 import { Router } from '@angular/router';
-=======
+
 import { Token } from './Token';
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
+
 
 @Component({
   selector: 'app-root',
@@ -14,10 +14,8 @@ import { Token } from './Token';
 })
 
 export class AppComponent {
-<<<<<<< HEAD
-  currentUser: UserAccount;
-=======
-  title = 'Looking For Games';
+   currentUser: UserAccount;
+   title = 'Looking For Games';
   atHome = true;
   sessionTokenData: Token;
 
@@ -25,21 +23,7 @@ export class AppComponent {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
     this.sessionTokenData = new Token();
   }
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
-
-  constructor(
-      private router: Router,
-      private authenticationService: AuthenticationService
-  ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
-
-<<<<<<< HEAD
-  logout() {
-      this.authenticationService.logout();
-      this.router.navigate(['/signIn']);
-=======
-  ngOnInit() {
+   ngOnInit() {
     //newUser: UserAccount = new UserAccount();
     //this.newUser.setValue(userData.FirstName.toString());
     
@@ -75,7 +59,6 @@ export class AppComponent {
     this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
     console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:       ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
       
->>>>>>> d018ccb6d4419545cb84f52a2b0e218853b56480
   }
 }
 //   title = 'my-app';

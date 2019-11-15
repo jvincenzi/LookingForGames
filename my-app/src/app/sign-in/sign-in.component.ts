@@ -48,9 +48,9 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.CurrentStatus = userData.CurrentStatus;
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
-      history.state.sessionToken.UID = userData.UID;
-      history.state.sessionToken.userLatitude = userData.userLatitude; // might not need to get this data from mongoDB 
-      history.state.sessionToken.userLongitude = userData.userLongitude; // might not need to get this data from mongoDB 
+    //  history.state.sessionToken.UID = userData.UID;
+   //   history.state.sessionToken.userLatitude = userData.userLatitude; // might not need to get this data from mongoDB 
+   //   history.state.sessionToken.userLongitude = userData.userLongitude; // might not need to get this data from mongoDB 
       console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
       
       /*
@@ -83,9 +83,9 @@ export class SignInComponent implements OnInit {
       
     })
     
-  } 
+  }
 
-  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
+  constructor(private callNodeService: CallNodeService) {
     this.sessionTokenData = new Token();
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
