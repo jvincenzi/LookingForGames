@@ -85,6 +85,7 @@ import { Token } from '../../Token';
   getPosition(eventLocation) : void {
     console.log(eventLocation);
     this.eventLocation = eventLocation;
+    console.log(this.eventLocation + "is what we set this.eventLocation to");
     console.log('/// in getLocation() ///:  ');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation);
