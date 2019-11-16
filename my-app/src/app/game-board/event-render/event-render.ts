@@ -98,14 +98,10 @@ import { Token } from '../../Token';
     //this.x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     console.log('latitude:  ' + position.coords.latitude);
     console.log('longitude: ' + position.coords.longitude);
-
-    this.getDistance(position.coords.latitude, position.coords.longitude, this.eventLocation).subscribe((distance: Object) =>{
+    console.log(this);
+    this.myGameEvent.getDistance(position.coords.latitude, position.coords.longitude, this.eventLocation).subscribe((distance: Object) =>{
       this.currentDistance = distance;
     });
-  }
-
-  getDistance(currentPositionLat, currentPositionLon, destination: String): Observable<JSON> {
-    return this.http.get<JSON>("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + currentPositionLat + "," + currentPositionLon + "&destinations=" + destination +"&key=AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM");
   }
 
   constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { }
