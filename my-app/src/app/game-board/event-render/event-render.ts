@@ -9,7 +9,7 @@ import { GameEvent } from './GameEvent';
 import { Token } from '../../Token';
 // export interface GameEventRender {
 
-  
+  //var service = new google.maps.DistanceMatrixService();
 //   Games: string;
 //   position: number;
 //   Location: string;
@@ -82,13 +82,13 @@ import { Token } from '../../Token';
     this.myGameEvent.updateGame(theGame).subscribe();
   }
 
-  getPosition(eventLocation) : void {
+  getPosition(eventLocation) {
     console.log(eventLocation);
     this.eventLocation = eventLocation;
     console.log(this.eventLocation + "is what we set this.eventLocation to");
     console.log('/// in getLocation() ///:  ');
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.getLocation);
+      navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
     } else {
       console.log('/// Geolocation is not supported by this browser. ///:  ');
       //this.x.innerHTML = "Geolocation is not supported by this browser.";
