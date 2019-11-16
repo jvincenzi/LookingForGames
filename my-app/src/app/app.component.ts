@@ -29,6 +29,10 @@ export class AppComponent {
     
   }
 
+  newPage (){
+         this.atHome = false;
+  }
+
   renderHome (){
     this.atHome = true;
     console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');

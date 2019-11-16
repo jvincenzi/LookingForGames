@@ -70,4 +70,4 @@ import { CreateEventComponent } from './create-event/create-event.component';
 export class AppModule {
 
  }
-platformBrowserDynamic().bootstrapModule(AppModule);
+//platformBrowserDynamic().bootstrapModule(AppModule);

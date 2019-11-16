@@ -16,7 +16,9 @@
                 <b>Game Title: </b>    {{ourGame.Title}}
                 <b>Location:</b> {{ourGame.Location}}
                 <b>Require Player</b> {{ourGame.ReqPlayers}}
+                <b>Distance from you</b> {{currentDistance}}
                 <button (click)="joinEvent(ourGame)">Join Event!</button>
+                <button (click)="getPosition(ourGame.Location)">Get Distance</button>
             </li>
             
             </p>
