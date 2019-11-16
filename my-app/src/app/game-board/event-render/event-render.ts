@@ -99,7 +99,9 @@ import { Token } from '../../Token';
     console.log('latitude:  ' + position.coords.latitude);
     console.log('longitude: ' + position.coords.longitude);
 
-    this.currentDistance = this.getDistance(position.coords.latitude, position.coords.longitude, this.eventLocation);
+    this.getDistance(position.coords.latitude, position.coords.longitude, this.eventLocation).subscribe((distance: Object) =>{
+      this.currentDistance = distance;
+    });
   }
 
   getDistance(currentPositionLat, currentPositionLon, destination: String): Observable<JSON> {
