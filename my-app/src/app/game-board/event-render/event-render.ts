@@ -9,7 +9,7 @@ import { GameEvent } from './GameEvent';
 import { Token } from '../../Token';
 // export interface GameEventRender {
 
-  //var service = new google.maps.DistanceMatrixService();
+  
 //   Games: string;
 //   position: number;
 //   Location: string;
@@ -99,8 +99,11 @@ import { Token } from '../../Token';
     //this.x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     console.log('latitude:  ' + position.coords.latitude);
     console.log('longitude: ' + position.coords.longitude);
-    console.log(this);
-    this.myGameEvent.getDistance(position.coords.latitude, position.coords.longitude, this.eventLocation).subscribe((distance: Object) =>{
+
+    let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
+    console.log(positionString);
+
+    this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
       this.currentDistance = distance;
     });
   }

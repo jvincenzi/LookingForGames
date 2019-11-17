@@ -91,8 +91,8 @@ export class CallNodeService {
   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
 
-  getDistance(currentPositionLat, currentPositionLon, destination: String): Observable<JSON> {
-    return this.http.get<JSON>("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + currentPositionLat + "," + currentPositionLon + "&destinations=" + destination +"&key=AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM");
+  getDistance(currentPosition, destination: String): Observable<JSON> {
+    return this.http.get<JSON>("https://lfgnodesrv.azurewebsites.net/getDistance/" + currentPosition + "?" + destination);
   }
 
 }
