@@ -34,9 +34,9 @@ export class AppComponent {
     this.sessionTokenData._id = history.state.sessionToken._id;
     this.sessionTokenData.UserName = history.state.sessionToken.UserName;
     //this.sessionTokenData.Password = history.state.sessionToken..Password; // SECURITY RISK
+    this.sessionTokenData.Email = history.state.sessionToken.Email;
     this.sessionTokenData.FirstName = history.state.sessionToken.FirstName;
     this.sessionTokenData.LastName = history.state.sessionToken.LastName;
-    this.sessionTokenData.Email = history.state.sessionToken.Email;
     this.sessionTokenData.Telephone = history.state.sessionToken.Telephone;
     this.sessionTokenData.DateOfBirth = history.state.sessionToken.DateOfBirth;
     this.sessionTokenData.Country = history.state.sessionToken.Country;
@@ -55,7 +55,7 @@ export class AppComponent {
     this.sessionTokenData.UID = history.state.sessionToken.UID;
     this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
     this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
-    console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:       ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
+    console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:           ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.sessionTokenData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.sessionTokenData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
       
   }
 }

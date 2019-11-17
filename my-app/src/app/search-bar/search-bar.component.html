@@ -63,7 +63,7 @@
     </div>
     <br />
     <a routerLink="/createGameEvent">Host an event here!</a>
-    <p id="centerMe">Already have an account? Sign In</p>
+    <p id="centerMe">Already have an account? <a routerLink="/signIn" [state]="{sessionToken: sessionTokenData}">Sign in</a></p>
   </div>
 </div>
 

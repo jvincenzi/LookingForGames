@@ -4,7 +4,7 @@ import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
 import { UserAccount } from '../UserAccount';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -17,17 +17,30 @@ export class SignInComponent implements OnInit {
   sessionTokenData: Token;
   userName = new FormControl('');
   userPassword1 = new FormControl('');;
+  curlatitude = 40;
+  curlongitude = 100;
   
+  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
+    this.sessionTokenData = new Token();
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+  }
+
+  ngOnInit() {
+    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    this.getLocation();
+  }
+
   submitSignin() {
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
+    
+    // Put loading code icon here ////////////////////////////////////////////////////////
+    document.getElementById('errorMsgLabel').innerHTML = 'Please Wait...';
+    document.getElementById('errorMsgLabel').style.color = "red";
+  
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
-      
-      //document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
-      //console.log( userData );
-
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
@@ -50,11 +63,11 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
-      history.state.sessionToken.userLatitude = userData.userLatitude; // might not need to get this data from mongoDB 
-      history.state.sessionToken.userLongitude = userData.userLongitude; // might not need to get this data from mongoDB 
-      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+      history.state.sessionToken.userLatitude = this.curlatitude; // might not need to get this data from mongoDB 
+      history.state.sessionToken.userLongitude = this.curlongitude; // might not need to get this data from mongoDB 
+      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
       
-      /*
+      
       this.sessionTokenData._id = userData._id;
       this.sessionTokenData.FirstName = userData.FirstName;
       this.sessionTokenData.LastName = userData.LastName;
@@ -76,22 +89,38 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.Location = userData.Location;
       this.sessionTokenData.createdOn = userData.createdOn;
       this.sessionTokenData.UID = userData.UID;
-      this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
-      this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
-      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id: ' + this.sessionTokenData._id + "\r\nthis.sessionTokenData FirstName: " + this.sessionTokenData.FirstName + "\r\nthis.sessionTokenData Address:   " + this.sessionTokenData.Address+'\r\n////////////////////////////////////////////////');
-      */
+      this.sessionTokenData.userLatitude = this.curlatitude;
+      this.sessionTokenData.userLongitude = this.curlongitude;
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:        ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:  ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:    ' + this.sessionTokenData.Address+'\r\nsessionTokenData.userLatitude:    ' + this.sessionTokenData.userLatitude + '\r\nsessionTokenData.userLongitude:   ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
+    
+      
+      console.log('this.curlatitude:  '+this.curlatitude+'\r\nthis.curlongitude: '+this.curlongitude);
+      document.getElementById('errorMsgLabel').innerHTML = '';
+      document.getElementById('errorMsgLabel').style.color = "black";
+      console.log('/// Done logging in ... ///');
+      
+      // put loading icon here ////////////////////////////////////////////////////////
+      // Now move user to home page ///////////////////////////////////////////////////
+      
     })
     
   } 
 
-  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
-    this.sessionTokenData = new Token();
-    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+    }else {
+      console.log('/// Geolocation is not supported by this browser. ///:  ');
+      document.getElementById('errorMsgLabel').innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  setPosition(position) {
+    this.curlatitude = position.coords.latitude;
+    this.curlongitude = position.coords.longitude;
+    //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
   }
 
-  ngOnInit() {
-    //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-  }
+  
 
 
 }

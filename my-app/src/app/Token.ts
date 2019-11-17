@@ -1,10 +1,10 @@
 export class Token {
   _id: string;
-  FirstName: string;
-  LastName: string;
-  Email: string;
   UserName: string;
   Password: string;
+  Email: string;
+  FirstName: string;
+  LastName: string;
   Telephone: string;
   DateOfBirth: Date;
   Country: string; // new
