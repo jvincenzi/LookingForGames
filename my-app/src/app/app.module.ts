@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -25,6 +25,8 @@ import { eventLog } from './game-board/eventlog/event-log';
 import { eventDialog} from './game-board/eventdialog/event-dialog';
 import { eventRender} from './game-board/event-render/event-render';
 import { CreateEventComponent } from './create-event/create-event.component';
+
+
 
 @NgModule({
   declarations: [
@@ -56,10 +58,16 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MaterialModuleSample
     
   ],
-  providers: [],
+  providers: [
+      
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // fakeBackendProvider
+],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
 
-// DO NOT UN-COMMENT THIS -- This line below broke our app on azure (it is serving a life-sentence as a comment as punishment)
+ }
 //platformBrowserDynamic().bootstrapModule(AppModule);

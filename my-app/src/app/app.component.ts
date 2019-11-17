@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
+
+//import { AuthenticationService } from './_services';
+import { UserAccount } from './UserAccount';
+import { Router } from '@angular/router';
+
 import { Token } from './Token';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +14,8 @@ import { Token } from './Token';
 })
 
 export class AppComponent {
-  title = 'Looking For Games';
+   currentUser: UserAccount;
+   title = 'Looking For Games';
   atHome = true;
   sessionTokenData: Token;
 
@@ -16,15 +23,14 @@ export class AppComponent {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
     this.sessionTokenData = new Token();
   }
-
-  newPage (){
-    this.atHome = false;
-  }
-
-  ngOnInit() {
+   ngOnInit() {
     //newUser: UserAccount = new UserAccount();
     //this.newUser.setValue(userData.FirstName.toString());
     
+  }
+
+  newPage (){
+         this.atHome = false;
   }
 
   renderHome (){
@@ -59,3 +65,14 @@ export class AppComponent {
       
   }
 }
+//   title = 'my-app';
+//   atHome = true;
+
+//   newPage (){
+//     this.atHome = false;
+//   }
+
+//   renderHome (){
+//     this.atHome = true;
+//   }
+// }

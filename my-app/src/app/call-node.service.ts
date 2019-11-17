@@ -91,5 +91,9 @@ export class CallNodeService {
   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
 
+  getDistance(currentPosition, destination: String): Observable<JSON> {
+    return this.http.get<JSON>("https://lfgnodesrv.azurewebsites.net/getDistance/" + currentPosition + "?" + destination);
+  }
+
 }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Token } from '../Token';
+
+
+
 
 
 @Component({
@@ -7,6 +9,8 @@ import { Token } from '../Token';
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.css']
 })
+
+
 
 export class GameBoardComponent implements OnInit {
 
@@ -60,4 +64,3 @@ export class GameBoardComponent implements OnInit {
 //   }
 
  
-// }

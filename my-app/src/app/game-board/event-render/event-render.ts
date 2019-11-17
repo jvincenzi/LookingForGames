@@ -1,8 +1,10 @@
 import {DataSource} from '@angular/cdk/collections';
 import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import { CallNodeService } from '../../call-node.service'
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { GameEvent } from './GameEvent';
 import { Token } from '../../Token';
 // export interface GameEventRender {
@@ -24,7 +26,7 @@ import { Token } from '../../Token';
     templateUrl: 'event-render.html',
   })
 
-
+  @Injectable({ providedIn: 'root' })
   export class eventRender implements OnInit {
 
     
@@ -34,6 +36,10 @@ import { Token } from '../../Token';
   dummyToken: Token = new Token();
 
   selectedGame: GameEvent;
+
+  eventLocation: String;
+
+  currentDistance: Object;
   
   getGames(): void {
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
@@ -76,7 +82,33 @@ import { Token } from '../../Token';
     this.myGameEvent.updateGame(theGame).subscribe();
   }
 
-  constructor(private myGameEvent: CallNodeService, private router: Router) { }
+  getPosition(eventLocation) {
+    console.log(eventLocation);
+    this.eventLocation = eventLocation;
+    console.log(this.eventLocation + "is what we set this.eventLocation to");
+    console.log('/// in getLocation() ///:  ');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
+    } else {
+      console.log('/// Geolocation is not supported by this browser. ///:  ');
+      //this.x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  getLocation(position) {
+    //this.x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    console.log('latitude:  ' + position.coords.latitude);
+    console.log('longitude: ' + position.coords.longitude);
+
+    let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
+    console.log(positionString);
+
+    this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
+      this.currentDistance = distance;
+    });
+  }
+
+  constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { }
   ngOnInit() {
     this.getGames();
   }

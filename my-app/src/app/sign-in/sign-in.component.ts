@@ -4,7 +4,6 @@ import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
 import { UserAccount } from '../UserAccount';
-import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +19,7 @@ export class SignInComponent implements OnInit {
   curlatitude = 40;
   curlongitude = 100;
   
-  constructor(private callNodeService: CallNodeService, private route: ActivatedRoute) {
+  constructor(private callNodeService: CallNodeService) { //, private route: ActivatedRoute
     this.sessionTokenData = new Token();
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
@@ -104,7 +103,7 @@ export class SignInComponent implements OnInit {
       
     })
     
-  } 
+  }
 
   getLocation() {
     if (navigator.geolocation) {

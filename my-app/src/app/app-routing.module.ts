@@ -8,14 +8,22 @@ import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Token } from './Token';
 
+import { SearchBarComponent } from './search-bar/search-bar.component';
+
 const myRoutes: Routes = [
+  
+ // { path: '', component: SearchBarComponent, canActivate: [AuthGuard] },
+  { path: 'searchBar', component:SearchBarComponent},
   { path: 'signIn', component: SignInComponent },
   { path: 'gameBoard', component: GameBoardComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'myAccount', component: ShowUserInfoComponent },
-  { path: 'paymentAuth', component: PaymentAuthComponent },
-  { path: 'createGameEvent', component: CreateEventComponent }//,
-//{ path: 'users', component: UsersComponent }
+  { path: 'myAccount', component: ShowUserInfoComponent},
+  { path: 'paymentAuth', component: PaymentAuthComponent},
+  { path: 'createGameEvent', component: CreateEventComponent},
+  //{ path: 'users', component: UsersComponent }
+
+     // otherwise redirect to home
+  { path: '**', redirectTo: '' }
  ];
  
 

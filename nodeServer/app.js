@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const userController = require("./controllers/UserController");
 const loginController = require("./controllers/LoginController");
 const gameController = require("./controllers/GameController");
+const googleController = require("./controllers/GoogleController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
 
@@ -58,7 +59,11 @@ app
 app
   .route("/games/:gameid")
   .delete(gameController.deleteGame)
-  .put(gameController.joinGame)
+  .put(gameController.joinGame);
+
+app
+  .route("/getDistance/:location?destination")
+  .get(googleController.getDistance);
   
 app.listen(port, () => {
   console.log(`--------------------------------------------------------------------------------`);
