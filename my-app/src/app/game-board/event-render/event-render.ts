@@ -29,7 +29,9 @@ import { Token } from '../../Token';
   @Injectable({ providedIn: 'root' })
   export class eventRender implements OnInit {
 
-    
+  gameFilter;
+
+  gameNames= ["Dungeons and Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
   
@@ -42,6 +44,9 @@ import { Token } from '../../Token';
   currentDistance: Object;
   
   getGames(): void {
+    console.log("In getGames()");
+    console.log(this.gameFilter);
+
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
       this.ourGame = gameData;
       return gameData;
