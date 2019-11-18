@@ -8,8 +8,8 @@ const cors = require('cors')
 
 var corsOptions = {
   // this URL must match the URL that the Angular app will call from
-  //origin: 'http://localhost:4200', /////////////////////////////// LocalHost Config ///////////////////////////////  
-  origin: 'lookingforgames.azurewebsites.net/', 
+  origin: 'http://localhost:4200', /////////////////////////////// LocalHost Config ///////////////////////////////  
+  //origin: 'lookingforgames.azurewebsites.net/', 
   optionsSuccessStatus: 200 
 }
 
