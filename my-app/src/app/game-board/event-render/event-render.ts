@@ -104,6 +104,7 @@ import { Token } from '../../Token';
     console.log(positionString);
 
     this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
+      console.log(distance);
       this.currentDistance = distance;
     });
   }
