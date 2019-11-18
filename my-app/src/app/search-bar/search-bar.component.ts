@@ -9,7 +9,7 @@ export class SearchBarComponent implements OnInit {
 
   selectedGame = "What do you want to play today?";
   gameNames= ["Dungeons and Dragons", "Pathfinder", "Monopoly"];
-
+  sessionTokenData: object;
   constructor() { }
 
   ngOnInit() {
