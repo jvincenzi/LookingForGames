@@ -4,12 +4,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let nowDate = Date.now.toString();
-let expDate = new Date(
-  nowDate.getFullYear()+1, 
-  nowDate.getMonth(),
-  nowDate.getDate()
-);
+
 
 const UserSchema = new Schema({
   // TESTING SCHEMA
@@ -79,7 +74,7 @@ const UserSchema = new Schema({
   SubscriptionExp: {
     type: String, 
     required: false,
-    default: expDate
+    //default: expDate
   },
   SubscriptionLv: {
     type: String, //level (0=freeAccount, 1=monthly or 12=yearly)
@@ -120,13 +115,18 @@ const UserSchema = new Schema({
     type: Number, 
     required: false
   }
+});
 
-
-
+/*
   ///////////////////////
   // PRODUCTION SCHEMA //
   ///////////////////////
-/*
+let expDate = new Date(
+  Date.now.toString().substring(0, 4), 
+  Date.now.toString().substring(5, 7), 
+  Date.now.toString().substring(8, 10)
+);
+const UserSchema = new Schema({
   _id: {
     type: String,
     required: true,
@@ -235,7 +235,7 @@ const UserSchema = new Schema({
     type: Number, 
     required: false
   }
-  */
 });
+*/
 
 module.exports = mongoose.model("User", UserSchema);
