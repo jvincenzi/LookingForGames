@@ -41,7 +41,7 @@ const UserSchema = new Schema({
   },
   DateOfBirth: {
     type: Date, 
-    required: false
+    //required: true
   },
   Country: {
     type: String, 
@@ -49,7 +49,7 @@ const UserSchema = new Schema({
   },
   Address: {
     type: String, 
-    required: false
+    //required: true
   },
   Address2: {
     type: String, 
@@ -189,7 +189,8 @@ const UserSchema = new Schema({
   },
   FreeAccount: {
     type: Boolean, 
-    required: false
+    required: false, 
+    default: true
   },
   SubscriptionExp: {
     type: String, 
@@ -198,7 +199,8 @@ const UserSchema = new Schema({
   },
   SubscriptionLv: {
     type: String, //level (0=freeAccount, 1=monthly or 12=yearly)
-    required: false
+    required: false,
+    default: 0
   },
   AdminAccess: {
     type: String, 
