@@ -13,7 +13,7 @@ export interface Gamez {
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  //sessionTokenData: Token;
+  sessionTokenData: Token;
   @Input() sessionTokenDataInput: Token = new Token();;
   @Output() sessionTokenDataOutput = new EventEmitter<Token>();
   selectionData: string;
