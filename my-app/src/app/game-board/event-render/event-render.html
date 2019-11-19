@@ -26,13 +26,16 @@
           <hr>
           <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
           <button (click)="getGames()">Filter Gameboard</button>
-          <form>
-          <mat-select [(ngModel)]="gameFilter" name="filter">
-            <mat-option *ngFor="let games of gameNames" [(value)]="games.value">
-              {{games}}
-            </mat-option>
-          </mat-select>
-          </form>
+          <mat-form-field>
+            <mat-label>Select a game</mat-label>
+            <mat-select [(value)]="gameFilter">
+                <mat-option value="None">None</mat-option>
+              <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
+              <mat-option value="Pathfinder">Pathfinder</mat-option>
+              <mat-option value="Monopoly">Monopoly</mat-option>
+            </mat-select>
+          </mat-form-field>
+
           </div>
           <p>{{gameFilter}}</p>
       </div>

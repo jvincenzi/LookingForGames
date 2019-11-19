@@ -29,7 +29,7 @@ import { Token } from '../../Token';
   @Injectable({ providedIn: 'root' })
   export class eventRender implements OnInit {
 
-  gameFilter;
+  gameFilter = "None";
 
   gameNames= ["Dungeons and Dragons", "Pathfinder", "Monopoly"];
 
