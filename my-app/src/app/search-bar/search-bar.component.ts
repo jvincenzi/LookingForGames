@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SearchSelection } from './SearchSelection';
 import { Token } from '../Token';
+import { DataStore } from '../DataStore';
 
 export interface Gamez {
   value: string;
@@ -13,12 +14,12 @@ export interface Gamez {
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  sessionTokenData: Token;
-  @Input() sessionTokenDataInput: Token = new Token();;
-  @Output() sessionTokenDataOutput = new EventEmitter<Token>();
+  //sessionTokenData: Token;
+  @Input() localData: Token = new Token();
+  //@Output() sessionTokenDataOutput = new EventEmitter<Token>(); // emits Token 
+  @Output() searchSelectionEmitter = new EventEmitter<string>(); // emits string
   selectionData: string;
   hideButton: boolean = true;
-  //searchSelection: SearchSelection;
   selectedGame: string;
   gameNames: Gamez[] = [
     { value: 'd&d', viewValue: "Dungeons & Dragons"},
@@ -30,27 +31,17 @@ export class SearchBarComponent implements OnInit {
   
 
   constructor() {
-    //this.searchSelection = new SearchSelection();
-    //this.sessionTokenDataInput = new Token();
   }
 
   ngOnInit() {
-
   }
 
   findThisGame() {
-    
-    console.log("///////////////////////////////////// In search-bar /////////////////////////////////////");
-    console.log("Selected game, this.selectedGame.value: " + this.selectedGame);
-    //console.log("Selected game, this.selectionData.value: " + this.searchSelection.selectionData);
-    
-    //this.searchSelection.selectionData = this.selectedGame;
-    this.sessionTokenDataInput.FirstName = this.selectedGame; // change /FirstName to anothe prop once you get this working ///////////////
-    console.log("Selected game, this.sessionTokenDataInput.FirstName: " + this.sessionTokenDataInput.FirstName);
-    this.sessionTokenDataOutput.emit(this.sessionTokenDataInput);
-
-    
-
+    console.log(" <<<<<< In search-bar >>>>>> ");
+    //console.log("Selected game, this.selectedGame.value: " + this.selectedGame);
+    this.localData.Location = this.selectedGame.toString(); // change /Location to another prop once you get this working ///////////////
+    console.log("Selected game, this.sessionTokenDataInput.Location: " + this.localData.Location);
+    this.searchSelectionEmitter.emit(this.localData.Location);
   }
 
   onClick() {
@@ -58,27 +49,3 @@ export class SearchBarComponent implements OnInit {
   }
 
 }
-/*
-import {Component} from '@angular/core';
-
-export interface Food {
-  value: string;
-  viewValue: string;
-}
-
-//
-// @title Basic select
-//
-@Component({
-  selector: 'select-overview-example',
-  templateUrl: 'select-overview-example.html',
-  styleUrls: ['select-overview-example.css'],
-})
-export class SelectOverviewExample {
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
-}
-*/

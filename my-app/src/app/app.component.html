@@ -30,7 +30,7 @@
       <app-banner-ad></app-banner-ad>
 
       <br />
-      <app-search-bar *ngIf="atHome" (sessionTokenDataOutput)="getMessage($event)"></app-search-bar>
+      <app-search-bar *ngIf="atHome" (searchSelectionEmitter)="getSearchSelection($event)"></app-search-bar>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

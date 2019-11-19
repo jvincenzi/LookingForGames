@@ -1,9 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
 //import { AuthenticationService } from './_services';
 import { UserAccount } from './UserAccount';
 import { Router } from '@angular/router';
-
 import { Token } from './Token';
 import { Observable, interval, Subscription } from 'rxjs';
 
@@ -15,40 +13,40 @@ import { Observable, interval, Subscription } from 'rxjs';
 })
 
 export class AppComponent {
-  //@Input() sessionTokenDataInput = new EventEmitter<Token>();
-  @Output() sessionTokenDataOutput = new EventEmitter<Token>();
-  @Input() sessionTokenData: Token;
+  //@Output() sessionTokenDataOutput = new EventEmitter<Token>();
+  @Input() sessionTokenData: Token; // might not need to habe the sessionTokenDate be an @Input() 
   currentUser: UserAccount;
   title = 'Looking For Games';
   atHome = true;
   
-  
-
   private updateSubscription: Subscription;
 
   constructor(private router: Router) {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
     this.sessionTokenData = new Token();
-
-  
-
   }
+
   ngOnInit() {
     this.updateSubscription = interval(1000).subscribe(
       (val) => { this.updateStats()
-    }
-);
+    });
   }
-ngOnDestroy() {
-    this.updateSubscription.unsubscribe();
-}
-private updateStats() {
-    console.log('I am doing something every second');
 
-}
+  ngOnDestroy() {
+    this.updateSubscription.unsubscribe();
+  }
+  private updateStats() {
+    console.log('I am doing something every second');
+  }
 
   newPage (){
     this.atHome = false;
+  }
+
+  getSearchSelection(searchSelection: string) {
+    console.log(' <<<<<< in getSearchSelection() >>>>>>');
+    this.sessionTokenData.Location = searchSelection;
+    console.log('Location/searchSelection: ' + this.sessionTokenData.Location.toString());
   }
 
   renderHome (){
@@ -80,9 +78,6 @@ private updateStats() {
     this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
     this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
     console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:           ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.sessionTokenData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.sessionTokenData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
-   
-
- 
   }
   
 }

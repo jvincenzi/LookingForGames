@@ -33,19 +33,19 @@ export class SignInComponent implements OnInit {
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
     
     // Put loading code icon here ////////////////////////////////////////////////////////
-    document.getElementById('errorMsgLabel').innerHTML = 'Please Wait...';
+    document.getElementById('errorMsgLabel').innerHTML = '<b>Please Wait...</b>';
     document.getElementById('errorMsgLabel').style.color = "red";
   
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
-         history.state.sessionToken._id = userData._id;
+      history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
       history.state.sessionToken.Email = userData.Email;
       history.state.sessionToken.UserName = userData.UserName;
-      //history.state.sessionToken.Password = userData.;
+      //history.state.sessionToken.Password = userData.Password;
       history.state.sessionToken.Telephone = userData.Telephone;
       history.state.sessionToken.DateOfBirth = userData.DateOfBirth;
       history.state.sessionToken.Address = userData.Address;
@@ -72,7 +72,7 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.LastName = userData.LastName;
       this.sessionTokenData.Email = userData.Email;
       this.sessionTokenData.UserName = userData.UserName;
-      //this.sessionTokenData.Password = userData.Telephone;
+      //this.sessionTokenData.Password = userData.Password;
       this.sessionTokenData.Telephone = userData.Telephone;
       this.sessionTokenData.DateOfBirth = userData.DateOfBirth;
       this.sessionTokenData.Address = userData.Address;
@@ -90,14 +90,13 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.UID = userData.UID;
       this.sessionTokenData.userLatitude = this.curlatitude;
       this.sessionTokenData.userLongitude = this.curlongitude;
-      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:        ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:  ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:    ' + this.sessionTokenData.Address+'\r\nsessionTokenData.userLatitude:    ' + this.sessionTokenData.userLatitude + '\r\nsessionTokenData.userLongitude:   ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
-    
-      
-      console.log('this.curlatitude:  '+this.curlatitude+'\r\nthis.curlongitude: '+this.curlongitude);
+
+      console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:        ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:  ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:    ' + this.sessionTokenData.Address+'\r\nsessionTokenData.userLatitude:    ' + this.sessionTokenData.userLatitude + '\r\nsessionTokenData.userLongitude:   ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');  
+      //console.log('this.curlatitude:  ' + this.curlatitude + '\r\nthis.curlongitude: ' + this.curlongitude);
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
       console.log('/// Done logging in ... ///');
-     // this.router.navigate(['/']);
+      // this.router.navigate(['/']);
       // put loading icon here ////////////////////////////////////////////////////////
       // Now move user to home page ///////////////////////////////////////////////////
       
