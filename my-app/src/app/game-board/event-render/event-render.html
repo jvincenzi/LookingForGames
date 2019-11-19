@@ -25,7 +25,14 @@
             <h4 style="background: lightslategrey">For join game please <a routerLink="/signIn">SignIn</a></h4> 
           <hr>
           <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
-          
-          
+          <button (click)="getGames()">Filter Gameboard</button>
+          <form>
+          <mat-select [(ngModel)]="gameFilter" name="filter">
+            <mat-option *ngFor="let games of gameNames" [(value)]="games.value">
+              {{games}}
+            </mat-option>
+          </mat-select>
+          </form>
           </div>
+          <p>{{gameFilter}}</p>
       </div>
