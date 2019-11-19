@@ -11,13 +11,14 @@ import { HttpClient } from '@angular/common/http';
 import { UserAccount } from './UserAccount';
 import { UserSignInData } from './UserSignInData';
 import { GameEvent } from './game-board/event-render/GameEvent';
-
+import { CommentItem } from './Comment';
 // export interface Tasks {
 //   name: string;
 // }
 let userNodeAddress: string;
 let gameNodeAddress: string;
 let loginNodeAddress: string;
+let CommentNodeAddress: string;
 
 
 let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
@@ -27,11 +28,14 @@ if (useLocalHost) {
   userNodeAddress =  "http://localhost:3000/users";
   loginNodeAddress = "http://localhost:3000/signin";
   gameNodeAddress = "http://localhost:3000/games";
+  CommentNodeAddress = "http://localhost:3000/Comments";
+
 } else {
   userNodeAddress = "https://lfgnodesrv.azurewebsites.net/users";
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
   gameNodeAddress = "https://lfgnodesrv.azurewebsites.net/games";
+ // CommentNodeAddress = "https://lfgnodesrv.azurewebsites.net/Comments";
 }
 
 @Injectable({ providedIn: 'root' })
@@ -43,6 +47,20 @@ export class CallNodeService {
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
+///////////////////// Comment related routes //////////////////////
+getAllComment(): Observable<CommentItem[]> {
+  return this.http.get<CommentItem[]>(CommentNodeAddress);
+}
+getComment(commentID: string): Observable<CommentItem> {
+  return this.http.get<CommentItem>(CommentNodeAddress + '/' + commentID);
+}
+insertComment(Comment: CommentItem): Observable<CommentItem> {
+  return this.http.post<CommentItem>(CommentNodeAddress + '/', Comment);
+}
+deleteComment(Comment: CommentItem) {
+  return this.http.delete(CommentNodeAddress + '/' + Comment._id);
+}
+
 
   ////////////////////// User related routes //////////////////////
   
@@ -86,7 +104,7 @@ export class CallNodeService {
     //return this.http.get<UserAccount[]>('http://localhost:3000/users');
     return this.http.get<GameEvent[]>(gameNodeAddress);
   }
-  getTask(Title: string): Observable<GameEvent> {
+  getGame(Title: string): Observable<GameEvent> {
     return this.http.get<GameEvent>(gameNodeAddress + '/' + Title);
   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }

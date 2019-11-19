@@ -6,6 +6,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ShowUserInfoComponent } from './show-user-info/show-user-info.component';
 import { PaymentAuthComponent } from './payment-auth/payment-auth.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { eventDialog } from './game-board/eventdialog/event-dialog'
 import { Token } from './Token';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
@@ -20,6 +21,7 @@ const myRoutes: Routes = [
   { path: 'myAccount', component: ShowUserInfoComponent},
   { path: 'paymentAuth', component: PaymentAuthComponent},
   { path: 'createGameEvent', component: CreateEventComponent},
+  {path: 'eventDialog', component:eventDialog },
   //{ path: 'users', component: UsersComponent }
 
      // otherwise redirect to home

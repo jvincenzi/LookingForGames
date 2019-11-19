@@ -4,6 +4,7 @@ const userController = require("./controllers/UserController");
 const loginController = require("./controllers/LoginController");
 const gameController = require("./controllers/GameController");
 const googleController = require("./controllers/GoogleController");
+const CommentController = require("./controllers/CommentController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
 
@@ -64,6 +65,17 @@ app
 app
   .route("/getDistance/:location?destination")
   .get(googleController.getDistance);
+
+app
+  .route("/comment")
+  .get(CommentController.listAllComment)
+  .post(CommentController.createNewComment)
+
+  app
+  .route("/comment/:commentid")
+  .get(CommentController.readComment)
+  .delete(CommentController.deleteComment);
+
   
 app.listen(port, () => {
   console.log(`--------------------------------------------------------------------------------`);

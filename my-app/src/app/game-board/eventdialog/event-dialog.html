@@ -13,16 +13,19 @@
       <hr>
       
   <div ng-app="">
-    <!--<b>{{Name}}</b>
-    <p>{{Comment}} </p> -->
+    <b>{{Name}}</b>
+    <p>{{Comment}} </p>
   
-      
+
   
       <hr>
       <b>New Comment</b><br/>
-      <input ng-model="Name" Style="width:20%;display:inline-block;" class="form-control" placeholder="Write Your Name.. " /> 
-      <input ng-model="Comment" Style="width:50%;display:inline-block;" class="form-control" placeholder="Write Your Comments.. " /> 
-      <button class="btn btn-danger">Add Comment</button>
+      <input ng-model="Name" id="Name" Style="width:20%;display:inline-block;" class="form-control" placeholder="Write Your Name.. " /> 
+     <!-- <input ng-model="date" id="date" Style="width:20%;display:inline-block;" class="form-control" placeholder="date" />  -->
+      <input ng-model="Comment" id="Comment" Style="width:50%;display:inline-block;" class="form-control" placeholder="Write Your Comments.. " /> 
+      <button (click)="submitCommentForm()" 
+      id="submitCommentForm"
+      class="btn btn-danger">Add Comment</button>
      </div>
       </div>
   </div>
