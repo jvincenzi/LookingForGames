@@ -25,4 +25,3 @@ exports.getDistance = (req, res) => {
 
     
 };
-*/

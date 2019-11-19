@@ -3,6 +3,9 @@ import {FormControl, Validators} from '@angular/forms';
 import { CallNodeService } from '../../call-node.service'
 import { Router } from '@angular/router';
 import { Users } from './User';
+import {UserAccount } from '../../UserAccount'
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'event-log',
@@ -13,6 +16,12 @@ import { Users } from './User';
 
 
 export class eventLog implements OnInit{
+
+  private api = 'Admin@LookForGame.com';
+
+  public sendEmail(body: UserAccount) {
+    return this.http.post(`${this.api}/sendEmail`, body);
+  }
 
   User: Users[];
 
@@ -30,7 +39,7 @@ export class eventLog implements OnInit{
  
 
 
-  constructor(private myUsers: CallNodeService, private router: Router) { }
+  constructor(private myUsers: CallNodeService, private router: Router, private http: HttpClient) { }
   ngOnInit() {
     this.getUser();
   }

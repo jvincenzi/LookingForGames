@@ -33,23 +33,11 @@ export class AppComponent {
   
 
   }
-<<<<<<< HEAD
   ngOnInit() {
     this.updateSubscription = interval(1000).subscribe(
       (val) => { this.updateStats()
     }
 );
-=======
-   ngOnInit() {
-    //newUser: UserAccount = new UserAccount();
-    //this.newUser.setValue(userData.FirstName.toString());
-    //@Output() this.sessionTokenData;
-    this.sessionTokenDataOutput.emit(this.sessionTokenData);
-  }
-
-  getMessage(message: Token) {
-    this.sessionTokenData = message;
->>>>>>> 011747dec143ce44202fdb83313842e7c2401be2
   }
 ngOnDestroy() {
     this.updateSubscription.unsubscribe();
