@@ -16,7 +16,16 @@
                         </tr>
                         <tr>
                             <th><label for="gameName">Game Name: </label> </th>
-                            <th><input type="text" id="gameName" [formControl]="gameName" /></th>
+                            <!--<th><input type="text" id="gameName" [formControl]="gameName" /></th> -->
+                            
+                            <th>
+                                <select id="gameName" [formControl]="gameName">
+                                    <option value="Dungeons and Dragons">Dungeons and Dragons</option>
+                                    <option value="Pathfinder">Pathfinder</option>
+                                    <option value="Monopoly">Monopoly</option>
+                                </select>
+                            </th>
+                            
                         </tr>
                         <tr>
                             <th><label for="location">Location: </label></th>

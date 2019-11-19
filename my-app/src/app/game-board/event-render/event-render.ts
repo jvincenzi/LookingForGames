@@ -29,7 +29,9 @@ import { Token } from '../../Token';
   @Injectable({ providedIn: 'root' })
   export class eventRender implements OnInit {
 
-    
+  gameFilter = "None";
+
+  gameNames= ["Dungeons And Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
   
@@ -40,11 +42,36 @@ import { Token } from '../../Token';
   eventLocation: String;
 
   currentDistance: Object;
+
+  constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
+
+  }
+
+  ngOnInit() {
+    this.getGames();
+    
+  }
   
   getGames(): void {
+    console.log("In getGames()");
+    
+
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
+      //change gameData to ourGame if this doesn't work
+      console.log(gameData);
+      console.log(this.gameFilter);
+      if(this.gameFilter!="None"){
+        this.ourGame = [];
+        for(let i=0;i<gameData.length;i++){
+          if(gameData[i].GameType==this.gameFilter){
+            this.ourGame.push(gameData[i]);
+          }
+
+        }
+        return this.ourGame;
+      }
       this.ourGame = gameData;
-      return gameData;
+      return this.ourGame;
     })
   }
 
@@ -104,14 +131,12 @@ import { Token } from '../../Token';
     console.log(positionString);
 
     this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
+      console.log(distance);
       this.currentDistance = distance;
     });
   }
 
-  constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { }
-  ngOnInit() {
-    this.getGames();
-  }
+  
 
 }
 

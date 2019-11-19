@@ -12,7 +12,6 @@
       <a mat-button class="txtColor" [routerLink]="'/myAccount'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> My Account </a>
     </div>
   </mat-toolbar-row>
-
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -31,7 +30,7 @@
       <app-banner-ad></app-banner-ad>
 
       <br />
-      <app-search-bar *ngIf="atHome"></app-search-bar>
+      <app-search-bar *ngIf="atHome" (sessionTokenDataOutput)="getMessage($event)"></app-search-bar>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

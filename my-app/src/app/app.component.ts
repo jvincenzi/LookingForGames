@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 //import { AuthenticationService } from './_services';
 import { UserAccount } from './UserAccount';
@@ -15,10 +15,14 @@ import { Observable, interval, Subscription } from 'rxjs';
 })
 
 export class AppComponent {
-   currentUser: UserAccount;
-   title = 'Looking For Games';
+  //@Input() sessionTokenDataInput = new EventEmitter<Token>();
+  @Output() sessionTokenDataOutput = new EventEmitter<Token>();
+  @Input() sessionTokenData: Token;
+  currentUser: UserAccount;
+  title = 'Looking For Games';
   atHome = true;
-  sessionTokenData: Token;
+  
+  
 
   private updateSubscription: Subscription;
 
@@ -29,11 +33,23 @@ export class AppComponent {
   
 
   }
+<<<<<<< HEAD
   ngOnInit() {
     this.updateSubscription = interval(1000).subscribe(
       (val) => { this.updateStats()
     }
 );
+=======
+   ngOnInit() {
+    //newUser: UserAccount = new UserAccount();
+    //this.newUser.setValue(userData.FirstName.toString());
+    //@Output() this.sessionTokenData;
+    this.sessionTokenDataOutput.emit(this.sessionTokenData);
+  }
+
+  getMessage(message: Token) {
+    this.sessionTokenData = message;
+>>>>>>> 011747dec143ce44202fdb83313842e7c2401be2
   }
 ngOnDestroy() {
     this.updateSubscription.unsubscribe();
@@ -44,7 +60,7 @@ private updateStats() {
 }
 
   newPage (){
-         this.atHome = false;
+    this.atHome = false;
   }
 
   renderHome (){

@@ -25,8 +25,8 @@ require("./config/db");
 const app = express();
 
 //this._baseUrl = 'http://localhost:3000/';
-const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
-//const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
+//const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
+const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

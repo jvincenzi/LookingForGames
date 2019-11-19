@@ -41,13 +41,14 @@
           <h4>What do you want to play today?</h4>
           <mat-form-field>
             <mat-label>Pick a game</mat-label>
-            <mat-select [(ngModel)]="selectedGame" name="game">
-              <mat-option *ngFor="let games of gameNames" [value]="games.value">
-                {{games}}
+            <mat-select [(ngModel)]="selectedGame" name="game" >
+              <mat-option *ngFor="let gamez of gameNames" [value]="gamez.value" >
+                {{gamez.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </form>
+
         <!--
         <select id="selectGame" [(ngModel)]="selectedGame">
           <option selected="selected">What do you want to play today?</option>
@@ -57,7 +58,7 @@
       </div>
       <br />
       <div id="centerMe">
-          <input id="searchButton" style="float: center; margin-top: 7px;" type="button" value="Find a game!"/>
+          <input id="searchButton"  (click)="findThisGame()" style="float: center; margin-top: 7px;" type="button" value="Find a game!"/><!--disabled="{hideButton}"-->
       </div>
                   
     </div>
