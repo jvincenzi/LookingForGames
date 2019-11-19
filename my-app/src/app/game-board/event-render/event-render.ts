@@ -40,6 +40,15 @@ import { Token } from '../../Token';
   eventLocation: String;
 
   currentDistance: Object;
+
+  constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
+
+  }
+
+  ngOnInit() {
+    this.getGames();
+    
+  }
   
   getGames(): void {
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
@@ -109,10 +118,7 @@ import { Token } from '../../Token';
     });
   }
 
-  constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { }
-  ngOnInit() {
-    this.getGames();
-  }
+  
 
 }
 

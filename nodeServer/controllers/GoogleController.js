@@ -1,6 +1,8 @@
+/*
 const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM'
 });
+*/
 
 
 exports.getDistance = (req, res) => {

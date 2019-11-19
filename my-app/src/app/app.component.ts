@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 //import { AuthenticationService } from './_services';
 import { UserAccount } from './UserAccount';
@@ -14,10 +14,14 @@ import { Token } from './Token';
 })
 
 export class AppComponent {
-   currentUser: UserAccount;
-   title = 'Looking For Games';
+  //@Input() sessionTokenDataInput = new EventEmitter<Token>();
+  @Output() sessionTokenDataOutput = new EventEmitter<Token>();
+  @Input() sessionTokenData: Token;
+  currentUser: UserAccount;
+  title = 'Looking For Games';
   atHome = true;
-  sessionTokenData: Token;
+  
+  
 
   constructor() {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
@@ -26,11 +30,16 @@ export class AppComponent {
    ngOnInit() {
     //newUser: UserAccount = new UserAccount();
     //this.newUser.setValue(userData.FirstName.toString());
-    
+    //@Output() this.sessionTokenData;
+    this.sessionTokenDataOutput.emit(this.sessionTokenData);
+  }
+
+  getMessage(message: Token) {
+    this.sessionTokenData = message;
   }
 
   newPage (){
-         this.atHome = false;
+    this.atHome = false;
   }
 
   renderHome (){
