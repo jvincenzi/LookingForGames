@@ -54,11 +54,20 @@ import { Token } from '../../Token';
   
   getGames(): void {
     console.log("In getGames()");
-    console.log(this.gameFilter);
+    
 
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
+      //change gameData to ourGame if this doesn't work
+      console.log(gameData);
+      if(this.gameFilter!="None"){
+        for(let i=0, len = gameData.length;i<len;i++){
+          if(gameData[i].GameType!=this.gameFilter){
+            gameData.splice(i,1);
+          }
+        }
+      }
       this.ourGame = gameData;
-      return gameData;
+      return this.ourGame;
     })
   }
 

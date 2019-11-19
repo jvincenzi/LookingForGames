@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
 
     this.newGame._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
     this.newGame.Title = this.title.value;
+    this.newGame.GameType = this.gameName.value;
     this.newGame.Location = this.location.value;
     this.newGame.Date = this.date.value;
     this.newGame.Restrictions = this.restrictions.value;
