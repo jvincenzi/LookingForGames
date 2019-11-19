@@ -31,7 +31,7 @@ import { Token } from '../../Token';
 
   gameFilter = "None";
 
-  gameNames= ["Dungeons and Dragons", "Pathfinder", "Monopoly"];
+  gameNames= ["Dungeons And Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
   
@@ -60,8 +60,8 @@ import { Token } from '../../Token';
       //change gameData to ourGame if this doesn't work
       console.log(gameData);
       if(this.gameFilter!="None"){
-        for(let i=0, len = gameData.length;i<len;i++){
-          if(gameData[i].GameType!=this.gameFilter){
+        for(let i=0;i<gameData.length;i++){
+          if(gameData[i].GameType!==this.gameFilter){
             gameData.splice(i,1);
           }
         }
