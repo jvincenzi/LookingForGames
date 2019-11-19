@@ -5,6 +5,7 @@ import { UserAccount } from './UserAccount';
 import { Router } from '@angular/router';
 
 import { Token } from './Token';
+import { Observable, interval, Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,20 +24,28 @@ export class AppComponent {
   
   
 
-  constructor() {
+  private updateSubscription: Subscription;
+
+  constructor(private router: Router) {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
     this.sessionTokenData = new Token();
-  }
-   ngOnInit() {
-    //newUser: UserAccount = new UserAccount();
-    //this.newUser.setValue(userData.FirstName.toString());
-    //@Output() this.sessionTokenData;
-    this.sessionTokenDataOutput.emit(this.sessionTokenData);
-  }
 
-  getMessage(message: Token) {
-    this.sessionTokenData = message;
+  
+
   }
+  ngOnInit() {
+    this.updateSubscription = interval(1000).subscribe(
+      (val) => { this.updateStats()
+    }
+);
+  }
+ngOnDestroy() {
+    this.updateSubscription.unsubscribe();
+}
+private updateStats() {
+    console.log('I am doing something every second');
+
+}
 
   newPage (){
     this.atHome = false;
@@ -71,8 +80,11 @@ export class AppComponent {
     this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
     this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
     console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:           ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.sessionTokenData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.sessionTokenData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
-      
+   
+
+ 
   }
+  
 }
 //   title = 'my-app';
 //   atHome = true;

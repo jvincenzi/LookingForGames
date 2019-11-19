@@ -28,6 +28,11 @@ import { CreateEventComponent } from './create-event/create-event.component';
 
 
 
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +47,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
     eventLog,
     eventDialog,
     CreateEventComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModuleSample
+    MaterialModuleSample,
+  
     
   ],
   providers: [

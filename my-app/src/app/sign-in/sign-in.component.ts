@@ -4,7 +4,7 @@ import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
 import { UserAccount } from '../UserAccount';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   curlatitude = 40;
   curlongitude = 100;
   
-  constructor(private callNodeService: CallNodeService) { //, private route: ActivatedRoute
+  constructor(private callNodeService: CallNodeService) {// private router: Router) { //, private route: ActivatedRoute
     this.sessionTokenData = new Token();
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
@@ -40,7 +40,7 @@ export class SignInComponent implements OnInit {
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
-      history.state.sessionToken._id = userData._id;
+         history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
       history.state.sessionToken.Email = userData.Email;
@@ -97,7 +97,7 @@ export class SignInComponent implements OnInit {
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
       console.log('/// Done logging in ... ///');
-      
+     // this.router.navigate(['/']);
       // put loading icon here ////////////////////////////////////////////////////////
       // Now move user to home page ///////////////////////////////////////////////////
       
