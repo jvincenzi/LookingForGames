@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
-    <h1>LFG</h1>
+    <h1>LFG</h1><!--textContent--><!--Karma didn't like that  '' was == null -->
     <span class="menu-spacer"></span>
     <div>
       <a mat-button class="txtColor" [routerLink]="'/'" (click)="renderHome()" [state]="{sessionToken: sessionTokenData}"> Home </a>

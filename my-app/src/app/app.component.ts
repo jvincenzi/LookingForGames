@@ -16,8 +16,9 @@ export class AppComponent {
   //@Output() sessionTokenDataOutput = new EventEmitter<Token>();
   @Input() sessionTokenData: Token; // might not need to habe the sessionTokenDate be an @Input() 
   currentUser: UserAccount;
-  title = 'Looking For Games';
-  atHome = true;
+  //title = 'Looking For Game's; // Karma didn't like that this wasn't set to" title = 'my-app';
+  title = 'my-app';
+  atHome: boolean = true;
   
   private updateSubscription: Subscription;
 
