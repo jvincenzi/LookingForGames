@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchSelection } from './SearchSelection';
 import { Token } from '../Token';
-import { DataStore } from '../DataStore';
 
 export interface Gamez {
   value: string;

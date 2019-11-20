@@ -13,7 +13,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 
 const myRoutes: Routes = [
   
- // { path: '', component: SearchBarComponent, canActivate: [AuthGuard] },
+   //{ path: '', component: SearchBarComponent, canActivate: [AuthGuard] },
   { path: 'searchBar', component:SearchBarComponent},
   { path: 'signIn', component: SignInComponent },
   { path: 'gameBoard', component: GameBoardComponent },
@@ -21,7 +21,7 @@ const myRoutes: Routes = [
   { path: 'myAccount', component: ShowUserInfoComponent},
   { path: 'paymentAuth', component: PaymentAuthComponent},
   { path: 'createGameEvent', component: CreateEventComponent},
-  {path: 'eventDialog', component:eventDialog },
+  { path: 'eventDialog', component:eventDialog },
   //{ path: 'users', component: UsersComponent }
 
      // otherwise redirect to home
