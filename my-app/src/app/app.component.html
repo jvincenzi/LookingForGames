@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
-    <h1>LFG</h1><!--textContent--><!--Karma didn't like that  '' was == null -->
+    <h1>{{ title }}</h1>
     <span class="menu-spacer"></span>
     <div>
       <a mat-button class="txtColor" [routerLink]="'/'" (click)="renderHome()" [state]="{sessionToken: sessionTokenData}"> Home </a>
@@ -28,6 +28,11 @@
   <mat-sidenav-content>
     <div style="height: 88vh;">
       <app-banner-ad></app-banner-ad>
+
+
+      <!-- Karma didn't like that 'content span' css selector was missing and didn't have the text "my-app app is running!" -->
+      <div class="content span" ><span>my-app app is running!</span></div>
+    
 
       <br />
       <app-search-bar *ngIf="atHome" (searchSelectionEmitter)="getSearchSelection($event)"></app-search-bar>
