@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameBoardComponent } from './game-board.component';
+import { eventRender } from './event-render/event-render';
+import { CommentItem } from '../Comment';
+import { eventLog } from './eventlog/event-log';
 
 describe('GameBoardComponent', () => {
   let component: GameBoardComponent;
@@ -8,7 +11,15 @@ describe('GameBoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GameBoardComponent ]
+      imports: [
+
+      ],
+      declarations: [ 
+        GameBoardComponent,
+        eventRender,
+        CommentItem,
+        eventLog
+      ]
     })
     .compileComponents();
   }));
