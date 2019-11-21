@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {eventLog } from './event-log';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('GameBoardComponent', () => {
   let component: eventLog;
@@ -8,6 +12,15 @@ describe('GameBoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        RouterTestingModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+      ],
       declarations: [ eventLog ]
     })
     .compileComponents();

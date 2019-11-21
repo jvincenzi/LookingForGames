@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CommentItem } from '../../Comment';
 import { eventDialog } from './event-dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatSelectModule, MatFormFieldModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('GameBoardComponent', () => {
   let component: eventDialog;
@@ -8,7 +12,18 @@ describe('GameBoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ eventDialog ]
+      imports: [
+        HttpClientModule,
+        RouterTestingModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+      ],
+      declarations: [ 
+        eventDialog,
+      ]
     })
     .compileComponents();
   }));

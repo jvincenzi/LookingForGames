@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { eventRender } from './event-render';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule, MatFormFieldModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('GameBoardComponent', () => {
   let component: eventRender;
@@ -8,7 +12,18 @@ describe('GameBoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ eventRender ]
+      imports: [
+        HttpClientModule,
+        RouterTestingModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+      ],
+      declarations: [ 
+        eventRender 
+      ]
     })
     .compileComponents();
   }));
