@@ -1,20 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GameBoardComponent } from './game-board.component';
 import { eventRender } from './event-render/event-render';
-import { CommentItem } from '../Comment';
 import { eventLog } from './eventlog/event-log';
 import { HttpClientModule,  } from '@angular/common/http';
-import { 
-  MatToolbarModule, 
-  MatIconModule, 
-  MatSidenavModule, 
-  MatListModule, 
-  MatButtonModule, 
-  MatFormFieldModule,
-  MatSelectModule
- } from  '@angular/material';
- import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule, MatSelectModule } from  '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { eventDialog } from './eventdialog/event-dialog';
 

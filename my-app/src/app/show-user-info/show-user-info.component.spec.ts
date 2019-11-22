@@ -3,43 +3,47 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShowUserInfoComponent } from './show-user-info.component';
 import { Token } from '../Token';
 import { PaymentAuthComponent } from '../payment-auth/payment-auth.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatFormFieldModule } from '@angular/material';
-let sessionToken: Token = new Token();
+import createMemoryHistory from 'history/lib/createMemoryHistory'
+
+let sessionTokenData: Token = new Token();
+sessionTokenData._id = "12345678910";
+sessionTokenData.UserName = "karma-jest-test";
+sessionTokenData.FirstName = "FirstName";
 
 describe('ShowUserInfoComponent', () => {
   let component: ShowUserInfoComponent;
   let fixture: ComponentFixture<ShowUserInfoComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
-        //RouterTestingModule,
-        //MatIconModule,
-        //MatToolbarModule,
-        //MatSidenavModule,
-        //MatListModule,
-        //MatButtonModule,
+        RouterTestingModule.withRoutes([{
+          path: '',
+          redirectTo: 'myAccount',
+          pathMatch: 'full',
+          data: {sessionToken: sessionTokenData} //  <-------<<<< 
+        }]),
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatSelectModule,
-        //BrowserAnimationsModule,
-        
       ],
       declarations: [ 
         ShowUserInfoComponent,
         PaymentAuthComponent,
-      ]
+        
+      ],
     })
     .compileComponents();
   }));
 
-//mockImplementation()
+  //mockImplementation()
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ShowUserInfoComponent);
@@ -51,3 +55,20 @@ describe('ShowUserInfoComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+
+beforeEach(async(() => {
+  TestBed.configureTestingModule({
+    declarations: [YourComponent],
+    imports: [],
+    providers: [
+      {
+        provide: ActivatedRoute, useValue: {
+          params: Observable.of({ id: 'test' })
+        }
+      }
+    ]
+  })
+    .compileComponents();
+}));
