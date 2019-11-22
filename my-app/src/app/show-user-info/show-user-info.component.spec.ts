@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatFormFieldModule } from '@angular/material';
-let sessionToken: Token = new Token();
+
+//let sessionToken: Token = new Token();
 
 describe('ShowUserInfoComponent', () => {
   let component: ShowUserInfoComponent;
@@ -18,6 +19,7 @@ describe('ShowUserInfoComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
+        BrowserAnimationsModule,
         //RouterTestingModule,
         //MatIconModule,
         //MatToolbarModule,
