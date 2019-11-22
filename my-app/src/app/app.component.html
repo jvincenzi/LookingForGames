@@ -28,8 +28,6 @@
   <mat-sidenav-content>
     <div style="height: 88vh;">
       <app-banner-ad></app-banner-ad>
-    
-
       <br />
       <app-search-bar *ngIf="atHome" (searchSelectionEmitter)="getSearchSelection($event)"></app-search-bar>
       <router-outlet></router-outlet>

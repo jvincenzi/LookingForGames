@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatFormFieldModule } from '@angular/material';
-import createMemoryHistory from 'history/lib/createMemoryHistory'
 
 let sessionTokenData: Token = new Token();
 sessionTokenData._id = "12345678910";
@@ -37,7 +36,6 @@ describe('ShowUserInfoComponent', () => {
       declarations: [ 
         ShowUserInfoComponent,
         PaymentAuthComponent,
-        
       ],
     })
     .compileComponents();
@@ -57,18 +55,3 @@ describe('ShowUserInfoComponent', () => {
 });
 
 
-
-beforeEach(async(() => {
-  TestBed.configureTestingModule({
-    declarations: [YourComponent],
-    imports: [],
-    providers: [
-      {
-        provide: ActivatedRoute, useValue: {
-          params: Observable.of({ id: 'test' })
-        }
-      }
-    ]
-  })
-    .compileComponents();
-}));
