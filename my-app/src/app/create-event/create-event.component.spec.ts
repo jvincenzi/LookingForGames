@@ -1,11 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule,  } from '@angular/common/http';
-
 import { CreateEventComponent } from './create-event.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 
 
 describe('CreateEventComponent', () => {
@@ -14,21 +10,13 @@ describe('CreateEventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-
-      imports: [   
-        MatFormFieldModule, 
+      imports: [
         FormsModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule, 
-        HttpClientModule,
-        RouterTestingModule 
+         ReactiveFormsModule,
+          HttpClientModule
       ],
-      
       declarations: [ 
-         
         CreateEventComponent
-        
       ]
     })
     .compileComponents();
