@@ -116,6 +116,10 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
+    console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
+    history.state.sessionToken._id + ' ///');
+=======
     if(history.state.sessionToken == null || history.state == undefined)
     {
       history.state.sessionToken._id = "0123456789";
@@ -144,6 +148,7 @@ export class ShowUserInfoComponent implements OnInit {
       history.state.sessionToken.userLongitude = 0;
     }
     console.log('/// ngOnInit - history.state.sessionToken._id: '+ history.state.sessionToken._id + ' ///');
+>>>>>>> 5fa12b71f3390d432f83d73653fb860837958122
     this.getUser(history.state.sessionToken._id);
     //this.getUsers(); // OLD
     console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
