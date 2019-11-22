@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule,  } from '@angular/common/http';
 
 import { CreateEventComponent } from './create-event.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +16,7 @@ describe('CreateEventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+<<<<<<< HEAD
 
       imports: [   
         MatFormFieldModule, 
@@ -30,6 +33,10 @@ describe('CreateEventComponent', () => {
         CreateEventComponent
         
       ]
+=======
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+      declarations: [ CreateEventComponent ]
+>>>>>>> 313bee93c1eb98b568b8d5828108ded9a5ec0e0e
     })
     .compileComponents();
   }));
