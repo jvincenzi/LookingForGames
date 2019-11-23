@@ -4,6 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GameEvent } from './GameEvent';
+import { Token } from '../../Token';
+import { CallNodeService } from '../../call-node.service'
+
 
 describe('GameBoardComponent', () => {
   let component: eventRender;
@@ -18,10 +22,11 @@ describe('GameBoardComponent', () => {
         MatFormFieldModule,
         FormsModule,
         ReactiveFormsModule,
-        MatFormFieldModule,
+        MatFormFieldModule
       ],
       declarations: [ 
-        eventRender 
+        eventRender,
+        myGameEvent 
       ]
     })
     .compileComponents();
@@ -36,4 +41,28 @@ describe('GameBoardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  let myGameEvent: CallNodeService;
+  
+  it('#getGames should return real value from the real service',  () => {
+    this.myGameEvent.getAllGames()
+    .subscribe((gameData: GameEvent[]) => {
+    console.log(gameData);
+    console.log(this.gameFilter);
+    if(this.gameFilter!="Name"){
+      this.ourGame = [];
+      for(let i=0;i<gameData.length;i++){
+        if(gameData[i].GameType==this.gameFilter){
+          this.ourGame.push(gameData[i]);
+        }
+
+      }
+      return ('#getGames success');
+    }
+    this.ourGame = gameData;
+    return 'Success';
+  })
+});
+
+
 });
