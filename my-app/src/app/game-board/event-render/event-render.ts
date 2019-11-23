@@ -92,7 +92,7 @@ import { Token } from '../../Token';
     
     let playerArr = [];
 
-    console.log(history.state.sessionToken.FirstName);
+    console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
 
     playerArr.push(history.state.sessionToken.FirstName);
     playerArr.push(history.state.sessionToken.LastName);
@@ -104,7 +104,7 @@ import { Token } from '../../Token';
 
     console.log("pushing " + playerArr + " to the server");
 
-    theGame.CurrentPlayers.push(playerArr)
+    theGame.CurrentPlayers.push(playerArr);
 
     this.myGameEvent.updateGame(theGame).subscribe();
   }

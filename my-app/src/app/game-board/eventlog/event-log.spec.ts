@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-describe('GameBoardComponent', () => {
+describe('EventLog', () => {
   let component: eventLog;
   let fixture: ComponentFixture<eventLog>;
 

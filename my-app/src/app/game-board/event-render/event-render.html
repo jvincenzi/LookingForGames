@@ -1,42 +1,42 @@
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM"></script>
         
-        <div class="panel panel-primary">
-        <div class="panel-heading">
-      Game Events</div>
-        <div class="panel-body" *ngIf="ourGame">
-            <h4>Game Currently Active:</h4>
-            <p></p>
-            <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">
-                <li>
-                <b>Game Title: </b>    {{ourGame.Title}}
-                <b>Game Type:</b> {{ourGame.GameType}}
-                <b>Location:</b> {{ourGame.Location}}
-                <b>Require Player</b> {{ourGame.ReqPlayers}}
-                <b>Distance from you</b> {{currentDistance}}
-                <button (click)="joinEvent(ourGame)">Join Event!</button>
-                <button (click)="getPosition(ourGame.Location)">Get Distance</button>
-            </li>
-            
-            </p>
-            <h4 style="background: lightslategrey">For join game please <a routerLink="/signIn">SignIn</a></h4> 
-          <hr>
-          <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
-          <button (click)="getGames()">Filter Gameboard</button>
-          <mat-form-field>
-            <mat-label>Select a game</mat-label>
-            <mat-select [(value)]="gameFilter">
-                <mat-option value="None">None</mat-option>
-              <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
-              <mat-option value="Pathfinder">Pathfinder</mat-option>
-              <mat-option value="Monopoly">Monopoly</mat-option>
-            </mat-select>
-          </mat-form-field>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Game Events
+  </div>
+  <div class="panel-body" *ngIf="ourGame">
+    <h4>Game Currently Active:</h4>
+    <p></p>
+    <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">
+      <li>
+        <b>Game Title: </b>    {{ourGame.Title}}
+        <b>Game Type:</b> {{ourGame.GameType}}
+        <b>Location:</b> {{ourGame.Location}}
+        <b>Required Players</b> {{ourGame.ReqPlayers}}
+        <b>Distance from you</b> {{currentDistance}}
+        <button (click)="joinEvent(ourGame)">Join Event!</button>
+        <button (click)="getPosition(ourGame.Location)">Get Distance</button>
+      </li>
+    </p>
+    <h4 style="background: lightslategrey">To join a game please <a routerLink="/signIn">Sign In</a></h4> 
+    <hr />
+    <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
+    <button (click)="getGames()">Filter Gameboard</button>
+    <mat-form-field>
+      <mat-label>Select a game</mat-label>
+      <mat-select [(value)]="gameFilter">
+        <mat-option value="None">None</mat-option>
+        <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
+        <mat-option value="Pathfinder">Pathfinder</mat-option>
+        <mat-option value="Monopoly">Monopoly</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-          </div>
-          <p>{{gameFilter}}</p>
-      </div>
+  </div>
+    <p>{{gameFilter}}</p>
+</div>

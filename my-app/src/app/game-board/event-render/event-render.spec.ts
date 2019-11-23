@@ -4,8 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GameEvent } from 'src/app/GameEvent';
 
-describe('GameBoardComponent', () => {
+describe('EventRender: ', () => {
   let component: eventRender;
   let fixture: ComponentFixture<eventRender>;
 
@@ -27,13 +28,116 @@ describe('GameBoardComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(eventRender);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+
+
+  
+
+
+  describe('Can Add Record: ', function(){ 
+    beforeEach((done) => {
+      fixture = TestBed.createComponent(eventRender);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+
+      //let playerArr = [];
+      let dummyGameEvent: GameEvent = new GameEvent();
+
+      dummyGameEvent.Title = "TestCreate Title";
+      //playerArr.push("TestCreate FirstName");
+      //playerArr.push("TestCreate LastName");
+      //playerArr.push("TestCreate UserName");
+      //dummyGameEvent.CurrentPlayers.push(playerArr);
+      console.log("/////// dummyGameEvent.Title: " + dummyGameEvent.Title);
+      component.joinEvent(dummyGameEvent);
+
+      setTimeout(() => {done();}, 2000);
+    });
+
+
+    /////////////////////////////////////////////////////////////////
+    //
+    //  Thanh put your test code in here >--+
+    //                                      |
+    //    +---------------------------------+
+    //    |
+    //    V
+    describe('Than Can read Joseph\'s added Record: ', function(){  
+      beforeEach(function(done){
+        //for refference// fixture = TestBed.createComponent(ShowTasksComponent);
+        //for refference// component = fixture.componentInstance;
+        //for refference// fixture.detectChanges();
+
+        /* // Kurts example code setting up to finding a record
+          component.foundTask._id = component.saved_id;
+          console.log('just before call to find ' + component.saved_id );
+          component.findTask();
+          setTimeout(() => {done();}, 2000); 
+        */
+
+
+      });
+
+      // Kurts example code for finding a record
+      it('should find new new record', function(){
+        console.log('just before did it find new ' +  component.ourGame[7].Title );// 7
+        expect( component.ourGame[7].Title ).toBe('TestCreate Title');// 7
+      });
+      
+
+
+    // end of Thanhs Test
+    ////////////////////////////////////////////////////////////////
+    });
+
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  //////////////////////////////////////////////////////////////////
+  // Sean's test goes here
+
+  /* Kurts example
+  describe('Can delete Record', function(){  
+    beforeEach(function(done){
+      component.selectedTask._id = component.saved_id;
+      component.selectedTask.taskName = "TestCreate";
+      console.log("task about to delete " + component.selectedTask._id );
+      component.deleteTask();
+      setTimeout(() => {done();}, 2000); 
+    });
+
+    describe('added Record should be gone', function(){  
+      beforeEach(function(done){
+        component.foundTask._id = component.saved_id;
+        console.log('just before call to find ' + component.foundTask._id );
+        component.findTask();
+        setTimeout(() => {done();}, 2000); 
+      });
+
+      it('should not find deleted record', function(){
+        expect( component.foundTask).toBe(null);
+      });
+    });  
+
   });
+  */
+
+
+
+
+  // end of Sean's test 
+  //////////////////////////////////////////////////////////////////
+
+  describe('is component created: ', function(){
+    beforeEach(() => {
+      fixture = TestBed.createComponent(eventRender);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+  });
+
 });
+ 
+

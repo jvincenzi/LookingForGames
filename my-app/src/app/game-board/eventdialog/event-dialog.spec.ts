@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-describe('GameBoardComponent', () => {
+describe('EventDialog', () => {
   let component: eventDialog;
   let fixture: ComponentFixture<eventDialog>;
 
