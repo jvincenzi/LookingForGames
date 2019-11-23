@@ -116,8 +116,7 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
-    history.state.sessionToken._id + ' ///');
+    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id + ' ///');
     this.getUser(history.state.sessionToken._id);
     //this.getUsers(); // OLD
     console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
