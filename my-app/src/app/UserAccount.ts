@@ -20,7 +20,6 @@ export class UserAccount {
   CurrentStatus: string;
   Location: string;
   createdOn: string;
-  //token: string; // <--------------- What the hell is this ??????????????????
   UID: string; // new
   userLatitude: number; // new
   userLongitude: number; // new
