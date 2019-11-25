@@ -49,6 +49,12 @@ import { Token } from '../../Token';
   }
 
   ngOnInit() {
+    console.log("Search bar from home " + history.state.sessionToken.Location);
+    if(history.state.sessionToken.Location == undefined){
+      this.gameFilter = "None";
+    } else {
+    this.gameFilter = history.state.sessionToken.Location;
+    }
     this.getGames();
     console.log('////////////////////////////////////////////////\r\nEvent-Render:\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
   }
