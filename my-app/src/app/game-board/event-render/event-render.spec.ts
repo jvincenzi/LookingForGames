@@ -4,14 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-<<<<<<< HEAD
-import { GameEvent } from 'src/app/GameEvent';
-=======
 import { GameEvent } from './GameEvent';
 import { Token } from '../../Token';
 import { CallNodeService } from '../../call-node.service'
 
->>>>>>> 4b2568595ff80dee7205f1be46132b267fe4509a
 
 describe('EventRender: ', () => {
   let component: eventRender;
@@ -69,8 +65,8 @@ describe('EventRender: ', () => {
     //    +---------------------------------+
     //    |
     //    V
-    describe('Than Can read Joseph\'s added Record: ', function(){  
-      beforeEach(function(done){
+    describe('Thanh\'s test Can read Joseph\'s added Record: ', function(){  
+      //beforeEach(function(done){
         //for refference// fixture = TestBed.createComponent(ShowTasksComponent);
         //for refference// component = fixture.componentInstance;
         //for refference// fixture.detectChanges();
@@ -83,7 +79,7 @@ describe('EventRender: ', () => {
         */
 
 
-      });
+      //});
 
       // Kurts example code for finding a record
       it('should find new new record', function(){
@@ -146,33 +142,29 @@ describe('EventRender: ', () => {
     });
   });
 
-<<<<<<< HEAD
-});
- 
-
-=======
   let myGameEvent: CallNodeService;
+
   
+  /*
   it('#getGames should return real value from the real service',  () => {
     this.myGameEvent.getAllGames()
     .subscribe((gameData: GameEvent[]) => {
-    console.log(gameData);
-    console.log(this.gameFilter);
-    if(this.gameFilter!="Name"){
-      this.ourGame = [];
-      for(let i=0;i<gameData.length;i++){
-        if(gameData[i].GameType==this.gameFilter){
-          this.ourGame.push(gameData[i]);
+      console.log(gameData);
+      console.log(this.gameFilter);
+      if(this.gameFilter!="Name"){
+        this.ourGame = [];
+        for(let i=0;i<gameData.length;i++){
+          if(gameData[i].GameType==this.gameFilter){
+            this.ourGame.push(gameData[i]);
+          }
+
         }
-
+        return ('#getGames success');
       }
-      return ('#getGames success');
-    }
-    this.ourGame = gameData;
-    return 'Success';
-  })
-});
-
+      this.ourGame = gameData;
+      return 'Success';
+    })
+  });
+  */
 
 });
->>>>>>> 4b2568595ff80dee7205f1be46132b267fe4509a

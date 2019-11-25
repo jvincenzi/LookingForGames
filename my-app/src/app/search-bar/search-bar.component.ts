@@ -19,6 +19,7 @@ export class SearchBarComponent implements OnInit {
   selectionData: string;
   hideButton: boolean = true;
   selectedGame: string;
+  
   gameNames: Gamez[] = [
     { value: 'd&d', viewValue: "Dungeons & Dragons"},
     { value: 'pathfinder', viewValue: "Pathfinder"},
@@ -38,7 +39,7 @@ export class SearchBarComponent implements OnInit {
     console.log(" <<<<<< In search-bar >>>>>> ");
     //console.log("Selected game, this.selectedGame.value: " + this.selectedGame);
     this.localData.Location = this.selectedGame.toString(); // change /Location to another prop once you get this working ///////////////
-    console.log("Selected game, this.sessionTokenDataInput.Location: " + this.localData.Location);
+    console.log("Selected game, this.localData.Location: " + this.localData.Location);
     this.searchSelectionEmitter.emit(this.localData.Location);
   }
 

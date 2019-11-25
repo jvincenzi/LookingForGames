@@ -8,13 +8,23 @@ const CommentController = require("./controllers/CommentController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
 
+let useLocal = true;
 
-var corsOptions = {
-  // this URL must match the URL that the Angular app will call from
-  //origin: 'http://localhost:4200', /////////////////////////////// LocalHost Config ///////////////////////////////
-  origin: 'https://lookingforgames2.azurewebsites.net', 
-  optionsSuccessStatus: 200 
+var corsOptions;
+if (useLocal === true) { // 'useLocal === true' should be just 'useLocal' but for readability used 'useLocal === true'
+  corsOptions = {
+    // this URL must match the URL that the Angular app will call from
+    origin: 'http://localhost:4200',  
+    optionsSuccessStatus: 200 
+  }
+} else {
+  corsOptions = {
+    // this URL must match the URL that the Angular app will call from
+    origin: 'https://lookingforgames2.azurewebsites.net', 
+    optionsSuccessStatus: 200 
+  }
 }
+
 /* In call-node.service.ts swap:
     userNodeAddress (http://localhost:3000/users <--> http://lfgnodesrv.azurewebsites.net/users)
     gameNodeAddress (http://localhost:3000/games <--> http://lfgnodesrv.azurewebsites.net/games) 
@@ -24,9 +34,13 @@ var corsOptions = {
 require("./config/db");
 const app = express();
 
-//this._baseUrl = 'http://localhost:3000/';
-//const port = process.PORT || 3000; /////////////////////////////// LocalHost Config ///////////////////////////////
-const port = process.env.PORT || 80; ///////////////////////////////// Azure Host Config //////////////////////////////
+let port;
+if (useLocal == true) {
+  port = process.PORT || 3000; // LocalHost Config ///////////////////////////////
+} else {
+  port = process.env.PORT || 80; // Azure Host Config ////////////////////////////
+}
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -63,8 +77,10 @@ app
   .put(gameController.joinGame);
 
 app
-  .route("/getDistance/:location?destination")
-  .get(googleController.getDistance);
+  .route("/getDistance")
+  .get(googleController.getDistance)
+  .post(googleController.getDistance);
+  //.route("/getDistance/:location?destination")
 
 app
   .route("/comment")

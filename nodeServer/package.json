@@ -18,10 +18,12 @@
  },
  "homepage": "https://github.com/jvincenzi/LookingForGames#readme",
  "dependencies": {
+  "@google/maps": "^1.0.2",
   "bcryptjs": "^2.4.3",
   "body-parser": "^1.19.0",
   "cors": "^2.8.5",
   "express": "^4.17.1",
+  "google-distance-api": "^1.0.0",
   "mongoose": "^5.7.3",
   "rxjs": "^6.5.3"
  },

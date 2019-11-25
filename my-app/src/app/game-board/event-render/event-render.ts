@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GameEvent } from './GameEvent';
+import { LocData } from './LocData';
 import { Token } from '../../Token';
 // export interface GameEventRender {
 
@@ -39,7 +40,7 @@ import { Token } from '../../Token';
 
   selectedGame: GameEvent;
 
-  eventLocation: String;
+  eventLocation: string;
 
   currentDistance: Object;
 
@@ -56,8 +57,7 @@ import { Token } from '../../Token';
     console.log("In getGames()");
     
 
-    this.myGameEvent.getAllGames()
-    .subscribe((gameData: GameEvent[]) => {
+    this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
       //change gameData to ourGame if this doesn't work
       console.log(gameData);
       console.log(this.gameFilter);
@@ -82,8 +82,8 @@ import { Token } from '../../Token';
   }
  
   deleteEvent(): void {
-    console.log("Deleting" + this.selectedGame);
-    this.myGameEvent.deleteGame( this.selectedGame).subscribe();
+    console.log("Deleting: " + this.selectedGame);
+    this.myGameEvent.deleteGame(this.selectedGame).subscribe();
   }
 
   joinEvent(theGame: GameEvent): void {
@@ -93,7 +93,7 @@ import { Token } from '../../Token';
     
     let playerArr = [];
 
-    console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
+    console.log("// joinEvent(): sessionToken.FirstName: " + "history.state.sessionToken.FirstName");
 
     playerArr.push(history.state.sessionToken.FirstName);
     playerArr.push(history.state.sessionToken.LastName);
@@ -113,7 +113,7 @@ import { Token } from '../../Token';
   getPosition(eventLocation) {
     console.log(eventLocation);
     this.eventLocation = eventLocation;
-    console.log(this.eventLocation + "is what we set this.eventLocation to");
+    console.log(this.eventLocation + " is what we set this.eventLocation to");
     console.log('/// in getLocation() ///:  ');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
@@ -125,16 +125,51 @@ import { Token } from '../../Token';
 
   getLocation(position) {
     //this.x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-    console.log('latitude:  ' + position.coords.latitude);
-    console.log('longitude: ' + position.coords.longitude);
+    //console.log('latitude:  ' + position.coords.latitude);
+    //console.log('longitude: ' + position.coords.longitude);
 
-    let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
-    console.log(positionString);
-
+    //let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
+    //console.log("positionString: " + positionString);
+    
+    /*
     this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
-      console.log(distance);
+      console.log('distance object: ' + distance);
       this.currentDistance = distance;
     });
+    */
+/*
+    //let eventLocation = "myHouse"; // 4testing ///////////////////////////////////
+    this.myGameEvent.getDistance(positionString).subscribe((distance: Object) =>{
+      console.log('distance object: ' + distance);
+      this.currentDistance = distance;
+    });
+    */
+
+    
+    // Joseph's Funky Google API code /////////////////////////////////////
+    let locData: LocData = new LocData();
+    
+    locData.myLat = position.coords.latitude.toString();
+    locData.myLon = position.coords.longitude.toString();
+    locData.eventLocation = this.eventLocation.toString();
+    /*
+    console.log('locData object:');
+    console.log('   myLat: ' + locData.myLat );
+    console.log('   mylon: ' + locData.myLon );
+    console.log('   event: ' + locData.eventLocation );
+    */
+    this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
+      console.log('distance object: ' + distance);
+      //
+      // I'm not sure of the structure of the returned object
+      // but on the node server it is: result.json.rows[0].elements[0].distance.value 
+      // this returns the meters from your location to the event
+      // 
+      this.currentDistance = distance;
+    });
+    
+
+    
   }
 
   
