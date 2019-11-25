@@ -27,7 +27,6 @@ export class SearchBarComponent implements OnInit {
     { value: 'rifts', viewValue: "Rifts"}
   ];
   
-
   constructor() {
   }
 
