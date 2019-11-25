@@ -25,7 +25,7 @@ mongoose.connect(dbURI, options).then(
 	() => {
 		console.log(`--------------------------------------------------------------------------------`);
 		console.log(" DB connection established!");
-		console.log(' '+dbURI);
+		//console.log(' '+dbURI);
 		console.log(`--------------------------------------------------------------------------------`);
 		console.log(``);
 	},

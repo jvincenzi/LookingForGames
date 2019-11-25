@@ -12,6 +12,7 @@ import { UserAccount } from './UserAccount';
 import { UserSignInData } from './UserSignInData';
 import { GameEvent } from './game-board/event-render/GameEvent';
 import { CommentItem } from './Comment';
+import { LocData } from './game-board/event-render/LocData';
 // export interface Tasks {
 //   name: string;
 // }
@@ -19,6 +20,7 @@ let userNodeAddress: string;
 let gameNodeAddress: string;
 let loginNodeAddress: string;
 let CommentNodeAddress: string;
+let googleNodeAddress: string;
 
 
 let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
@@ -29,13 +31,15 @@ if (useLocalHost) {
   loginNodeAddress = "http://localhost:3000/signin";
   gameNodeAddress = "http://localhost:3000/games";
   CommentNodeAddress = "http://localhost:3000/Comments";
+  googleNodeAddress = 'http://localhost:3000/getDistance';
 
 } else {
   userNodeAddress = "https://lfgnodesrv.azurewebsites.net/users";
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
   gameNodeAddress = "https://lfgnodesrv.azurewebsites.net/games";
- // CommentNodeAddress = "https://lfgnodesrv.azurewebsites.net/Comments";
+  //CommentNodeAddress = "https://lfgnodesrv.azurewebsites.net/Comments";
+  googleNodeAddress = 'https://lfgnodesrv.azurewebsites.net/getDistance';
 }
 
 @Injectable({ providedIn: 'root' })
@@ -47,19 +51,19 @@ export class CallNodeService {
      PORT (3000 <--> 80)
      corsOptions (origin: 'http://localhost:4200' <--> origin: 'lookingforgames.azurewebsites.net/)
   */
-///////////////////// Comment related routes //////////////////////
-getAllComment(): Observable<CommentItem[]> {
-  return this.http.get<CommentItem[]>(CommentNodeAddress);
-}
-getComment(commentID: string): Observable<CommentItem> {
-  return this.http.get<CommentItem>(CommentNodeAddress + '/' + commentID);
-}
-insertComment(Comment: CommentItem): Observable<CommentItem> {
-  return this.http.post<CommentItem>(CommentNodeAddress + '/', Comment);
-}
-deleteComment(Comment: CommentItem) {
-  return this.http.delete(CommentNodeAddress + '/' + Comment._id);
-}
+  ///////////////////// Comment related routes //////////////////////
+  getAllComment(): Observable<CommentItem[]> {
+    return this.http.get<CommentItem[]>(CommentNodeAddress);
+  }
+  getComment(commentID: string): Observable<CommentItem> {
+    return this.http.get<CommentItem>(CommentNodeAddress + '/' + commentID);
+  }
+  insertComment(Comment: CommentItem): Observable<CommentItem> {
+    return this.http.post<CommentItem>(CommentNodeAddress + '/', Comment);
+  }
+  deleteComment(Comment: CommentItem) {
+    return this.http.delete(CommentNodeAddress + '/' + Comment._id);
+  }
 
 
   ////////////////////// User related routes //////////////////////
@@ -87,12 +91,12 @@ deleteComment(Comment: CommentItem) {
 
   insertGame(game: GameEvent): Observable<GameEvent> {
     //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
-      return this.http.post<GameEvent>(gameNodeAddress + '/', game);
+    return this.http.post<GameEvent>(gameNodeAddress + '/', game);
   }
 
   deleteGame(game: GameEvent) {
     //return this.http.delete('http://localhost:3000/users/' + user._id);
-      return this.http.delete(gameNodeAddress + '/' + game._id);
+    return this.http.delete(gameNodeAddress + '/' + game._id);
   }
 
   updateGame(game: GameEvent): Observable<void> {
@@ -109,8 +113,18 @@ deleteComment(Comment: CommentItem) {
   // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
 
-  getDistance(currentPosition, destination: String): Observable<JSON> {
-    return this.http.get<JSON>("https://lfgnodesrv.azurewebsites.net/getDistance/" + currentPosition + "?" + destination);
+  /*
+  getDistance(currentPosition: String, destination: String): Observable<JSON> {
+    return this.http.get<JSON>(googleNodeAddress + '/' + currentPosition + "?" + destination);
+  }
+  
+  getDistance(currentPosition: String): Observable<JSON> {
+    return this.http.get<JSON>(googleNodeAddress + '/' + currentPosition);
+  }
+*/
+
+  getDistance(locData: LocData): Observable<JSON> {
+    return this.http.post<JSON>(googleNodeAddress + '/', locData);
   }
 
 }

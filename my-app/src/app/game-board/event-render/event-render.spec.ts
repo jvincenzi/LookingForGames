@@ -27,7 +27,7 @@ describe('EventRender: ', () => {
       ],
       declarations: [ 
         eventRender,
-        myGameEvent 
+   
       ]
     })
     .compileComponents();
@@ -66,8 +66,8 @@ describe('EventRender: ', () => {
     //    +---------------------------------+
     //    |
     //    V
-    describe('Than Can read Joseph\'s added Record: ', function(){  
-      beforeEach(function(done){
+    describe('Thanh\'s test Can read Joseph\'s added Record: ', function(){  
+      //beforeEach(function(done){
         //for refference// fixture = TestBed.createComponent(ShowTasksComponent);
         //for refference// component = fixture.componentInstance;
         //for refference// fixture.detectChanges();
@@ -80,7 +80,7 @@ describe('EventRender: ', () => {
         */
 
 
-      });
+      //});
 
       // Kurts example code for finding a record
       it('should find new new record', function(){
@@ -144,26 +144,28 @@ describe('EventRender: ', () => {
   });
 
   let myGameEvent: CallNodeService;
+
   
+  /*
   it('#getGames should return real value from the real service',  () => {
     this.myGameEvent.getAllGames()
     .subscribe((gameData: GameEvent[]) => {
-    console.log(gameData);
-    console.log(this.gameFilter);
-    if(this.gameFilter!="Name"){
-      this.ourGame = [];
-      for(let i=0;i<gameData.length;i++){
-        if(gameData[i].GameType==this.gameFilter){
-          this.ourGame.push(gameData[i]);
+      console.log(gameData);
+      console.log(this.gameFilter);
+      if(this.gameFilter!="Name"){
+        this.ourGame = [];
+        for(let i=0;i<gameData.length;i++){
+          if(gameData[i].GameType==this.gameFilter){
+            this.ourGame.push(gameData[i]);
+          }
+
         }
-
+        return ('#getGames success');
       }
-      return ('#getGames success');
-    }
-    this.ourGame = gameData;
-    return 'Success';
-  })
-});
-
+      this.ourGame = gameData;
+      return 'Success';
+    })
+  });
+  */
 
 });

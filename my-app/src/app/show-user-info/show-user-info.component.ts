@@ -86,40 +86,17 @@ export class ShowUserInfoComponent implements OnInit {
 
   constructor(private callNodeService: CallNodeService) {
     this.sessionTokenData = new Token();
-    if(history.state.sessionToken == null || history.state == undefined)
-    {
-      history.state.sessionToken._id = "0123456789";
-      history.state.sessionToken.UserName  = "Karma";
-      history.state.sessionToken.Password  = "string";
-      history.state.sessionToken.Email  = "string";
-      history.state.sessionToken.FirstName  = "string";
-      history.state.sessionToken.LastName  = "string";
-      history.state.sessionToken.Telephone  = "string";
-      //DateOfBirth: Date;
-      history.state.sessionToken.Country = "string";
-      history.state.sessionToken.Address = "string";
-      history.state.sessionToken.Address2 = "string";
-      history.state.sessionToken.City = "string";
-      history.state.sessionToken.State = "string";
-      history.state.sessionToken.Zipcode = 0;
-      history.state.sessionToken.FreeAccount = false;
-      //SubscriptionExp: Date;
-      history.state.sessionToken.SubscriptionLv = 0;
-      history.state.sessionToken.AdminAccess = "string";
-      history.state.sessionToken.CurrentStatus = "string";
-      history.state.sessionToken.Location = "string";
-      history.state.sessionToken.createdOn = "string";
-      history.state.sessionToken.UID = "string";
-      history.state.sessionToken.userLatitude = 0;
-      history.state.sessionToken.userLongitude = 0;
-    }
   }
 
   ngOnInit() {
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id + ' ///');
-    this.getUser(history.state.sessionToken._id);
+  console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
+    'history.state.sessionTokenData._id'  + ' ///');
+    this.getUser('history.state.sessionTokenData._id');
     //this.getUsers(); // OLD
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' +
+     'history.state.sessionToken._id' +"\r\nsessionToken FirstName: " + 
+     'history.state.sessionToken.FirstName '+"\r\nsessionToken Address:   " + 
+     'history.state.sessionToken.Address' +'\r\n////////////////////////////////////////////////');
   }
 
   passwordsMatch(userPassword1: FormControl, userPassword2: FormControl) {
@@ -416,7 +393,6 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   clearErrMsgs() {
-    // reset error text
     document.getElementById('errorMsgLabel').innerHTML = '* Required field';
     document.getElementById('userNameErr').innerHTML = '';
     document.getElementById('userPassword1Err').innerHTML = '';
@@ -432,7 +408,6 @@ export class ShowUserInfoComponent implements OnInit {
     document.getElementById('userCityErr').innerHTML = '';
     document.getElementById('userStateErr').innerHTML = '';
     document.getElementById('userZipCodeErr').innerHTML = '';
-    // reset color
     document.getElementById('errorMsgLabel').style.color = "black";
     document.getElementById('userName').style.color = "black";
     document.getElementById('userPassword1Lbl').style.color = "black";
@@ -449,11 +424,6 @@ export class ShowUserInfoComponent implements OnInit {
     document.getElementById('userStateLbl').style.color = "black";
     document.getElementById('userZipCodeLbl').style.color = "black";
   }
-
-
-  
-  
-
 
 }
 
