@@ -4,14 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-<<<<<<< HEAD
 import { GameEvent } from 'src/app/GameEvent';
-=======
-import { GameEvent } from './GameEvent';
+//import { GameEvent } from './GameEvent';
 import { Token } from '../../Token';
 import { CallNodeService } from '../../call-node.service'
 
->>>>>>> 4b2568595ff80dee7205f1be46132b267fe4509a
 
 describe('EventRender: ', () => {
   let component: eventRender;
@@ -146,11 +143,6 @@ describe('EventRender: ', () => {
     });
   });
 
-<<<<<<< HEAD
-});
- 
-
-=======
   let myGameEvent: CallNodeService;
   
   it('#getGames should return real value from the real service',  () => {
@@ -175,4 +167,3 @@ describe('EventRender: ', () => {
 
 
 });
->>>>>>> 4b2568595ff80dee7205f1be46132b267fe4509a
