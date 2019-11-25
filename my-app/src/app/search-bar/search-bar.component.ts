@@ -12,7 +12,7 @@ export interface Gamez {
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  //sessionTokenData: Token;
+  sessionTokenData: Token;
   @Input() localData: Token = new Token();
   //@Output() sessionTokenDataOutput = new EventEmitter<Token>(); // emits Token 
   @Output() searchSelectionEmitter = new EventEmitter<string>(); // emits string
@@ -21,14 +21,13 @@ export class SearchBarComponent implements OnInit {
   selectedGame: string;
   
   gameNames: Gamez[] = [
-    { value: 'd&d', viewValue: "Dungeons & Dragons"},
-    { value: 'pathfinder', viewValue: "Pathfinder"},
-    { value: 'monopoly', viewValue: "Monopoly"},
+    { value: 'Dungeons and Dragons', viewValue: "Dungeons & Dragons"},
+    { value: 'Pathfinder', viewValue: "Pathfinder"},
+    { value: 'Monopoly', viewValue: "Monopoly"},
     { value: 'go-fish', viewValue: "Go Fish"},
     { value: 'rifts', viewValue: "Rifts"}
   ];
   
-
   constructor() {
   }
 
