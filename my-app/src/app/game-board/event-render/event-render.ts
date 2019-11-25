@@ -50,13 +50,11 @@ import { Token } from '../../Token';
 
   ngOnInit() {
     this.getGames();
-    
+    console.log('////////////////////////////////////////////////\r\nEvent-Render:\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
   }
   
   getGames(): void {
-    console.log("In getGames()");
-    
-
+    //console.log("Event-Render: In getGames()");
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
       //change gameData to ourGame if this doesn't work
       console.log(gameData);
@@ -67,7 +65,6 @@ import { Token } from '../../Token';
           if(gameData[i].GameType==this.gameFilter){
             this.ourGame.push(gameData[i]);
           }
-
         }
         return this.ourGame;
       }
@@ -87,28 +84,23 @@ import { Token } from '../../Token';
   }
 
   joinEvent(theGame: GameEvent): void {
-    this.dummyToken.FirstName = "Sean";
-    this.dummyToken.LastName = "Newman";
-    this.dummyToken.UserName = "SeanNewman22";
+    //this.dummyToken.FirstName = "Sean";
+    //this.dummyToken.LastName = "Newman";
+    //this.dummyToken.UserName = "SeanNewman22";
     
     let playerArr = [];
 
-<<<<<<< HEAD
-    console.log("// joinEvent(): sessionToken.FirstName: " + "history.state.sessionToken.FirstName");
-=======
-    console.log("// joinEvent(): sessionToken.FirstName: " + 
-    'history.state.sessionToken.FirstName');
->>>>>>> 40dccc3753586f1904329f638aea1913939c411a
+    console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
 
-    playerArr.push('history.state.sessionToken.FirstName');
-    playerArr.push('history.state.sessionToken.LastName');
-    playerArr.push('history.state.sessionToken.UserName');
+    playerArr.push(history.state.sessionToken.FirstName);
+    playerArr.push(history.state.sessionToken.LastName);
+    playerArr.push(history.state.sessionToken.UserName);
 
     //playerArr.push(this.dummyToken.FirstName);
     //playerArr.push(this.dummyToken.LastName);
     //playerArr.push(this.dummyToken.UserName);
 
-    console.log("pushing " + playerArr + " to the server");
+    console.log("Event-Render: pushing playerArr [" + playerArr + "] to the server");
 
     theGame.CurrentPlayers.push(playerArr);
 
@@ -119,7 +111,7 @@ import { Token } from '../../Token';
     console.log(eventLocation);
     this.eventLocation = eventLocation;
     console.log(this.eventLocation + " is what we set this.eventLocation to");
-    console.log('/// in getLocation() ///:  ');
+    //console.log('/// in getLocation() ///:  ');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
     } else {
@@ -142,7 +134,7 @@ import { Token } from '../../Token';
       this.currentDistance = distance;
     });
     */
-/*
+    /*
     //let eventLocation = "myHouse"; // 4testing ///////////////////////////////////
     this.myGameEvent.getDistance(positionString).subscribe((distance: Object) =>{
       console.log('distance object: ' + distance);
@@ -164,7 +156,8 @@ import { Token } from '../../Token';
     console.log('   event: ' + locData.eventLocation );
     */
     this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
-      console.log('distance object: ' + distance);
+      console.log('Event-Render: distance object: ' + distance);
+      console.log(distance);
       //
       // I'm not sure of the structure of the returned object
       // but on the node server it is: result.json.rows[0].elements[0].distance.value 

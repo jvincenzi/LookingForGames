@@ -18,16 +18,18 @@ exports.getDistance = (req, res) => {
     destinations: newLocation.eventLocation
   }, function(err, result) {
     if (!err) {
-      
+      console.log('\r\n');
+      console.log('\r\n');
       console.log(result.json);
-      console.log('\r\n\r\n------lets see whats inside the \'rows\' array-------\r\n');
+      console.log('\r\n------lets see whats inside the \'rows\' array-------\r\n');
       console.log(result.json.rows[0]);
       console.log('\r\n------lets see whats inside the \'elements\' array-------\r\n');
       console.log(result.json.rows[0].elements[0]);
       console.log('\r\n-----------------------------\r\n');
       console.log('result.json.rows[0].elements[0].distance.value: 0' + result.json.rows[0].elements[0].distance.value);
       console.log("You are " + result.json.rows[0].elements[0].distance.value + " meters from the event");
-
+      console.log('\r\n');
+      console.log('\r\n');
       res.status(200).json(result);
     } else {
       console.log(err);

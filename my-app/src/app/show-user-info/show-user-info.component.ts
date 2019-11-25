@@ -3,8 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { CallNodeService } from '../call-node.service';
 import { UserAccount } from '../UserAccount';
 import { Token } from '../Token';
-import { PartialObserver } from 'rxjs';
-import { DatePipe } from '@angular/common';
+//import { PartialObserver } from 'rxjs';
+//import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-show-user-info',
@@ -89,14 +89,10 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-  console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
-    'history.state.sessionTokenData._id'  + ' ///');
-    this.getUser('history.state.sessionTokenData._id');
+    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionTokenData._id  + ' ///');
+    this.getUser(history.state.sessionTokenData._id);
     //this.getUsers(); // OLD
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' +
-     'history.state.sessionToken._id' +"\r\nsessionToken FirstName: " + 
-     'history.state.sessionToken.FirstName '+"\r\nsessionToken Address:   " + 
-     'history.state.sessionToken.Address' +'\r\n////////////////////////////////////////////////');
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
   }
 
   passwordsMatch(userPassword1: FormControl, userPassword2: FormControl) {
@@ -113,8 +109,7 @@ export class ShowUserInfoComponent implements OnInit {
 
   inAgeRange(userAge: FormControl) {
     let todaysDate: Date = new Date();
-    if(userAge.value.toString().substring(0, 4) > (todaysDate.getFullYear() - 15) || 
-       userAge.value.toString().substring(0, 4) < (todaysDate.getFullYear() - 125)){
+    if(userAge.value.toString().substring(0, 4) > (todaysDate.getFullYear() - 15) || userAge.value.toString().substring(0, 4) < (todaysDate.getFullYear() - 125)){
       document.getElementById('userDOBErr').innerHTML = "Age out of range";
       document.getElementById('userDOBLbl').style.color = "red";
       return false;

@@ -51,7 +51,7 @@ export class AppComponent {
 
   renderHome (){
     this.atHome = true;
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
+    //console.log('////////////////////////////////////////////////\r\nApp.component:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
     
     this.sessionTokenData._id = history.state.sessionToken._id;
     this.sessionTokenData.UserName = history.state.sessionToken.UserName;
@@ -77,7 +77,7 @@ export class AppComponent {
     this.sessionTokenData.UID = history.state.sessionToken.UID;
     this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
     this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
-    console.log('////////////////////////////////////////////////\r\nthis.sessionTokenData _id:           ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.sessionTokenData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.sessionTokenData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
+    console.log('////////////////////////////////////////////////\r\nApp.component:\r\nthis.sessionTokenData _id:           ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.sessionTokenData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.sessionTokenData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');
   }
   
 }

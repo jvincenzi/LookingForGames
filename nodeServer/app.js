@@ -11,7 +11,7 @@ const cors = require('cors')
 let useLocal = false;
 
 var corsOptions;
-if (useLocal === true) { // 'useLocal === true' should be just 'useLocal' but for readability used 'useLocal === true'
+if (useLocal) { 
   corsOptions = {
     // this URL must match the URL that the Angular app will call from
     origin: 'http://localhost:4200',  

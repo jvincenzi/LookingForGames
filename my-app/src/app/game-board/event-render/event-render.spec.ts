@@ -142,35 +142,6 @@ describe('EventRender: ', () => {
     });
   });
 
-<<<<<<< HEAD
-  let myGameEvent: CallNodeService;
-
-  
-  /*
-  it('#getGames should return real value from the real service',  () => {
-    this.myGameEvent.getAllGames()
-    .subscribe((gameData: GameEvent[]) => {
-      console.log(gameData);
-      console.log(this.gameFilter);
-      if(this.gameFilter!="Name"){
-        this.ourGame = [];
-        for(let i=0;i<gameData.length;i++){
-          if(gameData[i].GameType==this.gameFilter){
-            this.ourGame.push(gameData[i]);
-          }
-
-        }
-        return ('#getGames success');
-      }
-      this.ourGame = gameData;
-      return 'Success';
-    })
-  });
-  */
-
-});
-=======
 });
  
 
->>>>>>> 40dccc3753586f1904329f638aea1913939c411a
