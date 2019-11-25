@@ -162,13 +162,15 @@ import { Token } from '../../Token';
     console.log('   event: ' + locData.eventLocation );
     */
     this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
-      console.log('Event-Render: distance object: ' + distance);
+      console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object Start: ');
       console.log(distance);
       //
-      // I'm not sure of the structure of the returned object
-      // but on the node server it is: result.json.rows[0].elements[0].distance.value 
+      // The structure of the returned object is complicated and we need to pases it to get the distance.value.
+      // On the node server the object is formed like this: result.json.rows[0].elements[0].distance.value 
       // this returns the meters from your location to the event
-      // 
+      //
+      console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object End.');
+       
       this.currentDistance = distance;
     });
     
