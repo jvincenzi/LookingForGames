@@ -8,7 +8,7 @@ const CommentController = require("./controllers/CommentController");
 const cors = require('cors')
 // note the extra line in package.json to download this code
 
-let useLocal = true;
+let useLocal = false;
 
 var corsOptions;
 if (useLocal === true) { // 'useLocal === true' should be just 'useLocal' but for readability used 'useLocal === true'

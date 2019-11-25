@@ -26,7 +26,7 @@ describe('EventRender: ', () => {
       ],
       declarations: [ 
         eventRender,
-        myGameEvent 
+   
       ]
     })
     .compileComponents();
@@ -142,6 +142,7 @@ describe('EventRender: ', () => {
     });
   });
 
+<<<<<<< HEAD
   let myGameEvent: CallNodeService;
 
   
@@ -168,3 +169,8 @@ describe('EventRender: ', () => {
   */
 
 });
+=======
+});
+ 
+
+>>>>>>> 40dccc3753586f1904329f638aea1913939c411a

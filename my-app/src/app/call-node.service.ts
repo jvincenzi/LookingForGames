@@ -23,7 +23,7 @@ let CommentNodeAddress: string;
 let googleNodeAddress: string;
 
 
-let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
+let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
 
   
 if (useLocalHost) {

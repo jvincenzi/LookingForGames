@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Token } from '../Token';
 
 
 
@@ -12,16 +12,26 @@ import { Component, OnInit } from '@angular/core';
 
 export class GameBoardComponent implements OnInit {
 
-  //sessionTokenData: Token;
+//sessionToken: Token;
 
   constructor() { 
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
-    //console.log(' //// searchSelection: ' + history.state.searchSelection.selectionData); // searchSelection: selectionData
-    
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' 
+    + 
+    'history.state.sessionToken._id' +"\r\nsessionToken FirstName: " 
+    + 'history.state.sessionToken.Location' +'\r\n////////////////////////////////////////////////');
+    console.log(' //// searchSelection: ' + 'history.state.searchSelection.selectionData'); //
+    // searchSelection: selectionData
+  //  if(this.sessionToken)
+ //   {
+ //     return null;
+  //  }
   }
 
   ngOnInit() {
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' 
+    + 'history.state.sessionToken._id' +"\r\nsessionToken FirstName: " 
+    + 'history.state.sessionToken.FirstName' +"\r\nsessionToken Search Selection:   " 
+    + 'history.state.sessionToken.Location'+'\r\n////////////////////////////////////////////////');
 
   }
 }

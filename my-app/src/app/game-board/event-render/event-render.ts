@@ -93,11 +93,16 @@ import { Token } from '../../Token';
     
     let playerArr = [];
 
+<<<<<<< HEAD
     console.log("// joinEvent(): sessionToken.FirstName: " + "history.state.sessionToken.FirstName");
+=======
+    console.log("// joinEvent(): sessionToken.FirstName: " + 
+    'history.state.sessionToken.FirstName');
+>>>>>>> 40dccc3753586f1904329f638aea1913939c411a
 
-    playerArr.push(history.state.sessionToken.FirstName);
-    playerArr.push(history.state.sessionToken.LastName);
-    playerArr.push(history.state.sessionToken.UserName);
+    playerArr.push('history.state.sessionToken.FirstName');
+    playerArr.push('history.state.sessionToken.LastName');
+    playerArr.push('history.state.sessionToken.UserName');
 
     //playerArr.push(this.dummyToken.FirstName);
     //playerArr.push(this.dummyToken.LastName);
