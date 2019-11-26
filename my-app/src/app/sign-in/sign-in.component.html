@@ -6,16 +6,38 @@
     </div>
     <div id="centInline">
         <div id="centChildDiv">
-            <div class="container">  
+            <!-- <div class="container">  
                 <h3>Test output:</h3> 
                 <p> 
-                    User name: {{ userName.value }} <br />
-                    Password: {{ userPassword1.value }} <br />
+                    User name: {{ username.value }} <br />
+                    Password: {{ password.value }} <br />
                 </p>  
-            </div>
-  
+            </div> -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="UserName">Username</label>
+                    <input type="text" formControlName="UserName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" />
+                    <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
+                        <div *ngIf="f.UserName.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="Password" formControlName="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" />
+                    <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                        <div *ngIf="f.Password.errors.required">Password is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Login
+                    </button>
+                    <a routerLink="/signUp" class="btn btn-link">Register</a>
+                </div>
+            </form>
 
-            <form id="signupForm">
+            <!-- <form id="signupForm">
                 <fieldset >
                     <table id="tableCenter">
                         <tr>  
@@ -34,7 +56,7 @@
                     <br/><br/><br/>
                     <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
                 </fieldset>
-            </form>            
+            </form>             -->
         </div>
     </div>
     <p id="centerMe">Don't have an account? <a routerLink="/signUp" tabindex="3" [state]="{sessionToken: sessionTokenData}">Sign up</a>!</p>

@@ -26,9 +26,9 @@ import { eventDialog} from './game-board/eventdialog/event-dialog';
 import { eventRender} from './game-board/event-render/event-render';
 import { CreateEventComponent } from './create-event/create-event.component';
 
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
-
-
+import { fakeBackendProvider } from './_helpers';
 
 
 
@@ -67,10 +67,10 @@ import { CreateEventComponent } from './create-event/create-event.component';
   ],
   providers: [
       
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-    // fakeBackendProvider
+    fakeBackendProvider
 ],
   bootstrap: [AppComponent]
 })

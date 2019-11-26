@@ -10,17 +10,17 @@ import { eventDialog } from './game-board/eventdialog/event-dialog'
 import { Token } from './Token';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
-
+import { AuthGuard } from './_helpers';
 const myRoutes: Routes = [
   
    //{ path: '', component: SearchBarComponent, canActivate: [AuthGuard] },
-  { path: 'searchBar', component:SearchBarComponent},
+  { path: '', component:SearchBarComponent, canActivate: [AuthGuard]},
   { path: 'signIn', component: SignInComponent },
   { path: 'gameBoard', component: GameBoardComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'myAccount', component: ShowUserInfoComponent},
-  { path: 'paymentAuth', component: PaymentAuthComponent},
-  { path: 'createGameEvent', component: CreateEventComponent},
+  { path: 'myAccount', component: ShowUserInfoComponent, canActivate: [AuthGuard]},
+  { path: 'paymentAuth', component: PaymentAuthComponent, canActivate: [AuthGuard]},
+  { path: 'createGameEvent', component: CreateEventComponent, canActivate: [AuthGuard]},
   { path: 'eventDialog', component:eventDialog },
   //{ path: 'users', component: UsersComponent }
 
