@@ -35,7 +35,7 @@ require("./config/db");
 const app = express();
 
 let port;
-if (useLocal == true) {
+if (useLocal) {
   port = process.PORT || 3000; // LocalHost Config ///////////////////////////////
 } else {
   port = process.env.PORT || 80; // Azure Host Config ////////////////////////////
@@ -78,7 +78,7 @@ app
 
 app
   .route("/getDistance")
-  .get(googleController.getDistance)
+  //.get(googleController.getDistance)
   .post(googleController.getDistance);
   //.route("/getDistance/:location?destination")
 

@@ -169,7 +169,7 @@ import { Token } from '../../Token';
       // On the node server the object is formed like this: result.json.rows[0].elements[0].distance.value 
       // this returns the meters from your location to the event
       //
-      console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object End.');
+      console.log('\r\nEvent-Render: distance object End.\r\n///////////////////////////////////////////////');
        
       this.currentDistance = distance;
     });
