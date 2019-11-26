@@ -85,7 +85,7 @@ app
 app
   .route("/comment")
   .get(CommentController.listAllComment)
-  .post(CommentController.createNewComment)
+  .post(CommentController.createNewComment);
 
   app
   .route("/comment/:commentid")
