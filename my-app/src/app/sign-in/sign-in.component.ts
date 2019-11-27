@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   curlatitude = 40;
   curlongitude = 100;
   
-  constructor(private callNodeService: CallNodeService) {// private router: Router) { //, private route: ActivatedRoute
+  constructor(private callNodeService: CallNodeService, private router: Router) { //, private route: ActivatedRoute
     this.sessionTokenData = new Token();
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
@@ -40,6 +40,7 @@ export class SignInComponent implements OnInit {
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
+      /*
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
@@ -64,8 +65,8 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.UID = userData.UID;
       history.state.sessionToken.userLatitude = this.curlatitude; // might not need to get this data from mongoDB 
       history.state.sessionToken.userLongitude = this.curlongitude; // might not need to get this data from mongoDB 
-      console.log('////////////////////////////////////////////////\r\nSign-In:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
-      
+      //console.log('////////////////////////////////////////////////\r\nSign-In:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
+      */
       
       this.sessionTokenData._id = userData._id;
       this.sessionTokenData.FirstName = userData.FirstName;
@@ -95,11 +96,16 @@ export class SignInComponent implements OnInit {
       //console.log('this.curlatitude:  ' + this.curlatitude + '\r\nthis.curlongitude: ' + this.curlongitude);
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
-      console.log('/// Done logging in ... ///');
+      
       // this.router.navigate(['/']);
       // put loading icon here ////////////////////////////////////////////////////////
-      // Now move user to home page ///////////////////////////////////////////////////
       
+      if(this.sessionTokenData._id != undefined){
+        // set 
+        //this.router.navigate(['/searchBar']);
+        console.log('/// Done logging in ... ///');
+        this.router.navigate(['/searchBar'], {state: {sessionToken: this.sessionTokenData}});
+      }
     })
     
   }

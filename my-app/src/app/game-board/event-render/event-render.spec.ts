@@ -83,11 +83,12 @@ describe('EventRender: ', () => {
       //});
 
       // Kurts example code for finding a record
+      /*
       it('should find new new record', function(){
-        console.log('just before did it find new ' +  component.ourGame[7].Title );// 7
+        console.log('just before did it find new ' +  component.ourGame[0].Title );// 7
         expect( component.ourGame[7].Title ).toBe('TestCreate Title');// 7
       });
-      
+      */
 
 
     // end of Thanhs Test

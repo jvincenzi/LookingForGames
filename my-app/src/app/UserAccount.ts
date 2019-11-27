@@ -1,27 +1,27 @@
 export class UserAccount {
-  _id: string;
-  UserName: string;
-  Password: string;
-  Email: string;
-  FirstName: string;
-  LastName: string;
-  Telephone: string;
+  _id: string = "Default";
+  UserName: string = "Default";
+  Password: string = "Default";
+  Email: string = "Default";
+  FirstName: string = "Default";
+  LastName: string = "Default";
+  Telephone: string = "Default";
   DateOfBirth: Date;
-  Country: string; // new
-  Address: string;
-  Address2: string; // new
-  City: string;
-  State: string;
-  Zipcode: number;
-  FreeAccount: boolean;
+  Country: string = "Default"; // new
+  Address: string = "Default";
+  Address2: string = "Default"; // new
+  City: string = "Default";
+  State: string = "Default";
+  Zipcode: number = 0;
+  FreeAccount: boolean = true;
   SubscriptionExp: Date;
-  SubscriptionLv: number;//level (0=freeAccount, 1=monthly or 12=yearly)
-  AdminAccess: string;  // new
-  CurrentStatus: string;
-  Location: string;
-  createdOn: string;
-  UID: string; // new
-  userLatitude: number; // new
-  userLongitude: number; // new
+  SubscriptionLv: number = 0;//level (0=freeAccount, 1=monthly or 12=yearly)
+  AdminAccess: string = "Default";  // new
+  CurrentStatus: string = "Default";
+  Location: string = "Default";
+  createdOn: string = "Default";
+  UID: string = "Default"; // new
+  userLatitude: number = 40; // new
+  userLongitude: number = 100; // new
 }
 

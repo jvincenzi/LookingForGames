@@ -20,7 +20,7 @@ describe('ShowUserInfoComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
-        //RouterTestingModule,
+        RouterTestingModule,
         //MatIconModule,
         //MatToolbarModule,
         //MatSidenavModule,

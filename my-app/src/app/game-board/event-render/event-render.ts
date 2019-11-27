@@ -70,6 +70,7 @@ import { Token } from '../../Token';
         for(let i=0;i<gameData.length;i++){
           if(gameData[i].GameType==this.gameFilter){
             this.ourGame.push(gameData[i]);
+            this.getPosition(gameData[i].Location)  ////////////////////////////////// new
           }
         }
         return this.ourGame;
@@ -162,23 +163,26 @@ import { Token } from '../../Token';
     console.log('   event: ' + locData.eventLocation );
     */
     this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
-      console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object Start: ');
-      console.log(distance);
-      //
-      // The structure of the returned object is complicated and we need to pases it to get the distance.value.
-      // On the node server the object is formed like this: result.json.rows[0].elements[0].distance.value 
-      // this returns the meters from your location to the event
-      //
-      console.log('\r\nEvent-Render: distance object End.\r\n///////////////////////////////////////////////');
+      let response: any = distance;
+      //console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object Start: \r\n' + distance + '\r\ndistance object End.\r\n///////////////////////////////////////////////');
+      if(response.status == 200) {
+        //console.log('/// response.status == OK ///');
+        //console.log('Meters to event: ' + response.json.rows[0].elements[0].distance.value);
+        console.log('Miles to event: ' + this.metersToMiles(response.json.rows[0].elements[0].distance.value));
+      }
+      
        
-      this.currentDistance = distance;
+      //this.currentDistance = distance;
+      this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value) + "mi";
     });
     
 
     
   }
 
-  
+  metersToMiles(meters: number) {
+    return Math.ceil((meters/1609.344) * 100) / 100;
+  }
 
 }
 

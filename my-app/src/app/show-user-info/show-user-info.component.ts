@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { CallNodeService } from '../call-node.service';
 import { UserAccount } from '../UserAccount';
 import { Token } from '../Token';
+import { Router } from '@angular/router';
 //import { PartialObserver } from 'rxjs';
 //import { DatePipe } from '@angular/common';
 
@@ -84,12 +85,16 @@ export class ShowUserInfoComponent implements OnInit {
   ]);
   userFreeAcc = new FormControl(false);
 
-  constructor(private callNodeService: CallNodeService) {
+  constructor(private callNodeService: CallNodeService, private router: Router) {
     this.sessionTokenData = new Token();
   }
 
   ngOnInit() {
     console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
+    if(history.state.sessionToken._id == undefined){
+      console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
+      this.router.navigate(['/signIn']);
+    }
     this.getUser(history.state.sessionToken._id);
     //this.getUsers(); // OLD
     console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
