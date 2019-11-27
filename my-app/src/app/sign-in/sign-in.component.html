@@ -13,31 +13,66 @@
                     Password: {{ userPassword1.value }} <br />
                 </p>  
             </div>
-  
 
-            <form id="signupForm">
-                <fieldset >
-                    <table id="tableCenter">
-                        <tr>  
-                            <th><label for="userName">Username: </label></th>
-                            <th><input type="text" id="userName" [formControl]="userName" autofocus tabindex="0"/></th>
-                        </tr>
-                        <tr>   
-                            <th><label for="userPassword1">Password: </label> </th>
-                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" tabindex="1"/></th>
-                        </tr>
-                    </table>
+
+            <!-- <form [formGroup]="loginForm" (ngSubmit)="submitSignin()">
+                <div class="form-group">
+                    <label for="UserName">Username</label>
+                    <input type="text" formControlName="UserName" class="form-control"  />
+                    <div  class="invalid-feedback">
+                        <div>Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="Password" formControlName="Password" class="form-control" />
+                    <div  class="invalid-feedback">
+                        <div >Password is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Login
+                    </button>
+                    <a routerLink="/signUp" class="btn btn-link">Register</a>
+
+                    <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
+                </div>
+            </form>
+   -->
+
+            <form [formGroup]="signUpForm" (ngSubmit)="submitSignin()">
+                
+                <div class="form-group">
+                     <label for="userName">Username: </label>
+                        <input type="text" id="userName" formControlName="userName" [formControl]="userName"/>
+
+                 </div>       
+                    <div class="form-group"> 
+                            <label for="userPassword1">Password: </label> 
+                            <input type="password" id="userPassword1" formControlName="userPassword1" [formControl]="userPassword1"> 
+                    </div>
+                
+                       
+                
                     <div>
                         <label id="errorMsgLabel" style="color: black"></label>
-                        <button (click)="submitSignin()" id="signupSubmitButton" tabindex="2" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
+
+                        <div class="form-group">
+
+                        <button [disabled]="loading"  class="btn btn-primary">Login
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    </button>
+                    <a routerLink="/signUp" [state]="{sessionToken: sessionTokenData}" class="btn btn-link">Register</a>
+                        </div>
                     </div>
                     <br/><br/><br/>
                     <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
-                </fieldset>
+              
             </form>            
         </div>
     </div>
-    <p id="centerMe">Don't have an account? <a routerLink="/signUp" tabindex="3" [state]="{sessionToken: sessionTokenData}">Sign up</a>!</p>
 </div>
 
     
