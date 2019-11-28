@@ -7,6 +7,7 @@ import {UserAccount } from '../../UserAccount'
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 @Component({
   selector: 'event-log',
   templateUrl: './event-log.html',

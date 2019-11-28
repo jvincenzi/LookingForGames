@@ -10,6 +10,9 @@
       <a mat-button class="txtColor" [routerLink]="'/signIn'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Sign In </a>
       <a mat-button class="txtColor" [routerLink]="'/gameBoard'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Game Board </a>
       <a mat-button class="txtColor" [routerLink]="'/myAccount'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> My Account </a>
+      
+
+   
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -26,11 +29,15 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+
     <div style="height: 88vh;">
       <app-banner-ad></app-banner-ad>
       <br />
+     
+      <label>{{tempUser.UserName}}</label>
       <app-search-bar *ngIf="atHome" (searchSelectionEmitter)="getSearchSelection($event)"></app-search-bar>
       <router-outlet></router-outlet>
+     
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

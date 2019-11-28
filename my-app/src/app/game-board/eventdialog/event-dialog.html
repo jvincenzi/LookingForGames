@@ -20,9 +20,18 @@
   
       <hr>
       <b>New Comment</b><br/>
-      <input ng-model="Name" id="Name" Style="width:20%;display:inline-block;" class="form-control" placeholder="Write Your Name.. " /> 
-     <!-- <input ng-model="date" id="date" Style="width:20%;display:inline-block;" class="form-control" placeholder="date" />  -->
-      <input ng-model="Comment" id="Comment" Style="width:50%;display:inline-block;" class="form-control" placeholder="Write Your Comments.. " /> 
+
+      <mat-form-field>
+        <mat-select placeholder="Your Current Login As:">                              
+        <mat-option ng-model="Name" value="tempUser.FirstName" aria-placeholder="Your Name"> {{tempUser.FirstName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <td></td>
+      
+      <textarea ng-model="Comment" id="Comment" 
+      Style="width:50%;height:50%;display:inline-block;" 
+      class="form-control" placeholder="Write Your Comments.. "></textarea> 
+      <td></td>
       <button (click)="submitCommentForm()" 
       id="submitCommentForm"
       class="btn btn-danger">Add Comment</button>

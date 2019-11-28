@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Token } from '../Token';
 import { CallNodeService } from '../call-node.service';
 import { UserSignInData } from '../UserSignInData';
@@ -7,6 +7,7 @@ import { UserAccount } from '../UserAccount';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services';
 import { first } from 'rxjs/operators';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +15,7 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+
   providedSigninData: UserSignInData = {UserName: '', Password: ''};
   sessionTokenData: Token;
   userName = new FormControl('');
@@ -32,7 +34,7 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private router: Router,) {// private router: Router) { //, private route: ActivatedRoute
     this.sessionTokenData = new Token();
-    
+  
 
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
@@ -45,9 +47,7 @@ export class SignInComponent implements OnInit {
       userName: ['', Validators.required],
       userPassword1: ['', Validators.required]
   });
-
-
-  }
+}
 
   submitSignin() {
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
@@ -61,11 +61,13 @@ export class SignInComponent implements OnInit {
         //     return;
         // }
 
-    this.loading = true;
     // Put loading code icon here ////////////////////////////////////////////////////////
     document.getElementById('errorMsgLabel').innerHTML = '<b>Please Wait...</b>';
     document.getElementById('errorMsgLabel').style.color = "red";
-  
+
+
+
+this.loading = true;
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
@@ -123,7 +125,12 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.userLatitude = this.curlatitude;
       this.sessionTokenData.userLongitude = this.curlongitude;
 
-      console.log('////////////////////////////////////////////////\r\nSign-In:\r\nthis.sessionTokenData _id:        ' + this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:  ' + this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:    ' + this.sessionTokenData.Address+'\r\nsessionTokenData.userLatitude:    ' + this.sessionTokenData.userLatitude + '\r\nsessionTokenData.userLongitude:   ' + this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');  
+      console.log('////////////////////////////////////////////////\r\nSign-In:\r\nthis.sessionTokenData _id:        ' + 
+      this.sessionTokenData._id + '\r\nthis.sessionTokenData FirstName:  ' + 
+      this.sessionTokenData.FirstName + '\r\nthis.sessionTokenData Address:    ' + 
+      this.sessionTokenData.Address+'\r\nsessionTokenData.userLatitude:    ' + 
+      this.sessionTokenData.userLatitude + '\r\nsessionTokenData.userLongitude:   ' + 
+      this.sessionTokenData.userLongitude + '\r\n////////////////////////////////////////////////');  
       //console.log('this.curlatitude:  ' + this.curlatitude + '\r\nthis.curlongitude: ' + this.curlongitude);
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
@@ -133,7 +140,7 @@ export class SignInComponent implements OnInit {
       // Now move user to home page ///////////////////////////////////////////////////
       
   
-      
+      this.router.navigate([this.returnUrl]);
   },
     error => {
       this.alertService.error(error);

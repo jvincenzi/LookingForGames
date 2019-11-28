@@ -5,6 +5,16 @@ import { Router } from '@angular/router';
 import { Token } from './Token';
 import { Observable, interval, Subscription } from 'rxjs';
 
+import { FormControl, Validators } from '@angular/forms';
+import { CallNodeService } from './call-node.service';
+
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import {map, startWith} from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-root',
@@ -18,10 +28,36 @@ export class AppComponent {
   currentUser: UserAccount;
   title = 'LFG'; // Karma didn't like that this wasn't set to" title = 'my-app' so i fixed the test for our app;
   atHome: boolean = true;
+  User: UserAccount[];
+  selectedUser: UserAccount;
+  hideUserList: Boolean = false;
+  tempUser: UserAccount = new UserAccount();
   
   private updateSubscription: Subscription;
 
-  constructor(private router: Router) {
+  firstName = new FormControl('', [
+    Validators.required, 
+    Validators.minLength(2), 
+    Validators.maxLength(32),
+    Validators.pattern('[a-zA-Z ]*')
+  ])
+
+  getUser(id: string): void {
+    //console.log("/// In getUser("+id+") ///");  /////////////////////////////////////////////////////////
+    //let y;
+    this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
+      this.tempUser = userData;
+      console.log('/// userData._id: ' + userData._id + ' ///' );
+      this.firstName.setValue(userData.FirstName.toString());      
+      
+    })
+  }
+
+  // onSelect(PassedInUser: Users): void {
+  //   this.selectedUser = PassedInUser;
+  // }
+
+  constructor(private callNodeService: CallNodeService, private router: Router, private http: HttpClient) {
     console.log("/////////////////////////\r\nInitializing sessionToken\r\n/////////////////////////");
     this.sessionTokenData = new Token();
   }
@@ -30,7 +66,10 @@ export class AppComponent {
     this.updateSubscription = interval(1000).subscribe(
       (val) => { this.updateStats()
     });
-  }
+}
+  
+
+
 
   ngOnDestroy() {
     this.updateSubscription.unsubscribe();

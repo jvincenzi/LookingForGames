@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Token } from '../Token';
+import { CallNodeService } from '../call-node.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 
 export interface Gamez {
   value: string;
@@ -19,7 +23,15 @@ export class SearchBarComponent implements OnInit {
   selectionData: string;
   hideButton: boolean = true;
   selectedGame: string;
-  
+
+
+
+
+
+  hideUserList: Boolean = false;
+
+
+
   gameNames: Gamez[] = [
     { value: 'Dungeons and Dragons', viewValue: "Dungeons & Dragons"},
     { value: 'Pathfinder', viewValue: "Pathfinder"},
@@ -28,6 +40,9 @@ export class SearchBarComponent implements OnInit {
     { value: 'rifts', viewValue: "Rifts"}
   ];
   
+
+
+
   constructor() {
   }
 
