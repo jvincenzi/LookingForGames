@@ -71,7 +71,11 @@
                         <div class="form-group">
 
                         <button [disabled]="loading"  class="btn btn-primary">Login
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        <span 
+                        *ngIf="loading" 
+                        class="spinner-border spinner-border-sm mr-1" 
+                        >
+                    </span>
                     </button>
                     <a routerLink="/signUp" [state]="{sessionToken: sessionTokenData}" class="btn btn-link">Register</a>
                         </div>

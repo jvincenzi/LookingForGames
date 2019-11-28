@@ -10,9 +10,7 @@ import { CallNodeService } from './call-node.service';
 
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
-import {map, startWith} from 'rxjs/operators';
 
 
 
@@ -26,32 +24,17 @@ export class AppComponent {
   //@Output() sessionTokenDataOutput = new EventEmitter<Token>();
   @Input() sessionTokenData: Token; // might not need to habe the sessionTokenDate be an @Input() 
   currentUser: UserAccount;
-  title = 'LFG'; // Karma didn't like that this wasn't set to" title = 'my-app' so i fixed the test for our app;
   atHome: boolean = true;
+  title = 'LFG'; // Karma didn't like that this wasn't set to" title = 'my-app' so i fixed the test for our app;
+  
   User: UserAccount[];
   selectedUser: UserAccount;
   hideUserList: Boolean = false;
-  tempUser: UserAccount = new UserAccount();
+
   
   private updateSubscription: Subscription;
 
-  firstName = new FormControl('', [
-    Validators.required, 
-    Validators.minLength(2), 
-    Validators.maxLength(32),
-    Validators.pattern('[a-zA-Z ]*')
-  ])
 
-  getUser(id: string): void {
-    //console.log("/// In getUser("+id+") ///");  /////////////////////////////////////////////////////////
-    //let y;
-    this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
-      this.tempUser = userData;
-      console.log('/// userData._id: ' + userData._id + ' ///' );
-      this.firstName.setValue(userData.FirstName.toString());      
-      
-    })
-  }
 
   // onSelect(PassedInUser: Users): void {
   //   this.selectedUser = PassedInUser;

@@ -1,6 +1,5 @@
 export class CommentItem {
     _id: string;
-    Name: string;
+    firstName: string;
     Comment: string;
-    Date: Date;
   }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CallNodeService } from '../../call-node.service';
-import { CommentItem } from '../../Comment';
+import { CommentItem } from './Comment';
 import {UserAccount } from '../../UserAccount'
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { userCommentData } from './userCommentData';
 
 import { Token } from '../../Token';
 
@@ -19,11 +20,9 @@ import { Token } from '../../Token';
 export class eventDialog implements OnInit{
 
 //comment codes
-  newComment: CommentItem = new CommentItem();
-  _id = new FormControl('');
-  Name = new FormControl('');
-  Comment = new FormControl('');
-  date = new FormControl('');
+providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
+  newComment: CommentItem;
+
 
   //getting user inf
   User: UserAccount[];
@@ -31,6 +30,7 @@ export class eventDialog implements OnInit{
   sessionTokenData: Token;
   hideUserList: Boolean = false;
   tempUser: UserAccount = new UserAccount();
+  tempCom: CommentItem = new CommentItem();
 
   
 
@@ -40,9 +40,27 @@ export class eventDialog implements OnInit{
     Validators.minLength(2), 
     Validators.maxLength(32),
     Validators.pattern('[a-zA-Z ]*')
-  ])
+  ]);
+
+  Comment = new FormControl('', [
+    Validators.required, 
+    Validators.minLength(2), 
+    Validators.maxLength(500),
+    Validators.pattern('[a-zA-Z-1-99 ]*')
+  ]);
+
+
   onSelect(PassedInUser: UserAccount): void {
     this.selectedUser = PassedInUser;
+  }
+
+  getComment(commentID: string): void {
+    this.callNodeService.getComment(commentID).subscribe((userComment: CommentItem) => {
+      this.tempCom = userComment;
+      console.log('/// userComment._id: ' +userComment._id + ' ///');
+      this.Comment.setValue(userComment.Comment.toString());
+    })
+
   }
 
   getUser(id: string): void {
@@ -54,38 +72,110 @@ export class eventDialog implements OnInit{
     })
   }
 
+
+
  
 
   addRecord(): void {
+    let nowDate: Date = new Date();
+    let expDate: Date = new Date(
+      nowDate.getFullYear()+1, 
+      nowDate.getMonth(),
+      nowDate.getDate()
+    );
 
     this.newComment._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
-    this.newComment.Name = this.Name.value;
-    this.newComment.Comment = this.Name.value;
-    this.newComment.Date = this.date.value;
-    
-  
+    this.newComment.firstName = this.firstName.value;
+    this.newComment.Comment = this.Comment.value;
+    console.log('////////////////////////////////////////////////////\r\nUser info submitted, id: ' + 
+    this.newComment._id + '\r\n////////////////////////////////////////////////////'); ////////////////////////////////////////////////////
 
+  
     this.callNodeService.insertComment(this.newComment).subscribe();
+  }
+
+  submitComment(){
+    console.log(' <<<<< submit Comment() called >>>>> '); // for testing //////////////////////////////////////////////////////
+    this.providedCommentData.firstName = this.newComment.firstName;
+    this.providedCommentData.Comment = this.newComment.Comment;
+    this.callNodeService.insertComment(this.providedCommentData)
+    .subscribe((userComment: CommentItem) => {
+      
+      history.state.sessionToken._id = userComment._id;
+      history.state.sessionToken.firstName = userComment.firstName;
+      history.state.sessionToken.Comment = userComment.Comment;
+
+
+      this.sessionTokenData._id = userComment._id;
+      this.sessionTokenData.FirstName = userComment.firstName;
+      this.sessionTokenData.LastName = userComment.Comment;
+
+  })
   }
 
   submitCommentForm() {
     //////////////////////////////////
     // Put field verification here. //
     //////////////////////////////////
-    
-    this.addRecord();
+  
+    if(this.formValidation()){
+      this.addRecord();
+      this.submitComment();
+
+    }else{
+      document.getElementById('errorMsgLabel').innerHTML = "An error occurred see above";
+    }
   }
 
-  //constructor(private formBuilder: FormBuilder) { }
-  constructor(private callNodeService: CallNodeService, private router: Router, private http: HttpClient) { }
+  formValidation(){
+    if( 
+      this.firstName.errors == null &&
+      this.Comment.errors == null 
+     ) {
+      return true;
+    }else {
+      if(false) { // Show error output for fields
+        console.log('///////////////////////////////////////////////');
+        console.log('All should return null if their were no errors.');
+        console.log('firstName.errors:      -    ' + this.firstName.errors);
+        console.log('Comment.errors:      ' + this.Comment.errors)
+      }
+      if (this.firstName.errors != null ) {
+        document.getElementById('firstNameErr').innerHTML = 'Must be between 2 to 15 chareters long';
+        document.getElementById('firstNameLbl').style.color = "red";
+      }
+      if (this.Comment.errors != null) {
+        document.getElementById('CommentErr').innerHTML = 'Must be between 8 to 500 chareters long<br />and have Lowercase and Uppercase<br />letters Numbers and Special characters';
+        document.getElementById('CommentLbl').style.color = "red";
+      } 
 
-  ngOnInit() { 
+      return false;
+    }
+  }
+  
+  clearErrMsgs() {
+    document.getElementById('errorMsgLabel').innerHTML = '* Required field';
+    document.getElementById('firstErr').innerHTML = '';
+    document.getElementById('CommentErr').innerHTML = '';
+  }
+  constructor(
+    private callNodeService: CallNodeService, 
+    private router: Router, 
+    private http: HttpClient) 
+    {
+      this.newComment = new CommentItem();
+      this.sessionTokenData = new  Token();
+     }
 
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
-    this.getUser(history.state.sessionToken._id);
-    //this.getUsers(); // OLD
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
+ngOnInit() { 
 
+  console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
+  history.state.sessionToken._id  + ' ///');
+  this.getUser(
+    history.state.sessionToken._id);
+  console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + 
+  history.state.sessionToken._id +"\r\nsessionToken FirstName: " + 
+  history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + 
+  history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
 }
-
 }

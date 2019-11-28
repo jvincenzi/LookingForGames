@@ -33,8 +33,7 @@
     <div style="height: 88vh;">
       <app-banner-ad></app-banner-ad>
       <br />
-     
-      <label>{{tempUser.UserName}}</label>
+    
       <app-search-bar *ngIf="atHome" (searchSelectionEmitter)="getSearchSelection($event)"></app-search-bar>
       <router-outlet></router-outlet>
      

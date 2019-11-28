@@ -13,8 +13,8 @@
       <hr>
       
   <div ng-app="">
-    <b>{{Name}}</b>
-    <p>{{Comment}} </p>
+    <b>{{tempUser.FirstName}}</b>
+    <p>{{tempCom.Comment}} </p>
   
 
   
@@ -32,7 +32,7 @@
       Style="width:50%;height:50%;display:inline-block;" 
       class="form-control" placeholder="Write Your Comments.. "></textarea> 
       <td></td>
-      <button (click)="submitCommentForm()" 
+      <button (click)="submitComment()" 
       id="submitCommentForm"
       class="btn btn-danger">Add Comment</button>
      </div>

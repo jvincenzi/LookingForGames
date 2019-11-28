@@ -223,7 +223,8 @@ export class SignUpComponent implements OnInit {
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
     this.providedSigninData.UserName = this.newUser.UserName;
     this.providedSigninData.Password = this.newUser.Password;
-    this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
+    this.callNodeService.userLogin(this.providedSigninData)
+    .subscribe((userData: UserAccount) => {
       
       //document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
       //console.log( userData );

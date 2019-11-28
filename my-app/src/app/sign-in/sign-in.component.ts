@@ -31,9 +31,11 @@ export class SignInComponent implements OnInit {
   constructor(
     private callNodeService: CallNodeService, 
     private alertService: AlertService, 
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute, 
     private router: Router,) {// private router: Router) { //, private route: ActivatedRoute
     this.sessionTokenData = new Token();
+    
   
 
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
@@ -47,6 +49,8 @@ export class SignInComponent implements OnInit {
       userName: ['', Validators.required],
       userPassword1: ['', Validators.required]
   });
+
+  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/signIn';
 }
 
   submitSignin() {
@@ -56,10 +60,7 @@ export class SignInComponent implements OnInit {
         // reset alerts on submit
         this.alertService.clear();
 
-        // stop here if form is invalid
-        // if (this.signUpForm.invalid) {
-        //     return;
-        // }
+    
 
     // Put loading code icon here ////////////////////////////////////////////////////////
     document.getElementById('errorMsgLabel').innerHTML = '<b>Please Wait...</b>';

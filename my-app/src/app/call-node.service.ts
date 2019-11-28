@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserAccount } from './UserAccount';
 import { UserSignInData } from './UserSignInData';
 import { GameEvent } from './game-board/event-render/GameEvent';
-import { CommentItem } from './Comment';
+import { CommentItem } from './game-board/eventdialog/Comment';
 import { LocData } from './game-board/event-render/LocData';
 // export interface Tasks {
 //   name: string;
@@ -30,7 +30,7 @@ if (useLocalHost) {
   userNodeAddress =  "http://localhost:3000/users";
   loginNodeAddress = "http://localhost:3000/signin";
   gameNodeAddress = "http://localhost:3000/games";
-  CommentNodeAddress = "http://localhost:3000/Comments";
+  CommentNodeAddress = "http://localhost:3000/comment";
   googleNodeAddress = 'http://localhost:3000/getDistance';
 
 } else {
