@@ -42,6 +42,9 @@ export class SearchBarComponent implements OnInit {
   findThisGame() {
     console.log(" <<<<<< In search-bar >>>>>> ");
     //console.log("Selected game, this.selectedGame.value: " + this.selectedGame);
+    if(this.selectedGame == undefined) {
+      this.selectedGame = "None";
+    }
     this.localData.Location = this.selectedGame.toString(); // change /Location to another prop once you get this working ///////////////
     //console.log("Selected game, this.localData.Location: " + this.localData.Location);
     this.searchSelectionEmitter.emit(this.localData.Location);

@@ -65,8 +65,8 @@ import { Token } from '../../Token';
       //change gameData to ourGame if this doesn't work
       console.log(gameData);
       console.log(this.gameFilter);
+      this.ourGame = [];
       if(this.gameFilter!="None"){
-        this.ourGame = [];
         for(let i=0;i<gameData.length;i++){
           if(gameData[i].GameType==this.gameFilter){
             this.ourGame.push(gameData[i]);
@@ -74,6 +74,11 @@ import { Token } from '../../Token';
           }
         }
         return this.ourGame;
+      }else {
+        for(let i=0;i<gameData.length;i++){
+          this.ourGame.push(gameData[i]);
+          this.getPosition(gameData[i].Location)  ////////////////////////////////// new
+        }
       }
       this.ourGame = gameData;
       return this.ourGame;
@@ -173,7 +178,7 @@ import { Token } from '../../Token';
       
        
       //this.currentDistance = distance;
-      this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value) + "mi";
+      this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
     });
     
 

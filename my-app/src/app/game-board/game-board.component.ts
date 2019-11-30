@@ -17,7 +17,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(history.state.sessionToken == undefined || history.state.sessionToken._id == undefined){
+    if(history.state.sessionToken == undefined || history.state.sessionToken._id == undefined || history.state.sessionToken._id == "Default"){
       //console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken _id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
     
       console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");

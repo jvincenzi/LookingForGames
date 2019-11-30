@@ -38,7 +38,7 @@ if (useLocalHost) {
   //userNodeAddress = "https://lookforgamesserver.azurewebsites.net/users"; <-- This is Kurt's azure version of our server
   loginNodeAddress = "https://lfgnodesrv.azurewebsites.net/signin";
   gameNodeAddress = "https://lfgnodesrv.azurewebsites.net/games";
-  CommentNodeAddress = "https://lfgnodesrv.azurewebsites.net/comments";
+  CommentNodeAddress = "https://lfgnodesrv.azurewebsites.net/comment";
   googleNodeAddress = 'https://lfgnodesrv.azurewebsites.net/getDistance';
 }
 

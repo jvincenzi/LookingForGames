@@ -1,8 +1,72 @@
-table {
-    width: 100%;
-  }
-  
-  th {
-    text-align: left;
-  }
-  
+
+table{
+  width:100%;
+}
+
+
+
+.panel-primary {
+  margin: 15px;
+}
+
+.event-tile {
+  border: 1px solid rgb(167, 0, 144) ;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+
+.comment {
+  border: 1px solid rgb(167, 0, 144);
+  border: 2px solid rgb(28, 167, 0);
+  border: 3px solid rgb(3, 0, 167);
+}
+
+.divLeft {
+  display: block;
+  float: left;
+}
+.divRight {
+  width:110px;
+  display:block;
+  float: right;
+}
+
+.dist-right {
+  padding: 3px;
+  text-align: right;
+}
+
+.clear {
+  clear: both;
+}
+
+#joinBtn {
+  position: relative;
+
+  bottom:3px; right:3px;
+  float: right;
+}
+
+
+
+
+
+
+
+#centerMe {
+  margin: auto;
+  text-align: center; 
+}
+#centChildDiv {
+  display: inline-block;
+}
+#centInline {
+  text-align: center;
+}
+
+#tableCenter {
+  margin-left:auto; 
+  margin-right:auto; 
+}
+
