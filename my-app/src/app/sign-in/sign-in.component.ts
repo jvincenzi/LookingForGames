@@ -48,17 +48,17 @@ export class SignInComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       userName: ['', Validators.required],
       userPassword1: ['', Validators.required]
-  });
+    });
 
-  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/signIn';
-}
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/signIn';
+  }
 
   submitSignin() {
     console.log(' <<<<< submitSignin() called >>>>> '); // for testing //////////////////////////////////////////////////////
     this.submitted = true;
 
-        // reset alerts on submit
-        this.alertService.clear();
+      // reset alerts on submit
+      this.alertService.clear();
 
     
 
@@ -68,13 +68,12 @@ export class SignInComponent implements OnInit {
 
 
 
-this.loading = true;
+    this.loading = true;
     this.providedSigninData.UserName = this.userName.value;
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
-    this.callNodeService.userLogin(this.providedSigninData)
-    
-    .subscribe((userData: UserAccount) => {
+    this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
+      /*
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
@@ -99,8 +98,8 @@ this.loading = true;
       history.state.sessionToken.UID = userData.UID;
       history.state.sessionToken.userLatitude = this.curlatitude; // might not need to get this data from mongoDB 
       history.state.sessionToken.userLongitude = this.curlongitude; // might not need to get this data from mongoDB 
-      console.log('////////////////////////////////////////////////\r\nSign-In:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
-      
+      //console.log('////////////////////////////////////////////////\r\nSign-In:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
+      */
       
       this.sessionTokenData._id = userData._id;
       this.sessionTokenData.FirstName = userData.FirstName;
@@ -135,18 +134,21 @@ this.loading = true;
       //console.log('this.curlatitude:  ' + this.curlatitude + '\r\nthis.curlongitude: ' + this.curlongitude);
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
-      console.log('/// Done logging in ... ///');
+      
       // this.router.navigate(['/']);
       // put loading icon here ////////////////////////////////////////////////////////
-      // Now move user to home page ///////////////////////////////////////////////////
       
   
-      this.router.navigate([this.returnUrl]);
-  },
-    error => {
-      this.alertService.error(error);
-      this.loading = false;
-  });
+      //this.router.navigate([this.returnUrl]);
+      if(this.sessionTokenData._id != undefined){
+        //console.log('/// Done logging in ... ///');
+        this.router.navigate(['/searchBar'], {state: {sessionToken: this.sessionTokenData}});
+      }
+    },
+      error => {
+        this.alertService.error(error);
+        this.loading = false;
+    });
     
   }
 

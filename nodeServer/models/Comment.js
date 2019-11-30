@@ -18,7 +18,7 @@ const CommentSchema = new Schema({
     required: false
   },
   Date: {
-    type:String, 
+    type: Date.now.toString(), 
     required: false
   }
 

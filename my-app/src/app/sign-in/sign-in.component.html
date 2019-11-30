@@ -1,11 +1,12 @@
 <div>
     <div id="centerMe">
         <br /><br /><br />
-        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <img src="../../assets/LFGLogo.png" width="104" height="115" id="centerMe"/>
         <h2>Sign in to Looking For Games</h2>
     </div>
     <div id="centInline">
         <div id="centChildDiv">
+            <!--
             <div class="container">  
                 <h3>Test output:</h3> 
                 <p> 
@@ -15,7 +16,7 @@
             </div>
 
 
-            <!-- <form [formGroup]="loginForm" (ngSubmit)="submitSignin()">
+            <form [formGroup]="loginForm" (ngSubmit)="submitSignin()">
                 <div class="form-group">
                     <label for="UserName">Username</label>
                     <input type="text" formControlName="UserName" class="form-control"  />
@@ -40,48 +41,44 @@
                     <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
                 </div>
             </form>
-   -->
+            -->
 
             <form [formGroup]="signUpForm" (ngSubmit)="submitSignin()">
                 
                 <div class="form-group">
-                     <label for="userName">Username</label>
-                        <input 
-                        type="text" 
-                        id="userName" 
-                        formControlName="userName" 
-                        class="form-control"
-                        [formControl]="userName"/>
+                    <label for="userName">Username</label>
+                    <input 
+                    type="text" 
+                    id="userName" 
+                    formControlName="userName" 
+                    class="form-control"
+                    [formControl]="userName"/>
 
                  </div>       
-                    <div class="form-group"> 
-                            <label for="userPassword1">Password</label> 
-                            <input 
-                            type="password" id="userPassword1" 
-                            formControlName="userPassword1" 
-                            class="form-control" 
-                            [formControl]="userPassword1"> 
-                    </div>
+                <div class="form-group"> 
+                    <label for="userPassword1">Password</label> 
+                    <input 
+                    type="password" id="userPassword1" 
+                    formControlName="userPassword1" 
+                    class="form-control" 
+                    [formControl]="userPassword1"> 
+                </div>
                 
-                       
-                
-                    <div>
-                        <label id="errorMsgLabel" style="color: black"></label>
+                <div>
+                    <label id="errorMsgLabel" style="color: black"></label>
 
-                        <div class="form-group">
-
+                    <div class="form-group">
                         <button [disabled]="loading"  class="btn btn-primary">Login
                         <span 
-                        *ngIf="loading" 
-                        class="spinner-border spinner-border-sm mr-1" 
-                        >
-                    </span>
-                    </button>
-                    <a routerLink="/signUp" [state]="{sessionToken: sessionTokenData}" class="btn btn-link">Register</a>
-                        </div>
+                            *ngIf="loading" 
+                            class="spinner-border spinner-border-sm mr-1">
+                        </span>
+                        </button>
+                        <a routerLink="/signUp" [state]="{sessionToken: sessionTokenData}" class="btn btn-link">Register</a>
                     </div>
-                    <br/><br/><br/>
-                    <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
+                </div>
+                <br/><br/><br/>
+                <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
               
             </form>            
         </div>

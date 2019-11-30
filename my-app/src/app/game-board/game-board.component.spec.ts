@@ -7,10 +7,13 @@ import { MatFormFieldModule, MatSelectModule } from  '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { eventDialog } from './eventdialog/event-dialog';
+import { Token } from '../Token';
 
 describe('GameBoardComponent', () => {
   let component: GameBoardComponent;
   let fixture: ComponentFixture<GameBoardComponent>;
+
+  let myToken: Token = new Token();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,10 +36,14 @@ describe('GameBoardComponent', () => {
     .compileComponents();
   }));
 
+  
+
   beforeEach(() => {
+    history.state.sessionToken = myToken;
     fixture = TestBed.createComponent(GameBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    
   });
 
   it('should create', () => {

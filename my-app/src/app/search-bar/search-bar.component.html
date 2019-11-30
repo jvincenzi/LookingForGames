@@ -28,7 +28,7 @@
 <div>
   <div id="centerMe">
     <br /><br /><br />
-    <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+    <img src="../../assets/LFGLogo.png" width="104" height="115" id="centerMe"/>
     <h2>Looking For Games</h2>
     
     <p>Sign up to find a game in your area today.</p>
@@ -59,12 +59,15 @@
       </div>
       <br />
       <div id="centerMe">
-          <input id="searchButton" (click)="findThisGame()" style="float: center; margin-top: 7px;" type="button" value="Find a game!"/><!--disabled="{hideButton}"-->
-      </div>
-                  
+        <button mat-raised-button (click)="findThisGame()" >Find a game!</button>
+        <br />
+        <br />
+        <button mat-raised-button [routerLink]="'/createGameEvent'" [state]="{sessionToken: sessionTokenData}">Host an event here!</button>
+    
+      </div>       
     </div>
     <br />
-    <a routerLink="/createGameEvent">Host an event here!</a>
+    <br />
     <p id="centerMe">Already have an account? <a routerLink="/signIn" [state]="{sessionToken: sessionTokenData}">Sign in</a></p>
   </div>
 </div>
