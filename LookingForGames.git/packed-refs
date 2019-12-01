@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled 
+a99f3130b7a8bc2b1962c6f11d46751c5b20f6c0 refs/heads/master
+aae7636c4975bb295112d64c5c1ed47a4ef2d69b refs/heads/sprint-001
+427c8c2e32e6637ff5f4cd1d10a91aff5f3eafd8 refs/heads/sprint-002
+b3c5d94e0e346339142f5381f86a0bfaeb8eb47a refs/heads/sprint-003
+d1a246c3a3f584b85a7465fe59a8988549e70c20 refs/heads/sprint-004
+30496e2de5a46edc56045552fd788c6dd9696765 refs/heads/sprint-005
+3c8204a7521b6a8f68fbd5d0c91da6c3ade69e0e refs/heads/sprint-006
+fda980305b11471a6abcf8f8ccb2da9c088cac28 refs/heads/sprint-007
+227d8b030013eaac32632c99a7f81a0280176163 refs/heads/sprint-008
+0c62fa03f21f3226fd81de5a000bb5bec07bef75 refs/heads/test007

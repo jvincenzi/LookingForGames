@@ -27,8 +27,13 @@ export class SearchBarComponent implements OnInit {
     { value: 'Dungeons and Dragons', viewValue: "Dungeons & Dragons"},
     { value: 'Pathfinder', viewValue: "Pathfinder"},
     { value: 'Monopoly', viewValue: "Monopoly"},
-    { value: 'go-fish', viewValue: "Go Fish"},
-    { value: 'rifts', viewValue: "Rifts"}
+    { value: 'Go fish', viewValue: "Go fish"},
+    { value: 'Arkham horror', viewValue: "Arkham horror"},
+    { value: 'Elder sign', viewValue: "Elder sign"},
+    { value: 'Dungeon!', viewValue: "Dungeon!"},
+    { value: 'Rifts', viewValue: "Rifts"},
+    { value: 'Warhammer 40000', viewValue: "Warhammer 40000"},
+    { value: 'Middle-earth role playing', viewValue: "Middle-earth role playing"}
   ];
   
   constructor(private router: Router) {

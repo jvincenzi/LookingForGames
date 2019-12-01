@@ -35,6 +35,7 @@ import { Token } from '../../Token';
   gameNames= ["Dungeons And Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
+  dist: number [];
   
   dummyToken: Token = new Token();
 
@@ -42,7 +43,8 @@ import { Token } from '../../Token';
 
   eventLocation: string;
 
-  currentDistance: Object;
+  //currentDistance: Object; // was an object
+  currentDistance: number;
 
   constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
 
@@ -65,19 +67,24 @@ import { Token } from '../../Token';
       //change gameData to ourGame if this doesn't work
       console.log(gameData);
       console.log(this.gameFilter);
+      
       this.ourGame = [];
+      
       if(this.gameFilter!="None"){
         for(let i=0;i<gameData.length;i++){
           if(gameData[i].GameType==this.gameFilter){
-            this.ourGame.push(gameData[i]);
             this.getPosition(gameData[i].Location)  ////////////////////////////////// new
+            gameData[i].DistFromUser = this.currentDistance;
+            this.ourGame.push(gameData[i]);
+            //this.dist[i] = this.currentDistance;
           }
         }
         return this.ourGame;
       }else {
         for(let i=0;i<gameData.length;i++){
-          this.ourGame.push(gameData[i]);
           this.getPosition(gameData[i].Location)  ////////////////////////////////// new
+          gameData[i].DistFromUser = this.currentDistance;
+          this.ourGame.push(gameData[i]);
         }
       }
       this.ourGame = gameData;
@@ -124,6 +131,7 @@ import { Token } from '../../Token';
     this.eventLocation = eventLocation;
     console.log(this.eventLocation + " is what we set this.eventLocation to");
     //console.log('/// in getLocation() ///:  ');
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
     } else {
@@ -182,7 +190,7 @@ import { Token } from '../../Token';
     });
     
 
-    
+    return this.currentDistance;
   }
 
   metersToMiles(meters: number) {
