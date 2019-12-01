@@ -33,17 +33,16 @@ export class SignInComponent implements OnInit {
     private alertService: AlertService, 
     private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
-    private router: Router,) {// private router: Router) { //, private route: ActivatedRoute
+    private router: Router,
+  ) {
     this.sessionTokenData = new Token();
     
-  
-
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
   }
 
   ngOnInit() {
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-    this.getLocation();
+    this.geoLocator();
 
     this.signUpForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -135,11 +134,7 @@ export class SignInComponent implements OnInit {
       document.getElementById('errorMsgLabel').innerHTML = '';
       document.getElementById('errorMsgLabel').style.color = "black";
       
-      // this.router.navigate(['/']);
-      // put loading icon here ////////////////////////////////////////////////////////
       
-  
-      //this.router.navigate([this.returnUrl]);
       if(this.sessionTokenData._id != undefined){
         //console.log('/// Done logging in ... ///');
         this.router.navigate(['/searchBar'], {state: {sessionToken: this.sessionTokenData}});
@@ -152,17 +147,16 @@ export class SignInComponent implements OnInit {
     
   }
 
-  getLocation() {
+  geoLocator() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+      navigator.geolocation.getCurrentPosition(this.setCoordinates.bind(this));
     }else {
-      console.log('/// Geolocation is not supported by this browser. ///:  ');
-      document.getElementById('errorMsgLabel').innerHTML = "Geolocation is not supported by this browser.";
+      document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
     }
   }
-  setPosition(position) {
-    this.curlatitude = position.coords.latitude;
-    this.curlongitude = position.coords.longitude;
+  setCoordinates(loc) {
+    this.curlatitude = loc.coords.latitude;
+    this.curlongitude = loc.coords.longitude;
     //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
   }
 
@@ -219,7 +213,7 @@ export class SignInComponent implements OnInit {
 
 //   ngOnInit() {
 //     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-//     this.getLocation();
+//     this.geoLocator();
 
 //     this.loginForm = this.formBuilder.group({
 //       UserName: ['', Validators.required],
@@ -326,7 +320,7 @@ export class SignInComponent implements OnInit {
     
 //   }
 
-//   getLocation() {
+//   geoLocator() {
 //     if (navigator.geolocation) {
 //       navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
 //     }else {

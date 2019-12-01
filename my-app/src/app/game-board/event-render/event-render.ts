@@ -119,6 +119,7 @@ import { Token } from '../../Token';
     this.myGameEvent.updateGame(theGame).subscribe();
   }
 
+
   getPosition(eventLocation) {
     console.log(eventLocation);
     this.eventLocation = eventLocation;
