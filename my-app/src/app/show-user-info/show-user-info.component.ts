@@ -169,19 +169,21 @@ export class ShowUserInfoComponent implements OnInit {
     }
   }
 
-  getLocation() {
+
+
+  geoLocator() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+      navigator.geolocation.getCurrentPosition(this.setCoordinates.bind(this));
     }else {
-      console.log('/// Geolocation is not supported by this browser. ///:  ');
-      document.getElementById('errorMsgLabel').innerHTML = "Geolocation is not supported by this browser.";
+      document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
     }
   }
-  setPosition(position) {
-    this.curlatitude = position.coords.latitude;
-    this.curlongitude = position.coords.longitude;
+  setCoordinates(loc) {
+    this.curlatitude = loc.coords.latitude;
+    this.curlongitude = loc.coords.longitude;
     //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
   }
+
 
   /*
   getUsers(): void { // OLD. used to get all user before signin code worked ///////////////////////////////
@@ -377,7 +379,7 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   submitModUserInfo() {
-    this.getLocation();
+    this.geoLocator();
     this.clearErrMsgs();
     if(this.formValidation()){
       this.updateRecord();

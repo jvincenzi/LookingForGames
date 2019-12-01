@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     //console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\n////////////////////////////////////////////////');
-    this.getLocation();
+    this.geoLocator();
   }
 
   submitSignin() {
@@ -110,20 +110,19 @@ export class SignInComponent implements OnInit {
     
   }
 
-  getLocation() {
+
+  geoLocator() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+      navigator.geolocation.getCurrentPosition(this.setCoordinates.bind(this));
     }else {
-      console.log('/// Geolocation is not supported by this browser. ///:  ');
-      document.getElementById('errorMsgLabel').innerHTML = "Geolocation is not supported by this browser.";
+      document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
     }
   }
-  setPosition(position) {
-    this.curlatitude = position.coords.latitude;
-    this.curlongitude = position.coords.longitude;
+  setCoordinates(loc) {
+    this.curlatitude = loc.coords.latitude;
+    this.curlongitude = loc.coords.longitude;
     //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
   }
-
   
 
 
