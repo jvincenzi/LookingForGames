@@ -103,9 +103,6 @@ import { Token } from '../../Token';
   }
 
   joinEvent(theGame: GameEvent): void {
-    //this.dummyToken.FirstName = "Sean";
-    //this.dummyToken.LastName = "Newman";
-    //this.dummyToken.UserName = "SeanNewman22";
     
     let playerArr = [];
 
@@ -122,6 +119,20 @@ import { Token } from '../../Token';
     console.log("Event-Render: pushing playerArr [" + playerArr + "] to the server");
 
     theGame.CurrentPlayers.push(playerArr);
+
+    this.myGameEvent.updateGame(theGame).subscribe();
+  }
+
+  leaveEvent(theGame: GameEvent): void {
+
+    console.log("deleting user from event" + history.state.sessionToken.UserName);
+
+    for(let i = 0; i<theGame.CurrentPlayers.length; i++){
+      if(theGame.CurrentPlayers[i][2] == history.state.sessionToken.UserName){
+        theGame.CurrentPlayers.splice(i, 1);
+        break;
+      }
+    }
 
     this.myGameEvent.updateGame(theGame).subscribe();
   }
