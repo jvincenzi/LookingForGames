@@ -51,7 +51,6 @@ import { Token } from '../../Token';
   }
 
   ngOnInit() {
-    console.log("Search bar from home " + history.state.sessionToken.Location);
     if(history.state.sessionToken.Location == undefined){
       this.gameFilter = "None";
     } else {

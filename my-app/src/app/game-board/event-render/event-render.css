@@ -3,18 +3,17 @@ table{
   width:100%;
 }
 
-
-
 .panel-primary {
   margin: 15px;
 }
 
 .event-tile {
-  border: 1px solid rgb(167, 0, 144) ;
+  background-color: rgb(242, 242, 242);
+  border: 1px solid rgb(242, 242, 242);
+  box-shadow: 5px 5px 5px grey;
   border-radius: 5px;
   padding: 7px;
 }
-
 
 .comment {
   border: 1px solid rgb(167, 0, 144);
@@ -35,6 +34,7 @@ table{
 .dist-right {
   padding: 3px;
   text-align: right;
+  width: 90px;
 }
 
 .clear {
@@ -43,13 +43,27 @@ table{
 
 #joinBtn {
   position: relative;
-
-  bottom:3px; right:3px;
+  margin-right: 10px;
+  float: right;
+  background-color: rgb(158, 213, 247);
+}
+#leaveBtn {
+  position: relative;
   float: right;
 }
 
-
-
+.sortBtn {
+  margin-right: 5px;
+  margin-left: 15px;
+  background-color: rgb(158, 213, 247);
+}
+#delEvent {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.selectGame {
+  margin-right: 25px;
+}
 
 
 

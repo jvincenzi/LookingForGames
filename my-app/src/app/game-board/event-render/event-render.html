@@ -7,49 +7,14 @@
         
 <div class="panel panel-primary">
   <div class="panel-heading">
-    Game Events
+    <b>Game Events</b>
   </div>
   <div class="panel-body" *ngIf="ourGame">
     <!--<h4>Game Currently Active:</h4>-->
-    
-    <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame"><!--<b>Game Title: </b>    -->
-      <li style="list-style-type:none;">
-        <div class="event-tile">
-          <table>
-            <tr>
-              <td ><h4>{{ourGame.Title}}</h4></td>
-              <td></td>
-              <td class="dist-right" style="text-align: right" (click)="getPosition(ourGame.Location)" >{{currentDistance}} miles</td>
-            </tr>
-
-            <tr >
-              <td><p><b>Game Type:</b> </p></td>
-              <td>{{ourGame.GameType}}</td>
-            </tr>
-
-            <tr>
-              <td ><p><b>Location:</b> </p></td>
-              <td>{{ourGame.Location}}</td>
-            </tr>
-
-            <tr>
-              <td ><p><b>Required Players:</b> </p></td>
-              <td>{{ourGame.ReqPlayers}}</td>
-              <td style="height: 10"><button (click)="joinEvent(ourGame)" id="joinBtn" class="mat-raised-button">Join Event!</button></td>
-              <td style="height: 10"><button (click)="leaveEvent(ourGame)" id="joinBtn" class="mat-raised-button">Leave Event!</button></td>
-            </tr>
-
-          </table>
-          
-        </div>
-      </li>
-    </p>
-    <!--<h4 style="background: lightslategrey">To join a game please <a routerLink="/signIn">Sign In</a></h4>-->
-    <!--<hr />-->
     <div id="event-tile">
       <mat-form-field>
         <mat-label>Select a game</mat-label>
-        <mat-select [(value)]="gameFilter">
+        <mat-select [(value)]="gameFilter" class="selectGame">
           <mat-option value="None">None</mat-option>
           <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
           <mat-option value="Pathfinder">Pathfinder</mat-option>
@@ -63,9 +28,52 @@
           <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button (click)="getGames()" >Filter Gameboard</button>
-      <button mat-raised-button (click)="deleteEvent()" color="warn">Delete Event</button>
+      <button mat-raised-button (click)="getGames()" class="sortBtn">Filter Gameboard</button>
+      <button mat-raised-button (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
     </div>
+
+    <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame"><!--<b>Game Title: </b>    -->
+      <li style="list-style-type:none;">
+        <div class="event-tile">
+          <table>
+              <tr>
+                <td ><h4><b>{{ourGame.Title}}</b></h4></td>
+                <td style="height: 10">
+                  <button mat-raised-button (click)="leaveEvent(ourGame)" id="leaveBtn" color="warn">Leave Event!</button>
+                  <button mat-raised-button (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
+                </td>
+                <td class="dist-right" style="text-align: right" (click)="getPosition(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>
+              </tr>
+          </table>
+
+
+          <table>
+            <tr >
+              <td style="width: 130px"><p><b>Game Type:</b> </p></td>
+              <td><p>{{ourGame.GameType}}</p></td>
+            </tr>
+            <tr>
+              <td style="width: 130px"><p><b>Venu Name:</b> </p></td>
+              <td><p>{{ourGame.LocationName}}</p></td>
+            </tr>
+            <tr>
+              <td style="width: 130px"><p><b>Venu Address:</b> </p></td>
+              <td><p>{{ourGame.Location}}</p></td>
+            </tr>
+
+            <tr>
+              <td style="width: 130px"><p><b>Required Players:</b> </p></td>
+              <td><p>{{ourGame.ReqPlayers}}</p></td>
+            </tr>
+
+          </table>
+          
+        </div>
+      </li>
+    </p>
+    <!--<h4 style="background: lightslategrey">To join a game please <a routerLink="/signIn">Sign In</a></h4>-->
+    <!--<hr />-->
+    
     
     
 
