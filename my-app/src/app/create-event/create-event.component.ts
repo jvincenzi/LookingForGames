@@ -14,11 +14,13 @@ export class CreateEventComponent implements OnInit {
 
   title = new FormControl('');
   gameName = new FormControl('');
+  locationName = new FormControl('');
   location = new FormControl('');
   date = new FormControl('');
   restrictions = new FormControl('');
   reqPlayers = new FormControl('');
   maxPlayers = new FormControl('');
+  DistFromUser = new FormControl('');
   
 
   addRecord(): void {
