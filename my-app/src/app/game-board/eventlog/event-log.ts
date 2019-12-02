@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { userFeedBackData } from './userFeedBackData';
 import { Token } from '../../Token';
 import { FeedBackItem } from './FeedBack';
+import { userCommentData } from '../eventdialog/userCommentData';
 
 @Component({
   selector: 'event-log',
@@ -19,9 +20,11 @@ import { FeedBackItem } from './FeedBack';
 
 export class eventLog implements OnInit{
 
-  providedFeedBackData: userFeedBackData ={_id: '', Email: '', Comment: ''};
+  //providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
+  providedCommentData2: userCommentData ={_id: '',Users_id: '',UserName:'', Comment: ''};
   newFeedBack: FeedBackItem;
   private api = 'Admin@LookForGame.com';
+  callNodeService: any;
 
   public sendEmail(body: UserAccount) {
     return this.http.post(`${this.api}/sendEmail`, body);
@@ -54,7 +57,8 @@ export class eventLog implements OnInit{
     Validators.maxLength(500),
     Validators.pattern('[a-zA-Z-1-99 ]*')
   ]);
-
+  
+  /*
   addRecord(): void {
     let nowDate: Date = new Date();
     let expDate: Date = new Date(
@@ -70,35 +74,28 @@ export class eventLog implements OnInit{
     this.newFeedBack._id + '\r\n////////////////////////////////////////////////////'); ////////////////////////////////////////////////////
 
   
-    this.myUsers.insertComment(this.newFeedBack).subscribe();
+    this.myUsers.insertComment(this.newFeedBack).subscribe(); // <------------------<<<<<<  this is broken 
   }
+  */
 
   submitComment(){
-    console.log(' <<<<< submit Comment() called >>>>> '); // for testing //////////////////////////////////////////////////////
-    this.providedFeedBackData.Email = this.newFeedBack.Email;
-    this.providedFeedBackData.Comment = this.newFeedBack.Comment;
-    this.myUsers.insertComment(this.providedFeedBackData)
-    .subscribe((userComment: FeedBackItem) => {
-      
-      history.state.sessionToken._id = userComment._id;
-      history.state.sessionToken.Email = userComment.Email;
-      history.state.sessionToken.Comment = userComment.Comment;
-
-
-      this.sessionTokenData._id = userComment._id;
-      this.sessionTokenData.Email = userComment.Email;
-     // this.sessionTokenData.Comment = userComment.Comment;
-
-  })
+    ////////////////////////////////////////////////////////////
+    //   This code works to wright a new comment to MongoDB   //
+    ////////////////////////////////////////////////////////////
+    this.providedCommentData2._id = (new Date().valueOf()).toString();
+    this.providedCommentData2.Users_id = history.state.sessionToken._id;
+    this.providedCommentData2.UserName = history.state.sessionToken.UserName;
+    this.providedCommentData2.Comment = this.Comment.value;
+    console.log(' <<<<< submit Comment() called >>>>> ');
+    this.callNodeService.insertComment(this.providedCommentData2).subscribe((userComment: userCommentData) => {
+      document.getElementById('CommentMsg').innerHTML = 'Your message has been submitted';
+    });
   }
 
   submitCommentForm() {
-    //////////////////////////////////
-    // Put field verification here. //
-    //////////////////////////////////
   
     if(this.formValidation()){
-      this.addRecord();
+      //this.addRecord();
       this.submitComment();
 
     }else{

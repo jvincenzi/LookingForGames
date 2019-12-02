@@ -5,7 +5,7 @@ const UserCommentData = require("../models/UserCommentData");
 // go to azure and turn on app logging so can see console.log messages
 exports.listAllComment = (req, res) => {
     console.log(">>>>>>>>> IN Comments <<<<<<<<<");
-    Comment.find({}, (err, comment) => {
+    UserCommentData.find({}, (err, comment) => {
         if (err) {
         console.log(err);
         res.status(500).send(err);
@@ -19,7 +19,7 @@ exports.listAllComment = (req, res) => {
 exports.readComment = (req, res) => { // this is working
     console.log("---------- IN readComment ----------");/////////////////
   
-    Comment.findById(req.params.commentid, (err, comment) => {
+    UserCommentData.findById(req.params.commentid, (err, comment) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -29,19 +29,19 @@ exports.readComment = (req, res) => { // this is working
 };
 
 exports.createNewComment = (req, res) => {
-    console.log('got this far ///////////////////////////////////////////');
+    console.log("-------- IN createNewComment -------");/////////////////;
     let newComment = new UserCommentData(req.body);
     console.log(newComment);
-    newComment.save((err, Comment) => {
+    newComment.save((err, comment) => {
         if (err) {
-        res.status(500).send(err);
+            res.status(500).send(err);
         }
-        res.status(201).json(Comment);
+        res.status(201).json(comment);
     });
 };
 
 exports.deleteComment = (req, res) => {
-    Comment.deleteOne({ _id: req.params._id }, (err, comment) => {  // don't know who changed the name from _id
+    UserCommentData.deleteOne({ _id: req.params._id }, (err, comment) => {  // don't know who changed the name from _id
         if (err) {
         res.status(404).send(err);
         }

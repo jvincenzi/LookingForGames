@@ -1,7 +1,7 @@
 const GeoLocation = require("../models/GeoLocation");
 
 exports.getDistance = (req, res) => {
-  console.log(">>>>>>>>> IN GET DISTANCE2 <<<<<<<<<");
+  console.log(">>>>>>>>> IN GET DISTANCE <<<<<<<<<");
 
   const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM'
@@ -39,7 +39,7 @@ exports.getDistance = (req, res) => {
 };
 
 exports.getDistance2 = (req, res) => {
-  console.log(">>>>>>>>> IN GET DISTANCE <<<<<<<<<");
+  console.log(">>>>>>>>> IN GET DISTANCE2 <<<<<<<<<");
   let newLocation = new GeoLocation(req.body);
   /*
   console.log("/// newLocation.myLat: " + newLocation.myLat);

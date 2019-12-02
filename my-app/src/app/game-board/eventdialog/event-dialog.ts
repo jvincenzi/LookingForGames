@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CallNodeService } from '../../call-node.service';
 import { CommentItems } from './Comment';
-import {UserAccount } from '../../UserAccount'
+import {UserAccount } from '../../UserAccount';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { userCommentData } from './userCommentData';
@@ -19,8 +19,9 @@ import { Token } from '../../Token';
 
 export class eventDialog implements OnInit{
 
-//comment codes
-providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
+  //comment codes
+  //providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
+  providedCommentData2: userCommentData ={_id: '',Users_id: '',UserName:'', Comment: ''};
   newComment: CommentItems;
 
 
@@ -31,6 +32,8 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
   hideUserList: Boolean = false;
   tempUser: UserAccount = new UserAccount();
   tempCom: CommentItems = new CommentItems();
+  tempCom2: userCommentData = new userCommentData();
+  commentsArr: userCommentData[];
 
   
 
@@ -53,7 +56,7 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
   onSelect(PassedInUser: UserAccount): void {
     this.selectedUser = PassedInUser;
   }
-
+/*
   getComment(commentID: string): void {
     this.callNodeService.getComment(commentID).subscribe((userComment: CommentItems) => {
       this.tempCom = userComment;
@@ -62,7 +65,7 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
     })
 
   }
-
+*/
   getUser(id: string): void {
     this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
       this.tempUser = userData;
@@ -72,9 +75,6 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
     })
   }
 
-
-
- 
 
   addRecord(): void {
     let nowDate: Date = new Date();
@@ -87,37 +87,59 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
     this.newComment._id = (new Date().valueOf()).toString();  // fairly safe random number if unlucky and get a duplicate, Mongo will just reject, user can try again
     this.newComment.firstName = this.firstName.value;
     this.newComment.Comment = this.Comment.value;
+    
     console.log('////////////////////////////////////////////////////\r\nUser info submitted, id: ' + 
     this.newComment._id + '\r\n////////////////////////////////////////////////////'); ////////////////////////////////////////////////////
 
   
-    this.callNodeService.insertComment(this.newComment).subscribe();
+    //this.callNodeService.insertComment(this.newComment).subscribe();
   }
 
   submitComment(){
-    console.log(' <<<<< submit Comment() called >>>>> '); // for testing //////////////////////////////////////////////////////
-    this.providedCommentData.firstName = this.newComment.firstName;
+    ////////////////////////////////////////////////////////////
+    //   This code works to wright a new comment to MongoDB   //
+    ////////////////////////////////////////////////////////////
+    this.providedCommentData2._id = (new Date().valueOf()).toString();
+    this.providedCommentData2.Users_id = history.state.sessionToken._id;
+    this.providedCommentData2.UserName = history.state.sessionToken.UserName;
+    this.providedCommentData2.Comment = this.Comment.value;
+    
+    console.log(' <<<<< submit Comment() called >>>>> ');
+    this.callNodeService.insertComment(this.providedCommentData2).subscribe((userComment: userCommentData) => {
+      document.getElementById('CommentMsg').innerHTML = 'Your message has been submitted';
+    });
+
+    /* // Old
+    this.providedCommentData.UserName = this.newComment.firstName;
     this.providedCommentData.Comment = this.newComment.Comment;
-    this.callNodeService.insertComment(this.providedCommentData)
-    .subscribe((userComment: CommentItems) => {
-      
-      history.state.sessionToken._id = userComment._id;
-      history.state.sessionToken.firstName = userComment.firstName;
-      history.state.sessionToken.Comment = userComment.Comment;
-
-
-      this.sessionTokenData._id = userComment._id;
-      this.sessionTokenData.FirstName = userComment.firstName;
-      this.sessionTokenData.LastName = userComment.Comment;
-
-  })
+    this.callNodeService.insertComment(this.providedCommentData).subscribe((userComment: CommentItems) => {
+      //history.state.sessionToken._id = userComment._id;
+      //history.state.sessionToken.firstName = userComment.firstName;
+      //history.state.sessionToken.Comment = userComment.Comment;
+      //this.sessionTokenData._id = userComment._id;
+      //this.sessionTokenData.FirstName = userComment.firstName;
+      //this.sessionTokenData.LastName = userComment.Comment;
+    });
+    */
   }
 
-  submitCommentForm() {
-    //////////////////////////////////
-    // Put field verification here. //
-    //////////////////////////////////
-  
+  getRecentComment() {
+    this.callNodeService.getComment(this.providedCommentData2._id).subscribe((userComment: userCommentData) => {
+      this.tempCom2.UserName = "User name: " + userComment.UserName;
+      this.tempCom2.Comment = userComment.Comment;
+    });
+  }
+
+  getAllComments() {
+    this.commentsArr = [];
+    this.callNodeService.getAllComment().subscribe((userComment: userCommentData[]) => {
+      for(let i = 0; i < userComment.length; i++) {
+        this.commentsArr.push(userComment[i]);
+      }
+    });
+  }
+
+  submitCommentForm() {  
     if(this.formValidation()){
       this.addRecord();
       this.submitComment();
@@ -167,15 +189,15 @@ providedCommentData: userCommentData ={_id: '',firstName:'', Comment: ''};
       this.sessionTokenData = new  Token();
      }
 
-ngOnInit() { 
+  ngOnInit() { 
 
-  console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
-  history.state.sessionToken._id  + ' ///');
-  this.getUser(
-    history.state.sessionToken._id);
-  console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + 
-  history.state.sessionToken._id +"\r\nsessionToken FirstName: " + 
-  history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + 
-  history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
-}
+    console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
+    history.state.sessionToken._id  + ' ///');
+    this.getUser(
+      history.state.sessionToken._id);
+    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + 
+    history.state.sessionToken._id +"\r\nsessionToken FirstName: " + 
+    history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + 
+    history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
+  }
 }

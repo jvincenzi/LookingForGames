@@ -1,40 +1,68 @@
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <span class="glyphicon glyphicon-comment"></span>
+    Comments
+  </div>
+  <div class="panel-body">
+    <b>New Comment</b><br/>
+<!--
+    <mat-form-field>
+      <mat-select placeholder="Currently logged in as:">                              
+        <mat-option ng-model="Name" value="tempUser.FirstName" aria-placeholder="Your Name"> {{tempUser.FirstName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <td></td>
+-->
+    <textarea ng-model="Comment" id="Comment" 
+      Style="width:75%;height:50%;display:inline-block;" 
+      class="form-control" [formControl]="Comment" placeholder="Write Your Comments.. ">
+    </textarea> 
+    <td></td>
     
+    <button mat-raised-button (click)="submitComment()"
+      onclick="document.getElementById('Comment').value = ''" 
+      id="submitCommentForm"
+      color="warn">Add Comment
+    </button>
+    <p id="CommentMsg"></p>
+    <hr>
     
-    <div class="panel panel-primary">
-    <div class="panel-heading">
-  <span class="glyphicon glyphicon-comment"></span>
-  Comments</div>
-    <div class="panel-body">
+    <div ng-app="">
+      <!--<b>{{tempUser.FirstName}}</b>
+      <p>{{tempCom.Comment}} </p>-->
+      <p>Get last Comment</p>
+      <p><b>{{tempCom2.UserName}}</b> {{tempCom2.Comment}} </p>
+      
+      <button mat-raised-button (click)="getRecentComment()" 
+        color="warn" style="float: right">Get Last Comment
+      </button>
+      <hr>
+
+      <p>Get All Comments</p>
+      <p *ngFor="let commentsArr of commentsArr">
+          
+
+        <li style="list-style-type:none;">
+          <p><b>{{commentsArr.UserName}}:</b> {{commentsArr.Comment}}</p>
+          
+        </li>
+
+
+
+      </p>
+      <button mat-raised-button (click)="getAllComments()" 
+        color="warn" style="float: right">Get All Comment
+      </button>
       <hr>
       
-      <div ng-app="">
-        <b>{{tempUser.FirstName}}</b>
-        <p>{{tempCom.Comment}} </p>
       
-    
-      
-          <hr>
-          <b>New Comment</b><br/>
-    
-          <mat-form-field>
-            <mat-select placeholder="Your Current Login As:">                              
-            <mat-option ng-model="Name" value="tempUser.FirstName" aria-placeholder="Your Name"> {{tempUser.FirstName}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <td></td>
-          
-          <textarea ng-model="Comment" id="Comment" 
-          Style="width:50%;height:50%;display:inline-block;" 
-          class="form-control" placeholder="Write Your Comments.. "></textarea> 
-          <td></td>
-          <button (click)="submitComment()" 
-          id="submitCommentForm"
-          class="btn btn-danger">Add Comment</button>
-         </div>
-          </div>
-      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,10 @@ const UserCommentDataSchema = new Schema({
     type:String,
     required: false
   },
+  Users_id: {
+    type:String,
+    required: false
+  },
   UserName: {
     type:String, 
     required: false
@@ -15,4 +19,4 @@ const UserCommentDataSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("Comment", UserCommentDataSchema);
+module.exports = mongoose.model("UserCommentData", UserCommentDataSchema);
