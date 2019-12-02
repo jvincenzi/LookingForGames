@@ -190,7 +190,8 @@ export class SignUpComponent implements OnInit {
     this.newUser.City = this.userCity.value;
     this.newUser.State = this.userState.value;
     this.newUser.Zipcode = this.userZipCode.value;
-    this.newUser.FreeAccount = this.userFreeAcc.value;
+    //this.newUser.FreeAccount = this.userFreeAcc.value;
+    this.newUser.FreeAccount = true; // fix this later: find how to get a bool value from the formControl //////////////////////////////////////
     this.newUser.SubscriptionExp = expDate;
     if(this.userFreeAcc.value){
       this.newUser.SubscriptionLv = 0;
@@ -211,7 +212,9 @@ export class SignUpComponent implements OnInit {
     //                                                          //
     //    Uncomment this to send new user records to mongoDB    //
     //                                                          //
-    this.callNodeService.insertUser(this.newUser).subscribe();//
+    this.callNodeService.insertUser(this.newUser).subscribe(() => {
+      this.submitSignin();
+    });//
     //                                                          //
     //////////////////////////////////////////////////////////////
   }
@@ -225,7 +228,7 @@ export class SignUpComponent implements OnInit {
       
       //document.getElementById('errorMsgLabel').innerHTML = userData.message.toString();
       //console.log( userData );
-
+/*
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
       history.state.sessionToken.LastName = userData.LastName;
@@ -251,7 +254,7 @@ export class SignUpComponent implements OnInit {
       history.state.sessionToken.userLatitude = this.curlatitude; // might not need to get this data from mongoDB 
       history.state.sessionToken.userLongitude = this.curlongitude; // might not need to get this data from mongoDB 
       console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude: '+history.state.sessionToken.userLatitude+'\r\nhistory.state.sessionToken.userLongatude: '+history.state.sessionToken.userLongatude+'\r\n////////////////////////////////////////////////');
-      
+  */    
       
       this.sessionTokenData._id = userData._id;
       this.sessionTokenData.FirstName = userData.FirstName;
@@ -272,7 +275,7 @@ export class SignUpComponent implements OnInit {
       this.sessionTokenData.AdminAccess = userData.AdminAccess;
       this.sessionTokenData.CurrentStatus = userData.CurrentStatus;
       this.sessionTokenData.Location = userData.Location;
-      this.sessionTokenData.createdOn = userData.createdOn;
+      this.sessionTokenData.createdOn = userData.createdOn.toString();
       this.sessionTokenData.UID = userData.UID;
       this.sessionTokenData.userLatitude = this.curlatitude;
       this.sessionTokenData.userLongitude = this.curlongitude;
@@ -287,11 +290,9 @@ export class SignUpComponent implements OnInit {
     this.clearErrMsgs();
     if(this.formValidation()){
       this.addRecord();
-      this.submitSignin();
-      // route the user to the sign-in.component ///////////////////////////////////////////////
-      //this.router.navigate(['/']); // this works but dosent pass the data throught the 
-      //                                router and it goes to a blank homepage without 
-      //                                the search component
+      //this.submitSignin();
+      //this.router.navigate(['/searchBar'], {state: {sessionToken: this.sessionTokenData}});
+      
     }else{
       document.getElementById('errorMsgLabel').innerHTML = "An error occurred see above";
     }

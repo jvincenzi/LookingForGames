@@ -46,7 +46,7 @@ exports.updateUser = (req, res) => {
     //console.log("---------------------------------");
 };
 
-exports.deleteUser = (req, res) => { // this is working
+exports.deleteUser = (req, res) => {
     console.log("---------- IN deleteUser ----------");/////////////////////
     //console.log('User ID at server is ' + req.params.userid);/////////////
     User.deleteOne({ _id: req.params.userid }, (err, user) => {
@@ -58,7 +58,7 @@ exports.deleteUser = (req, res) => { // this is working
     //console.log("---------------------------------");/////////////////////
 };
 
-exports.createNewUser = (req, res) => { // this is working
+exports.createNewUser = (req, res) => {
     let newUser = new User(req.body);
     console.log("--------- IN createNewUser ---------");/////////////
     newUser.save((err, user) => {
