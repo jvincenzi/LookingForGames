@@ -102,11 +102,9 @@ export class eventRender implements OnInit {
   userHasJoined(usersIds: Array<[]>[]) {
     for(let i =0; i < usersIds.length; i++){
       if(history.state.sessionToken._id == usersIds[i][2]) {
-        console.log(" >>>> I found you ..." + usersIds[i][2]);
         return true;
       }
     } 
-    console.log(" >>>> Not there ..." + usersIds[0][2]);
     return false;
   }
 
