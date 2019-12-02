@@ -25,7 +25,7 @@ let CommentNodeAddress: string;
 let googleNodeAddress: string;
 
 
-let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
+let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
 
   
 if (useLocalHost) {
@@ -92,41 +92,25 @@ export class CallNodeService {
   ////////////////////// GameEvent routes //////////////////////
 
   insertGame(game: GameEvent): Observable<GameEvent> {
-    //return this.http.post<UserAccount>('http://localhost:3000/users/', user);
     return this.http.post<GameEvent>(gameNodeAddress + '/', game);
   }
-
   deleteGame(game: GameEvent) {
-    //return this.http.delete('http://localhost:3000/users/' + user._id);
     return this.http.delete(gameNodeAddress + '/' + game._id);
   }
-
   updateGame(game: GameEvent): Observable<void> {
     return this.http.put<void>(gameNodeAddress + '/' + game._id, game);
   }
 
   //call for Game Event/
   getAllGames(): Observable<GameEvent[]> {
-    //return this.http.get<UserAccount[]>('http://localhost:3000/users');
     return this.http.get<GameEvent[]>(gameNodeAddress);
   }
   getGame(Title: string): Observable<GameEvent> {
     return this.http.get<GameEvent>(gameNodeAddress + '/' + Title);
-  // return this.http.get<Task>('https://kurtmongoserver.azurewebsites.net/tasks/' + taskName);
   }
-
-  /*
-  getDistance(currentPosition: String, destination: String): Observable<JSON> { // Seans orignal
-    return this.http.get<JSON>(googleNodeAddress + '/' + currentPosition + "?" + destination);
-  }
-  
-
-*/
-  getDistance(lat: string, long: string, destination: String): Observable<JSON> { // new version
+  getDistance(lat: string, long: string, destination: string): Observable<JSON> { // new version
     return this.http.get<JSON>(googleNodeAddress + '/' + lat + '/' + long + '/' + destination);
   }
-
-
   getDistance2(locData: LocData): Observable<JSON> { // Joes old working
     return this.http.post<JSON>(googleNodeAddress + '/', locData);
   }

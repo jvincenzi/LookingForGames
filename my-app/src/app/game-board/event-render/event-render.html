@@ -53,7 +53,7 @@
                 <td style="height: 10">
                   <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && userHasJoined(ourGame.CurrentPlayers)" (click)="leaveEvent(ourGame)" id="leaveBtn">Leave Event!</button>
                   <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && !userHasJoined(ourGame.CurrentPlayers)"  (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
-                  <button mat-raised-button *ngIf="userOwnsEvent(ourGame.Owner_id)" (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
+                  <button mat-raised-button *ngIf="userOwnsEvent(ourGame.Owner_id)" (click)="deleteEvent(ourGame)" id="delEvent" color="warn">Delete Event</button>
                 </td>
                 <!--<td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>-->
                 <td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{ourGame.DistFromUser}}mi</p></td>

@@ -5,7 +5,10 @@
   }
   
   .panel-primary {
-    margin: 15px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    max-width: 1000px;
   }
   
   .example-full-width {

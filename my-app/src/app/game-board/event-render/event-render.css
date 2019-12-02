@@ -4,7 +4,9 @@ table{
 }
 
 .panel-primary {
-  margin: 15px;
+  margin: auto;
+  margin-top: 15px;
+  max-width: 1000px;
 }
 
 .event-tile {

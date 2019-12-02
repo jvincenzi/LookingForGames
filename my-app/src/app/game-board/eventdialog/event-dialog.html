@@ -37,15 +37,15 @@
     <div ng-app="">
       <!--<b>{{tempUser.FirstName}}</b>
       <p>{{tempCom.Comment}} </p>-->
-      <p>Get last Comment</p>
+      <p><b>Most Recent Comment:</b></p>
       <p><b>{{tempCom2.UserName}}</b> {{tempCom2.Comment}} </p>
       
       <button mat-raised-button (click)="getRecentComment()" 
-        color="warn" style="float: right">Get Last Comment
+        color="warn" *ngIf="providedCommentData2._id != ''" style="float: right">Get Last Comment
       </button>
       <hr>
 
-      <p>Get All Comments</p>
+      <p><b>All Comments:</b></p>
       <p *ngFor="let commentsArr of commentsArr">
           
 
@@ -58,7 +58,7 @@
 
       </p>
       <button mat-raised-button (click)="getAllComments()" 
-        color="warn" style="float: right">Get All Comment
+        color="warn" style="float:right">Get All Comments
       </button>
       <hr>
       

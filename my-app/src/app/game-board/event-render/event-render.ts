@@ -36,7 +36,6 @@ export class eventRender implements OnInit {
   gameNames= ["Dungeons And Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
-  dist: number [];
   
   dummyToken: Token = new Token();
 
@@ -139,8 +138,6 @@ export class eventRender implements OnInit {
 
             //gameData[i].DistFromUser = this.currentDistance;
             //console.log("gameData[i].DistFromUser: " + gameData[i].DistFromUser)
-            //
-            //this.dist[i] = this.currentDistance;
           }
         }
         return this.ourGame;
@@ -163,9 +160,20 @@ export class eventRender implements OnInit {
     console.log(this.selectedGame);
   }
 
-  deleteEvent(): void {
-    console.log("Deleting: " + this.selectedGame);
-    this.myGameEvent.deleteGame(this.selectedGame).subscribe();
+  deleteEvent(theGame: GameEvent): void {
+    console.log("//////////////////////////////\r\nDeleting: ");
+    console.log(theGame);
+    console.log("Deleted...\r\n//////////////////////////////");
+    this.myGameEvent.deleteGame(theGame).subscribe(() => {
+      let i = 0;
+      while(i < this.ourGame.length) {
+        if(this.ourGame[i]._id === theGame._id) {
+          this.ourGame.splice(i,1);
+          i = this.ourGame.length;
+        }
+        i++;
+      }
+    });
   }
 
   joinEvent(theGame: GameEvent): void {
@@ -197,7 +205,6 @@ export class eventRender implements OnInit {
           break;
         }
       }
-
       this.myGameEvent.updateGame(theGame).subscribe();
     }
   }
