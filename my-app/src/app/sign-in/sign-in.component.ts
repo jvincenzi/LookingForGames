@@ -87,7 +87,7 @@ export class SignInComponent implements OnInit {
       this.sessionTokenData.AdminAccess = userData.AdminAccess;
       this.sessionTokenData.CurrentStatus = userData.CurrentStatus;
       this.sessionTokenData.Location = userData.Location;
-      this.sessionTokenData.createdOn = userData.createdOn;
+      this.sessionTokenData.createdOn = userData.createdOn.toString();
       this.sessionTokenData.UID = userData.UID;
       this.sessionTokenData.userLatitude = this.curlatitude;
       this.sessionTokenData.userLongitude = this.curlongitude;
