@@ -47,7 +47,7 @@ import { Token } from '../../Token';
   currentDistance: number;
 
   constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
-
+    this.ourGame = [];
   }
 
   ngOnInit() {
@@ -64,30 +64,39 @@ import { Token } from '../../Token';
     //console.log("Event-Render: In getGames()");
     this.myGameEvent.getAllGames().subscribe((gameData: GameEvent[]) => {
       //change gameData to ourGame if this doesn't work
-      console.log(gameData);
-      console.log(this.gameFilter);
+      //console.log(gameData);
+      //console.log(this.gameFilter);
       
       this.ourGame = [];
       
       if(this.gameFilter!="None"){
+
         for(let i=0;i<gameData.length;i++){
           if(gameData[i].GameType==this.gameFilter){
-            this.getPosition(gameData[i].Location)  ////////////////////////////////// new
-            gameData[i].DistFromUser = this.currentDistance;
-            this.ourGame.push(gameData[i]);
+            //this.getPosition(gameData[i].Location)  ////////////////////////////////// new
+            this.getPosition(gameData[i])  ////////////////////////////////// new
+
+            //gameData[i].DistFromUser = this.currentDistance;
+            //console.log("gameData[i].DistFromUser: " + gameData[i].DistFromUser)
+            //
             //this.dist[i] = this.currentDistance;
           }
         }
         return this.ourGame;
       }else {
+
         for(let i=0;i<gameData.length;i++){
-          this.getPosition(gameData[i].Location)  ////////////////////////////////// new
-          gameData[i].DistFromUser = this.currentDistance;
-          this.ourGame.push(gameData[i]);
+          //this.getPosition(gameData[i].Location)  ////////////////////////////////// new
+          this.getPosition(gameData[i])  ////////////////////////////////// new
+
+          //gameData[i].DistFromUser = this.currentDistance;
+          //console.log("gameData[i].DistFromUser: " + gameData[i].DistFromUser)
+          //this.ourGame.push(gameData[i]);
         }
+        return this.ourGame;
       }
-      this.ourGame = gameData;
-      return this.ourGame;
+      //this.ourGame = gameData;
+      
     })
   }
 
@@ -111,10 +120,6 @@ import { Token } from '../../Token';
     playerArr.push(history.state.sessionToken.LastName);
     playerArr.push(history.state.sessionToken.UserName);
 
-    //playerArr.push(this.dummyToken.FirstName);
-    //playerArr.push(this.dummyToken.LastName);
-    //playerArr.push(this.dummyToken.UserName);
-
     console.log("Event-Render: pushing playerArr [" + playerArr + "] to the server");
 
     theGame.CurrentPlayers.push(playerArr);
@@ -136,72 +141,80 @@ import { Token } from '../../Token';
     this.myGameEvent.updateGame(theGame).subscribe();
   }
 
-  getPosition(eventLocation) {
-    console.log(eventLocation);
-    this.eventLocation = eventLocation;
-    console.log(this.eventLocation + " is what we set this.eventLocation to");
-    //console.log('/// in getLocation() ///:  ');
-
+  getPosition(gameData) {
+   /*
+   // older: funcional way of getting distance
+    //console.log(eventLocation);
+    this.eventLocation = gameData;
+    //console.log(this.eventLocation + " is what we set this.eventLocation to");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getLocation.bind(this));
     } else {
       console.log('/// Geolocation is not supported by this browser. ///:  ');
-      //this.x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+    */
+
+    // new: way of getting distance, "now even more better!!!" - movie quote: Idiocracy
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.myGameEvent.getDistance(position.coords.latitude.toString(), position.coords.longitude.toString(), gameData.Location).subscribe((distance: Object) =>{
+          let response: any = distance;
+          //if(response.status == 200) {
+          //  console.log('/// response.status == OK ///');
+          //  console.log('Meters to event: ' + response.json.rows[0].elements[0].distance.value);
+          //  console.log('Miles to event: ' + this.metersToMiles(response.json.rows[0].elements[0].distance.value));
+          //}
+          gameData.DistFromUser = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
+          
+          this.ourGame.push(gameData);
+        });
+      });
+    } else {
+      console.log('/// Sorry your browser dosen\'t support Geolocation ///');
+      document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
     }
   }
 
+  /*
   getLocation(position) {
     //this.x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     //console.log('latitude:  ' + position.coords.latitude);
     //console.log('longitude: ' + position.coords.longitude);
-
     //let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
     //console.log("positionString: " + positionString);
-    
-    /*
-    this.myGameEvent.getDistance(positionString, this.eventLocation).subscribe((distance: Object) =>{
-      console.log('distance object: ' + distance);
-      this.currentDistance = distance;
-    });
-    */
-    /*
-    //let eventLocation = "myHouse"; // 4testing ///////////////////////////////////
-    this.myGameEvent.getDistance(positionString).subscribe((distance: Object) =>{
-      console.log('distance object: ' + distance);
-      this.currentDistance = distance;
-    });
-    */
-
-    
+ 
     // Joseph's Funky Google API code /////////////////////////////////////
     let locData: LocData = new LocData();
-    
     locData.myLat = position.coords.latitude.toString();
     locData.myLon = position.coords.longitude.toString();
     locData.eventLocation = this.eventLocation.toString();
-    /*
-    console.log('locData object:');
-    console.log('   myLat: ' + locData.myLat );
-    console.log('   mylon: ' + locData.myLon );
-    console.log('   event: ' + locData.eventLocation );
-    */
-    this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
+    
+    // POST way 
+    //this.myGameEvent.getDistance(locData).subscribe((distance: Object) =>{
+    //  let response: any = distance;
+    //  //if(response.status == 200) {}
+    //  this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
+    //});
+    
+    //GET way
+    this.myGameEvent.getDistance2(position.coords.latitude.toString(), position.coords.longitude.toString(), locData.eventLocation).subscribe((distance: Object) =>{
       let response: any = distance;
       //console.log('///////////////////////////////////////////////\r\nEvent-Render: distance object Start: \r\n' + distance + '\r\ndistance object End.\r\n///////////////////////////////////////////////');
       if(response.status == 200) {
         //console.log('/// response.status == OK ///');
         //console.log('Meters to event: ' + response.json.rows[0].elements[0].distance.value);
-        console.log('Miles to event: ' + this.metersToMiles(response.json.rows[0].elements[0].distance.value));
+        //console.log('Miles to event: ' + this.metersToMiles(response.json.rows[0].elements[0].distance.value));
       }
-      
-       
       //this.currentDistance = distance;
-      this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
+      //this.currentDistance = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
+      this.gameData.DistFromUser = this.metersToMiles(response.json.rows[0].elements[0].distance.value);
+      
+      this.ourGame.push(gameData);
     });
     
-
+     
     return this.currentDistance;
-  }
+  }*/
 
   metersToMiles(meters: number) {
     return Math.ceil((meters/1609.344) * 100) / 100;

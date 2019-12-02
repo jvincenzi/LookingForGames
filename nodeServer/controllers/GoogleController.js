@@ -1,6 +1,44 @@
 const GeoLocation = require("../models/GeoLocation");
 
 exports.getDistance = (req, res) => {
+  console.log(">>>>>>>>> IN GET DISTANCE2 <<<<<<<<<");
+
+  const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM'
+  });
+  /*
+  console.log('\r\n');
+  console.log('//// req.params.location:    ' + req.params.lat + '////');
+  console.log('//// req.params.location:    ' + req.params.long + '////');
+  console.log('//// req.params.destination: ' + req.params.destination + '////');
+  console.log('\r\n');
+  */
+  googleMapsClient.distanceMatrix({
+    origins: [req.params.lat.toString() + "," + req.params.long.toString()],
+    destinations: req.params.destination
+  }, function(err, result) {
+    if (!err) {
+      console.log('\r\n');
+      console.log(result.json);
+      console.log('\r\n------lets see whats inside the \'rows\' array-------\r\n');
+      console.log(result.json.rows[0]);
+      console.log('\r\n------lets see whats inside the \'elements\' array-------\r\n');
+      console.log(result.json.rows[0].elements[0]);
+      console.log('\r\n-----------------------------\r\n');
+      console.log('result.json.rows[0].elements[0].distance.value: 0' + result.json.rows[0].elements[0].distance.value);
+      console.log("You are " + result.json.rows[0].elements[0].distance.value + " meters from the event");
+      console.log('\r\n');
+      console.log('\r\n');
+      res.status(200).json(result);
+    } else {
+      console.log(err);
+      res.status(500).send(err);
+    }
+  }); 
+  
+};
+
+exports.getDistance2 = (req, res) => {
   console.log(">>>>>>>>> IN GET DISTANCE <<<<<<<<<");
   let newLocation = new GeoLocation(req.body);
   /*

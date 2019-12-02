@@ -156,15 +156,14 @@ export class SignUpComponent implements OnInit {
 
   geoLocator() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setCoordinates.bind(this));
+      navigator.geolocation.getCurrentPosition((loc) => {
+        this.curlatitude = loc.coords.latitude;
+        this.curlongitude = loc.coords.longitude;
+        //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
+      });
     }else {
       document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
     }
-  }
-  setCoordinates(loc) {
-    this.curlatitude = loc.coords.latitude;
-    this.curlongitude = loc.coords.longitude;
-    //console.log('Latitude:  ' + this.lata + '\r\nLongitude: ' + this.long);
   }
 
   

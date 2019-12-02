@@ -24,6 +24,7 @@ export class SearchBarComponent implements OnInit {
   selectedGame: string;
   
   gameNames: Gamez[] = [
+    { value: 'None', viewValue: "All Games"},
     { value: 'Dungeons and Dragons', viewValue: "Dungeons & Dragons"},
     { value: 'Pathfinder', viewValue: "Pathfinder"},
     { value: 'Monopoly', viewValue: "Monopoly"},

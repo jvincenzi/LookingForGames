@@ -23,7 +23,7 @@ let CommentNodeAddress: string;
 let googleNodeAddress: string;
 
 
-let useLocalHost: Boolean = false; // use this to switch between running localHost and Azure <----------------------<<
+let useLocalHost: Boolean = true; // use this to switch between running localHost and Azure <----------------------<<
 
   
 if (useLocalHost) {
@@ -114,18 +114,21 @@ export class CallNodeService {
   }
 
   /*
-  getDistance(currentPosition: String, destination: String): Observable<JSON> {
+  getDistance(currentPosition: String, destination: String): Observable<JSON> { // Seans orignal
     return this.http.get<JSON>(googleNodeAddress + '/' + currentPosition + "?" + destination);
   }
   
-  getDistance(currentPosition: String): Observable<JSON> {
-    return this.http.get<JSON>(googleNodeAddress + '/' + currentPosition);
-  }
-*/
 
-  getDistance(locData: LocData): Observable<JSON> {
+*/
+  getDistance(lat: string, long: string, destination: String): Observable<JSON> { // new version
+    return this.http.get<JSON>(googleNodeAddress + '/' + lat + '/' + long + '/' + destination);
+  }
+
+
+  getDistance2(locData: LocData): Observable<JSON> { // Joes old working
     return this.http.post<JSON>(googleNodeAddress + '/', locData);
   }
+  
 
 }
 

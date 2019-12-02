@@ -7,15 +7,15 @@
         
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <b>Game Events</b>
+    <b>Game Events: </b>
   </div>
   <div class="panel-body" *ngIf="ourGame">
     <!--<h4>Game Currently Active:</h4>-->
     <div id="event-tile">
-      <mat-form-field>
+      <mat-form-field >
         <mat-label>Select a game</mat-label>
-        <mat-select [(value)]="gameFilter" class="selectGame">
-          <mat-option value="None">None</mat-option>
+        <mat-select [(value)]="gameFilter" >
+          <mat-option value="None">All</mat-option>
           <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
           <mat-option value="Pathfinder">Pathfinder</mat-option>
           <mat-option value="Monopoly">Monopoly</mat-option>
@@ -42,7 +42,8 @@
                   <button mat-raised-button (click)="leaveEvent(ourGame)" id="leaveBtn" color="warn">Leave Event!</button>
                   <button mat-raised-button (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
                 </td>
-                <td class="dist-right" style="text-align: right" (click)="getPosition(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>
+                <!--<td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>-->
+                <td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{ourGame.DistFromUser}}mi</p></td>
               </tr>
           </table>
 

@@ -45,7 +45,7 @@ table{
   position: relative;
   margin-right: 10px;
   float: right;
-  background-color: rgb(158, 213, 247);
+  background-color: rgb(231, 246, 255);
 }
 #leaveBtn {
   position: relative;
@@ -55,7 +55,7 @@ table{
 .sortBtn {
   margin-right: 5px;
   margin-left: 15px;
-  background-color: rgb(158, 213, 247);
+  background-color: rgb(231, 246, 255);
 }
 #delEvent {
   margin-right: 5px;
@@ -63,6 +63,8 @@ table{
 }
 .selectGame {
   margin-right: 25px;
+  margin-left: 20px;
+  background-color: rgb(231, 246, 255);
 }
 
 
