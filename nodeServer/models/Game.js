@@ -30,11 +30,11 @@ const GameSchema = new Schema({
     required: false
   },
   ReqPlayers: {
-    type:String, 
+    type:Number, 
     required: false
   },
   MaxPlayers: {
-    type:Date, 
+    type:Number, 
     required: false
   },
   CurrentPlayers: {
