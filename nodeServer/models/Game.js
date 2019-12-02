@@ -9,6 +9,14 @@ const GameSchema = new Schema({
     type: String,
     required: false
   },
+  Owner_id: {
+    type: String,
+    required: false
+  },
+  Owner_UserName: {
+    type: String,
+    required: false
+  },
   Title: {
     type:String, 
     required: false

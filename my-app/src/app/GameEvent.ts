@@ -1,5 +1,7 @@
 export class GameEvent{
     _id: string;
+    Owner_id: string;
+    Owner_UserName: string;
     Title: string;
     GameType: string;
     LocationName: string; // new 

@@ -32,7 +32,6 @@
               </mat-select>
             </mat-form-field>
             <button mat-raised-button (click)="getGames()" class="sortBtn">Filter</button>
-            <button mat-raised-button (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
           </td>
           <td>
             <p style="text-align: right">
@@ -52,8 +51,9 @@
               <tr>
                 <td ><h4><b>{{ourGame.Title}}</b></h4></td>
                 <td style="height: 10">
-                  <button mat-raised-button (click)="leaveEvent(ourGame)" id="leaveBtn" color="warn">Leave Event!</button>
-                  <button mat-raised-button (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
+                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && userHasJoined(ourGame.CurrentPlayers)" (click)="leaveEvent(ourGame)" id="leaveBtn" color="warn">Leave Event!</button>
+                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && !userHasJoined(ourGame.CurrentPlayers)"  (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
+                  <button mat-raised-button *ngIf="userOwnsEvent(ourGame.Owner_id)" (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
                 </td>
                 <!--<td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>-->
                 <td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{ourGame.DistFromUser}}mi</p></td>
@@ -65,8 +65,8 @@
               <td style="width: 110px"><p><b>Game Type:</b> </p></td>
               <td><p>{{ourGame.GameType}}</p></td>
 
-              <td style="width: 60px"><p><b>When:</b> </p></td>
-              <td style="width: 200px"><p>{{ourGame.Date}}</p></td>
+              <td style="width: 50px"><p><b>Date:</b> </p></td>
+              <td style="width: 120px"><p>{{ourGame.Date}}</p></td>
               
               <td style="width: 95px"><p><b>Min Players:</b> </p></td>
               <td style="width: 30px"><p>{{ourGame.ReqPlayers}}</p></td>
@@ -75,11 +75,15 @@
               <td style="width: 100px;color:red"><p><b>Restrictions:</b> </p></td>
               <td><p style="color:red">{{ourGame.Restrictions}}</p></td>
 
-              <td style="width: 60px"><p><b></b> </p></td>
-              <td><p> </p></td>
+              <td style="width: 50px"><p><b>Time: </b> </p></td>
+              <td><p>{{ourGame.Time}}</p></td>
               
               <td style="width: 95px"><p><b>Max Players:</b> </p></td>
               <td style="width: 30px"><p>{{ourGame.MaxPlayers}}</p></td>
+            </tr>
+            <tr>
+                <td style="width: 110px"><p><b>Hosted By:</b> </p></td>
+                <td><p>{{ourGame.Owner_UserName}}</p></td>
             </tr>
           </table>
 

@@ -29,7 +29,7 @@ import { Token } from '../../Token';
 
 @Injectable({ providedIn: 'root' })
 export class eventRender implements OnInit {
-
+  
   gameFilter = "None";
   isASC = true;
   soonest = true;
@@ -91,18 +91,37 @@ export class eventRender implements OnInit {
     }
   }
 
+  userOwnsEvent(eventOwnerId: string) {
+    if(history.state.sessionToken._id == eventOwnerId) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  userHasJoined(usersIds: Array<[]>[]) {
+    for(let i =0; i < usersIds.length; i++){
+      if(history.state.sessionToken._id == usersIds[i][2]) {
+        console.log(" >>>> I found you ..." + usersIds[i][2]);
+        return true;
+      }
+    } 
+    console.log(" >>>> Not there ..." + usersIds[0][2]);
+    return false;
+  }
+
   constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
     this.ourGame = [];
   }
 
   ngOnInit() {
-    if(history.state.sessionToken.Location == undefined){
+    if(history.state.sessionToken.Location == undefined || history.state.sessionToken.Location == "Default"){
       this.gameFilter = "None";
     } else {
-    this.gameFilter = history.state.sessionToken.Location;
+        this.gameFilter = history.state.sessionToken.Location;
     }
     this.getGames();
-    console.log('////////////////////////////////////////////////\r\nEvent-Render:\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
+    //console.log('////////////////////////////////////////////////\r\nEvent-Render:\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
   }
   
   getGames(): void {
@@ -152,20 +171,22 @@ export class eventRender implements OnInit {
   }
 
   joinEvent(theGame: GameEvent): void {
-    
-    let playerArr = [];
+    if(this.userHasJoined(theGame.CurrentPlayers)!){ // This is my favrote line in the app... <-------------------<<<<< LOL
+      let playerArr = [];
 
-    console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
+      console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
 
-    playerArr.push(history.state.sessionToken.FirstName);
-    playerArr.push(history.state.sessionToken.LastName);
-    playerArr.push(history.state.sessionToken.UserName);
+      playerArr.push(history.state.sessionToken.UserName); /// DO NOT REARRANGE THESE!!!!!!!!
+      playerArr.push(history.state.sessionToken.FirstName); // DO NOT REARRANGE THESE!!!!!!!!
+      playerArr.push(history.state.sessionToken._id); //////// DO NOT REARRANGE THESE!!!!!!!!
+      
 
-    console.log("Event-Render: pushing playerArr [" + playerArr + "] to the server");
+      console.log("Event-Render: pushing playerArr [" + playerArr + "] to the server");
 
-    theGame.CurrentPlayers.push(playerArr);
+      theGame.CurrentPlayers.push(playerArr);
 
-    this.myGameEvent.updateGame(theGame).subscribe();
+      this.myGameEvent.updateGame(theGame).subscribe();
+    }
   }
 
   leaveEvent(theGame: GameEvent): void {
@@ -213,6 +234,7 @@ export class eventRender implements OnInit {
     } else {
       console.log('/// Sorry your browser dosen\'t support Geolocation ///');
       document.getElementById('errorMsgLabel').innerHTML = "Sorry your browser dosen't support Geolocation.";
+      this.ourGame.push(gameData);
     }
   }
 

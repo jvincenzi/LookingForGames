@@ -37,9 +37,6 @@ table{
   width: 90px;
 }
 
-.clear {
-  clear: both;
-}
 
 #joinBtn {
   position: relative;
@@ -48,6 +45,10 @@ table{
   background-color: rgb(103, 252, 108);
 }
 #leaveBtn {
+  position: relative;
+  float: right;
+}
+#delEvent{
   position: relative;
   float: right;
 }
