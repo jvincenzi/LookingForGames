@@ -11,59 +11,63 @@
                 <fieldset >
                     <table id="tableCenter">
                         <tr>
-                            <th><label for="title">Title: </label></th>
-                            <th><input type="text" id="title" [formControl]="title" /></th>
-                        </tr>
-                        <tr>
-                            <th><label for="gameName">Game Name: </label> </th>
+                            <th><mat-label for="gameName">Game Type: </mat-label> </th>
                             <!--<th><input type="text" id="gameName" [formControl]="gameName" /></th> -->
                             
                             <th>
-                                <select id="gameName" [formControl]="gameName">
-                                    <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
-                                    <mat-option value="Pathfinder">Pathfinder</mat-option>
-                                    <mat-option value="Monopoly">Monopoly</mat-option>
-                                    <mat-option value="Go fish">Go fish</mat-option>
-                                    <mat-option value="Arkham horror">Arkham horror</mat-option>
-                                    <mat-option value="Elder sign">Elder sign</mat-option>
-                                    <mat-option value="Dungeon!">Dungeon!</mat-option>
-                                    <mat-option value="Rifts">Rifts</mat-option>
-                                    <mat-option value="Warhammer 40000">Warhammer 40000</mat-option>
-                                    <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
-                                </select>
+                                <mat-form-field >
+                                    <mat-label>Select a game</mat-label>
+                                    <mat-select id="gameName" [formControl]="gameName" [(value)]="gameFilter" >
+                                        <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
+                                        <mat-option value="Pathfinder">Pathfinder</mat-option>
+                                        <mat-option value="Monopoly">Monopoly</mat-option>
+                                        <mat-option value="Go fish">Go fish</mat-option>
+                                        <mat-option value="Arkham horror">Arkham horror</mat-option>
+                                        <mat-option value="Elder sign">Elder sign</mat-option>
+                                        <mat-option value="Dungeon!">Dungeon!</mat-option>
+                                        <mat-option value="Magic: The Gathering">Magic: The Gathering</mat-option>
+                                        <mat-option value="Warhammer 40000">Warhammer 40000</mat-option>
+                                        <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </th>
-                            
                         </tr>
-
-                        
                         <tr>
-                            <th><label for="location">Venu Name: </label></th>
+                            <th><mat-label for="title">Title: </mat-label></th>
+                            <th><input type="text" id="title" [formControl]="title" /></th>
+                        </tr>
+                        <tr>
+                            <th><mat-label for="locationName">Venu Name: </mat-label></th>
                             <th><input type="text" id="locationName" [formControl]="locationName" /></th>
                         </tr>
 
                         <tr>
-                            <th><label for="location">Address: </label></th>
+                            <th><mat-label for="location">Address: </mat-label></th>
                             <th><input type="text" id="location" [formControl]="location" /></th>
                         </tr>
                         <tr>  
-                            <th><label for="date">Date: </label></th>
+                            <th><mat-label for="date">Date: </mat-label></th>
                             <th><input type="date" id="date" [formControl]="date" /></th>
                         </tr>
+                        <tr>  
+                            <th><mat-label for="time">Select a time: </mat-label></th>
+                            <th><input type="time" id="time" [formControl]="time" /></th>
+                        </tr>
                         <tr>   
-                            <th><label for="restrictions">Restrictions: </label> </th>
+                            <th><mat-label for="restrictions">Restrictions: </mat-label> </th>
                             <th><input type="text" id="restrictions" [formControl]="restrictions" /></th>
                         </tr>
                         <tr>   
-                            <th><label for="reqPlayers">Required Players: </label></th>
+                            <th><mat-label for="reqPlayers">Required Players: </mat-label></th>
                             <th><input type="number" id="reqPlayers" [formControl]="reqPlayers" /></th>
                         </tr>
                         <tr>    
-                            <th><label for="maxPlayers">Max Players: </label></th>
+                            <th><mat-label for="maxPlayers">Max Players: </mat-label></th>
                             <th><input type="number" id="maxPlayers" [formControl]="maxPlayers" /></th>
                         </tr>
                     </table>
-                    <label for="errorMsgLabel"></label>
-                    <button (click)="submitSignupForm()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
+                    <mat-label for="errorMsgLabel"></mat-label>
+                    <button (click)="submitNewGameEvent()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
                     <br />
                     <br />
                     

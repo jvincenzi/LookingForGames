@@ -5,6 +5,7 @@ export class GameEvent{
     LocationName: string;
     Location: string;
     Date: Date;
+    Time: string;
     Restrictions: string;
     ReqPlayers: number;
     MaxPlayers: number;

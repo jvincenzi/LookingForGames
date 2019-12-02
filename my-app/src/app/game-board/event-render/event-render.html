@@ -7,29 +7,42 @@
         
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <b>Game Events: </b>
+    <b>Game Events</b>
   </div>
   <div class="panel-body" *ngIf="ourGame">
     <!--<h4>Game Currently Active:</h4>-->
     <div id="event-tile">
-      <mat-form-field >
-        <mat-label>Select a game</mat-label>
-        <mat-select [(value)]="gameFilter" >
-          <mat-option value="None">All</mat-option>
-          <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
-          <mat-option value="Pathfinder">Pathfinder</mat-option>
-          <mat-option value="Monopoly">Monopoly</mat-option>
-          <mat-option value="Go fish">Go fish</mat-option>
-          <mat-option value="Arkham horror">Arkham horror</mat-option>
-          <mat-option value="Elder sign">Elder sign</mat-option>
-          <mat-option value="Dungeon!">Dungeon!</mat-option>
-          <mat-option value="Rifts">Rifts</mat-option>
-          <mat-option value="Warhammer 40000">Warhammer 40000</mat-option>
-          <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button (click)="getGames()" class="sortBtn">Filter Gameboard</button>
-      <button mat-raised-button (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
+      <table>
+        <tr>
+          <td>
+            <mat-form-field style="margin-right: 5px">
+              <mat-label>Select a game</mat-label>
+              <mat-select [(value)]="gameFilter" >
+                <mat-option value="None">All</mat-option>
+                <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
+                <mat-option value="Pathfinder">Pathfinder</mat-option>
+                <mat-option value="Monopoly">Monopoly</mat-option>
+                <mat-option value="Go fish">Go fish</mat-option>
+                <mat-option value="Arkham horror">Arkham horror</mat-option>
+                <mat-option value="Elder sign">Elder sign</mat-option>
+                <mat-option value="Dungeon!">Dungeon!</mat-option>
+                <mat-option value="Magic: The Gathering">Magic: The Gathering</mat-option>
+                <mat-option value="Warhammer 40000">Warhammer 40000</mat-option>
+                <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button (click)="getGames()" class="sortBtn">Filter</button>
+            <button mat-raised-button (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
+          </td>
+          <td>
+            <p style="text-align: right">
+              <mat-label>Sort by: </mat-label>
+              <button mat-raised-button (click)="sortGamesByDate()" class="sortBtn" style="text-align: right;">Date</button>
+              <button mat-raised-button (click)="sortGamesByDist()" class="sortBtn" style="text-align: right;">Distance</button>
+           </p>  
+          </td>
+        </tr>
+      </table>
     </div>
 
     <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame"><!--<b>Game Title: </b>    -->
@@ -46,27 +59,43 @@
                 <td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{ourGame.DistFromUser}}mi</p></td>
               </tr>
           </table>
-
-
+          <br/>
           <table>
             <tr >
-              <td style="width: 130px"><p><b>Game Type:</b> </p></td>
+              <td style="width: 110px"><p><b>Game Type:</b> </p></td>
               <td><p>{{ourGame.GameType}}</p></td>
+
+              <td style="width: 60px"><p><b>When:</b> </p></td>
+              <td style="width: 200px"><p>{{ourGame.Date}}</p></td>
+              
+              <td style="width: 95px"><p><b>Min Players:</b> </p></td>
+              <td style="width: 30px"><p>{{ourGame.ReqPlayers}}</p></td>
             </tr>
             <tr>
-              <td style="width: 130px"><p><b>Venu Name:</b> </p></td>
+              <td style="width: 100px;color:red"><p><b>Restrictions:</b> </p></td>
+              <td><p style="color:red">{{ourGame.Restrictions}}</p></td>
+
+              <td style="width: 60px"><p><b></b> </p></td>
+              <td><p> </p></td>
+              
+              <td style="width: 95px"><p><b>Max Players:</b> </p></td>
+              <td style="width: 30px"><p>{{ourGame.MaxPlayers}}</p></td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td style="width: 110px"><p><b>Venu Name:</b> </p></td>
               <td><p>{{ourGame.LocationName}}</p></td>
             </tr>
             <tr>
-              <td style="width: 130px"><p><b>Venu Address:</b> </p></td>
-              <td><p>{{ourGame.Location}}</p></td>
+              <td style="width: 110px"><p><b>Venu Address:</b> </p></td>
+              <td>
+                <p>
+                  <a href="https://www.google.com/maps/search/?api=1&query={{ourGame.Location}}">{{ourGame.Location}}</a>
+                </p>
+              </td>
             </tr>
-
-            <tr>
-              <td style="width: 130px"><p><b>Required Players:</b> </p></td>
-              <td><p>{{ourGame.ReqPlayers}}</p></td>
-            </tr>
-
           </table>
           
         </div>

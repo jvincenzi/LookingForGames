@@ -8,30 +8,31 @@ import { HttpClient } from '@angular/common/http';
 import { GameEvent } from './GameEvent';
 import { LocData } from './LocData';
 import { Token } from '../../Token';
-// export interface GameEventRender {
+  // export interface GameEventRender {
 
-  
+    
 //   Games: string;
 //   position: number;
 //   Location: string;
 //   Users: string;
 // }
 
- //const ELEMENT_DATA: GameEventRender[];
-  // {position: 1, Games: 'Dungeon of Dragon', Location: 'Bellevue', Users: 'H'},
-  // {position: 2, Games: 'PathFinder', Location: 'Bellevue, Seattle', Users: 'He'},
-  // {position: 3, Games: 'Monopoly', Location: 'Seattle', Users: 'Li'},
-  @Component({
-    selector: 'event-render',
-    styleUrls: ['event-render.css'],
-    templateUrl: 'event-render.html',
-  })
+//const ELEMENT_DATA: GameEventRender[];
+// {position: 1, Games: 'Dungeon of Dragon', Location: 'Bellevue', Users: 'H'},
+// {position: 2, Games: 'PathFinder', Location: 'Bellevue, Seattle', Users: 'He'},
+// {position: 3, Games: 'Monopoly', Location: 'Seattle', Users: 'Li'},
+@Component({
+  selector: 'event-render',
+  styleUrls: ['event-render.css'],
+  templateUrl: 'event-render.html',
+})
 
-  @Injectable({ providedIn: 'root' })
-  export class eventRender implements OnInit {
+@Injectable({ providedIn: 'root' })
+export class eventRender implements OnInit {
 
   gameFilter = "None";
-
+  isASC = true;
+  soonest = true;
   gameNames= ["Dungeons And Dragons", "Pathfinder", "Monopoly"];
 
   ourGame: GameEvent[];
@@ -45,6 +46,50 @@ import { Token } from '../../Token';
 
   //currentDistance: Object; // was an object
   currentDistance: number;
+
+  sortGamesByDist() {
+    if(this.isASC) {
+      this.ourGame.sort((x, y) => {
+        if(x.DistFromUser > y.DistFromUser){
+          return 1;
+        }else{
+          return -1;
+        }
+      });
+      this.isASC = false;
+    }else{
+      this.ourGame.sort((x, y) => {
+        if(x.DistFromUser < y.DistFromUser){
+          return 1;
+        }else{
+          return -1;
+        }
+      });
+      this.isASC = true;
+    }
+  } 
+
+  sortGamesByDate() {
+    if(this.soonest) {
+      this.ourGame.sort((x, y) => {
+        if(x.Date > y.Date){
+          return 1;
+        }else{
+          return -1;
+        }
+      });
+      this.soonest = false;
+    }else{
+      this.ourGame.sort((x, y) => {
+        if(x.Date < y.Date){
+          return 1;
+        }else{
+          return -1;
+        }
+      });
+      this.soonest = true;
+    }
+  }
 
   constructor(private myGameEvent: CallNodeService, private router: Router, private http: HttpClient) { 
     this.ourGame = [];
@@ -70,11 +115,10 @@ import { Token } from '../../Token';
       this.ourGame = [];
       
       if(this.gameFilter!="None"){
-
         for(let i=0;i<gameData.length;i++){
           if(gameData[i].GameType==this.gameFilter){
-            //this.getPosition(gameData[i].Location)  ////////////////////////////////// new
-            this.getPosition(gameData[i])  ////////////////////////////////// new
+            //this.geoLocator(gameData[i].Location)  ////////////////////////////////// new
+            this.geoLocator(gameData[i])  ////////////////////////////////// new
 
             //gameData[i].DistFromUser = this.currentDistance;
             //console.log("gameData[i].DistFromUser: " + gameData[i].DistFromUser)
@@ -84,10 +128,9 @@ import { Token } from '../../Token';
         }
         return this.ourGame;
       }else {
-
         for(let i=0;i<gameData.length;i++){
-          //this.getPosition(gameData[i].Location)  ////////////////////////////////// new
-          this.getPosition(gameData[i])  ////////////////////////////////// new
+          //this.geoLocator(gameData[i].Location)  ////////////////////////////////// new
+          this.geoLocator(gameData[i])  ////////////////////////////////// new
 
           //gameData[i].DistFromUser = this.currentDistance;
           //console.log("gameData[i].DistFromUser: " + gameData[i].DistFromUser)
@@ -95,16 +138,14 @@ import { Token } from '../../Token';
         }
         return this.ourGame;
       }
-      //this.ourGame = gameData;
-      
-    })
+    });
   }
 
   onSelect(PassedInGameItem: GameEvent): void {
     this.selectedGame = PassedInGameItem;
     console.log(this.selectedGame);
   }
- 
+
   deleteEvent(): void {
     console.log("Deleting: " + this.selectedGame);
     this.myGameEvent.deleteGame(this.selectedGame).subscribe();
@@ -141,9 +182,9 @@ import { Token } from '../../Token';
     this.myGameEvent.updateGame(theGame).subscribe();
   }
 
-  getPosition(gameData) {
-   /*
-   // older: funcional way of getting distance
+  geoLocator(gameData) {
+  /*
+  // older: funcional way of getting distance
     //console.log(eventLocation);
     this.eventLocation = gameData;
     //console.log(this.eventLocation + " is what we set this.eventLocation to");
@@ -182,7 +223,7 @@ import { Token } from '../../Token';
     //console.log('longitude: ' + position.coords.longitude);
     //let positionString = "" + position.coords.latitude + "," + position.coords.longitude;
     //console.log("positionString: " + positionString);
- 
+
     // Joseph's Funky Google API code /////////////////////////////////////
     let locData: LocData = new LocData();
     locData.myLat = position.coords.latitude.toString();
@@ -212,7 +253,7 @@ import { Token } from '../../Token';
       this.ourGame.push(gameData);
     });
     
-     
+    
     return this.currentDistance;
   }*/
 

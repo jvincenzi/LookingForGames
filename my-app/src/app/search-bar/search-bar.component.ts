@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
     { value: 'Arkham horror', viewValue: "Arkham horror"},
     { value: 'Elder sign', viewValue: "Elder sign"},
     { value: 'Dungeon!', viewValue: "Dungeon!"},
-    { value: 'Rifts', viewValue: "Rifts"},
+    { value: 'Magic: The Gathering', viewValue: "Magic: The Gathering"},
     { value: 'Warhammer 40000', viewValue: "Warhammer 40000"},
     { value: 'Middle-earth role playing', viewValue: "Middle-earth role playing"}
   ];
@@ -43,6 +43,48 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {
     console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken _id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
       
+  }
+
+  createNewEvent() {
+    if(history.state.sessionToken._id == undefined){
+      console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
+      this.atHome = true;
+      this.atHomeEmitter.emit(this.atHome);
+      this.router.navigate(['/signIn'], {state: {sessionToken: this.localData}});
+    }else{
+      if(history.state.sessionToken._id != undefined && history.state.sessionToken.Location != undefined){
+        
+        console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken._id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.searchSelection:   ' + history.state.sessionToken.Location+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
+        this.localData._id = history.state.sessionToken._id;
+        this.localData.UserName = history.state.sessionToken.UserName;
+        //this.localData.Password = history.state.sessionToken..Password; // SECURITY RISK
+        this.localData.Email = history.state.sessionToken.Email;
+        this.localData.FirstName = history.state.sessionToken.FirstName;
+        this.localData.LastName = history.state.sessionToken.LastName;
+        this.localData.Telephone = history.state.sessionToken.Telephone;
+        this.localData.DateOfBirth = history.state.sessionToken.DateOfBirth;
+        this.localData.Country = history.state.sessionToken.Country;
+        this.localData.Address = history.state.sessionToken.Address;
+        this.localData.Address2 = history.state.sessionToken.Address2;
+        this.localData.City = history.state.sessionToken.City; 
+        this.localData.State = history.state.sessionToken.State;
+        this.localData.Zipcode = history.state.sessionToken.Zipcode;
+        this.localData.FreeAccount = history.state.sessionToken.FreeAccount;
+        this.localData.SubscriptionExp = history.state.sessionToken.SubscriptionExp;
+        this.localData.SubscriptionLv = history.state.sessionToken.SubscriptionLv;
+        this.localData.AdminAccess = history.state.sessionToken.AdminAccess;
+        this.localData.CurrentStatus = history.state.sessionToken.CurrentStatus;
+        //this.localData.Location = history.state.sessionToken.Location;
+        this.localData.createdOn = history.state.sessionToken.createdOn;
+        this.localData.UID = history.state.sessionToken.UID;
+        this.localData.userLatitude = history.state.sessionToken.userLatitude;
+        this.localData.userLongitude = history.state.sessionToken.userLongitude;
+        console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nthis.sessionTokenData._id:           ' + this.localData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.localData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.localData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.localData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.localData.userLongitude + '\r\n////////////////////////////////////////////////');
+        
+        console.log(">>> Rerouting you to the createGameEvent page >>>");
+        this.router.navigate(['/createGameEvent'], {state: {sessionToken: this.localData}});
+      }
+    }
   }
 
   findThisGame() {

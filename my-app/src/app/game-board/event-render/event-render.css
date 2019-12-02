@@ -8,8 +8,8 @@ table{
 }
 
 .event-tile {
-  background-color: rgb(242, 242, 242);
-  border: 1px solid rgb(242, 242, 242);
+  background-color: rgb(233, 231, 231);
+  border: 1px solid rgb(196, 196, 196);
   box-shadow: 5px 5px 5px grey;
   border-radius: 5px;
   padding: 7px;
@@ -45,7 +45,7 @@ table{
   position: relative;
   margin-right: 10px;
   float: right;
-  background-color: rgb(231, 246, 255);
+  background-color: rgb(103, 252, 108);
 }
 #leaveBtn {
   position: relative;
@@ -54,7 +54,7 @@ table{
 
 .sortBtn {
   margin-right: 5px;
-  margin-left: 15px;
+  margin-left: 5px;
   background-color: rgb(231, 246, 255);
 }
 #delEvent {

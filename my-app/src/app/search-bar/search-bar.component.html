@@ -61,7 +61,7 @@
         <button mat-raised-button (click)="findThisGame()" >Find a game!</button>
         <br />
         <br />
-        <button mat-raised-button [routerLink]="'/createGameEvent'" [state]="{sessionToken: sessionTokenData}">Host an event here!</button>
+        <button mat-raised-button (click)="createNewEvent()">Host an event here!</button>
     
       </div>       
     </div>
