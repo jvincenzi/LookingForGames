@@ -92,7 +92,7 @@ export class eventLog implements OnInit{
     });
   }
 
-  submitCommentForm() {
+  submitFeedBack() {
   
     if(this.formValidation()){
       //this.addRecord();
