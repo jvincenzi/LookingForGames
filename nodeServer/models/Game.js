@@ -29,6 +29,10 @@ const GameSchema = new Schema({
     type:String, 
     required: false
   },
+  Time: {
+    type:String, 
+    required: false
+  },
   Restrictions: {
     type:String, 
     required: false
