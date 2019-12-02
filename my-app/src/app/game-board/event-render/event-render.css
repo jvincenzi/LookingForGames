@@ -47,6 +47,7 @@ table{
 #leaveBtn {
   position: relative;
   float: right;
+  background-color: rgb(252, 230, 103);
 }
 #delEvent{
   position: relative;

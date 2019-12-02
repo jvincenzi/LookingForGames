@@ -51,7 +51,7 @@
               <tr>
                 <td ><h4><b>{{ourGame.Title}}</b></h4></td>
                 <td style="height: 10">
-                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && userHasJoined(ourGame.CurrentPlayers)" (click)="leaveEvent(ourGame)" id="leaveBtn" color="warn">Leave Event!</button>
+                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && userHasJoined(ourGame.CurrentPlayers)" (click)="leaveEvent(ourGame)" id="leaveBtn">Leave Event!</button>
                   <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && !userHasJoined(ourGame.CurrentPlayers)"  (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
                   <button mat-raised-button *ngIf="userOwnsEvent(ourGame.Owner_id)" (click)="deleteEvent()" id="delEvent" color="warn">Delete Event</button>
                 </td>

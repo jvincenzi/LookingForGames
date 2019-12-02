@@ -169,7 +169,7 @@ export class eventRender implements OnInit {
   }
 
   joinEvent(theGame: GameEvent): void {
-    if(this.userHasJoined(theGame.CurrentPlayers)!){ // This is my favrote line in the app... <-------------------<<<<< LOL
+    if(!this.userHasJoined(theGame.CurrentPlayers)){ // This is my favrote line in the app... <-------------------<<<<< LOL
       let playerArr = [];
 
       console.log("// joinEvent(): sessionToken.FirstName: " + history.state.sessionToken.FirstName);
@@ -188,17 +188,18 @@ export class eventRender implements OnInit {
   }
 
   leaveEvent(theGame: GameEvent): void {
+    if(this.userHasJoined(theGame.CurrentPlayers)){ // This is my favrote line in the app... <-------------------<<<<< LOL
+      console.log("deleting user from event" + history.state.sessionToken.UserName);
 
-    console.log("deleting user from event" + history.state.sessionToken.UserName);
-
-    for(let i = 0; i<theGame.CurrentPlayers.length; i++){
-      if(theGame.CurrentPlayers[i][2] == history.state.sessionToken.UserName){
-        theGame.CurrentPlayers.splice(i, 1);
-        break;
+      for(let i = 0; i<theGame.CurrentPlayers.length; i++){
+        if(theGame.CurrentPlayers[i][0] == history.state.sessionToken.UserName){
+          theGame.CurrentPlayers.splice(i, 1);
+          break;
+        }
       }
-    }
 
-    this.myGameEvent.updateGame(theGame).subscribe();
+      this.myGameEvent.updateGame(theGame).subscribe();
+    }
   }
 
   geoLocator(gameData) {
