@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const UserCommentData = require("../models/UserCommentData");
 
 // go to mongo and select network and allow any url to come in
 // go to azure and turn on app logging so can see console.log messages
@@ -28,7 +29,8 @@ exports.readComment = (req, res) => { // this is working
 };
 
 exports.createNewComment = (req, res) => {
-    let newComment = new Comment(req.body);
+    console.log('got this far ///////////////////////////////////////////');
+    let newComment = new UserCommentData(req.body);
     console.log(newComment);
     newComment.save((err, Comment) => {
         if (err) {
