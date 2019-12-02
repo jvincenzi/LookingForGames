@@ -28,7 +28,7 @@
 <div>
   <div id="centerMe">
     <br /><br /><br />
-    <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+    <img src="../../assets/LFGLogo.png" width="104" height="115" id="centerMe"/>
     <h2>Looking For Games</h2>
     <p>Sign up to find a game in your area today.</p>
   </div>
@@ -41,13 +41,14 @@
           <h4>What do you want to play today?</h4>
           <mat-form-field>
             <mat-label>Pick a game</mat-label>
-            <mat-select [(ngModel)]="selectedGame" name="game">
-              <mat-option *ngFor="let games of gameNames" [value]="games.value">
-                {{games}}
+            <mat-select [(ngModel)]="selectedGame" name="game" >
+              <mat-option *ngFor="let gamez of gameNames" [value]="gamez.value" >
+                {{gamez.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </form>
+
         <!--
         <select id="selectGame" [(ngModel)]="selectedGame">
           <option selected="selected">What do you want to play today?</option>
@@ -57,13 +58,16 @@
       </div>
       <br />
       <div id="centerMe">
-          <input id="searchButton" style="float: center; margin-top: 7px;" type="button" value="Find a game!"/>
-      </div>
-                  
+        <button mat-raised-button (click)="findThisGame()" >Find a game!</button>
+        <br />
+        <br />
+        <button mat-raised-button (click)="createNewEvent()">Host an event here!</button>
+    
+      </div>       
     </div>
     <br />
-    <a routerLink="/createGameEvent">Host an event here!</a>
-    <p id="centerMe">Already have an account? Sign In</p>
+    <br />
+    <p id="centerMe">Already have an account? <a routerLink="/signIn" [state]="{sessionToken: sessionTokenData}">Sign in</a></p>
   </div>
 </div>
 

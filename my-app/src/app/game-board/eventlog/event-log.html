@@ -1,27 +1,40 @@
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        
-        
-        <div class="panel panel-primary">
-        <div class="panel-heading">
-      Users</div>
-        <div class="panel-body" *ngIf="User">
-            <h4>Users Currently Active:</h4>
-            <p></p>
-            <p *ngFor="let User of User">
-                <li>
-                 <b>FirstName:</b>{{User.FirstName}}
-                <b> LastName:</b>{{User.LastName}}
-                <b>Player Location</b>{{User.Location}}
-            </li>
-            
-            </p>
-          <hr>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Users
+  </div>
+  <div class="panel-body" *ngIf="User">
+    <h4>Users Currently Active:</h4>
+    <p></p>
+    <p *ngFor="let User of User">
+      <li>
+        <b>FirstName:</b>{{User.FirstName}}
+        <b> LastName:</b>{{User.LastName}}
+        <b>Player Location</b>{{User.Location}}
+      </li>
+    </p>
+    <hr>
           
-          <button class="btn btn-danger">Send Other Player a Message</button> |
-          <button class="btn btn-danger">FeedBack</button>
-          </div>
-      </div>
+    <button mat-raised-button color="warn">Send Other Player a Message</button> |
+
+    <td></td>
+          
+    <textarea ng-model="FeedBack" id="FeedBack" 
+      Style="width:50%;height:50%;display:inline-block;" 
+      class="form-control" placeholder="Write Your FeedBack.. ">
+    </textarea> 
+    <td></td>
+    <button mat-raised-button color="warn" (click)="submitFeedBack()" 
+      id="submitFeedBackForm"
+      >FeedBack
+    </button>
+     
+  </div>
+</div>
+        

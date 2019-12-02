@@ -9,11 +9,23 @@ const GameSchema = new Schema({
     type: String,
     required: false
   },
+  Owner_id: {
+    type: String,
+    required: false
+  },
+  Owner_UserName: {
+    type: String,
+    required: false
+  },
   Title: {
     type:String, 
     required: false
   },
   GameType: {
+    type:String, 
+    required: false
+  },
+  LocationName: {
     type:String, 
     required: false
   },
@@ -25,16 +37,24 @@ const GameSchema = new Schema({
     type:String, 
     required: false
   },
+  Time: {
+    type:String, 
+    required: false
+  },
   Restrictions: {
     type:String, 
     required: false
   },
   ReqPlayers: {
-    type:String, 
+    type:Number, 
     required: false
   },
   MaxPlayers: {
-    type:Date, 
+    type:Number, 
+    required: false
+  },
+  CurrentPlayers: {
+    type:Array,
     required: false
   }
 });

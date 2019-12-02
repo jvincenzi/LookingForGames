@@ -1,4 +1,4 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/d9933c87-269f-4314-83ac-0dc26f5334b5/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/LookingForGames2",
-    "appService.deploySubpath": ""
+    "appService.deploySubpath": "dist/my-app"
 }

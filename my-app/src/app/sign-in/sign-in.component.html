@@ -1,17 +1,12 @@
-
 <div>
     <div id="centerMe">
         <br /><br /><br />
-        <img src="../../assets/LFGLogo.png" width="300" height="100" id="centerMe"/>
+        <img src="../../assets/LFGLogo.png" width="104" height="115" id="centerMe"/>
         <h2>Sign in to Looking For Games</h2>
     </div>
-
-
-
     <div id="centInline">
         <div id="centChildDiv">
-            
-            <!-- New code from here...  
+            <!--
             <div class="container">  
                 <h3>Test output:</h3> 
                 <p> 
@@ -19,38 +14,32 @@
                     Password: {{ userPassword1.value }} <br />
                 </p>  
             </div>
-             To here -->
-
-
+            -->
 
             <form id="signupForm">
                 <fieldset >
                     <table id="tableCenter">
                         <tr>  
                             <th><label for="userName">Username: </label></th>
-                            <th><input type="text" id="userName" [formControl]="userName" /></th>
+                            <th><input type="text" id="userName" [formControl]="userName" autofocus tabindex="0"/></th>
                         </tr>
                         <tr>   
                             <th><label for="userPassword1">Password: </label> </th>
-                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" /></th>
+                            <th><input type="password" id="userPassword1" [formControl]="userPassword1" tabindex="1"/></th>
                         </tr>
-                       
                     </table>
-                    <label for="errorMsgLabel"></label>
-                    <button (click)="submitSignin()" id="signupSubmitButton" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
-                    <br />
-                    <br />
-                    <p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p>
-                    
+                    <div>
+                        <label id="errorMsgLabel" style="color: black"></label>
+                        <button (click)="submitSignin()" id="signupSubmitButton" tabindex="2" style="float: right; margin-top: 7px; margin-right: 9px" class="btn btn-dark">Submit</button>
+                    </div>
+                    <br/><br/><br/>
+                    <span><p class="finePrint">By Signing in, you agree to our Terms of Service and Privacy Policy.</p></span>
                 </fieldset>
             </form>            
         </div>
-        <p id="centerMe">Don't have an account? <a routerLink="/signUp">Sign up</a>!</p>
     </div>
-    
+    <p id="centerMe">Don't have an account? <a routerLink="/signUp" tabindex="3" [state]="{sessionToken: sessionTokenData}">Sign up</a>!</p>
 </div>
 
-    
-    
     
     

@@ -1,28 +1,116 @@
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM"></script>
         
-        
-        <div class="panel panel-primary">
-        <div class="panel-heading">
-      Game Events</div>
-        <div class="panel-body" *ngIf="ourGame">
-            <h4>Game Currently Active:</h4>
-            <p></p>
-            <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame">
-                <li>
-                <b>Game Title: </b>    {{ourGame.Title}}
-                <b>Location:</b> {{ourGame.Location}}
-                <b>Require Player</b> {{ourGame.ReqPlayers}}
-            </li>
-            
-            </p>
-            <h4 style="background: lightslategrey">For join game please <a routerLink="/signIn">SignIn</a></h4> 
-          <hr>
-          <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <b>Game Events</b>
+  </div>
+  <div class="panel-body" *ngIf="ourGame">
+    <!--<h4>Game Currently Active:</h4>-->
+    <div id="event-tile">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field style="margin-right: 5px">
+              <mat-label>Select a game</mat-label>
+              <mat-select [(value)]="gameFilter" >
+                <mat-option value="None">All</mat-option>
+                <mat-option value="Dungeons and Dragons">Dungeons and Dragons</mat-option>
+                <mat-option value="Pathfinder">Pathfinder</mat-option>
+                <mat-option value="Monopoly">Monopoly</mat-option>
+                <mat-option value="Go fish">Go fish</mat-option>
+                <mat-option value="Arkham horror">Arkham horror</mat-option>
+                <mat-option value="Elder sign">Elder sign</mat-option>
+                <mat-option value="Dungeon!">Dungeon!</mat-option>
+                <mat-option value="Magic: The Gathering">Magic: The Gathering</mat-option>
+                <mat-option value="Warhammer 40000">Warhammer 40000</mat-option>
+                <mat-option value="Middle-earth role playing">Middle-earth role playing</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button (click)="getGames()" class="sortBtn">Filter</button>
+          </td>
+          <td>
+            <p style="text-align: right">
+              <mat-label>Sort by: </mat-label>
+              <button mat-raised-button (click)="sortGamesByDate()" class="sortBtn" style="text-align: right;">Date</button>
+              <button mat-raised-button (click)="sortGamesByDist()" class="sortBtn" style="text-align: right;">Distance</button>
+           </p>  
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p (click)="onSelect(ourGame)" *ngFor="let ourGame of ourGame"><!--<b>Game Title: </b>    -->
+      <li style="list-style-type:none;">
+        <div class="event-tile">
+          <table>
+              <tr>
+                <td ><h4><b>{{ourGame.Title}}</b></h4></td>
+                <td style="height: 10">
+                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && userHasJoined(ourGame.CurrentPlayers)" (click)="leaveEvent(ourGame)" id="leaveBtn">Leave Event!</button>
+                  <button mat-raised-button *ngIf="!userOwnsEvent(ourGame.Owner_id) && !userHasJoined(ourGame.CurrentPlayers)"  (click)="joinEvent(ourGame)" id="joinBtn">Join Event!</button>
+                  <button mat-raised-button *ngIf="userOwnsEvent(ourGame.Owner_id)" (click)="deleteEvent(ourGame)" id="delEvent" color="warn">Delete Event</button>
+                </td>
+                <!--<td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{currentDistance}} miles</p></td>-->
+                <td class="dist-right" style="text-align: right" (click)="geoLocator(ourGame.Location)" ><p>{{ourGame.DistFromUser}}mi</p></td>
+              </tr>
+          </table>
+          <br/>
+          <table>
+            <tr >
+              <td style="width: 110px"><p><b>Game Type:</b> </p></td>
+              <td><p>{{ourGame.GameType}}</p></td>
+
+              <td style="width: 50px"><p><b>Date:</b> </p></td>
+              <td style="width: 120px"><p>{{ourGame.Date}}</p></td>
+              
+              <td style="width: 95px"><p><b>Min Players:</b> </p></td>
+              <td style="width: 30px"><p>{{ourGame.ReqPlayers}}</p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;color:red"><p><b>Restrictions:</b> </p></td>
+              <td><p style="color:red">{{ourGame.Restrictions}}</p></td>
+
+              <td style="width: 50px"><p><b>Time: </b> </p></td>
+              <td><p>{{ourGame.Time}}</p></td>
+              
+              <td style="width: 95px"><p><b>Max Players:</b> </p></td>
+              <td style="width: 30px"><p>{{ourGame.MaxPlayers}}</p></td>
+            </tr>
+            <tr>
+                <td style="width: 110px"><p><b>Hosted By:</b> </p></td>
+                <td><p>{{ourGame.Owner_UserName}}</p></td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td style="width: 110px"><p><b>Venu Name:</b> </p></td>
+              <td><p>{{ourGame.LocationName}}</p></td>
+            </tr>
+            <tr>
+              <td style="width: 110px"><p><b>Venu Address:</b> </p></td>
+              <td>
+                <p>
+                  <a href="https://www.google.com/maps/search/?api=1&query={{ourGame.Location}}">{{ourGame.Location}}</a>
+                </p>
+              </td>
+            </tr>
+          </table>
           
-          
-          </div>
-      </div>
+        </div>
+      </li>
+    </p>
+    <!--<h4 style="background: lightslategrey">To join a game please <a routerLink="/signIn">Sign In</a></h4>-->
+    <!--<hr />-->
+    
+    
+    
+
+  </div>
+    <!--<p>{{gameFilter}}</p>-->
+</div>

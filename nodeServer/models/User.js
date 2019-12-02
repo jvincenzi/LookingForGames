@@ -4,19 +4,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
+// let nowDate = Date.now.toString();
+// let expDate = new Date(
+//   nowDate.getFullYear()+1, 
+//   nowDate.getMonth(),
+//   nowDate.getDate()
+// );
 
 const UserSchema = new Schema({
   // TESTING SCHEMA
   _id: {
     type: String,
     required: true,
-    unique: true
+   // unique: true
   },
   UserName: {
     type: String, 
     required: true,
-    //unique: true
+   // unique: true
   },
   Password: {
     type: String, 
@@ -47,9 +52,17 @@ const UserSchema = new Schema({
     type: String, 
     required: false
   },
+  Country: {
+    type: String, 
+    required: false
+  },
   Address: {
     type: String, 
     //required: true
+  },
+  Address2: {
+    type: String, 
+    required: false
   },
   Address2: {
     type: String, 
@@ -74,7 +87,7 @@ const UserSchema = new Schema({
   SubscriptionExp: {
     type: String, 
     required: false,
-    //default: expDate
+  //  default: expDate
   },
   SubscriptionLv: {
     type: String, //level (0=freeAccount, 1=monthly or 12=yearly)
@@ -189,8 +202,7 @@ const UserSchema = new Schema({
   },
   FreeAccount: {
     type: Boolean, 
-    required: false, 
-    default: true
+    required: false
   },
   SubscriptionExp: {
     type: String, 
@@ -199,8 +211,7 @@ const UserSchema = new Schema({
   },
   SubscriptionLv: {
     type: String, //level (0=freeAccount, 1=monthly or 12=yearly)
-    required: false,
-    default: 0
+    required: false
   },
   AdminAccess: {
     type: String, 

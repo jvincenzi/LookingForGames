@@ -9,6 +9,12 @@
     border: 2px;
     font-style: initial ;
   }
+
+  .panel-primary {
+    margin: auto;
+    margin-top: 15px;
+    max-width: 1000px;
+  }
   
   .example-container form {
     margin-bottom: 0 12px;

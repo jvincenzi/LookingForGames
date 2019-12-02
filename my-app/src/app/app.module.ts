@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
@@ -21,10 +21,17 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 import { MaterialModuleSample } from './material-module';
-import {eventLog } from './game-board/eventlog/event-log';
-import {eventDialog} from './game-board/eventdialog/event-dialog';
-import {eventRender} from './game-board/event-render/event-render';
+import { eventLog } from './game-board/eventlog/event-log';
+import { eventDialog} from './game-board/eventdialog/event-dialog';
+import { eventRender} from './game-board/event-render/event-render';
 import { CreateEventComponent } from './create-event/create-event.component';
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -40,6 +47,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
     eventLog,
     eventDialog,
     CreateEventComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -53,12 +61,20 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModuleSample
+    MaterialModuleSample,
+  
     
   ],
-  providers: [],
+  providers: [
+      
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // fakeBackendProvider
+],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+ }
+//platformBrowserDynamic().bootstrapModule(AppModule);

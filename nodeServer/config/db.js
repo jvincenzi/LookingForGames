@@ -25,7 +25,7 @@ mongoose.connect(dbURI, options).then(
 	() => {
 		console.log(`--------------------------------------------------------------------------------`);
 		console.log(" DB connection established!");
-		console.log(' '+dbURI);
+		//console.log(' '+dbURI);
 		console.log(`--------------------------------------------------------------------------------`);
 		console.log(``);
 	},
@@ -41,3 +41,4 @@ mongoose.connect(dbURI, options).then(
 //require("../models/Task"); // Remove after LFG User stuff is working //////////////////////////////////
 require("../models/User"); // LFG User Schema 
 require("../models/Game");
+require("../models/Comment")

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule,  } from '@angular/common/http';
 import { CreateEventComponent } from './create-event.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 describe('CreateEventComponent', () => {
   let component: CreateEventComponent;
@@ -8,7 +10,14 @@ describe('CreateEventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateEventComponent ]
+      imports: [
+        FormsModule,
+         ReactiveFormsModule,
+          HttpClientModule
+      ],
+      declarations: [ 
+        CreateEventComponent
+      ]
     })
     .compileComponents();
   }));

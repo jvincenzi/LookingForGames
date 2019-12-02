@@ -4,6 +4,13 @@
     width: 100%;
   }
   
+  .panel-primary {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    max-width: 1000px;
+  }
+  
   .example-full-width {
     width: 100%;
   }
