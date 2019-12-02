@@ -29,6 +29,9 @@ export class CreateEventComponent implements OnInit {
   date = new FormControl('', [
     Validators.required
   ]);
+  time = new FormControl('', [
+    Validators.required
+  ]);
   restrictions = new FormControl('', [
     Validators.required
   ]);
@@ -48,6 +51,7 @@ export class CreateEventComponent implements OnInit {
     this.newGame.LocationName = this.locationName.value;
     this.newGame.Location = this.location.value;
     this.newGame.Date = this.date.value;
+    this.newGame.Time = this.time.value;
     this.newGame.Restrictions = this.restrictions.value;
     this.newGame.ReqPlayers = this.reqPlayers.value;
     this.newGame.MaxPlayers = this.maxPlayers.value;

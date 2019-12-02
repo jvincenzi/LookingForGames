@@ -1,6 +1,8 @@
 
 export class CommentItem {
-    _id: string;
-    Name: string;
-    Comment: string;
-  }
+  _id: string;
+  firstName: string;
+  //Name: string;
+  //Date: Date;
+  Comment: string;
+}
