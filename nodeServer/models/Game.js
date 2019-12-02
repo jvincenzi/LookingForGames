@@ -17,6 +17,10 @@ const GameSchema = new Schema({
     type:String, 
     required: false
   },
+  LocationName: {
+    type:String, 
+    required: false
+  },
   Location: {
     type:String, 
     required: false
