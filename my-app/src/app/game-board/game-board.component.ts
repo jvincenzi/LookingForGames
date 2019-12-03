@@ -11,6 +11,7 @@ import { Token } from '../Token';
 export class GameBoardComponent implements OnInit {
   sessionTokenData: Token = new Token();
   weAreTestingThen: boolean = true;
+  
   constructor(private router: Router) { 
     //console.log('////////////////////////////////////////////////\r\nGame-Board:\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Search Selection:   " + history.state.sessionToken.Location+'\r\n////////////////////////////////////////////////');
     this.sessionTokenData = new Token();

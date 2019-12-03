@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   providedSigninData: UserSignInData = {UserName: '', Password: ''};
-  sessionTokenData: Token = new Token();;
+  sessionTokenData: Token = new Token();
   userName = new FormControl('');
-  userPassword1 = new FormControl('');;
+  userPassword1 = new FormControl('');
   curlatitude = 40;
   curlongitude = 100;
   
@@ -40,7 +40,6 @@ export class SignInComponent implements OnInit {
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
-      console.log(' <<<<<||||  submitSignin() called  ||||>>>>> '); // for testing //////////////////////////////////////////////////////
       /*
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;

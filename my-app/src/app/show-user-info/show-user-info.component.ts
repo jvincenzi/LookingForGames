@@ -199,13 +199,13 @@ export class ShowUserInfoComponent implements OnInit {
   editUserInfo(id: string) {
     //console.log('////// id: '+id+' //////'); ///////////////////////////////////////////////
     //if(this.tempUser == null){
-      this.getUser(id);
+    this.getUser(id);
     //}
     this.hideUserList = true;
   }
   getUser(id: string): void {
     //console.log("/// In getUser("+id+") ///");  /////////////////////////////////////////////////////////
-    let y;
+    
     this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
       this.tempUser = userData;
       console.log('/// userData._id: ' + userData._id + ' ///' );
@@ -226,7 +226,7 @@ export class ShowUserInfoComponent implements OnInit {
       this.userState.setValue(userData.State.toString());
       this.userZipCode.setValue(userData.Zipcode.toString());
       
-    })
+    });
   }
   
   deleteUserAccount(PassedInUserAccount: UserAccount): void {
@@ -293,7 +293,7 @@ export class ShowUserInfoComponent implements OnInit {
       this.userZipCode.errors == null &&
       this.userFreeAcc.errors == null
     ) {
-      console.log('/// Forms pass validation! ///')
+      console.log('/// Forms pass validation! ///');
       return true;
     }else {
       if(true) { // Show error output for fields
