@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   providedSigninData: UserSignInData = {UserName: '', Password: ''};
-  sessionTokenData: Token;
+  sessionTokenData: Token = new Token();;
   userName = new FormControl('');
   userPassword1 = new FormControl('');;
   curlatitude = 40;
@@ -40,6 +40,7 @@ export class SignInComponent implements OnInit {
     this.providedSigninData.Password = this.userPassword1.value;
     //console.log( "In submitSignin(" + this.providedSigninData.UserName + ' ' + this.providedSigninData.Password + ")" );
     this.callNodeService.userLogin(this.providedSigninData).subscribe((userData: UserAccount) => {
+      console.log(' <<<<<||||  submitSignin() called  ||||>>>>> '); // for testing //////////////////////////////////////////////////////
       /*
       history.state.sessionToken._id = userData._id;
       history.state.sessionToken.FirstName = userData.FirstName;
@@ -58,13 +59,13 @@ export class SignInComponent implements OnInit {
       history.state.sessionToken.FreeAccount = userData.FreeAccount;
       history.state.sessionToken.SubscriptionExp = userData.SubscriptionExp;
       history.state.sessionToken.SubscriptionLv = userData.SubscriptionLv;
-      history.state.sessionToken.AdminAccess = userData.AdminAccess;  // might not need to get this data from mongoDB
+      history.state.sessionToken.AdminAccess = userData.AdminAccess;
       history.state.sessionToken.CurrentStatus = userData.CurrentStatus;
       history.state.sessionToken.Location = userData.Location;
       history.state.sessionToken.createdOn = userData.createdOn;
       history.state.sessionToken.UID = userData.UID;
-      history.state.sessionToken.userLatitude = this.curlatitude; // might not need to get this data from mongoDB 
-      history.state.sessionToken.userLongitude = this.curlongitude; // might not need to get this data from mongoDB 
+      history.state.sessionToken.userLatitude = this.curlatitude;
+      history.state.sessionToken.userLongitude = this.curlongitude;
       //console.log('////////////////////////////////////////////////\r\nSign-In:\r\nsessionToken _id:       ' + history.state.sessionToken._id+"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nsessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
       */
       

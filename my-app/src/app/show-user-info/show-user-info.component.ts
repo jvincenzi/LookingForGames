@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./show-user-info.component.css']
 })
 export class ShowUserInfoComponent implements OnInit {
-  sessionTokenData: Token;
+  sessionTokenData: Token = new Token();
   hideUserList: Boolean = false;
   selectedUser: UserAccount;
   tempUser: UserAccount = new UserAccount();
@@ -90,14 +90,15 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
-    if(history.state.sessionToken._id == undefined){
-      console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
-      this.router.navigate(['/signIn']);
+    if(history.state.sessionToken._id == "Default" || history.state == null || history.state.sessionToken == undefined){
+      console.log(">>> show-user-info: You must be logged in to view this page. Rerouting you to sign in page >>>");
+      this.router.navigate(['/signIn', {state: {sessionToken: this.sessionTokenData}}]);
+    }else if(history.state.sessionToken._id != "Default" && history.state.sessionToken != undefined) {
+      this.getUser(history.state.sessionToken._id);
+      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
     }
-    this.getUser(history.state.sessionToken._id);
     //this.getUsers(); // OLD
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
+    console.log('/// show-user-info: ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
   }
 
   passwordsMatch(userPassword1: FormControl, userPassword2: FormControl) {
