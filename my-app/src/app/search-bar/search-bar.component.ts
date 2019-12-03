@@ -13,12 +13,12 @@ export interface Gamez {
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  sessionTokenData: Token;
+  sessionTokenData: Token = new Token();
   @Input() localData: Token = new Token();
   @Input() atHome: boolean; 
-  //@Output() sessionTokenDataOutput = new EventEmitter<Token>(); // emits Token 
-  @Output() searchSelectionEmitter = new EventEmitter<string>(); // emits string
-  @Output() atHomeEmitter = new EventEmitter<boolean>(); // emits boolean
+  @Output() sessionTokenDataOutput = new EventEmitter<Token>(); // emits Token 
+  //@Output() searchSelectionEmitter = new EventEmitter<string>(); // emits string
+  //@Output() atHomeEmitter = new EventEmitter<boolean>(); // emits boolean
   selectionData: string;
   hideButton: boolean = true;
   selectedGame: string;
@@ -41,48 +41,69 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken _id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
-      
+    console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken._id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
+    if(false) {
+      if(history.state.sessionToken==undefined || history.state == null || history.state.sessionToken._id == "Default") {
+        console.log('............................................');
+        if(history.state.sessionToken==undefined) {
+          console.log('history.state.sessionToken==undefined');
+          this.sessionTokenDataOutput.emit(this.sessionTokenData);
+        }else if(history.state == null) {
+          console.log('history.state == null');
+          this.sessionTokenDataOutput.emit(this.sessionTokenData);
+        } else if(history.state.sessionToken._id == "Default") {
+          console.log('history.state.sessionToken._id == "Default"');
+          this.sessionTokenDataOutput.emit(this.sessionTokenData);
+        }
+        console.log('............................................');
+      }else{
+        console.log('............................................');
+        console.log('>>>>');
+        this.sessionTokenDataOutput.emit(this.sessionTokenData);
+        console.log('............................................');
+      }
+    }
   }
 
   createNewEvent() {
     if(history.state.sessionToken._id == undefined){
-      console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
+      console.log(">>> search-bar: You must be logged in to view this page. Rerouting you to sign in page >>>");
       this.atHome = true;
-      this.atHomeEmitter.emit(this.atHome);
-      this.router.navigate(['/signIn'], {state: {sessionToken: this.localData}});
+      
+      this.router.navigate(['/signIn'], {state: {sessionToken: this.sessionTokenData}});
     }else{
       if(history.state.sessionToken._id != undefined && history.state.sessionToken.Location != undefined){
         
         console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken._id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.searchSelection:   ' + history.state.sessionToken.Location+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
-        this.localData._id = history.state.sessionToken._id;
-        this.localData.UserName = history.state.sessionToken.UserName;
-        //this.localData.Password = history.state.sessionToken..Password; // SECURITY RISK
-        this.localData.Email = history.state.sessionToken.Email;
-        this.localData.FirstName = history.state.sessionToken.FirstName;
-        this.localData.LastName = history.state.sessionToken.LastName;
-        this.localData.Telephone = history.state.sessionToken.Telephone;
-        this.localData.DateOfBirth = history.state.sessionToken.DateOfBirth;
-        this.localData.Country = history.state.sessionToken.Country;
-        this.localData.Address = history.state.sessionToken.Address;
-        this.localData.Address2 = history.state.sessionToken.Address2;
-        this.localData.City = history.state.sessionToken.City; 
-        this.localData.State = history.state.sessionToken.State;
-        this.localData.Zipcode = history.state.sessionToken.Zipcode;
-        this.localData.FreeAccount = history.state.sessionToken.FreeAccount;
-        this.localData.SubscriptionExp = history.state.sessionToken.SubscriptionExp;
-        this.localData.SubscriptionLv = history.state.sessionToken.SubscriptionLv;
-        this.localData.AdminAccess = history.state.sessionToken.AdminAccess;
-        this.localData.CurrentStatus = history.state.sessionToken.CurrentStatus;
-        //this.localData.Location = history.state.sessionToken.Location;
-        this.localData.createdOn = history.state.sessionToken.createdOn;
-        this.localData.UID = history.state.sessionToken.UID;
-        this.localData.userLatitude = history.state.sessionToken.userLatitude;
-        this.localData.userLongitude = history.state.sessionToken.userLongitude;
+        this.sessionTokenData._id = history.state.sessionToken._id;
+        this.sessionTokenData.UserName = history.state.sessionToken.UserName;
+        //this.sessionTokenData.Password = history.state.sessionToken..Password; // SECURITY RISK
+        this.sessionTokenData.Email = history.state.sessionToken.Email;
+        this.sessionTokenData.FirstName = history.state.sessionToken.FirstName;
+        this.sessionTokenData.LastName = history.state.sessionToken.LastName;
+        this.sessionTokenData.Telephone = history.state.sessionToken.Telephone;
+        this.sessionTokenData.DateOfBirth = history.state.sessionToken.DateOfBirth;
+        this.sessionTokenData.Country = history.state.sessionToken.Country;
+        this.sessionTokenData.Address = history.state.sessionToken.Address;
+        this.sessionTokenData.Address2 = history.state.sessionToken.Address2;
+        this.sessionTokenData.City = history.state.sessionToken.City; 
+        this.sessionTokenData.State = history.state.sessionToken.State;
+        this.sessionTokenData.Zipcode = history.state.sessionToken.Zipcode;
+        this.sessionTokenData.FreeAccount = history.state.sessionToken.FreeAccount;
+        this.sessionTokenData.SubscriptionExp = history.state.sessionToken.SubscriptionExp;
+        this.sessionTokenData.SubscriptionLv = history.state.sessionToken.SubscriptionLv;
+        this.sessionTokenData.AdminAccess = history.state.sessionToken.AdminAccess;
+        this.sessionTokenData.CurrentStatus = history.state.sessionToken.CurrentStatus;
+        //this.sessionTokenData.Location = history.state.sessionToken.Location;
+        this.sessionTokenData.createdOn = history.state.sessionToken.createdOn;
+        this.sessionTokenData.UID = history.state.sessionToken.UID;
+        this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
+        this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
         console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nthis.sessionTokenData._id:           ' + this.localData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.localData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.localData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.localData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.localData.userLongitude + '\r\n////////////////////////////////////////////////');
         
         console.log(">>> Rerouting you to the createGameEvent page >>>");
-        this.router.navigate(['/createGameEvent'], {state: {sessionToken: this.localData}});
+        
+        this.router.navigate(['/createGameEvent'], {state: {sessionToken: this.sessionTokenData}});
       }
     }
   }
@@ -93,46 +114,48 @@ export class SearchBarComponent implements OnInit {
     if(this.selectedGame == undefined) {
       this.selectedGame = "None";
     }
-    this.localData.Location = this.selectedGame.toString(); // change /Location to another prop once you get this working ///////////////
+    //this.localData.Location = this.selectedGame.toString(); // change /Location to another prop once you get this working ///////////////
+    this.sessionTokenData.Location = this.selectedGame.toString();
     //console.log("Selected game, this.localData.Location: " + this.localData.Location);
-    this.searchSelectionEmitter.emit(this.localData.Location);
+    //this.searchSelectionEmitter.emit(this.localData.Location);
     if(history.state.sessionToken._id == undefined){
       console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
       this.atHome = true;
-      this.atHomeEmitter.emit(this.atHome);
-      this.router.navigate(['/signIn'], {state: {sessionToken: this.localData}});
+      
+      this.router.navigate(['/signIn'], {state: {sessionToken: this.sessionTokenData}});
     }else{
       if(history.state.sessionToken._id != undefined && history.state.sessionToken.Location != undefined){
         
         console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nhistory.state.sessionToken._id:       ' + history.state.sessionToken._id+"\r\nhistory.state.sessionToken FirstName: " + history.state.sessionToken.FirstName+"\r\nhistory.state.sessionToken Address:   " + history.state.sessionToken.Address+'\r\nhistory.state.sessionToken.searchSelection:   ' + history.state.sessionToken.Location+'\r\nhistory.state.sessionToken.userLatitude:    ' + history.state.sessionToken.userLatitude + '\r\nhistory.state.sessionToken.userLongitude:   ' + history.state.sessionToken.userLongitude + '\r\n////////////////////////////////////////////////');
-        this.localData._id = history.state.sessionToken._id;
-        this.localData.UserName = history.state.sessionToken.UserName;
+        this.sessionTokenData._id = history.state.sessionToken._id;
+        this.sessionTokenData.UserName = history.state.sessionToken.UserName;
         //this.localData.Password = history.state.sessionToken..Password; // SECURITY RISK
-        this.localData.Email = history.state.sessionToken.Email;
-        this.localData.FirstName = history.state.sessionToken.FirstName;
-        this.localData.LastName = history.state.sessionToken.LastName;
-        this.localData.Telephone = history.state.sessionToken.Telephone;
-        this.localData.DateOfBirth = history.state.sessionToken.DateOfBirth;
-        this.localData.Country = history.state.sessionToken.Country;
-        this.localData.Address = history.state.sessionToken.Address;
-        this.localData.Address2 = history.state.sessionToken.Address2;
-        this.localData.City = history.state.sessionToken.City; 
-        this.localData.State = history.state.sessionToken.State;
-        this.localData.Zipcode = history.state.sessionToken.Zipcode;
-        this.localData.FreeAccount = history.state.sessionToken.FreeAccount;
-        this.localData.SubscriptionExp = history.state.sessionToken.SubscriptionExp;
-        this.localData.SubscriptionLv = history.state.sessionToken.SubscriptionLv;
-        this.localData.AdminAccess = history.state.sessionToken.AdminAccess;
-        this.localData.CurrentStatus = history.state.sessionToken.CurrentStatus;
-        //this.localData.Location = history.state.sessionToken.Location;
-        this.localData.createdOn = history.state.sessionToken.createdOn;
-        this.localData.UID = history.state.sessionToken.UID;
-        this.localData.userLatitude = history.state.sessionToken.userLatitude;
-        this.localData.userLongitude = history.state.sessionToken.userLongitude;
+        this.sessionTokenData.Email = history.state.sessionToken.Email;
+        this.sessionTokenData.FirstName = history.state.sessionToken.FirstName;
+        this.sessionTokenData.LastName = history.state.sessionToken.LastName;
+        this.sessionTokenData.Telephone = history.state.sessionToken.Telephone;
+        this.sessionTokenData.DateOfBirth = history.state.sessionToken.DateOfBirth;
+        this.sessionTokenData.Country = history.state.sessionToken.Country;
+        this.sessionTokenData.Address = history.state.sessionToken.Address;
+        this.sessionTokenData.Address2 = history.state.sessionToken.Address2;
+        this.sessionTokenData.City = history.state.sessionToken.City; 
+        this.sessionTokenData.State = history.state.sessionToken.State;
+        this.sessionTokenData.Zipcode = history.state.sessionToken.Zipcode;
+        this.sessionTokenData.FreeAccount = history.state.sessionToken.FreeAccount;
+        this.sessionTokenData.SubscriptionExp = history.state.sessionToken.SubscriptionExp;
+        this.sessionTokenData.SubscriptionLv = history.state.sessionToken.SubscriptionLv;
+        this.sessionTokenData.AdminAccess = history.state.sessionToken.AdminAccess;
+        this.sessionTokenData.CurrentStatus = history.state.sessionToken.CurrentStatus;
+        //this.sessionTokenData.Location = history.state.sessionToken.Location;
+        this.sessionTokenData.createdOn = history.state.sessionToken.createdOn;
+        this.sessionTokenData.UID = history.state.sessionToken.UID;
+        this.sessionTokenData.userLatitude = history.state.sessionToken.userLatitude;
+        this.sessionTokenData.userLongitude = history.state.sessionToken.userLongitude;
         console.log('////////////////////////////////////////////////\r\nSearch-bar:\r\nthis.sessionTokenData._id:           ' + this.localData._id + '\r\nthis.sessionTokenData FirstName:     ' + this.localData.FirstName + '\r\nthis.sessionTokenData Address:       ' + this.localData.Address+'\r\nthis.sessionTokenData.userLatitude:  ' + this.localData.userLatitude + '\r\nthis.sessionTokenData.userLongitude: ' + this.localData.userLongitude + '\r\n////////////////////////////////////////////////');
         
         console.log(">>> Rerouting you to the gameboard page >>>");
-        this.router.navigate(['/gameBoard'], {state: {sessionToken: this.localData}});
+        
+        this.router.navigate(['/gameBoard'], {state: {sessionToken: this.sessionTokenData}});
       }
     }
   }

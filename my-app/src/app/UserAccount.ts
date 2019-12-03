@@ -19,7 +19,7 @@ export class UserAccount {
   AdminAccess: string = "Default";  // new
   CurrentStatus: string = "Default";
   Location: string = "Default";
-  createdOn: string = "Default";
+  createdOn: Date;
   UID: string = "Default"; // new
   userLatitude: number = 40; // new
   userLongitude: number = 100; // new

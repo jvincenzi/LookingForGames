@@ -191,7 +191,7 @@ export class eventDialog implements OnInit{
 
   ngOnInit() { 
 
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + 
+    console.log('/// event-dialog: ngOnInit - history.state.sessionToken._id: ' + 
     history.state.sessionToken._id  + ' ///');
     this.getUser(
       history.state.sessionToken._id);

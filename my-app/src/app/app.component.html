@@ -9,7 +9,7 @@
       <a mat-button class="txtColor" [routerLink]="'/searchBar'" (click)="renderHome()" [state]="{sessionToken: sessionTokenData}"> Home </a>
       <a mat-button class="txtColor" [routerLink]="'/signIn'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Sign In </a>
       <a mat-button class="txtColor" [routerLink]="'/gameBoard'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Game Board </a>
-      <a mat-button class="txtColor" [routerLink]="'/createGameEvent'" [state]="{sessionToken: sessionTokenData}"> Create Event </a>
+      <a mat-button class="txtColor" [routerLink]="'/createGameEvent'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Create Event </a>
       <a mat-button class="txtColor" [routerLink]="'/myAccount'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> My Account </a>
     </div>
   </mat-toolbar-row>
@@ -22,7 +22,7 @@
       <a mat-list-item [routerLink]="'/searchBar'" (click)="renderHome()" [state]="{sessionToken: sessionTokenData}"> Home </a>
       <a mat-list-item [routerLink]="'/signIn'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Sign In </a>
       <a mat-list-item [routerLink]="'/gameBoard'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Game Board </a>
-      <a mat-list-item [routerLink]="'/createGameEvent'" [state]="{sessionToken: sessionTokenData}"> Create Event </a>
+      <a mat-list-item [routerLink]="'/createGameEvent'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> Create Event </a>
       <a mat-list-item [routerLink]="'/myAccount'" (click)="newPage()" [state]="{sessionToken: sessionTokenData}"> My Account </a>
 
     </mat-nav-list>

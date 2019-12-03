@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./show-user-info.component.css']
 })
 export class ShowUserInfoComponent implements OnInit {
-  sessionTokenData: Token;
+  sessionTokenData: Token = new Token();
   hideUserList: Boolean = false;
   selectedUser: UserAccount;
   tempUser: UserAccount = new UserAccount();
@@ -90,14 +90,15 @@ export class ShowUserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('/// ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
-    if(history.state.sessionToken._id == undefined){
-      console.log(">>> You must be logged in to view this page. Rerouting you to sign in page >>>");
-      this.router.navigate(['/signIn']);
+    if(history.state.sessionToken._id == "Default" || history.state == null || history.state.sessionToken == undefined){
+      console.log(">>> show-user-info: You must be logged in to view this page. Rerouting you to sign in page >>>");
+      this.router.navigate(['/signIn', {state: {sessionToken: this.sessionTokenData}}]);
+    }else if(history.state.sessionToken._id != "Default" && history.state.sessionToken != undefined) {
+      this.getUser(history.state.sessionToken._id);
+      console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
     }
-    this.getUser(history.state.sessionToken._id);
     //this.getUsers(); // OLD
-    console.log('////////////////////////////////////////////////\r\nsessionToken _id:       ' + history.state.sessionToken._id +"\r\nsessionToken FirstName: " + history.state.sessionToken.FirstName +"\r\nsessionToken Address:   " + history.state.sessionToken.Address +'\r\n////////////////////////////////////////////////');
+    console.log('/// show-user-info: ngOnInit - history.state.sessionToken._id: ' + history.state.sessionToken._id  + ' ///');
   }
 
   passwordsMatch(userPassword1: FormControl, userPassword2: FormControl) {
@@ -198,13 +199,13 @@ export class ShowUserInfoComponent implements OnInit {
   editUserInfo(id: string) {
     //console.log('////// id: '+id+' //////'); ///////////////////////////////////////////////
     //if(this.tempUser == null){
-      this.getUser(id);
+    this.getUser(id);
     //}
     this.hideUserList = true;
   }
   getUser(id: string): void {
     //console.log("/// In getUser("+id+") ///");  /////////////////////////////////////////////////////////
-    let y;
+    
     this.callNodeService.getUser(id).subscribe((userData: UserAccount) => {
       this.tempUser = userData;
       console.log('/// userData._id: ' + userData._id + ' ///' );
@@ -225,7 +226,7 @@ export class ShowUserInfoComponent implements OnInit {
       this.userState.setValue(userData.State.toString());
       this.userZipCode.setValue(userData.Zipcode.toString());
       
-    })
+    });
   }
   
   deleteUserAccount(PassedInUserAccount: UserAccount): void {
@@ -292,7 +293,7 @@ export class ShowUserInfoComponent implements OnInit {
       this.userZipCode.errors == null &&
       this.userFreeAcc.errors == null
     ) {
-      console.log('/// Forms pass validation! ///')
+      console.log('/// Forms pass validation! ///');
       return true;
     }else {
       if(true) { // Show error output for fields
