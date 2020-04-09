@@ -5,9 +5,7 @@ const mongoose = require("mongoose");
 // edited to include my non-admin, user level account and PW on mongo atlas
 // and also to include the name of the mongo DB that the collection is in (TaskDB)
 
-//const dbURI="mongodb+srv://Thanh:Password123@cluster001-q7tna.mongodb.net/test?retryWrites=true&w=majority"
-const dbURI ="mongodb+srv://bcuser2:bcuser2@cluster001-q7tna.mongodb.net/LookingForGamesDB?retryWrites=true&w=majority";  // LFG MongoDB
-//const dbURI ="mongodb+srv://bcuser2:bcuser2@cluster0-nbt1n.mongodb.net/TaskDB?retryWrites=true&w=majority";  // Kurts MongoDB
+const dbURI ="mongodb+srv://bcuser2:XXXXX-PUT NEW PW HERE-XXXXXX@cluster001-q7tna.mongodb.net/LookingForGamesDB?retryWrites=true&w=majority";  // LFG MongoDB
 
 
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
