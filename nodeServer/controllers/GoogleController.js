@@ -4,7 +4,7 @@ exports.getDistance = (req, res) => {
   console.log(">>>>>>>>> IN GET DISTANCE <<<<<<<<<");
 
   const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyABCbdxy8xO6iftYiU4p-cNbGuAt71mIDM' // Deactivated Google maps
+    key: 'PUT_YOUR_GOOGLE_MAPS_API_KEY_HERE' // Deactivated Google maps
   });
   /*
   console.log('\r\n');
